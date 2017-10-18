@@ -1,8 +1,8 @@
 package DB;
 
 public class create {
-	/*
-	 CREATE TABLE office(
+/*
+CREATE TABLE office(
     office_num number not null primary key,
     office_ID varchar2(15) not null,
     office_name varchar2(15) not null,
@@ -28,6 +28,6 @@ CREATE TABLE daily_import(
     daily_money number not null,
     daily_officeNum number not null
 );
-	 */
+*/
 
 }
