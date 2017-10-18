@@ -326,21 +326,21 @@ public class MainGUI {
 		
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("½Ä»§·ù", null, tabbedPane_1, null);
+		tabbedPane.addTab("½Ä»§", null, tabbedPane_1, null);
 		
 		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("°úÀÚ»§·ù ", null, tabbedPane_2, null);
+		tabbedPane.addTab("¹Ù°ÔÆ®", null, tabbedPane_2, null);
 		
 		JTabbedPane tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Á¶¸®»§·ù", null, tabbedPane_3, null);
+		tabbedPane.addTab("¼Ò¼¼Áö»§", null, tabbedPane_3, null);
 		
 		JTabbedPane tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Æ¯¼ö»§·ù", null, tabbedPane_4, null);
+		tabbedPane.addTab("¿ìÀ¯", null, tabbedPane_4, null);
 		
 		JTabbedPane tabbedPane_5 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("¿ìÀ¯½Ä»§", null, tabbedPane_5, null);
+		tabbedPane.addTab("¸¶Ä«·Õ", null, tabbedPane_5, null);
 		
 		JTabbedPane tabbedPane_6 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("¸ð´×»§", null, tabbedPane_6, null);
+		tabbedPane.addTab("µµ³Ó", null, tabbedPane_6, null);
 	}
 }
