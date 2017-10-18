@@ -29,5 +29,4 @@ CREATE TABLE daily_import(
     daily_officeNum number not null
 );
 */
-
 }
