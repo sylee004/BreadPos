@@ -1,19 +1,17 @@
 package BreadPos;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
-import javax.swing.JButton;
 
 public class LoginGUI {
 
@@ -48,7 +46,7 @@ public class LoginGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 577);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -56,10 +54,11 @@ public class LoginGUI {
 		JPanel panel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
-					icon = ImageIO.read(new File("C:\\Users\\togla\\Desktop\\1111.png"));
+					icon = ImageIO.read(new File("./image/KakaoTalk_20171018_201408552.jpg"));
 					Dimension d = getSize();// 전체화면
 					g.drawImage(icon, 0, 0, d.width, d.height, null);
 					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
 					super.paintComponent(g);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -68,11 +67,17 @@ public class LoginGUI {
 		};
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, panel, 261, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 538, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel, 434, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
 		
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
+		JPanel panel_1 = new JPanel();
+		sl_panel.putConstraint(SpringLayout.NORTH, panel_1, -34, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, panel_1, -47, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, panel);
+		panel.add(panel_1);
 	}
 }
