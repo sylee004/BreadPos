@@ -1,8 +1,13 @@
 package BreadPos;
 
 import java.awt.EventQueue;
+import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 
 public class MainGUI {
 
@@ -36,8 +41,14 @@ public class MainGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 438, 586);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel.add(lblNewLabel);
 	}
 
 }
