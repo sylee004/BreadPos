@@ -51,34 +51,6 @@ private int count;
 		con = DriverManager.getConnection(url, user, password);
 	}
 	
-	public int member_update_money(int money, String phone, String name) {
-		try {
-			getConnection();
-			
-			String sql = "update member_info set member_Money = ? where member_phone = ? and member_name = ?";
-			psmt = con.prepareStatement(sql);
-			total_money+=money;
-			psmt.setInt(1, money);
-			psmt.setString(2, phone);
-			psmt.setString(3, name);
-		
-			
-			count = psmt.executeUpdate();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				if (psmt != null) psmt.close();
-				if (con != null) con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return count;
-	}
 	
 	public int member_update(String change_phone, String change_name, String phone, String name) {
 		try {
