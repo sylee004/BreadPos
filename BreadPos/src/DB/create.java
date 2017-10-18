@@ -29,4 +29,5 @@ CREATE TABLE daily_import(
     daily_officeNum number not null
 );
 */
+	private int a = 30 ;
 }
