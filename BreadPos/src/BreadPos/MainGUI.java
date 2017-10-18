@@ -324,6 +324,7 @@ public class MainGUI {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_4.add(tabbedPane);
 		
+		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("½Ä»§·ù", null, tabbedPane_1, null);
 		
