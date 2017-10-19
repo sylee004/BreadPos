@@ -59,23 +59,6 @@ public class PaymentGUI {
 		JScrollPane scrollPane = new JScrollPane();
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
-		Vector userColumn = new Vector<>();
-		Vector userRow = new Vector<>();
-		Vector data = new Vector<>();
-		
-		userColumn.add("상품이름");
-		userColumn.add("수량");
-		userColumn.add("가격");
-
-		userRow.add("소보로빵");
-		userRow.add("1");
-		userRow.add("1200");
-		
-		data.add(userRow);
-		
-		table = new JTable(data, userColumn);
-		
-		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 10, SpringLayout.NORTH, frame.getContentPane());
@@ -97,9 +80,35 @@ public class PaymentGUI {
 		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, panel);
 		springLayout.putConstraint(SpringLayout.WEST, panel_2, 6, SpringLayout.EAST, panel_1);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, 261, SpringLayout.SOUTH, panel);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
 		
-		panel.setLayout(new GridLayout(1, 1, 0, 0));
-		//panel.add(table);
+		JPanel panel_5 = new JPanel();
+		sl_panel.putConstraint(SpringLayout.NORTH, panel_5, 10, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, panel_5, 10, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, panel_5, 250, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, panel_5, 390, SpringLayout.WEST, panel);
+		panel.add(panel_5);
+
+		Vector userColumn = new Vector<>();
+		Vector userRow = new Vector<>();
+		Vector data = new Vector<>();
+		
+		userColumn.add("상품이름");
+		userColumn.add("수량");
+		userColumn.add("가격");
+
+		userRow.add("소보로빵");
+		userRow.add("1");
+		userRow.add("1200");
+		
+		data.add(userRow);
+		
+		table = new JTable(data, userColumn);
+		
+		scrollPane.setViewportView(table);
+//		panel_5.add(table);
+//		
 		springLayout.putConstraint(SpringLayout.EAST, panel_2, 240, SpringLayout.EAST, panel_1);
 		panel_1.setLayout(new GridLayout(4, 0, 0, 10));
 		
