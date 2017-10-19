@@ -5,24 +5,36 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import java.awt.Color;
+import javax.swing.JTable;
 
 public class MainGUI {
 
 	private JFrame frame;
 	private JTextField textField;
+	 ImageIcon icon;
+	 private JTable table;
+	 JTable userTable;
+	 JScrollPane listJs;
+	 JPanel listPanel;
 
 	/**
 	 * Launch the application.
@@ -174,10 +186,10 @@ public class MainGUI {
 		JPanel panel_10 = new JPanel();
 		sl_panel_8.putConstraint(SpringLayout.NORTH, panel_10, 10, SpringLayout.NORTH, panel_8);
 		sl_panel_8.putConstraint(SpringLayout.WEST, panel_10, 6, SpringLayout.EAST, panel_9);
-		sl_panel_8.putConstraint(SpringLayout.SOUTH, panel_10, -10, SpringLayout.SOUTH, panel_8);
+		sl_panel_8.putConstraint(SpringLayout.SOUTH, panel_10, -375, SpringLayout.SOUTH, panel_8);
 		sl_panel_8.putConstraint(SpringLayout.EAST, panel_10, -10, SpringLayout.EAST, panel_8);
 		panel_8.add(panel_10);
-		panel_10.setLayout(new GridLayout(10, 3, 0, 0));
+		panel_10.setLayout(new GridLayout(1, 3, 0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("\uC0C1\uD488 \uC774\uB984");
 		lblNewLabel_2.setBackground(new Color(233, 150, 122));
@@ -194,91 +206,27 @@ public class MainGUI {
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_10.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_10.add(lblNewLabel_5);
+		JPanel panel_11 = new JPanel();
+		sl_panel_8.putConstraint(SpringLayout.NORTH, panel_11, 6, SpringLayout.SOUTH, panel_10);
+		sl_panel_8.putConstraint(SpringLayout.WEST, panel_11, 6, SpringLayout.EAST, panel_9);
+		sl_panel_8.putConstraint(SpringLayout.SOUTH, panel_11, 365, SpringLayout.SOUTH, panel_10);
+		sl_panel_8.putConstraint(SpringLayout.EAST, panel_11, 388, SpringLayout.EAST, panel_9);
+		panel_8.add(panel_11);
+		panel_11.setLayout(new CardLayout(0, 0));
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		panel_10.add(lblNewLabel_6);
+		table = new JTable();
+		Vector<String> userColumn = new Vector<>();
+		DefaultTableModel model;
+		Vector<String> userRow;
 		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		panel_10.add(lblNewLabel_7);
+		userColumn.add("½Ä»§");
+		userColumn.add("10");
+		userColumn.add("100000");
 		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		panel_10.add(lblNewLabel_8);
+		model = new DefaultTableModel(userColumn, 0);
+		userTable = new JTable();
 		
-		JLabel lblNewLabel_9 = new JLabel("New label");
-		panel_10.add(lblNewLabel_9);
-		
-		JLabel lblNewLabel_10 = new JLabel("New label");
-		panel_10.add(lblNewLabel_10);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		panel_10.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_11 = new JLabel("New label");
-		panel_10.add(lblNewLabel_11);
-		lblNewLabel_11.setBackground(Color.WHITE);
-		lblNewLabel_11.setHorizontalAlignment(SwingConstants.LEFT);
-		
-		JLabel lblNewLabel_12 = new JLabel("New label");
-		panel_10.add(lblNewLabel_12);
-		
-		JLabel lblNewLabel_13 = new JLabel("New label");
-		panel_10.add(lblNewLabel_13);
-		
-		JLabel lblNewLabel_14 = new JLabel("New label");
-		panel_10.add(lblNewLabel_14);
-		
-		JLabel lblNewLabel_15 = new JLabel("New label");
-		panel_10.add(lblNewLabel_15);
-		
-		JLabel lblNewLabel_17 = new JLabel("New label");
-		panel_10.add(lblNewLabel_17);
-		
-		JLabel lblNewLabel_18 = new JLabel("New label");
-		panel_10.add(lblNewLabel_18);
-		
-		JLabel lblNewLabel_16 = new JLabel("New label");
-		panel_10.add(lblNewLabel_16);
-		
-		JLabel lblNewLabel_20 = new JLabel("New label");
-		panel_10.add(lblNewLabel_20);
-		
-		JLabel lblNewLabel_19 = new JLabel("New label");
-		panel_10.add(lblNewLabel_19);
-		
-		JLabel lblNewLabel_21 = new JLabel("New label");
-		panel_10.add(lblNewLabel_21);
-		lblNewLabel_21.setBackground(Color.WHITE);
-		lblNewLabel_21.setHorizontalAlignment(SwingConstants.LEFT);
-		
-		JLabel lblNewLabel_22 = new JLabel("New label");
-		panel_10.add(lblNewLabel_22);
-		
-		JLabel lblNewLabel_24 = new JLabel("New label");
-		panel_10.add(lblNewLabel_24);
-		
-		JLabel lblNewLabel_23 = new JLabel("New label");
-		panel_10.add(lblNewLabel_23);
-		
-		JLabel lblNewLabel_26 = new JLabel("New label");
-		panel_10.add(lblNewLabel_26);
-		
-		JLabel lblNewLabel_25 = new JLabel("New label");
-		panel_10.add(lblNewLabel_25);
-		
-		JLabel lblNewLabel_27 = new JLabel("New label");
-		panel_10.add(lblNewLabel_27);
-		
-		JLabel lblNewLabel_29 = new JLabel("New label");
-		panel_10.add(lblNewLabel_29);
-		
-		JLabel lblNewLabel_28 = new JLabel("New label");
-		panel_10.add(lblNewLabel_28);
-		
-		JLabel lblNewLabel_30 = new JLabel("New label");
-		panel_10.add(lblNewLabel_30);
+		panel_11.add(table, "name_7085723367180");
 		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2);
@@ -291,7 +239,7 @@ public class MainGUI {
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, 47, SpringLayout.NORTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, panel_2);
 		panel_2.add(panel_3);
-		panel_3.setLayout(new GridLayout(0, 4, 0, 0));
+		panel_3.setLayout(new GridLayout(0, 4, 10, 0));
 		
 		JButton btnNewButton = new JButton("\uACB0\uC81C");
 		btnNewButton.setBackground(new Color(139, 69, 19));
@@ -314,12 +262,14 @@ public class MainGUI {
 		panel_3.add(btnNewButton_3);
 		
 		JPanel panel_4 = new JPanel();
+		icon = new ImageIcon("BreadPos/image/KakaoTalk_20171018_201408552.jpg");
+		
 		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_4, 6, SpringLayout.SOUTH, panel_3);
 		sl_panel_2.putConstraint(SpringLayout.WEST, panel_4, 10, SpringLayout.WEST, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_4, 0, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, panel_3);
 		panel_2.add(panel_4);
-		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
+		panel_4.setLayout(new GridLayout(1, 0, 10, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_4.add(tabbedPane);
