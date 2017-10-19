@@ -17,7 +17,44 @@ public class OfficeDAO {
 	private Connection con = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
-
+	
+	public ArrayList<Office> select_office() {
+		ArrayList<Office> list = new ArrayList<Office>();
+		
+		try {
+			getConnection();
+			Office office = null;
+			String sql = "select ?, ?, ? from office";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, office.getOffice_ID());
+			psmt.setInt(2, office.getOffice_num());
+			psmt.setString(3, office.getOffice_pass());
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				String id = rs.getString(1);
+				String pw = rs.getString(2);
+				int num = rs.getInt(3);
+				list.add(new Office(num, id, pw));
+			}
+			
+			psmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) psmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
 	public void getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		con = DriverManager.getConnection(url, user, password);

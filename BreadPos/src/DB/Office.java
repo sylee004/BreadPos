@@ -14,6 +14,14 @@ public class Office {
 		this.office_ID = office_ID;
 		this.office_pass = office_pass;
 	}
+	
+	public Office(int office_num, String office_ID, String office_pass) {
+		super();
+		this.office_num = office_num;
+		this.office_ID = office_ID;
+		this.office_pass = office_pass;
+	}
+	
 	public int getOffice_num() {
 		return office_num;
 	}
