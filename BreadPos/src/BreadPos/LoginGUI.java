@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -211,7 +212,7 @@ public class LoginGUI {
 		pwTxt.setColumns(10);
 		LoginPanel.add(pwTxt);
 		
-		JButton loginBtn = new JButton("\uB85C\uADF8\uC778");
+		JButton loginBtn = new JButton(new ImageIcon("./image/loginBtn01.png"));
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				office_num = mg.officeNumIdPw(id, pw);
