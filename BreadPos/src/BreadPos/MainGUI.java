@@ -34,6 +34,7 @@ import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.FlowLayout;
 
 public class MainGUI {
 
@@ -46,8 +47,8 @@ public class MainGUI {
 	private JButton managementBtn;
 	private JButton salesBtn;
 	private JButton paymentBtn;
-	private Management mg;
-	private ArrayList<Bread> whiteBread;
+	private Management mg = new Management();
+	private ArrayList<Bread> whiteBread = new ArrayList<Bread>();
 
 	/**
 	 * Launch the application.
@@ -70,8 +71,6 @@ public class MainGUI {
 	 */
 	public MainGUI() {
 		initialize();
-		mg = new Management();
-		whiteBread = new ArrayList<Bread>();
 	}
 
 	/**
@@ -344,10 +343,6 @@ public class MainGUI {
 				frame.dispose();
 			}
 		});
-		closeBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		closeBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(closeBtn);
 
@@ -366,14 +361,16 @@ public class MainGUI {
 		
 		JPanel whitePanel = new JPanel();
 		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, null);
+		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		whitePanel.setLayout(new GridLayout(5, 5, 20, 20));
 
 		whiteBread = mg.breadKind("white");
+		JButton btnNewButton;
 		
-		for (int i = 0; i <= whiteBread.size(); i++) {
+		for (int i = 0; i < whiteBread.size(); i++) {
 			String name = whiteBread.get(i).getName();
-			JButton btnNewButton = new JButton(name);
+			btnNewButton = new JButton(name);
+			btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 15));
 			whitePanel.add(btnNewButton);
 		}
 		

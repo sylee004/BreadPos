@@ -112,7 +112,7 @@ public class BreadInfoDAO {
 		try {
 			getConnection();
 			
-			String sql = "select * from bread_info where kind = ?";
+			String sql = "select * from bread_info where bread_kind = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, bread_kind);
 			rs = psmt.executeQuery();
