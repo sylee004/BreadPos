@@ -1,49 +1,83 @@
 package BreadPos;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.SpringLayout;
 
-public class LoginGUI extends JFrame {
-    JScrollPane scrollPane;
-    ImageIcon icon;
- 
-    public LoginGUI() {
-        icon = new ImageIcon("./image/KakaoTalk_20171018_201408552.jpg");
-       
-        //배경 Panel 생성후 컨텐츠페인으로 지정      
-        JPanel background = new JPanel() {
-            public void paintComponent(Graphics g) {
-                // Approach 1: Dispaly image at at full size
-                g.drawImage(icon.getImage(), 0, 0, null);
-                // Approach 2: Scale image to size of component
-                // Dimension d = getSize();
-                // g.drawImage(icon.getImage(), 0, 0, d.width, d.height, null);
-                // Approach 3: Fix the image position in the scroll pane
-                // Point p = scrollPane.getViewport().getViewPosition();
-                // g.drawImage(icon.getImage(), p.x, p.y, null);
-                setOpaque(false); //그림을 표시하게 설정,투명하게 조절
-                super.paintComponent(g);
-            }
-        };
-       
-       
-       
-        JButton button = new JButton("버튼");
-        background.add(button);
-        scrollPane = new JScrollPane(background);
-        setContentPane(scrollPane);
-    }
- 
-    public static void main(String[] args) {
-        LoginGUI frame = new LoginGUI();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 300);
-        frame.setVisible(true);
-    }
+public class LoginGUI {
+
+	private JFrame frame;
+	private BufferedImage icon;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginGUI window = new LoginGUI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public LoginGUI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 577);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+
+		JPanel panel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				try {
+					icon = ImageIO.read(new File("./image/KakaoTalk_20171018_201408552.jpg"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(icon, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 538, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 434, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(panel);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
+		
+		JPanel panel_1 = new JPanel();
+		sl_panel.putConstraint(SpringLayout.NORTH, panel_1, -34, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, panel_1, -47, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, panel);
+		panel.add(panel_1);
+	}
 }
