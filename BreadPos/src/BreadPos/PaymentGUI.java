@@ -16,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PaymentGUI {
 
@@ -56,8 +58,6 @@ public class PaymentGUI {
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		
 		JPanel panel = new JPanel();
@@ -80,16 +80,10 @@ public class PaymentGUI {
 		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, panel);
 		springLayout.putConstraint(SpringLayout.WEST, panel_2, 6, SpringLayout.EAST, panel_1);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, 261, SpringLayout.SOUTH, panel);
-		SpringLayout sl_panel = new SpringLayout();
-		panel.setLayout(sl_panel);
+		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_5 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_5, 10, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_5, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_5, 250, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_5, 390, SpringLayout.WEST, panel);
-		panel.add(panel_5);
-
+		JScrollPane scrollPane = new JScrollPane();
+		panel.add(scrollPane, BorderLayout.CENTER);
 		Vector userColumn = new Vector<>();
 		Vector userRow = new Vector<>();
 		Vector data = new Vector<>();
@@ -104,11 +98,10 @@ public class PaymentGUI {
 		
 		data.add(userRow);
 		
-		table = new JTable(data, userColumn);
+		table = new JTable();
 		
 		scrollPane.setViewportView(table);
-//		panel_5.add(table);
-//		
+		//panel.add(table);
 		springLayout.putConstraint(SpringLayout.EAST, panel_2, 240, SpringLayout.EAST, panel_1);
 		panel_1.setLayout(new GridLayout(4, 0, 0, 10));
 		
@@ -132,15 +125,20 @@ public class PaymentGUI {
 		panel_2.setLayout(sl_panel_2);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(255, 255, 255));
-		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_3, -64, SpringLayout.SOUTH, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.WEST, panel_3, 10, SpringLayout.WEST, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, -10, SpringLayout.SOUTH, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_3, -54, SpringLayout.SOUTH, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, 224, SpringLayout.WEST, panel_2);
+		panel_3.setBackground(new Color(255, 255, 255));
 		panel_2.add(panel_3);
 		panel_3.setLayout(new GridLayout(1, 2, 10, 0));
 		
 		JButton btnNewButton_5 = new JButton("º¸·ù");
+		btnNewButton_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+		});
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -152,9 +150,10 @@ public class PaymentGUI {
 		
 		JPanel panel_4 = new JPanel();
 		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_4, 10, SpringLayout.NORTH, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.WEST, panel_4, 0, SpringLayout.WEST, panel_3);
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_4, -14, SpringLayout.NORTH, panel_3);
-		sl_panel_2.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, panel_3);
+		sl_panel_2.putConstraint(SpringLayout.WEST, panel_4, 10, SpringLayout.WEST, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_4, -24, SpringLayout.NORTH, panel_3);
+		sl_panel_2.putConstraint(SpringLayout.EAST, panel_4, -10, SpringLayout.EAST, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.WEST, panel_3, 0, SpringLayout.WEST, panel_4);
 		panel_2.add(panel_4);
 		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
 		
