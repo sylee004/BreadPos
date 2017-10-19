@@ -22,8 +22,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 
 public class LoginGUI {
 
@@ -114,7 +118,6 @@ public class LoginGUI {
 		backgroundPanel.add(logoPanel);
 		
 		JPanel LoginPanel = new JPanel();
-		LoginPanel.setOpaque(false);
 		sl_backgroundPanel.putConstraint(SpringLayout.NORTH, LoginPanel, 35, SpringLayout.NORTH, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.WEST, LoginPanel, 35, SpringLayout.WEST, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, LoginPanel, -35, SpringLayout.NORTH, logoPanel);
@@ -194,9 +197,9 @@ public class LoginGUI {
 			}
 		});
 		IdTxt.setBackground(new Color(255, 255, 255, 150));
-		IdTxt.setBorder(new LineBorder(new Color(0, 0, 0), 11, true));
-		IdTxt.setOpaque(false);
-		IdTxt.setBorder(null);
+		IdTxt.setBorder(new EmptyBorder(0, 0, 0, 0));
+		//IdTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		//IdTxt.setOpaque(false);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, IdTxt, 15, SpringLayout.NORTH, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, IdTxt, 20, SpringLayout.EAST, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, IdTxt, -15, SpringLayout.SOUTH, IdPanel);
