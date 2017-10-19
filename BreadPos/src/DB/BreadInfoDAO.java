@@ -124,7 +124,7 @@ public class BreadInfoDAO {
 				list.add(new Bread(name, price, kind));
 			}
 			
-			psmt.executeUpdate();
+			//psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
