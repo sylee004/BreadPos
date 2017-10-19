@@ -16,7 +16,7 @@ public class Management {
 	
 	public int officeNumIdPw(String input_id, String input_pw) {
 		ArrayList<Office> list = office.select_office();
-		int office_num = 0;
+		int office_num = 1;
 		
 		for (int i = 0; i < list.size(); i++) {
 			String id = list.get(i).getOffice_ID();
