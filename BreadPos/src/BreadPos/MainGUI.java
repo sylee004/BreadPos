@@ -39,6 +39,7 @@ public class MainGUI {
 	 JTable userTable;
 	 JScrollPane listJs;
 	 JPanel listPanel;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -123,7 +124,9 @@ public class MainGUI {
 		btnNewButton_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				btnNewButton_5.setBackground(UIManager.getColor("Button.highlight"));
+				btnNewButton_5.setBackground(Color.orange);
+				PaymentGUI paymentGUI = new PaymentGUI();
+				paymentGUI.main(null);
 			}
 		});
 		btnNewButton_5.addActionListener(new ActionListener() {
@@ -286,25 +289,28 @@ public class MainGUI {
 		btnNewButton.setBackground(new Color(139, 69, 19));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PaymentGUI paymentGUI = new PaymentGUI();
-				paymentGUI.main(null);
+				
 			}
 		});
 		panel_3.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("\uAD00\uB9AC");
+		btnNewButton_1 = new JButton("\uAD00\uB9AC");
 		btnNewButton_1.setForeground(new Color(240, 248, 255));
 		btnNewButton_1.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManagementGUI managementGUI = new ManagementGUI();
-				managementGUI.main(null);
-			}
-		});
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
 				btnNewButton_1.setBackground(Color.orange);
+				
+				ManagementGUI managementGUI = new ManagementGUI();
+				managementGUI.frame.setVisible(true);
+				managementGUI.setOnMyClickListener(new MyCllickListener() {
+					@Override
+					public void onClick() {
+						// TODO Auto-generated method stub
+						btnNewButton_1.setBackground(Color.red);
+					}
+				});
+				
 			}
 		});
 		btnNewButton_1.setBackground(new Color(139, 69, 19));

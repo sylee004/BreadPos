@@ -98,7 +98,7 @@ public class PaymentGUI {
 		
 		data.add(userRow);
 		
-		table = new JTable();
+		table = new JTable(data,userColumn);
 		
 		scrollPane.setViewportView(table);
 		//panel.add(table);
@@ -146,6 +146,16 @@ public class PaymentGUI {
 		panel_3.add(btnNewButton_5);
 		
 		JButton btnNewButton_4 = new JButton("∞·¡¶");
+		btnNewButton_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+		});
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panel_3.add(btnNewButton_4);
 		
 		JPanel panel_4 = new JPanel();
@@ -184,4 +194,6 @@ public class PaymentGUI {
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_5);
 	}
+
+	
 }
