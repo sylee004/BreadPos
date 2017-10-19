@@ -26,6 +26,7 @@ public class PaymentGUI {
 	private MyCllickListener myCllickListener;
 	
 
+<<<<<<< HEAD
 	/**
 	 * Launch the application.
 	 */
@@ -35,6 +36,23 @@ public class PaymentGUI {
 				try {
 					PaymentGUI window = new PaymentGUI();
 					window.frame.setVisible(true);
+=======
+   /**
+    * Launch the application.
+    */
+   public static void main(String[] args) {
+      EventQueue.invokeLater(new Runnable() {
+         public void run() {
+            try {
+               PaymentGUI window = new PaymentGUI();
+               window.frame.setVisible(true);
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
+         }
+      });
+   }
+>>>>>>> branch 'master' of https://github.com/sylee004/BreadPos.git
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,6 +68,7 @@ public class PaymentGUI {
 		initialize();
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -191,4 +210,98 @@ public class PaymentGUI {
 	}
 
 	
+=======
+      userRow.add("소보로빵");
+      userRow.add("1");
+      userRow.add("1200");
+      
+      data.add(userRow);
+      
+      table = new JTable();
+      
+      scrollPane.setViewportView(table);
+      //panel.add(table);
+      springLayout.putConstraint(SpringLayout.EAST, panel_2, 240, SpringLayout.EAST, panel_1);
+      panel_1.setLayout(new GridLayout(4, 0, 0, 10));
+      
+      JButton btnNewButton_1 = new JButton("\uD560\uC778");
+      btnNewButton_1.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+         }
+      });
+      panel_1.add(btnNewButton_1);
+      
+      JButton btnNewButton_2 = new JButton("\uD604\uAE08");
+      panel_1.add(btnNewButton_2);
+      
+      JButton btnNewButton_3 = new JButton("\uCE74\uB4DC");
+      panel_1.add(btnNewButton_3);
+      
+      JButton btnNewButton = new JButton("\uAE30\uD504\uD2F0\uCF58");
+      panel_1.add(btnNewButton);
+      frame.getContentPane().add(panel_2);
+      SpringLayout sl_panel_2 = new SpringLayout();
+      panel_2.setLayout(sl_panel_2);
+      
+      JPanel panel_3 = new JPanel();
+      sl_panel_2.putConstraint(SpringLayout.NORTH, panel_3, -54, SpringLayout.SOUTH, panel_2);
+      sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, panel_2);
+      sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, 224, SpringLayout.WEST, panel_2);
+      panel_3.setBackground(new Color(255, 255, 255));
+      panel_2.add(panel_3);
+      panel_3.setLayout(new GridLayout(1, 2, 10, 0));
+      
+      JButton btnNewButton_5 = new JButton("보류");
+      btnNewButton_5.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseClicked(MouseEvent e) {
+            frame.dispose();
+         }
+      });
+      btnNewButton_5.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+         }
+      });
+      panel_3.add(btnNewButton_5);
+      
+      JButton btnNewButton_4 = new JButton("결제");
+      panel_3.add(btnNewButton_4);
+      
+      JPanel panel_4 = new JPanel();
+      sl_panel_2.putConstraint(SpringLayout.NORTH, panel_4, 10, SpringLayout.NORTH, panel_2);
+      sl_panel_2.putConstraint(SpringLayout.WEST, panel_4, 10, SpringLayout.WEST, panel_2);
+      sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_4, -24, SpringLayout.NORTH, panel_3);
+      sl_panel_2.putConstraint(SpringLayout.EAST, panel_4, -10, SpringLayout.EAST, panel_2);
+      sl_panel_2.putConstraint(SpringLayout.WEST, panel_3, 0, SpringLayout.WEST, panel_4);
+      panel_2.add(panel_4);
+      panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+      
+      JLabel lblNewLabel = new JLabel("\uB0B4\uC5ED");
+      lblNewLabel.setForeground(new Color(0, 0, 0));
+      lblNewLabel.setBackground(new Color(139, 69, 19));
+      lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+      panel_4.add(lblNewLabel);
+      
+      JLabel lblNewLabel_2 = new JLabel("\uAE08\uC561");
+      lblNewLabel_2.setBackground(new Color(139, 69, 19));
+      lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+      panel_4.add(lblNewLabel_2);
+      
+      JLabel lblNewLabel_1 = new JLabel("\uACB0\uC81C \uAE08\uC561");
+      lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+      panel_4.add(lblNewLabel_1);
+      
+      JLabel lblNewLabel_4 = new JLabel("New label");
+      lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+      panel_4.add(lblNewLabel_4);
+      
+      JLabel lblNewLabel_3 = new JLabel("\uCD5C\uC885 \uAE08\uC561");
+      lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+      panel_4.add(lblNewLabel_3);
+      
+      JLabel lblNewLabel_5 = new JLabel("New label");
+      lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+      panel_4.add(lblNewLabel_5);
+   }
+>>>>>>> branch 'master' of https://github.com/sylee004/BreadPos.git
 }
