@@ -111,6 +111,23 @@ public class ManagementGUI {
 		sl_panel.putConstraint(SpringLayout.EAST, ButtonPanel, -10, SpringLayout.EAST, panel);
 		ButtonPanel.setBackground(new Color(255, 255, 255, 0));
 		importantPanel.setLayout(new CardLayout(0, 0));
+		
+		//ÁöÁ¡Á¤º¸ ¼öÁ¤ ÆÇ³Ú
+		JPanel changeInfoPanel = new JPanel();
+		changeInfoPanel.setBackground(new Color(255, 255, 255, 100));
+		importantPanel.add(changeInfoPanel, "name_1524942935296");
+		SpringLayout sl_changeInfoPanel = new SpringLayout();
+		changeInfoPanel.setLayout(sl_changeInfoPanel);
+		
+		JPanel panel_2 = new JPanel();
+		sl_changeInfoPanel.putConstraint(SpringLayout.NORTH, panel_2, 67, SpringLayout.NORTH, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.WEST, panel_2, 29, SpringLayout.WEST, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.SOUTH, panel_2, -34, SpringLayout.SOUTH, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.EAST, panel_2, 424, SpringLayout.WEST, changeInfoPanel);
+		changeInfoPanel.add(panel_2);
+		panel_2.setLayout(new SpringLayout());
+		
+		changeInfoPanel.setVisible(false);
 
 		// ¸Þ´º»èÁ¦ ÆÇ³Ú
 		JPanel deleteMenuPanel = new JPanel();
@@ -142,12 +159,12 @@ public class ManagementGUI {
 		deletMenucomponents.setLayout(sl_deletMenucomponents);
 
 		JButton btnNewButton_1 = new JButton("\uC0AD\uC81C");
+		sl_deleteMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton_1, -133, SpringLayout.EAST, deleteMenuPanel);
 		btnNewButton_1.setBackground(new Color(210, 105, 30));
 		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		btnNewButton_1.setForeground(Color.WHITE);
 		sl_deleteMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 22, SpringLayout.SOUTH,
 				deletMenucomponents);
-		sl_deleteMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton_1, -106, SpringLayout.EAST, deleteMenuPanel);
 		sl_deleteMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton_1, 65, SpringLayout.SOUTH,
 				deletMenucomponents);
 
@@ -245,6 +262,7 @@ public class ManagementGUI {
 		changeMenuPanel.add(lblNewLabel_1);
 
 		JButton ChangeButton = new JButton("\uC218\uC815");
+		sl_changeMenuPanel.putConstraint(SpringLayout.WEST, ChangeButton, -123, SpringLayout.EAST, changeMenuPanel);
 		ChangeButton.setBackground(new Color(210, 105, 30));
 		ChangeButton.setForeground(new Color(255, 255, 255));
 		ChangeButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 20));
@@ -382,12 +400,12 @@ public class ManagementGUI {
 		addMenuPanel.add(lblNewLabel);
 
 		JButton btnNewButton = new JButton("\uCD94\uAC00");
+		sl_addMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton, -126, SpringLayout.EAST, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton, -25, SpringLayout.SOUTH, addMenuPanel);
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(210, 105, 30));
 		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton, 20, SpringLayout.SOUTH, addMenuComponents);
-		sl_addMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton, -124, SpringLayout.EAST, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton, -25, SpringLayout.SOUTH, addMenuPanel);
 		sl_addMenuPanel.putConstraint(SpringLayout.EAST, btnNewButton, -27, SpringLayout.EAST, addMenuPanel);
 		addMenuPanel.add(btnNewButton);
 		addMenuPanel.setVisible(false); // ¾Èº¸ÀÌ°Ô ÇÔ
@@ -407,6 +425,7 @@ public class ManagementGUI {
 				addMenuPanel.setVisible(true);
 				changeMenuPanel.setVisible(false);
 				deleteMenuPanel.setVisible(false);
+				changeInfoPanel.setVisible(false);
 
 			}
 		});
@@ -423,6 +442,7 @@ public class ManagementGUI {
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(true);
 				deleteMenuPanel.setVisible(false);
+				changeInfoPanel.setVisible(false);
 
 			}
 		});
@@ -440,6 +460,7 @@ public class ManagementGUI {
 				deleteMenuPanel.setVisible(true);
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(false);
+				changeInfoPanel.setVisible(false);
 			}
 		});
 
@@ -453,6 +474,11 @@ public class ManagementGUI {
 		changeInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {// Å¬¸¯½Ã¿¡ choice 4
 				choice = 4;
+				
+				deleteMenuPanel.setVisible(false);
+				addMenuPanel.setVisible(false);
+				changeMenuPanel.setVisible(false);
+				changeInfoPanel.setVisible(true);
 			}
 		});
 
