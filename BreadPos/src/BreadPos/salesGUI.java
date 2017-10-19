@@ -6,10 +6,16 @@ import javax.swing.JFrame;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+import javax.swing.UIManager;
+
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class salesGUI {
 
@@ -69,18 +75,35 @@ public class salesGUI {
 		panel_2.setLayout(new GridLayout(0, 3, 10, 0));
 		
 		JButton btnNewButton = new JButton("\uADF8\uB798\uD504\uBCF4\uAE30");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton.setBackground(Color.orange);
+			}
+		});
 		btnNewButton.setForeground(new Color(240, 248, 255));
 		btnNewButton.setBackground(new Color(128, 0, 0));
 		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 20));
 		panel_2.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uC778\uAE30\uBE75\uC21C\uC704");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_1.setBackground(Color.ORANGE);
+			}
+		});
 		btnNewButton_1.setForeground(new Color(240, 248, 255));
 		btnNewButton_1.setBackground(new Color(128, 0, 0));
 		btnNewButton_1.setFont(new Font("±¼¸²", Font.BOLD, 20));
 		panel_2.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("\uC885\uB8CC");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnNewButton_2.setForeground(new Color(240, 248, 255));
 		btnNewButton_2.setBackground(new Color(128, 0, 0));
 		btnNewButton_2.setFont(new Font("±¼¸²", Font.BOLD, 20));

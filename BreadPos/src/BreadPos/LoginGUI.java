@@ -3,7 +3,12 @@ package BreadPos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,11 +16,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import java.awt.Font;
 
 public class LoginGUI {
 
@@ -23,6 +28,8 @@ public class LoginGUI {
 	private BufferedImage icon;
 	private JTextField IdTxt;
 	private JTextField pwTxt;
+	private String id = "";
+	private String pw = "";
 
 	/**
 	 * Launch the application.
@@ -50,7 +57,7 @@ public class LoginGUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() {		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 577);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -170,7 +177,14 @@ public class LoginGUI {
 		LoginPanel.add(pwPanel);
 		
 		IdTxt = new JTextField();
+		IdTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				id = IdTxt.getText();
+			}
+		});
 		IdTxt.setBackground(new Color(255, 255, 255, 150));
+		IdTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, IdTxt, 15, SpringLayout.NORTH, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, IdTxt, 20, SpringLayout.EAST, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, IdTxt, -15, SpringLayout.SOUTH, IdPanel);
@@ -179,7 +193,14 @@ public class LoginGUI {
 		IdTxt.setColumns(10);
 		
 		pwTxt = new JPasswordField();
+		pwTxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				pw = pwTxt.getText();
+			}
+		});
 		pwTxt.setBackground(new Color(255, 255, 255, 150));
+		pwTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, pwTxt, 15, SpringLayout.NORTH, pwPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, pwTxt, 20, SpringLayout.EAST, pwPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, pwTxt, -15, SpringLayout.SOUTH, pwPanel);
@@ -188,8 +209,25 @@ public class LoginGUI {
 		LoginPanel.add(pwTxt);
 		
 		JButton loginBtn = new JButton("\uB85C\uADF8\uC778");
+		loginBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(id.equals("sm100") && pw.equals("1234")) {
+					int office_num = 100;
+					MainGUI main = new MainGUI();
+					main.main(office_num);
+					frame.dispose();
+				} else {
+					//custom title, warning icon
+					JOptionPane.showMessageDialog(frame,
+					    "아이디와 비밀번호가 맞지 않습니다.",
+					    "로그인 오류",
+					    JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		loginBtn.setBackground(new Color(255, 255, 255, 100));
 		loginBtn.setBorderPainted(false);
+		loginBtn.setFocusPainted(false);
 		loginBtn.setFont(new Font("서울남산체 M", Font.PLAIN, 16));
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, loginBtn, -65, SpringLayout.SOUTH, LoginPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, loginBtn, -150, SpringLayout.EAST, LoginPanel);

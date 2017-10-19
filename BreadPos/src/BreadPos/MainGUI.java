@@ -16,6 +16,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -25,6 +26,9 @@ import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class MainGUI {
 
@@ -39,7 +43,7 @@ public class MainGUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(int office_num) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -95,6 +99,18 @@ public class MainGUI {
 		panel_5.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton btnNewButton_4 = new JButton("\uCDE8\uC18C");
+		btnNewButton_4.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		btnNewButton_4.setForeground(new Color(240, 248, 255));
+		btnNewButton_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_4.setBackground(UIManager.getColor("Button.orange"));
+			}
+		});
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_4.setBackground(new Color(139, 0, 0));
 		panel_5.add(btnNewButton_4);
 		sl_panel_1.putConstraint(SpringLayout.EAST, panel_6, -10, SpringLayout.EAST, panel_1);
@@ -102,6 +118,18 @@ public class MainGUI {
 		panel_6.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton btnNewButton_5 = new JButton("\uACB0\uC81C");
+		btnNewButton_5.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		btnNewButton_5.setForeground(new Color(240, 248, 255));
+		btnNewButton_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_5.setBackground(UIManager.getColor("Button.highlight"));
+			}
+		});
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_5.setBackground(new Color(139, 0, 0));
 		panel_6.add(btnNewButton_5);
 		
@@ -116,11 +144,13 @@ public class MainGUI {
 		panel_7.setLayout(sl_panel_7);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("±¼¸²", Font.BOLD, 16));
+		textField.setForeground(new Color(240, 248, 255));
+		sl_panel_7.putConstraint(SpringLayout.SOUTH, textField, 49, SpringLayout.NORTH, panel_7);
 		textField.setBackground(new Color(233, 150, 122));
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		sl_panel_7.putConstraint(SpringLayout.NORTH, textField, 0, SpringLayout.NORTH, panel_7);
 		sl_panel_7.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, panel_7);
-		sl_panel_7.putConstraint(SpringLayout.SOUTH, textField, 58, SpringLayout.NORTH, panel_7);
 		sl_panel_7.putConstraint(SpringLayout.EAST, textField, 128, SpringLayout.WEST, panel_7);
 		textField.setText("\uCD1D \uACB0\uC81C \uAE08\uC561 :");
 		panel_7.add(textField);
@@ -129,7 +159,7 @@ public class MainGUI {
 		JLabel lblNewLabel = new JLabel("New label");
 		sl_panel_7.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, panel_7);
 		sl_panel_7.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.EAST, textField);
-		sl_panel_7.putConstraint(SpringLayout.SOUTH, lblNewLabel, 58, SpringLayout.NORTH, panel_7);
+		sl_panel_7.putConstraint(SpringLayout.SOUTH, lblNewLabel, 0, SpringLayout.SOUTH, textField);
 		sl_panel_7.putConstraint(SpringLayout.EAST, lblNewLabel, 0, SpringLayout.EAST, panel_7);
 		panel_7.add(lblNewLabel);
 		
@@ -192,16 +222,19 @@ public class MainGUI {
 		panel_10.setLayout(new GridLayout(1, 3, 0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("\uC0C1\uD488 \uC774\uB984");
+		lblNewLabel_2.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		lblNewLabel_2.setBackground(new Color(233, 150, 122));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_10.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("\uC218\uB7C9");
+		lblNewLabel_3.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		lblNewLabel_3.setBackground(new Color(233, 150, 122));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_10.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("\uAC00\uACA9");
+		lblNewLabel_4.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		lblNewLabel_4.setBackground(new Color(233, 150, 122));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_10.add(lblNewLabel_4);
@@ -242,22 +275,72 @@ public class MainGUI {
 		panel_3.setLayout(new GridLayout(0, 4, 10, 0));
 		
 		JButton btnNewButton = new JButton("\uACB0\uC81C");
+		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		btnNewButton.setForeground(new Color(240, 248, 255));
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton.setBackground(Color.orange);
+			}
+		});
 		btnNewButton.setBackground(new Color(139, 69, 19));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				PaymentGUI paymentGUI = new PaymentGUI();
+				paymentGUI.main(null);
 			}
 		});
 		panel_3.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uAD00\uB9AC");
+		btnNewButton_1.setForeground(new Color(240, 248, 255));
+		btnNewButton_1.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ManagementGUI managementGUI = new ManagementGUI();
+				managementGUI.main(null);
+			}
+		});
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_1.setBackground(Color.orange);
+			}
+		});
 		btnNewButton_1.setBackground(new Color(139, 69, 19));
 		panel_3.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("\uB9E4\uCD9C");
+		btnNewButton_2.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		btnNewButton_2.setForeground(new Color(240, 248, 255));
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_2.setBackground(Color.orange);
+			}
+		});
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				salesGUI salesGUI = new salesGUI();
+				salesGUI.main(null);
+			}
+		});
 		btnNewButton_2.setBackground(new Color(139, 69, 19));
 		panel_3.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("\uC885\uB8CC");
+		btnNewButton_3.setForeground(new Color(240, 248, 255));
+		btnNewButton_3.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+		});
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_3.setBackground(new Color(139, 69, 19));
 		panel_3.add(btnNewButton_3);
 		
