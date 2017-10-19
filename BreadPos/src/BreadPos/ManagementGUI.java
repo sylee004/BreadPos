@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.SpringLayout;
+import javax.swing.UIManager;
+
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
@@ -13,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ManagementGUI {
 
@@ -75,42 +79,77 @@ public class ManagementGUI {
 		panel_2.setLayout(new GridLayout(2, 3, 10, 10));
 		
 		JButton btnNewButton_1 = new JButton("\uBA54\uB274 \uCD94\uAC00");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton_1.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton_1.setForeground(new Color(240, 248, 255));
 		btnNewButton_1.setBackground(new Color(128, 0, 0));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				btnNewButton_1.setBackground(Color.orange);
 				
 			}
 		});
 		panel_2.add(btnNewButton_1);
 		
 		JButton btnNewButton_4 = new JButton("\uBA54\uB274\uC0AD\uC81C");
+		btnNewButton_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_4.setBackground(Color.orange);
+			}
+		});
 		btnNewButton_4.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton_4.setForeground(new Color(240, 248, 255));
 		btnNewButton_4.setBackground(new Color(128, 0, 0));
 		panel_2.add(btnNewButton_4);
 		
 		JButton btnNewButton_2 = new JButton("\uBA54\uB274\uC218\uC815");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_2.setBackground(Color.orange);
+			}
+		});
 		btnNewButton_2.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton_2.setForeground(new Color(240, 248, 255));
 		btnNewButton_2.setBackground(new Color(128, 0, 0));
 		panel_2.add(btnNewButton_2);
 		
 		JButton btnNewButton = new JButton("\uC9C0\uC810\uC815\uBCF4\uC218\uC815");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton.setBackground(Color.orange);
+			}
+		});
 		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton.setForeground(new Color(240, 248, 255));
 		btnNewButton.setBackground(new Color(128, 0, 0));
 		panel_2.add(btnNewButton);
 		
 		JButton btnNewButton_3 = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton_3.setBackground(Color.orange);
+			}
+		});
 		btnNewButton_3.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton_3.setForeground(new Color(240, 248, 255));
 		btnNewButton_3.setBackground(new Color(128, 0, 0));
 		panel_2.add(btnNewButton_3);
 		
 		JButton btnNewButton_5 = new JButton("\uB2EB\uAE30");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnNewButton_5.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		btnNewButton_5.setForeground(new Color(240, 248, 255));
 		btnNewButton_5.setBackground(new Color(128, 0, 0));
