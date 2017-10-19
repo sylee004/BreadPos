@@ -20,12 +20,14 @@ import java.awt.event.ActionEvent;
 
 public class ManagementGUI {
 
-	private JFrame frame;
+	public JFrame frame;
+	private MyCllickListener myCllickListener;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -147,6 +149,7 @@ public class ManagementGUI {
 		JButton btnNewButton_5 = new JButton("\uB2EB\uAE30");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				myCllickListener.onClick();
 				frame.dispose();
 			}
 		});
@@ -154,5 +157,11 @@ public class ManagementGUI {
 		btnNewButton_5.setForeground(new Color(240, 248, 255));
 		btnNewButton_5.setBackground(new Color(128, 0, 0));
 		panel_2.add(btnNewButton_5);
+	}
+	
+	public void setOnMyClickListener(MyCllickListener myCllickListener) {
+		// TODO Auto-generated method stub
+		this.myCllickListener = myCllickListener;
+		
 	}
 }
