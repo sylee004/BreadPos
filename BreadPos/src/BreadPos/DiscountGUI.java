@@ -3,7 +3,12 @@ package BreadPos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,11 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class DiscountGUI {
 
@@ -31,6 +31,7 @@ public class DiscountGUI {
 	private int num = 0;
 	private String getInfo;
 	private Management manage;
+	private int discountPer;
 
 	/**
 	 * Launch the application.
@@ -78,6 +79,7 @@ public class DiscountGUI {
 				}
 			}
 		};
+		panel.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, 305, SpringLayout.NORTH, frame.getContentPane());
@@ -86,9 +88,12 @@ public class DiscountGUI {
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 		
-		JButton card = new JButton("\uCE74\uB4DC \uD560\uC778"); //카드 할인
-		card.setFont(new Font("나눔손글씨 펜", Font.BOLD, 20));
-		card.setForeground(new Color(255, 255, 255));
+		JButton card = new JButton(new ImageIcon("./image/통신사할인.png")); //카드 할인
+		card.setBorderPainted(false);
+		card.setFocusPainted(false);
+		card.setOpaque(false);
+
+
 		card.setBackground(new Color(128, 0, 0));
 		card.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//액션
@@ -101,10 +106,13 @@ public class DiscountGUI {
 		sl_panel.putConstraint(SpringLayout.EAST, card, -46, SpringLayout.EAST, panel);
 		panel.add(card);
 		
-		JButton memebrship = new JButton("\uBA64\uBC84\uC27D \uD560\uC778"); //멤버쉽 할인
+		JButton memebrship = new JButton(new ImageIcon("./image/멤버할인.png")); //멤버쉽 할인
 		memebrship.setFont(new Font("나눔손글씨 펜", Font.BOLD, 20));
 		memebrship.setForeground(new Color(255, 255, 255));
-		memebrship.setBackground(new Color(128, 0, 0));
+		memebrship.setBackground(new Color(255,255, 255, 100));
+		memebrship.setBorderPainted(false);
+		memebrship.setFocusPainted(false);
+		memebrship.setOpaque(false);
 		memebrship.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//액션
 				num = 2;
@@ -197,18 +205,22 @@ public class DiscountGUI {
 		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_1, 0, SpringLayout.EAST, lblNewLabel);
 		panel_1.add(lblNewLabel_1);
 		
+		JPanel ouput = new JPanel();
+		
 		textField = new JTextField();
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == 10) { //번호입력
 					getInfo = textField.getText();
-					System.out.println(num + " // "+getInfo);
 					//멤버쉽 OR 카드 할인 적용 !!
-					manage.discount(num, getInfo);
+					discountPer = manage.discount(num, getInfo);
+					ouput.setToolTipText(""+discountPer);
 				}
 			}
 		});
+		
+		
 		sl_panel_1.putConstraint(SpringLayout.NORTH, textField, 0, SpringLayout.NORTH, lblNewLabel);
 		sl_panel_1.putConstraint(SpringLayout.WEST, textField, 6, SpringLayout.EAST, lblNewLabel);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, textField, 0, SpringLayout.SOUTH, lblNewLabel);
@@ -219,14 +231,17 @@ public class DiscountGUI {
 		
 
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.ORANGE);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_3, 0, SpringLayout.NORTH, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, 6, SpringLayout.EAST, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, panel_1);
-		panel_1.add(panel_3);
+	
+		ouput.setBackground(Color.ORANGE);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, ouput, 6, SpringLayout.EAST, lblNewLabel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, ouput, 0, SpringLayout.SOUTH, lblNewLabel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, panel_1);
+		panel_1.add(ouput);
 		panel.add(discount);
+		
+		
+		
 		
 		JPanel panel_4 = new JPanel();
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_4, 19, SpringLayout.NORTH, panel);

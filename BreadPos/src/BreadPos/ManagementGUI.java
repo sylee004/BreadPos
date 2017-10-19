@@ -22,6 +22,7 @@ public class ManagementGUI {
 
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
+	private int choice = 0;
 
 	/**
 	 * Launch the application.
@@ -75,88 +76,89 @@ public class ManagementGUI {
 		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, panel_1);
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, -10, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, panel_1);
-		SpringLayout sl_panel_1 = new SpringLayout();
-		panel_1.setLayout(sl_panel_1);
+		panel_1.setLayout(new SpringLayout());
 		panel.add(panel_2);
 		panel_2.setLayout(new GridLayout(2, 3, 10, 10));
 		
-		JButton btnNewButton_1 = new JButton("\uBA54\uB274 \uCD94\uAC00");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+		//메뉴추가
+		JButton addMenu = new JButton("\uBA54\uB274 \uCD94\uAC00");
+		addMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { //클릭시에 choice 1
+				choice = 1;
+				addMenu.setBackground(Color.orange);
 			}
 		});
-		btnNewButton_1.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton_1.setForeground(new Color(240, 248, 255));
-		btnNewButton_1.setBackground(new Color(128, 0, 0));
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				btnNewButton_1.setBackground(Color.orange);
-				
-			}
-		});
-		panel_2.add(btnNewButton_1);
+		addMenu.setFont(new Font("굴림", Font.BOLD, 15));
+		addMenu.setForeground(new Color(240, 248, 255));
+		addMenu.setBackground(new Color(128, 0, 0));
+		panel_2.add(addMenu);
 		
-		JButton btnNewButton_4 = new JButton("\uBA54\uB274\uC0AD\uC81C");
-		btnNewButton_4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnNewButton_4.setBackground(Color.orange);
+		//메뉴삭제
+		JButton deleMenu = new JButton("\uBA54\uB274\uC0AD\uC81C");
+		deleMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {//클릭시에 choice 2
+				choice = 2;
+				addMenu.setBackground(Color.orange);
 			}
 		});
-		btnNewButton_4.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton_4.setForeground(new Color(240, 248, 255));
-		btnNewButton_4.setBackground(new Color(128, 0, 0));
-		panel_2.add(btnNewButton_4);
 		
-		JButton btnNewButton_2 = new JButton("\uBA54\uB274\uC218\uC815");
-		btnNewButton_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnNewButton_2.setBackground(Color.orange);
+		deleMenu.setFont(new Font("굴림", Font.BOLD, 15));
+		deleMenu.setForeground(new Color(240, 248, 255));
+		deleMenu.setBackground(new Color(128, 0, 0));
+		panel_2.add(deleMenu);
+		
+		//메뉴변경
+		JButton changeMenu = new JButton("\uBA54\uB274\uC218\uC815");
+		changeMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {//클릭시에 choice 3
+				choice = 3;
+				addMenu.setBackground(Color.orange);
 			}
 		});
-		btnNewButton_2.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton_2.setForeground(new Color(240, 248, 255));
-		btnNewButton_2.setBackground(new Color(128, 0, 0));
-		panel_2.add(btnNewButton_2);
 		
-		JButton btnNewButton = new JButton("\uC9C0\uC810\uC815\uBCF4\uC218\uC815");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnNewButton.setBackground(Color.orange);
+		changeMenu.setFont(new Font("굴림", Font.BOLD, 15));
+		changeMenu.setForeground(new Color(240, 248, 255));
+		changeMenu.setBackground(new Color(128, 0, 0));
+		panel_2.add(changeMenu);
+		
+		//지점정보변경
+		JButton changeInfo = new JButton("\uC9C0\uC810\uC815\uBCF4\uC218\uC815");
+		changeInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {//클릭시에 choice 4
+				choice = 4;
+				addMenu.setBackground(Color.orange);
 			}
 		});
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton.setForeground(new Color(240, 248, 255));
-		btnNewButton.setBackground(new Color(128, 0, 0));
-		panel_2.add(btnNewButton);
 		
-		JButton btnNewButton_3 = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnNewButton_3.setBackground(Color.orange);
+		changeInfo.setFont(new Font("굴림", Font.BOLD, 15));
+		changeInfo.setForeground(new Color(240, 248, 255));
+		changeInfo.setBackground(new Color(128, 0, 0));
+		panel_2.add(changeInfo);
+		
+		//회원관리
+		JButton controllMember = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
+		controllMember.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {//클릭시에 choice 5
 			}
 		});
-		btnNewButton_3.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton_3.setForeground(new Color(240, 248, 255));
-		btnNewButton_3.setBackground(new Color(128, 0, 0));
-		panel_2.add(btnNewButton_3);
 		
-		JButton btnNewButton_5 = new JButton("\uB2EB\uAE30");
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		controllMember.setFont(new Font("굴림", Font.BOLD, 15));
+		controllMember.setForeground(new Color(240, 248, 255));
+		controllMember.setBackground(new Color(128, 0, 0));
+		panel_2.add(controllMember);
+		
+		//종료
+		JButton close = new JButton("\uB2EB\uAE30");
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {//클릭시에 choice 6
 				myCllickListener.onClick();
 				frame.dispose();
 			}
 		});
-		btnNewButton_5.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton_5.setForeground(new Color(240, 248, 255));
-		btnNewButton_5.setBackground(new Color(128, 0, 0));
-		panel_2.add(btnNewButton_5);
+		close.setFont(new Font("굴림", Font.BOLD, 15));
+		close.setForeground(new Color(240, 248, 255));
+		close.setBackground(new Color(128, 0, 0));
+		panel_2.add(close);
 	}
 	
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {

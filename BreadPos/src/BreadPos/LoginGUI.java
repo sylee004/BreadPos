@@ -22,8 +22,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 
 public class LoginGUI {
 
@@ -114,7 +118,6 @@ public class LoginGUI {
 		backgroundPanel.add(logoPanel);
 		
 		JPanel LoginPanel = new JPanel();
-		LoginPanel.setOpaque(false);
 		sl_backgroundPanel.putConstraint(SpringLayout.NORTH, LoginPanel, 35, SpringLayout.NORTH, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.WEST, LoginPanel, 35, SpringLayout.WEST, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, LoginPanel, -35, SpringLayout.NORTH, logoPanel);
@@ -194,9 +197,9 @@ public class LoginGUI {
 			}
 		});
 		IdTxt.setBackground(new Color(255, 255, 255, 150));
-		IdTxt.setBorder(new LineBorder(new Color(0, 0, 0), 11, true));
+		IdTxt.setBorder(new EmptyBorder(0, 0, 0, 0));
+		//IdTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		IdTxt.setOpaque(false);
-		IdTxt.setBorder(null);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, IdTxt, 15, SpringLayout.NORTH, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, IdTxt, 20, SpringLayout.EAST, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, IdTxt, -15, SpringLayout.SOUTH, IdPanel);
@@ -238,7 +241,7 @@ public class LoginGUI {
 				}
 			}
 		});
-		loginBtn.setBackground(new Color(255, 255, 255, 100));
+		loginBtn.setBackground(new Color(255, 255, 255, 200));
 		loginBtn.setBorderPainted(false);
 		loginBtn.setFocusPainted(false);
 		loginBtn.setFont(new Font("서울남산체 M", Font.PLAIN, 16));
@@ -248,5 +251,21 @@ public class LoginGUI {
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, loginBtn, -30, SpringLayout.SOUTH, LoginPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.EAST, loginBtn, -50, SpringLayout.EAST, LoginPanel);
 		LoginPanel.add(loginBtn);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255, 150));
+		sl_LoginPanel.putConstraint(SpringLayout.NORTH, panel_1, 15, SpringLayout.NORTH, IdPanel);
+		sl_LoginPanel.putConstraint(SpringLayout.WEST, panel_1, 20, SpringLayout.EAST, IdPanel);
+		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, panel_1, -15, SpringLayout.SOUTH, IdPanel);
+		sl_LoginPanel.putConstraint(SpringLayout.EAST, panel_1, -60, SpringLayout.EAST, LoginPanel);
+		LoginPanel.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255, 255, 255, 150));
+		sl_LoginPanel.putConstraint(SpringLayout.NORTH, panel_2, 15, SpringLayout.NORTH, pwPanel);
+		sl_LoginPanel.putConstraint(SpringLayout.WEST, panel_2, 20, SpringLayout.EAST, pwPanel);
+		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, panel_2, -15, SpringLayout.SOUTH, pwPanel);
+		sl_LoginPanel.putConstraint(SpringLayout.EAST, panel_2, -60, SpringLayout.EAST, LoginPanel);
+		LoginPanel.add(panel_2);
 	}
 }
