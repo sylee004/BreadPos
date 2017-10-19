@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class OfficeDAO {
 	private int count;
@@ -23,12 +22,8 @@ public class OfficeDAO {
 		
 		try {
 			getConnection();
-			Office office = null;
-			String sql = "select ?, ?, ? from office";
+			String sql = "select office_id, office_pass, office_num from office";
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, office.getOffice_ID());
-			psmt.setInt(2, office.getOffice_num());
-			psmt.setString(3, office.getOffice_pass());
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
