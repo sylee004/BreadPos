@@ -30,6 +30,8 @@ public class LoginGUI {
 	private JTextField pwTxt;
 	private String id = "";
 	private String pw = "";
+	private int office_num;
+	private Management mg;
 
 	/**
 	 * Launch the application.
@@ -52,6 +54,7 @@ public class LoginGUI {
 	 */
 	public LoginGUI() {
 		initialize();
+		mg = new Management();
 	}
 
 	/**
@@ -211,8 +214,8 @@ public class LoginGUI {
 		JButton loginBtn = new JButton("\uB85C\uADF8\uC778");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(id.equals("sm100") && pw.equals("1234")) {
-					int office_num = 100;
+				office_num = mg.officeNumIdPw(id, pw);
+				if(office_num != 0) {
 					MainGUI main = new MainGUI();
 					main.main(office_num);
 					frame.dispose();
