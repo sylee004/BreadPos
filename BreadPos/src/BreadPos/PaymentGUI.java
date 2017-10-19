@@ -33,6 +33,7 @@ public class PaymentGUI {
             try {
                PaymentGUI window = new PaymentGUI();
                window.frame.setVisible(true);
+             
             } catch (Exception e) {
                e.printStackTrace();
             }
@@ -136,11 +137,16 @@ public class PaymentGUI {
       btnNewButton_5.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseClicked(MouseEvent e) {
+
+        	 MainGUI m = new MainGUI();
+        	 m.main(0);
+
             frame.dispose();
          }
       });
       btnNewButton_5.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+        	 
          }
       });
       panel_3.add(btnNewButton_5);
