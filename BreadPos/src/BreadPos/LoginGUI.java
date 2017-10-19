@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.LineBorder;
 
 public class LoginGUI {
 
@@ -81,6 +84,7 @@ public class LoginGUI {
 				}
 			}
 		};
+		backgroundPanel.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.NORTH, backgroundPanel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, backgroundPanel, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, backgroundPanel, 538, SpringLayout.NORTH, frame.getContentPane());
@@ -110,6 +114,7 @@ public class LoginGUI {
 		backgroundPanel.add(logoPanel);
 		
 		JPanel LoginPanel = new JPanel();
+		LoginPanel.setOpaque(false);
 		sl_backgroundPanel.putConstraint(SpringLayout.NORTH, LoginPanel, 35, SpringLayout.NORTH, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.WEST, LoginPanel, 35, SpringLayout.WEST, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, LoginPanel, -35, SpringLayout.NORTH, logoPanel);
@@ -153,6 +158,7 @@ public class LoginGUI {
 				}
 			}
 		};
+		IdPanel.setOpaque(false);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, IdPanel, 20, SpringLayout.SOUTH, panel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, IdPanel, 35, SpringLayout.WEST, LoginPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, IdPanel, 85, SpringLayout.SOUTH, panel);
@@ -173,6 +179,7 @@ public class LoginGUI {
 				}
 			}
 		};
+		pwPanel.setOpaque(false);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, pwPanel, 20, SpringLayout.SOUTH, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, pwPanel, 0, SpringLayout.WEST, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, pwPanel, 85, SpringLayout.SOUTH, IdPanel);
@@ -187,7 +194,9 @@ public class LoginGUI {
 			}
 		});
 		IdTxt.setBackground(new Color(255, 255, 255, 150));
-		IdTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		IdTxt.setBorder(new LineBorder(new Color(0, 0, 0), 11, true));
+		IdTxt.setOpaque(false);
+		IdTxt.setBorder(null);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, IdTxt, 15, SpringLayout.NORTH, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, IdTxt, 20, SpringLayout.EAST, IdPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, IdTxt, -15, SpringLayout.SOUTH, IdPanel);
@@ -204,6 +213,7 @@ public class LoginGUI {
 		});
 		pwTxt.setBackground(new Color(255, 255, 255, 150));
 		pwTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		pwTxt.setOpaque(false);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, pwTxt, 15, SpringLayout.NORTH, pwPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, pwTxt, 20, SpringLayout.EAST, pwPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, pwTxt, -15, SpringLayout.SOUTH, pwPanel);
@@ -211,7 +221,7 @@ public class LoginGUI {
 		pwTxt.setColumns(10);
 		LoginPanel.add(pwTxt);
 		
-		JButton loginBtn = new JButton("\uB85C\uADF8\uC778");
+		JButton loginBtn = new JButton(new ImageIcon("./image/loginBtn01.png"));
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				office_num = mg.officeNumIdPw(id, pw);
@@ -232,6 +242,7 @@ public class LoginGUI {
 		loginBtn.setBorderPainted(false);
 		loginBtn.setFocusPainted(false);
 		loginBtn.setFont(new Font("서울남산체 M", Font.PLAIN, 16));
+		loginBtn.setOpaque(false);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, loginBtn, -65, SpringLayout.SOUTH, LoginPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, loginBtn, -150, SpringLayout.EAST, LoginPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.SOUTH, loginBtn, -30, SpringLayout.SOUTH, LoginPanel);

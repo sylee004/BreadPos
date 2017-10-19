@@ -241,5 +241,37 @@ private int count;
 		
 		return member_Money;
 	}
+	
+	public int selectMoney(String member_phone) {
+		int member_Money = 0;
+		try {
+			getConnection();
+			
+			String sql = "select member_money from member_info where member_phone = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_phone);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				member_Money = rs.getInt(1);
+			}
+			
+			psmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) psmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return member_Money;
+	}
 
 }

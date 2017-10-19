@@ -65,7 +65,7 @@ public class Management {
 	public int plusBread(String breadName, String breadKind, int breadPrice) {
 		Bread insertBread = new Bread(breadName, breadPrice, breadKind); //»ý¼ºÀÚ¸¦ ¾¸
 		int count = bread.bread_insert(insertBread);
-		return count;
+		return count; //0ÀÌ ¾Æ´Ò°æ¿ì Ãß°¡µÊ
 	}
 
 	public int modifyBread(String breadName, String breadKind, int breadPrice) {
@@ -100,5 +100,22 @@ public class Management {
 		return count;
 	}
 	
-	
+	public int discount(int num, String string) {
+		int dis = 0;
+		
+		if(num == 1) {
+			int money = member.selectMoney(string);
+			dis = money >= 100000 ? 10 : 5;
+		} else if(num == 2) {
+			if(string.equals("kt")) {
+				dis = 7;
+			} else if(string.equals("sk")) {
+				dis = 10;
+			} else if(string.equals("u+")) {
+				dis = 5;
+			}
+		}
+		
+		return dis;
+	}
 }
