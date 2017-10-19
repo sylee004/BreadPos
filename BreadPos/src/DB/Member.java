@@ -10,6 +10,15 @@ public class Member {
 		this.member_name = member_name;
 		this.member_Money = member_Money;
 	}
+	
+	
+	public Member(String member_phone, String member_name) {
+		super();
+		this.member_phone = member_phone;
+		this.member_name = member_name;
+	}
+
+
 	public String getMember_phone() {
 		return member_phone;
 	}

@@ -141,5 +141,39 @@ public class BreadInfoDAO {
 		
 		return list;
 	}
+	
+	public ArrayList<Bread> select_bread() {
+		ArrayList<Bread> list = new ArrayList<Bread>();
+		
+		try {
+			getConnection();
+			String sql = "select bread_name, bread_price from bread_info where =?";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				String breadName = rs.getString(1);
+				int breadPrice = rs.getInt(2);
+				
+				list.add(new Bread(breadName, breadPrice));
+			}
+			
+			psmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) psmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
 
 }

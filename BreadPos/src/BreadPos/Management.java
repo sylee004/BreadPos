@@ -2,32 +2,101 @@ package BreadPos;
 
 import java.util.ArrayList;
 
+import DB.Bread;
 import DB.BreadInfoDAO;
+import DB.Member;
+import DB.MemberInfoDAO;
 import DB.Office;
 import DB.OfficeDAO;
 
 public class Management {
 	private BreadInfoDAO bread = new BreadInfoDAO();
 	private OfficeDAO office = new OfficeDAO();
-	
-	public void bread_add() {
-		
-	}
-	
+	private MemberInfoDAO member = new MemberInfoDAO();
+
 	public int officeNumIdPw(String input_id, String input_pw) {
 		ArrayList<Office> list = office.select_office();
 		int office_num = 0;
-		
+
 		for (int i = 0; i < list.size(); i++) {
 			String id = list.get(i).getOffice_ID();
 			String pw = list.get(i).getOffice_pass();
-			if(input_id.equals(id) && input_pw.equals(pw)) {
+			if (input_id.equals(id) && input_pw.equals(pw)) {
 				office_num = list.get(i).getOffice_num();
 			}
-			
+
+		}
+
+		return office_num;
+	}
+
+	public ArrayList<Bread> breadKind(String kind) {
+		ArrayList<Bread> list = bread.selectKind(kind);
+		return list;
+	}
+
+	public int[] name(ArrayList<Integer> payMoney, int percent) {
+		int[] money = new int[3];
+
+		int sumMoney = 0;
+
+		for (int i = 0; i < payMoney.size(); i++) {
+			sumMoney += payMoney.get(i);
 		}
 		
-		return office_num;
+		double discountMoney = sumMoney * (percent / 100);
+		
+		int totalMoney = sumMoney - (int)discountMoney;
+		
+		money[0] = sumMoney; //결제금액
+		money[1] = (int)discountMoney; //할인금액
+		money[2] = totalMoney; //최종금액
+
+		return money;
+	}
+
+	public void memberMoney(String name, String phone, int inputMoney) {
+		int oldMoney = member.selectMoney(name, phone);
+		int totalMoney = oldMoney + inputMoney;
+		member.member_updateMoney(phone, name, totalMoney);
+	}
+	
+	public int plusBread(String breadName, String breadKind, int breadPrice) {
+		Bread insertBread = new Bread(breadName, breadPrice, breadKind); //생성자를 씀
+		int count = bread.bread_insert(insertBread);
+		return count;
+	}
+
+	public int modifyBread(String breadName, String breadKind, int breadPrice) {
+		Bread updateBread = new Bread(breadName, breadPrice, breadKind);
+		int count = bread.bread_update(updateBread);
+		return count;
+	}
+	
+	public int deleteBread(String breadName) {
+		int count = bread.delete(breadName);
+		return count;
+	}
+	
+	public int modifyOffice(String change_pass, String ID, int num) {
+		int count = office.office_update(change_pass, ID, num);
+		return count;
+	}
+	
+	public int addMember(String phoneNum, String name) {
+		Member addmember = new Member(phoneNum, name);
+		int count = member.member_insert(addmember);
+		return count;	
+	}
+	
+	public int updateMember(String newPhone, String newName, String phone, String name) {
+		int count = member.member_update(newPhone, newName, phone, name);
+		return count;
+	}
+	
+	public int deleteMember(String name, String phone) {
+		int count = member.delete(name, phone);
+		return count;
 	}
 	
 	

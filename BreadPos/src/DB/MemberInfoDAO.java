@@ -22,12 +22,11 @@ private int count;
 		try {
 			getConnection();
 			
-			String sql = "insert into member_info(member_phone, member_name, member_money) values(?, ?, ?)";
+			String sql = "insert into member_info(member_phone, member_name) values(?, ?)";
 			psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, member.getMember_phone());
 			psmt.setString(2, member.getMember_name());
-			psmt.setInt(3, member.getMember_Money());
 			
 			count = psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -180,6 +179,67 @@ private int count;
 		}
 		
 		return list;
+	}
+	
+	public int member_updateMoney(String phone, String name, int money) {
+		try {
+			getConnection();
+			
+			String sql = "update member_info set member_money = ? where member_phone = ? and member_name = ?";
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setInt(1, money);
+			psmt.setString(2, phone);
+			psmt.setString(3, name);
+		
+			count = psmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if (psmt != null) psmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public int selectMoney(String member_name, String member_phone) {
+		int member_Money = 0;
+		try {
+			getConnection();
+			
+			String sql = "select member_money from member_info where member_name = ? and member_phone = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_name);
+			psmt.setString(2, member_phone);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				member_Money = rs.getInt(1);
+			}
+			
+			psmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null) psmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return member_Money;
 	}
 
 }

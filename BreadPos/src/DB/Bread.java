@@ -11,6 +11,12 @@ public class Bread {
 		this.price = price;
 		this.kind = kind;
 	}
+	
+	public Bread(String name, int price) {
+		super();
+		this.name = name;
+		this.price = price;
+	}
 
 	public String getName() {
 		return name;
