@@ -43,7 +43,7 @@ public class MainGUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(int office_num) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
