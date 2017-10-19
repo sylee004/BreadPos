@@ -19,7 +19,8 @@ import java.awt.event.MouseEvent;
 
 public class salesGUI {
 
-	private JFrame frame;
+	public JFrame frame;
+	private MyCllickListener myCllickListener;
 
 	/**
 	 * Launch the application.
@@ -101,6 +102,7 @@ public class salesGUI {
 		JButton btnNewButton_2 = new JButton("\uC885\uB8CC");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				myCllickListener.onClick();
 				frame.dispose();
 			}
 		});
@@ -108,5 +110,10 @@ public class salesGUI {
 		btnNewButton_2.setBackground(new Color(128, 0, 0));
 		btnNewButton_2.setFont(new Font("±¼¸²", Font.BOLD, 20));
 		panel_2.add(btnNewButton_2);
+	}
+
+	public void setOnMyClickListener(MyCllickListener myCllickListener) {
+		this.myCllickListener = myCllickListener;
+		
 	}
 }

@@ -40,6 +40,9 @@ public class MainGUI {
     JScrollPane listJs;
     JPanel listPanel;
    private JButton btnNewButton_1;
+   private JButton btnNewButton_2;
+private JButton btnNewButton_5;
+
 
    /**
     * Launch the application.
@@ -118,19 +121,24 @@ public class MainGUI {
       panel_1.add(panel_6);
       panel_6.setLayout(new GridLayout(1, 0, 0, 0));
       
-      JButton btnNewButton_5 = new JButton("\uACB0\uC81C");
+      btnNewButton_5 = new JButton("\uACB0\uC81C"); // °áÁ¦ ¹öÆ° 
       btnNewButton_5.setFont(new Font("±¼¸²", Font.BOLD, 15));
       btnNewButton_5.setForeground(new Color(240, 248, 255));
-      btnNewButton_5.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            btnNewButton_5.setBackground(Color.orange);
-            PaymentGUI paymentGUI = new PaymentGUI();
-            paymentGUI.main(null);
-         }
-      });
+      
       btnNewButton_5.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+        	 btnNewButton_5.setBackground(Color.orange);
+        	 
+        	 PaymentGUI paymentGUI = new PaymentGUI();
+        	 paymentGUI.frame.setVisible(true);
+        	 paymentGUI.setOnMyClickListener(new MyCllickListener() {
+				
+				@Override
+				public void onClick() {
+					btnNewButton_5.setBackground(new Color(139, 0, 0));
+					
+				}
+			});
          }
       });
       btnNewButton_5.setBackground(new Color(139, 0, 0));
@@ -276,23 +284,8 @@ public class MainGUI {
       sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, panel_2);
       panel_2.add(panel_3);
       panel_3.setLayout(new GridLayout(0, 4, 10, 0));
-      
-      JButton btnNewButton = new JButton("\uACB0\uC81C");
-      btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 15));
-      btnNewButton.setForeground(new Color(240, 248, 255));
-      btnNewButton.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            btnNewButton.setBackground(Color.orange);
-         }
-      });
-      btnNewButton.setBackground(new Color(139, 69, 19));
-      btnNewButton.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent arg0) {
-            
-         }
-      });
-      panel_3.add(btnNewButton);
+
+        
       
       btnNewButton_1 = new JButton("\uAD00\uB9AC");
       btnNewButton_1.setForeground(new Color(240, 248, 255));
@@ -313,24 +306,39 @@ public class MainGUI {
             
          }
       });
+      
+      JButton button = new JButton("\uACB0\uC81C");
+      button.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      	}
+      });
+      button.setBackground(new Color(139, 69, 19));
+      button.setForeground(Color.WHITE);
+      button.setFont(new Font("±¼¸²", Font.BOLD, 15));
+      panel_3.add(button);
+      
       btnNewButton_1.setBackground(new Color(139, 69, 19));
       panel_3.add(btnNewButton_1);
       
-      JButton btnNewButton_2 = new JButton("\uB9E4\uCD9C");
+      btnNewButton_2 = new JButton("\uB9E4\uCD9C");
       btnNewButton_2.setFont(new Font("±¼¸²", Font.BOLD, 15));
       btnNewButton_2.setForeground(new Color(240, 248, 255));
-      btnNewButton_2.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            btnNewButton_2.setBackground(Color.orange);
-         }
-      });
       btnNewButton_2.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            salesGUI salesGUI = new salesGUI();
-            salesGUI.main(null);
-         }
-      });
+          public void actionPerformed(ActionEvent e) {
+             btnNewButton_2.setBackground(Color.orange);
+             
+             salesGUI salesGUI = new salesGUI();
+             salesGUI.frame.setVisible(true);
+             salesGUI.setOnMyClickListener(new MyCllickListener() {
+                @Override
+                public void onClick() {
+                   // TODO Auto-generated method stub
+                   btnNewButton_2.setBackground(new Color(139, 69, 19));
+                }
+             });
+             
+          }
+       });
       btnNewButton_2.setBackground(new Color(139, 69, 19));
       panel_3.add(btnNewButton_2);
       
