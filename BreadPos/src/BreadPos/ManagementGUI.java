@@ -46,7 +46,7 @@ public class ManagementGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 491, 633);
+		frame.setBounds(100, 100, 491, 538);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -65,12 +65,12 @@ public class ManagementGUI {
 		panel.add(panel_1);
 		
 		JPanel panel_2 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 50, SpringLayout.SOUTH, panel_1);
+		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 26, SpringLayout.SOUTH, panel_1);
+		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, panel_1);
+		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, -10, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, panel_1);
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, -32, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_2, 465, SpringLayout.WEST, panel);
 		panel.add(panel_2);
 		panel_2.setLayout(new GridLayout(2, 3, 10, 10));
 		
