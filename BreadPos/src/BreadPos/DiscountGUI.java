@@ -31,6 +31,7 @@ public class DiscountGUI {
 	private int num = 0;
 	private String getInfo;
 	private Management manage;
+	private int discountPer;
 
 	/**
 	 * Launch the application.
@@ -204,6 +205,8 @@ public class DiscountGUI {
 		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_1, 0, SpringLayout.EAST, lblNewLabel);
 		panel_1.add(lblNewLabel_1);
 		
+		JPanel ouput = new JPanel();
+		
 		textField = new JTextField();
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -211,10 +214,13 @@ public class DiscountGUI {
 				if (e.getKeyCode() == 10) { //번호입력
 					getInfo = textField.getText();
 					//멤버쉽 OR 카드 할인 적용 !!
-					manage.discount(num, getInfo);
+					discountPer = manage.discount(num, getInfo);
+					ouput.setToolTipText(""+discountPer);
 				}
 			}
 		});
+		
+		
 		sl_panel_1.putConstraint(SpringLayout.NORTH, textField, 0, SpringLayout.NORTH, lblNewLabel);
 		sl_panel_1.putConstraint(SpringLayout.WEST, textField, 6, SpringLayout.EAST, lblNewLabel);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, textField, 0, SpringLayout.SOUTH, lblNewLabel);
@@ -225,14 +231,17 @@ public class DiscountGUI {
 		
 
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.ORANGE);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_3, 0, SpringLayout.NORTH, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, 6, SpringLayout.EAST, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, panel_1);
-		panel_1.add(panel_3);
+	
+		ouput.setBackground(Color.ORANGE);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, ouput, 6, SpringLayout.EAST, lblNewLabel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, ouput, 0, SpringLayout.SOUTH, lblNewLabel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, panel_1);
+		panel_1.add(ouput);
 		panel.add(discount);
+		
+		
+		
 		
 		JPanel panel_4 = new JPanel();
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_4, 19, SpringLayout.NORTH, panel);
