@@ -22,6 +22,8 @@ import javax.swing.SpringLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JList;
@@ -31,7 +33,7 @@ public class ManagementGUI {
 
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
-	private int choice;
+	private int choice; //¹Ø¿¡ ¸Þ´º Å¬¸¯½Ã ¹ß»ýÇÏ´Â º¯¼ö
 	private BufferedImage icon;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -41,6 +43,8 @@ public class ManagementGUI {
 	private JTextField InputBreadPrice;
 	private JTextField InputBreadNameChange;
 	private JTextField InputChangeBreadPrice;
+	private JTextField textField_3;
+	private int memberChoice = 0; //È¸¿ø°ü¸® µî·Ï,¼öÁ¤, »èÁ¦ º¯¼ö
 
 	/**
 	 * Launch the application.
@@ -112,20 +116,256 @@ public class ManagementGUI {
 		ButtonPanel.setBackground(new Color(255, 255, 255, 0));
 		importantPanel.setLayout(new CardLayout(0, 0));
 		
+		//È¸¿øÁ¤º¸ ÆÇ³Ú
+		JPanel MemberInfo = new JPanel();
+		MemberInfo.setBackground(new Color(255, 255, 255,100));
+		importantPanel.add(MemberInfo, "name_7775658898278");
+		MemberInfo.setOpaque(false);
+		SpringLayout sl_MemberInfo = new SpringLayout();
+		MemberInfo.setLayout(sl_MemberInfo);
+		
+		JPanel MemebrManage = new JPanel();
+		MemebrManage.setBackground(new Color(255, 255, 255,0));
+		MemebrManage.setOpaque(false);
+		sl_MemberInfo.putConstraint(SpringLayout.NORTH, MemebrManage, -289, SpringLayout.SOUTH, MemberInfo);
+		sl_MemberInfo.putConstraint(SpringLayout.WEST, MemebrManage, 10, SpringLayout.WEST, MemberInfo);
+		sl_MemberInfo.putConstraint(SpringLayout.SOUTH, MemebrManage, -10, SpringLayout.SOUTH, MemberInfo);
+		sl_MemberInfo.putConstraint(SpringLayout.EAST, MemebrManage, 445, SpringLayout.WEST, MemberInfo);
+		MemberInfo.add(MemebrManage);
+		SpringLayout sl_MemebrManage = new SpringLayout();
+		MemebrManage.setLayout(sl_MemebrManage);
+		
+		JPanel buttonManage = new JPanel();
+		buttonManage.setBackground(new Color(255, 255, 255,0));
+		sl_MemebrManage.putConstraint(SpringLayout.NORTH, buttonManage, 10, SpringLayout.NORTH, MemebrManage);
+		sl_MemebrManage.putConstraint(SpringLayout.WEST, buttonManage, 10, SpringLayout.WEST, MemebrManage);
+		sl_MemebrManage.putConstraint(SpringLayout.SOUTH, buttonManage, 59, SpringLayout.NORTH, MemebrManage);
+		sl_MemebrManage.putConstraint(SpringLayout.EAST, buttonManage, 425, SpringLayout.WEST, MemebrManage);
+		MemebrManage.add(buttonManage);
+		buttonManage.setLayout(new GridLayout(0, 3, 10, 0));
+		
+		
+		
+		//È¸¿øÁ¤º¸ ÆÇ³Ú>>È¸¿ø°ü¸® ÆÐ³Î
+		JPanel ImportCard = new JPanel();
+		ImportCard.setBackground(new Color(255, 255, 255,100));
+		ImportCard.setOpaque(false);
+		sl_MemebrManage.putConstraint(SpringLayout.NORTH, ImportCard, 6, SpringLayout.SOUTH, buttonManage);
+		sl_MemebrManage.putConstraint(SpringLayout.WEST, ImportCard, 0, SpringLayout.WEST, buttonManage);
+		sl_MemebrManage.putConstraint(SpringLayout.SOUTH, ImportCard, 210, SpringLayout.SOUTH, buttonManage);
+		sl_MemebrManage.putConstraint(SpringLayout.EAST, ImportCard, 0, SpringLayout.EAST, buttonManage);
+		MemebrManage.add(ImportCard);
+		ImportCard.setLayout(new CardLayout(0, 0));
+		
+		//¸â¹ö»èÁ¦
+		JPanel deleteMember = new JPanel();
+		deleteMember.setBackground(new Color(255, 255, 255,100));
+		deleteMember.setOpaque(false);
+		ImportCard.add(deleteMember, "name_8584683626980");
+		SpringLayout sl_deleteMember = new SpringLayout();
+		deleteMember.setLayout(sl_deleteMember);
+		
+		
+		JLabel lblNewLabel_10 = new JLabel("- \uC0AD\uC81C");
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, lblNewLabel_10, 0, SpringLayout.NORTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, lblNewLabel_10, 0, SpringLayout.WEST, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_10, 30, SpringLayout.NORTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, lblNewLabel_10, 63, SpringLayout.WEST, deleteMember);
+		lblNewLabel_10.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
+		deleteMember.add(lblNewLabel_10);
+		deleteMember.setVisible(false);
+		
+		
+		//¸â¹ö¼öÁ¤
+		JPanel changeMember = new JPanel();
+		changeMember.setBackground(new Color(255, 255, 255,100));
+		changeMember.setOpaque(false);
+		ImportCard.add(changeMember, "name_8555461592377");
+		SpringLayout sl_changeMember = new SpringLayout();
+		changeMember.setLayout(sl_changeMember);
+		
+		JLabel lblNewLabel_12 = new JLabel("- \uC218\uC815");
+		lblNewLabel_12.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_12, 0, SpringLayout.NORTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_12, 0, SpringLayout.WEST, changeMember);
+		changeMember.add(lblNewLabel_12);
+		changeMember.setVisible(false);
+		
+		//¸â¹öÃß°¡
+		JPanel addMember = new JPanel();
+		addMember.setBackground(new Color(255, 255, 255,100));
+		addMember.setOpaque(false);
+		ImportCard.add(addMember, "name_8523663693515");
+		SpringLayout sl_addMember = new SpringLayout();
+		addMember.setLayout(sl_addMember);
+		
+		JLabel lblNewLabel_13 = new JLabel("- \uB4F1\uB85D");
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_13, 0, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_13, 0, SpringLayout.WEST, addMember);
+		addMember.add(lblNewLabel_13);
+		addMember.setVisible(false);
+		
+		//È¸¿ø°ü¸® ¹öÆ°
+		//¸¸¾à ¹öÆ°À» ´©¸£¸é ½ÇÇàµÉ ÆÇ³Ú ³ªÅ¸³»±â
+				JButton addMemberButton = new JButton("\uB4F1\uB85D");
+				addMemberButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {//¹öÆ°Å¬¸¯½Ã ¸â¹ö º¯¼ö °ª1 µî·Ï
+						memberChoice = 1;
+						deleteMember.setVisible(false);
+						changeMember.setVisible(false);
+						addMember.setVisible(true);
+						
+						
+					}
+				});
+				addMemberButton.setForeground(new Color(255, 255, 255));
+				addMemberButton.setBackground(new Color(139, 0, 0));
+				addMemberButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+				buttonManage.add(addMemberButton);
+				
+				JButton changeMemberButton = new JButton("\uC218\uC815");
+				changeMemberButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {//¹öÆ°Å¬¸¯½Ã ¸â¹ö º¯¼ö °ª2 ¼öÁ¤
+						memberChoice = 2;
+						deleteMember.setVisible(false);
+						changeMember.setVisible(true);
+						addMember.setVisible(false);
+						
+					}
+				});
+				changeMemberButton.setForeground(new Color(255, 255, 255));
+				changeMemberButton.setBackground(new Color(139, 0, 0));
+				changeMemberButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+				buttonManage.add(changeMemberButton);
+				
+				JButton deleteMemberButton = new JButton("\uC0AD\uC81C");
+				deleteMemberButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {//¹öÆ°Å¬¸¯½Ã ¸â¹ö º¯¼ö °ª3 »èÁ¦
+						memberChoice = 3;
+						deleteMember.setVisible(true);
+						changeMember.setVisible(false);
+						addMember.setVisible(false);
+						
+					}
+				});
+				deleteMemberButton.setForeground(new Color(255, 255, 255));
+				deleteMemberButton.setBackground(new Color(139, 0, 0));
+				deleteMemberButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+				buttonManage.add(deleteMemberButton);
+		
+
+
+		
+		
+		JLabel lblNewLabel_8 = new JLabel("<\uD68C\uC6D0 \uAD00\uB9AC>");
+		sl_MemberInfo.putConstraint(SpringLayout.NORTH, lblNewLabel_8, 10, SpringLayout.NORTH, MemberInfo);
+		sl_MemberInfo.putConstraint(SpringLayout.WEST, lblNewLabel_8, 164, SpringLayout.WEST, MemberInfo);
+		lblNewLabel_8.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
+		MemberInfo.add(lblNewLabel_8);
+		
+		
+		MemberInfo.setVisible(false);
+		
 		//ÁöÁ¡Á¤º¸ ¼öÁ¤ ÆÇ³Ú
 		JPanel changeInfoPanel = new JPanel();
 		changeInfoPanel.setBackground(new Color(255, 255, 255, 100));
+//		changeInfoPanel.setOpaque(false);
 		importantPanel.add(changeInfoPanel, "name_1524942935296");
 		SpringLayout sl_changeInfoPanel = new SpringLayout();
 		changeInfoPanel.setLayout(sl_changeInfoPanel);
 		
-		JPanel panel_2 = new JPanel();
-		sl_changeInfoPanel.putConstraint(SpringLayout.NORTH, panel_2, 67, SpringLayout.NORTH, changeInfoPanel);
-		sl_changeInfoPanel.putConstraint(SpringLayout.WEST, panel_2, 29, SpringLayout.WEST, changeInfoPanel);
-		sl_changeInfoPanel.putConstraint(SpringLayout.SOUTH, panel_2, -34, SpringLayout.SOUTH, changeInfoPanel);
-		sl_changeInfoPanel.putConstraint(SpringLayout.EAST, panel_2, 424, SpringLayout.WEST, changeInfoPanel);
-		changeInfoPanel.add(panel_2);
-		panel_2.setLayout(new SpringLayout());
+		JPanel changeInfoComponents = new JPanel();
+		changeInfoComponents.setBackground(new Color(255, 255, 255, 0));
+		changeInfoComponents.setOpaque(false);
+		sl_changeInfoPanel.putConstraint(SpringLayout.NORTH, changeInfoComponents, 67, SpringLayout.NORTH, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.WEST, changeInfoComponents, 29, SpringLayout.WEST, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.SOUTH, changeInfoComponents, -34, SpringLayout.SOUTH, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.EAST, changeInfoComponents, 424, SpringLayout.WEST, changeInfoPanel);
+		changeInfoPanel.add(changeInfoComponents);
+		SpringLayout sl_changeInfoComponents = new SpringLayout();
+		changeInfoComponents.setLayout(sl_changeInfoComponents);
+		
+		JLabel lblNewLabel_7 = new JLabel("\uC544\uC774\uB514 :");
+		lblNewLabel_7.setBackground(Color.WHITE);
+//		lblNewLabel_7.setOpaque(false);
+		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, lblNewLabel_7, 0, SpringLayout.NORTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, lblNewLabel_7, 0, SpringLayout.WEST, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, lblNewLabel_7, -197, SpringLayout.SOUTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, lblNewLabel_7, -302, SpringLayout.EAST, changeInfoComponents);
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		changeInfoComponents.add(lblNewLabel_7);
+		
+		JPanel Inputpw = new JPanel();
+		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, Inputpw, 100, SpringLayout.NORTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, Inputpw, 6, SpringLayout.EAST, lblNewLabel_7);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, Inputpw, -97, SpringLayout.SOUTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, Inputpw, 0, SpringLayout.EAST, changeInfoComponents);
+		Inputpw.setBackground(new Color(255, 255, 255, 100));
+//		Inputpw.setOpaque(false);
+		changeInfoComponents.add(Inputpw);
+		SpringLayout sl_Inputpw = new SpringLayout();
+		Inputpw.setLayout(sl_Inputpw);
+		
+		textField_3 = new JTextField();
+		textField_3.setBackground(new Color(255,255,255));
+		textField_3.setBorder(new EmptyBorder(0, 0, 0, 0));
+//		textField_3.setOpaque(false);
+		sl_Inputpw.putConstraint(SpringLayout.NORTH, textField_3, 0, SpringLayout.NORTH, Inputpw);
+		sl_Inputpw.putConstraint(SpringLayout.WEST, textField_3, 0, SpringLayout.WEST, Inputpw);
+		sl_Inputpw.putConstraint(SpringLayout.SOUTH, textField_3, 0, SpringLayout.SOUTH, Inputpw);
+		sl_Inputpw.putConstraint(SpringLayout.EAST, textField_3, 296, SpringLayout.WEST, Inputpw);
+		Inputpw.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel OutputId = new JLabel("\uC544\uC774\uB514 \uCD9C\uB825");
+		OutputId.setBackground(new Color(0, 0, 0, 100));
+		OutputId.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		OutputId.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblNewLabel_8.setOpaque(false);
+		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, OutputId, 0, SpringLayout.NORTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, OutputId, 6, SpringLayout.EAST, lblNewLabel_7);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, OutputId, 55, SpringLayout.NORTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, OutputId, 0, SpringLayout.EAST, Inputpw);
+		changeInfoComponents.add(OutputId);
+		
+		JLabel lblNewLabel_9 = new JLabel("\uBE44\uBC00\uBC88\uD638 :");
+		lblNewLabel_9.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_9.setBackground(new Color(255, 255, 255));
+//		lblNewLabel_9.setOpaque(false);
+		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, lblNewLabel_9, 0, SpringLayout.NORTH, Inputpw);
+		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, lblNewLabel_9, 0, SpringLayout.WEST, lblNewLabel_7);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, lblNewLabel_9, 0, SpringLayout.SOUTH, Inputpw);
+		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, lblNewLabel_9, 0, SpringLayout.EAST, lblNewLabel_7);
+		changeInfoComponents.add(lblNewLabel_9);
+		
+		JButton btnNewButton_2 = new JButton("\uC218\uC815");
+		btnNewButton_2.setBackground(new Color(210, 105, 30));
+		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, btnNewButton_2, 26, SpringLayout.SOUTH, Inputpw);
+		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, btnNewButton_2, -130, SpringLayout.EAST, changeInfoComponents);
+		
+		btnNewButton_2.setForeground(Color.WHITE);
+//		btnNewButton_2.setBorderPainted(false);
+//		btnNewButton_2.setFocusPainted(false);
+//		btnNewButton_2.setOpaque(false);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -29, SpringLayout.SOUTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, btnNewButton_2, -21, SpringLayout.EAST, changeInfoComponents);
+		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+		changeInfoComponents.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_11 = new JLabel("<\uC9C0\uC810 \uC815\uBCF4 \uC218\uC815>");
+		sl_changeInfoPanel.putConstraint(SpringLayout.NORTH, lblNewLabel_11, 10, SpringLayout.NORTH, changeInfoPanel);
+		sl_changeInfoPanel.putConstraint(SpringLayout.EAST, lblNewLabel_11, -144, SpringLayout.EAST, changeInfoPanel);
+		lblNewLabel_11.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_11.setOpaque(false);
+		changeInfoPanel.add(lblNewLabel_11);
 		
 		changeInfoPanel.setVisible(false);
 
@@ -265,7 +505,7 @@ public class ManagementGUI {
 		sl_changeMenuPanel.putConstraint(SpringLayout.WEST, ChangeButton, -123, SpringLayout.EAST, changeMenuPanel);
 		ChangeButton.setBackground(new Color(210, 105, 30));
 		ChangeButton.setForeground(new Color(255, 255, 255));
-		ChangeButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 20));
+		ChangeButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		sl_changeMenuPanel.putConstraint(SpringLayout.NORTH, ChangeButton, 16, SpringLayout.SOUTH,
 				changeMenuComponents);
 		sl_changeMenuPanel.putConstraint(SpringLayout.SOUTH, ChangeButton, 56, SpringLayout.SOUTH,
@@ -317,6 +557,7 @@ public class ManagementGUI {
 		importantPanel.add(addMenuPanel, "name_399229462868927");
 		SpringLayout sl_addMenuPanel = new SpringLayout();
 		addMenuPanel.setLayout(sl_addMenuPanel);
+		
 
 		JPanel addMenuComponents = new JPanel();
 		sl_addMenuPanel.putConstraint(SpringLayout.WEST, addMenuComponents, 25, SpringLayout.WEST, addMenuPanel);
@@ -426,6 +667,7 @@ public class ManagementGUI {
 				changeMenuPanel.setVisible(false);
 				deleteMenuPanel.setVisible(false);
 				changeInfoPanel.setVisible(false);
+				MemberInfo.setVisible(false);
 
 			}
 		});
@@ -443,6 +685,7 @@ public class ManagementGUI {
 				changeMenuPanel.setVisible(true);
 				deleteMenuPanel.setVisible(false);
 				changeInfoPanel.setVisible(false);
+				MemberInfo.setVisible(false);
 
 			}
 		});
@@ -461,6 +704,7 @@ public class ManagementGUI {
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(false);
 				changeInfoPanel.setVisible(false);
+				MemberInfo.setVisible(false);
 			}
 		});
 
@@ -479,6 +723,7 @@ public class ManagementGUI {
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(false);
 				changeInfoPanel.setVisible(true);
+				MemberInfo.setVisible(false);
 			}
 		});
 
@@ -491,6 +736,13 @@ public class ManagementGUI {
 		JButton controllMember = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
 		controllMember.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {// Å¬¸¯½Ã¿¡ choice 5
+				
+				deleteMenuPanel.setVisible(false);
+				addMenuPanel.setVisible(false);
+				changeMenuPanel.setVisible(false);
+				changeInfoPanel.setVisible(false);
+				MemberInfo.setVisible(true);
+				
 			}
 		});
 
