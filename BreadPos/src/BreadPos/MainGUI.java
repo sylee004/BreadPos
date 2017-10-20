@@ -96,7 +96,7 @@ public class MainGUI {
 		JPanel mainPanel = new JPanel(){
 			public void paintComponent(Graphics g) {
 				try {
-					bimg = ImageIO.read(new File("./image/mainBack.jpg"));
+					bimg = ImageIO.read(new File("./image/빵배경화면수정.png"));
 					Dimension d = getSize();// 전체화면
 					g.drawImage(bimg, 0, 0, d.width, d.height, null);
 					setOpaque(false);
@@ -336,6 +336,27 @@ public class MainGUI {
 			}
 		});
 		paymentBtn.setBackground(new Color(139, 0, 0));
+		
+		JPanel logopanel = new JPanel(){
+			public void paintComponent(Graphics g) {
+				try {
+					bimg = ImageIO.read(new File("./image/logo.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(bimg, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, logopanel, 29, SpringLayout.SOUTH, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, logopanel, 0, SpringLayout.WEST, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.SOUTH, logopanel, -34, SpringLayout.SOUTH, leftPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -6, SpringLayout.WEST, paymentPanel);
+		leftPanel.add(logopanel);
+		logopanel.setLayout(new SpringLayout());
 		Vector<String> userColumn = new Vector<>();
 		DefaultTableModel model;
 		Vector<String> userRow;

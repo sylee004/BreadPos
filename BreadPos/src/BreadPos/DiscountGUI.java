@@ -92,9 +92,10 @@ public class DiscountGUI {
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 		
-		JButton card = new JButton(new ImageIcon("./image/Åë½Å»çÇÒÀÎ.png")); //Ä«µå ÇÒÀÎ
-		sl_panel.putConstraint(SpringLayout.WEST, card, 225, SpringLayout.WEST, panel);
+		JButton card = new JButton(new ImageIcon("./image/Åë½Å»çÇÒÀÎ.png"));
+		sl_panel.putConstraint(SpringLayout.NORTH, card, 19, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, card, -241, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, card, -46, SpringLayout.EAST, panel);
 		card.setBorderPainted(false);
 		card.setFocusPainted(false);
 		card.setOpaque(false);
@@ -108,11 +109,12 @@ public class DiscountGUI {
 		});
 		panel.add(card);
 		
-		JButton memebrship = new JButton(new ImageIcon("./image/¸â¹öÇÒÀÎ.png"));
-		sl_panel.putConstraint(SpringLayout.WEST, memebrship, 38, SpringLayout.WEST, panel);
+		JButton memebrship = new JButton(new ImageIcon("./image/ButtonFolder/¸â¹öÇÒÀÎ.png"));
+		sl_panel.putConstraint(SpringLayout.NORTH, memebrship, 19, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, memebrship, -241, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, memebrship, -39, SpringLayout.WEST, card);
-		sl_panel.putConstraint(SpringLayout.NORTH, card, 0, SpringLayout.NORTH, memebrship);
+		sl_panel.putConstraint(SpringLayout.EAST, memebrship, -246, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, card, 39, SpringLayout.EAST, memebrship);
+		sl_panel.putConstraint(SpringLayout.WEST, memebrship, 38, SpringLayout.WEST, panel);
 		memebrship.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		memebrship.setForeground(new Color(255, 255, 255));
 		memebrship.setBackground(new Color(255,255, 255, 100));
@@ -126,17 +128,7 @@ public class DiscountGUI {
 		});
 		panel.add(memebrship);
 		
-				
-		
-		JPanel panel_1 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.EAST, card, 0, SpringLayout.EAST, panel_1);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_1, 38, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_1, -46, SpringLayout.EAST, panel);
-		panel_1.setBackground(new Color(255, 255, 255,20));
-		panel.add(panel_1);
-		
 		JButton dispose = new JButton("\uC885\uB8CC");
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_1, -6, SpringLayout.NORTH, dispose);
 		sl_panel.putConstraint(SpringLayout.NORTH, dispose, 250, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, dispose, 163, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, dispose, -10, SpringLayout.SOUTH, panel);
@@ -151,7 +143,7 @@ public class DiscountGUI {
 		panel.add(dispose);
 		
 		JButton discount = new JButton("\uD560\uC778 \uC801\uC6A9");
-		sl_panel.putConstraint(SpringLayout.NORTH, discount, 6, SpringLayout.SOUTH, panel_1);
+		sl_panel.putConstraint(SpringLayout.NORTH, discount, 186, SpringLayout.SOUTH, card);
 		sl_panel.putConstraint(SpringLayout.SOUTH, discount, -10, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, discount, -46, SpringLayout.EAST, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, dispose, -6, SpringLayout.WEST, discount);
@@ -166,114 +158,124 @@ public class DiscountGUI {
 		});
 		discount.setForeground(new Color(255, 255, 255));
 		discount.setBackground(new Color(128, 0, 0));
-		SpringLayout sl_panel_1 = new SpringLayout();
-		panel_1.setLayout(sl_panel_1);
-		
-		JLabel lblNewLabel = new JLabel("\uBC88\uD638 \uC785\uB825");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel, 10, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel, 56, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel, 94, SpringLayout.WEST, panel_1);
-		panel_1.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 17, SpringLayout.SOUTH, lblNewLabel);
-		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, lblNewLabel);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -10, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_1, 0, SpringLayout.EAST, lblNewLabel);
-		panel_1.add(lblNewLabel_1);
-		
-		JPanel ouput = new JPanel();
-		
-		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode() == 10) { //¹øÈ£ÀÔ·Â
-					getInfo = textField.getText();
-					//¸â¹ö½± OR Ä«µå ÇÒÀÎ Àû¿ë !!
-					discountPer = manage.discount(num, getInfo);
-					ouput.setToolTipText(""+discountPer);
-				}
-			}
-		});
-		
-		
-		sl_panel_1.putConstraint(SpringLayout.NORTH, textField, 0, SpringLayout.NORTH, lblNewLabel);
-		sl_panel_1.putConstraint(SpringLayout.WEST, textField, 6, SpringLayout.EAST, lblNewLabel);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, textField, 0, SpringLayout.SOUTH, lblNewLabel);
-		sl_panel_1.putConstraint(SpringLayout.EAST, textField, 244, SpringLayout.EAST, lblNewLabel);
-		panel_1.add(textField);
-		textField.setColumns(10);
-		
-		
-
-		
-	
-		ouput.setBackground(Color.ORANGE);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, ouput, 6, SpringLayout.EAST, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, ouput, 0, SpringLayout.SOUTH, lblNewLabel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, panel_1);
-		panel_1.add(ouput);
-		ouput.setLayout(new CardLayout(0, 0));
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		ouput.add(lblNewLabel_2, "name_61052184684373");
 		
 		panel.add(discount);
-		
-		
-		
-		
-		JPanel panel_4 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.NORTH, memebrship, 0, SpringLayout.NORTH, panel_4);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_4, -300, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_4, 19, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_4, 0, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_4, 62, SpringLayout.WEST, panel);
-		panel.add(panel_4);
-		
-		JPanel panel_3 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, panel_3);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_3, -196, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_3, 6, SpringLayout.SOUTH, card);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_3, 0, SpringLayout.WEST, memebrship);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_3, 0, SpringLayout.EAST, card);
-		panel.add(panel_3);
-		panel_3.setLayout(new GridLayout(0, 3, 0, 0));
-		
-		JButton btnNewButton = new JButton("SKT");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				lblNewLabel_2.setText("10% ÇÒÀÎ");
-				input = 1;
-			}
-		});
-		panel_3.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("LG U+");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_2.setText("5% ÇÒÀÎ");
-			input = 2;
-			}
-		});
-		panel_3.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("KT");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_2.setText("7% ÇÒÀÎ");
-				input = 3;
-			}
-		});
-		panel_3.add(btnNewButton_2);
+				
+				JPanel changePannel = new JPanel();
+				sl_panel.putConstraint(SpringLayout.NORTH, changePannel, 6, SpringLayout.SOUTH, card);
+				sl_panel.putConstraint(SpringLayout.WEST, changePannel, 38, SpringLayout.WEST, panel);
+				sl_panel.putConstraint(SpringLayout.SOUTH, changePannel, 232, SpringLayout.NORTH, panel);
+				panel.add(changePannel);
+				changePannel.setLayout(new CardLayout(0, 0));
+						
+								
+						
+						JPanel panel_1 = new JPanel();
+						sl_panel.putConstraint(SpringLayout.EAST, changePannel, 348, SpringLayout.WEST, panel_1);
+						changePannel.add(panel_1, "name_507246894839316");
+						sl_panel.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, memebrship);
+						sl_panel.putConstraint(SpringLayout.WEST, panel_1, 0, SpringLayout.WEST, memebrship);
+						sl_panel.putConstraint(SpringLayout.SOUTH, panel_1, -6, SpringLayout.NORTH, dispose);
+						sl_panel.putConstraint(SpringLayout.EAST, panel_1, 0, SpringLayout.EAST, card);
+						panel_1.setBackground(new Color(255, 255, 255,20));
+						SpringLayout sl_panel_1 = new SpringLayout();
+						panel_1.setLayout(sl_panel_1);
+						
+						JLabel lblNewLabel = new JLabel("\uBC88\uD638 \uC785\uB825 :");
+						sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel, 78, SpringLayout.NORTH, panel_1);
+						lblNewLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+						lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+						panel_1.add(lblNewLabel);
+						
+						JLabel lblNewLabel_1 = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9 :");
+						sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, lblNewLabel_1);
+						sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel, -6, SpringLayout.NORTH, lblNewLabel_1);
+						sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_1, 10, SpringLayout.WEST, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 118, SpringLayout.NORTH, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -10, SpringLayout.SOUTH, panel_1);
+						lblNewLabel_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+						lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+						panel_1.add(lblNewLabel_1);
+						
+						JPanel ouput = new JPanel();
+						sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_1, -6, SpringLayout.WEST, ouput);
+						sl_panel_1.putConstraint(SpringLayout.NORTH, ouput, 118, SpringLayout.NORTH, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.SOUTH, ouput, -10, SpringLayout.SOUTH, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.WEST, ouput, 100, SpringLayout.WEST, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, panel_1);
+						
+						textField = new JTextField();
+						sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel, -6, SpringLayout.WEST, textField);
+						sl_panel_1.putConstraint(SpringLayout.NORTH, textField, 74, SpringLayout.NORTH, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.WEST, textField, 100, SpringLayout.WEST, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.SOUTH, textField, -10, SpringLayout.NORTH, ouput);
+						sl_panel_1.putConstraint(SpringLayout.EAST, textField, -10, SpringLayout.EAST, panel_1);
+						textField.addKeyListener(new KeyAdapter() {
+							@Override
+							public void keyReleased(KeyEvent e) {
+								if (e.getKeyCode() == 10) { //¹øÈ£ÀÔ·Â
+									getInfo = textField.getText();
+									//¸â¹ö½± OR Ä«µå ÇÒÀÎ Àû¿ë !!
+									discountPer = manage.discount(num, getInfo);
+									ouput.setToolTipText(""+discountPer);
+								}
+							}
+						});
+						panel_1.add(textField);
+						textField.setColumns(10);
+						
+								ouput.setBackground(Color.ORANGE);
+								panel_1.add(ouput);
+								ouput.setLayout(new CardLayout(0, 0));
+								
+								JLabel lblNewLabel_2 = new JLabel("");
+								ouput.add(lblNewLabel_2, "name_61052184684373");
+								
+								JPanel panel_3 = new JPanel();
+								sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -21, SpringLayout.NORTH, textField);
+								sl_panel_1.putConstraint(SpringLayout.EAST, panel_3, -25, SpringLayout.EAST, panel_1);
+								sl_panel.putConstraint(SpringLayout.EAST, panel_3, 0, SpringLayout.EAST, textField);
+								sl_panel.putConstraint(SpringLayout.NORTH, panel_3, 6, SpringLayout.SOUTH, card);
+								sl_panel.putConstraint(SpringLayout.WEST, panel_3, 0, SpringLayout.WEST, memebrship);
+								sl_panel.putConstraint(SpringLayout.SOUTH, panel_3, -196, SpringLayout.SOUTH, panel);
+								panel_1.add(panel_3);
+								panel_3.setOpaque(false);
+								panel_3.setLayout(new GridLayout(0, 3, 10, 0));
+								
+								JButton btnNewButton = new JButton("SKT");
+								btnNewButton.setBackground(new Color(178, 34, 34));
+								btnNewButton.setForeground(new Color(255, 255, 255));
+								btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+								btnNewButton.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent arg0) {
+										lblNewLabel_2.setText("10% ÇÒÀÎ");
+										input = 1;
+									}
+								});
+								panel_3.add(btnNewButton);
+								
+								JButton btnNewButton_2 = new JButton("KT");
+								btnNewButton_2.setBackground(new Color(178, 34, 34));
+								btnNewButton_2.setForeground(new Color(255, 255, 255));
+								btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+								btnNewButton_2.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										lblNewLabel_2.setText("7% ÇÒÀÎ");
+										input = 3;
+									}
+								});
+								panel_3.add(btnNewButton_2);
+								
+								JButton btnNewButton_1 = new JButton("LG U+");
+								btnNewButton_1.setBackground(new Color(178, 34, 34));
+								btnNewButton_1.setForeground(new Color(255, 255, 255));
+								btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+								btnNewButton_1.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										lblNewLabel_2.setText("5% ÇÒÀÎ");
+									input = 2;
+									}
+								});
+								panel_3.add(btnNewButton_1);
 	}
-
-	
 }

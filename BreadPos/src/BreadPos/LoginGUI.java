@@ -111,16 +111,16 @@ public class LoginGUI {
 				}
 			}
 		};
-		sl_backgroundPanel.putConstraint(SpringLayout.NORTH, logoPanel, -80, SpringLayout.SOUTH, backgroundPanel);
-		sl_backgroundPanel.putConstraint(SpringLayout.WEST, logoPanel, -200, SpringLayout.EAST, backgroundPanel);
-		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, logoPanel, -10, SpringLayout.SOUTH, backgroundPanel);
-		sl_backgroundPanel.putConstraint(SpringLayout.EAST, logoPanel, -10, SpringLayout.EAST, backgroundPanel);
+		sl_backgroundPanel.putConstraint(SpringLayout.NORTH, logoPanel, -86, SpringLayout.SOUTH, backgroundPanel);
+		sl_backgroundPanel.putConstraint(SpringLayout.WEST, logoPanel, -212, SpringLayout.EAST, backgroundPanel);
+		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, logoPanel, -21, SpringLayout.SOUTH, backgroundPanel);
+		sl_backgroundPanel.putConstraint(SpringLayout.EAST, logoPanel, -24, SpringLayout.EAST, backgroundPanel);
 		backgroundPanel.add(logoPanel);
 		
 		JPanel LoginPanel = new JPanel();
 		sl_backgroundPanel.putConstraint(SpringLayout.NORTH, LoginPanel, 35, SpringLayout.NORTH, backgroundPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.WEST, LoginPanel, 35, SpringLayout.WEST, backgroundPanel);
-		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, LoginPanel, -35, SpringLayout.NORTH, logoPanel);
+		sl_backgroundPanel.putConstraint(SpringLayout.SOUTH, LoginPanel, -29, SpringLayout.NORTH, logoPanel);
 		sl_backgroundPanel.putConstraint(SpringLayout.EAST, LoginPanel, 399, SpringLayout.WEST, backgroundPanel);
 		backgroundPanel.add(LoginPanel);
 		LoginPanel.setOpaque(false);
