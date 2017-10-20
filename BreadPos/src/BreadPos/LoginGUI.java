@@ -190,6 +190,7 @@ public class LoginGUI {
 		LoginPanel.add(pwPanel);
 		
 		IdTxt = new JTextField();
+		IdTxt.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
 		IdTxt.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
@@ -208,6 +209,7 @@ public class LoginGUI {
 		IdTxt.setColumns(10);
 		
 		pwTxt = new JPasswordField();
+		pwTxt.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
 		pwTxt.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
