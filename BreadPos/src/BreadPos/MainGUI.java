@@ -51,6 +51,7 @@ public class MainGUI {
 	private Management mg;
 	private Bread breadSelectBtn;
 	private Tab tab;
+	private List list;
 	private static ArrayList<Bread> breadList = new ArrayList<Bread>();
 	private static int office_num;
 
@@ -206,10 +207,14 @@ public class MainGUI {
 		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 		ListPanel.add(choicePanel);
 		
+		if (breadList.size() != 0) {
+			list.choice(choicePanel, breadList);
+		}
+	
 		JPanel productPanel = new JPanel();
 		productPanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
-		flowLayout.setHgap(40);
+		flowLayout.setHgap(60);
 		flowLayout.setVgap(10);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, productPanel, 0, SpringLayout.NORTH, choicePanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, productPanel, 0, SpringLayout.EAST, choicePanel);
@@ -232,7 +237,7 @@ public class MainGUI {
 		pricePanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
 		flowLayout_2.setVgap(10);
-		flowLayout_2.setHgap(10);
+		flowLayout_2.setHgap(30);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, pricePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, pricePanel, 0, SpringLayout.EAST, amountPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, pricePanel, 0, SpringLayout.SOUTH, ListPanel);
@@ -245,21 +250,16 @@ public class MainGUI {
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
 		
-		JCheckBox checkBox = new JCheckBox("선택");
-//		choicePanel.add(checkBox);
-		
-		System.out.println(breadList.size());
-		for (int i = 0; i < breadList.size(); i++) {
-			System.out.println(i + " : " + breadList.get(i).getName());
-//			JCheckBox checkBox = new JCheckBox("선택");
-			choicePanel.add(checkBox);
-			JLabel lblNewLabel_pro = new JLabel(breadList.get(i).getName());
-			productPanel.add(lblNewLabel_pro);
-			JLabel lblNewLabel_amon = new JLabel("수량");
-			amountPanel.add(lblNewLabel_amon);
-			JLabel lblNewLabel_pri = new JLabel("" + breadList.get(i).getPrice());
-			pricePanel.add(lblNewLabel_pri);
-		}
+//		tab.tabbed(productPanel, "white");
+//		
+//		int num = breadList.size();
+//		for (int i = 0; i < num; i++) {
+//			if(num % 2 == 0) {
+//			tab.tabbed(productPanel, "white");
+//			} else {
+//				tab.tabbed(productPanel, "rye");
+//			}
+//		}
 
 		JLabel lblNewLabel_1 = new JLabel("\uCD1D \uACB0\uC81C \uAE08\uC561 :");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
