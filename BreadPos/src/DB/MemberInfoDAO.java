@@ -151,7 +151,7 @@ private int count;
 		try {
 			getConnection();
 			
-			String sql = "select * from member_info where member_name = ?";
+			String sql = "select * from member_info where member_phone = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, member_phone);
 			rs = psmt.executeQuery();
