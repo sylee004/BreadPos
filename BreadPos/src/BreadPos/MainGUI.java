@@ -40,7 +40,6 @@ public class MainGUI {
 	private JFrame frame;
 	private ImageIcon icon;
 	private BufferedImage bimg;
-	private JTable table;
 	private JTable userTable;
 	private JScrollPane listJs;
 	private JPanel listPanel;
@@ -50,6 +49,7 @@ public class MainGUI {
 	private Management mg;
 	private Bread breadSelectBtn;
 	private Tab tab;
+	private static Vector vector;
 
 	/**
 	 * Launch the application.
@@ -129,59 +129,10 @@ public class MainGUI {
 		SpringLayout sl_ShowPanel = new SpringLayout();
 		ShowPanel.setLayout(sl_ShowPanel);
 
-		JPanel chckbxPanel = new JPanel();
-		chckbxPanel.setOpaque(false);
-		sl_ShowPanel.putConstraint(SpringLayout.NORTH, chckbxPanel, 51, SpringLayout.NORTH, ShowPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.WEST, chckbxPanel, 10, SpringLayout.WEST, ShowPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, chckbxPanel, -10, SpringLayout.SOUTH, ShowPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.EAST, chckbxPanel, 40, SpringLayout.WEST, ShowPanel);
-		ShowPanel.add(chckbxPanel);
-		chckbxPanel.setLayout(new GridLayout(10, 0, 0, 0));
-
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox);
-
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("");
-		chckbxNewCheckBox_1.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_1);
-
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("");
-		chckbxNewCheckBox_3.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_3);
-
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("");
-		chckbxNewCheckBox_2.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_2);
-
-		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("");
-		chckbxNewCheckBox_5.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_5);
-
-		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("");
-		chckbxNewCheckBox_4.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_4);
-
-		JCheckBox chckbxNewCheckBox_7 = new JCheckBox("");
-		chckbxNewCheckBox_7.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_7);
-
-		JCheckBox chckbxNewCheckBox_8 = new JCheckBox("");
-		chckbxNewCheckBox_8.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_8);
-
-		JCheckBox chckbxNewCheckBox_6 = new JCheckBox("");
-		chckbxNewCheckBox_6.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_6);
-
-		JCheckBox chckbxNewCheckBox_9 = new JCheckBox("");
-		chckbxNewCheckBox_9.setHorizontalAlignment(SwingConstants.CENTER);
-		chckbxPanel.add(chckbxNewCheckBox_9);
-
 		JPanel columnsPanel = new JPanel();
+		sl_ShowPanel.putConstraint(SpringLayout.WEST, columnsPanel, 10, SpringLayout.WEST, ShowPanel);
 		columnsPanel.setOpaque(false);
 		sl_ShowPanel.putConstraint(SpringLayout.NORTH, columnsPanel, 10, SpringLayout.NORTH, ShowPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.WEST, columnsPanel, 46, SpringLayout.WEST, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, columnsPanel, -375, SpringLayout.SOUTH, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.EAST, columnsPanel, -10, SpringLayout.EAST, ShowPanel);
 		ShowPanel.add(columnsPanel);
@@ -204,19 +155,6 @@ public class MainGUI {
 		PriceLabel.setBackground(new Color(233, 150, 122));
 		PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		columnsPanel.add(PriceLabel);
-
-		JPanel tablePanel = new JPanel();
-		tablePanel.setOpaque(false);
-		sl_ShowPanel.putConstraint(SpringLayout.NORTH, tablePanel, 6, SpringLayout.SOUTH, columnsPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.WEST, tablePanel, 6, SpringLayout.EAST, chckbxPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, tablePanel, 365, SpringLayout.SOUTH, columnsPanel);
-		sl_ShowPanel.putConstraint(SpringLayout.EAST, tablePanel, -10, SpringLayout.EAST, ShowPanel);
-		ShowPanel.add(tablePanel);
-		tablePanel.setLayout(new CardLayout(0, 0));
-
-		table = new JTable();
-
-		tablePanel.add(table, "name_7085723367180");
 
 		JPanel totalMoneyPanel = new JPanel();
 		totalMoneyPanel.setOpaque(false);
@@ -406,7 +344,7 @@ public class MainGUI {
 		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, "밀가루");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		breadSelectBtn = tab.tabbed(whitePanel, "white");
+		tab.tabbed(whitePanel, "white");
 		
 		JPanel boriPanel = new JPanel();
 		tabbedPane.addTab("bori", null, boriPanel, "보리");
@@ -437,5 +375,11 @@ public class MainGUI {
 		othherPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(othherPanel, "other");
+	}
+
+	public static void sendMessage(Bread list) {
+		vector.add(list);
+		System.out.println(list.getName());
+	
 	}
 }

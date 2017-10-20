@@ -16,7 +16,7 @@ import DB.Bread;
 public class Tab extends JPanel{
 	private static Bread list;
 	
-	public Bread tabbed(JPanel whitePanel, String kind) {
+	public void tabbed(JPanel whitePanel, String kind) {
 
 		Management mg = new Management();
 		ArrayList<Bread> breadList = mg.breadKind(kind);
@@ -30,11 +30,11 @@ public class Tab extends JPanel{
 			menuBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					list = bread;
+					MainGUI.sendMessage(list);
 				}
 			});
 			whitePanel.add(menuBtn);
-			System.out.println(list.getName());
+			//System.out.println(list.getName());
 		}
-		return list;
 	}
 }
