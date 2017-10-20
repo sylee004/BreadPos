@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -24,6 +26,9 @@ public class PaymentGUI {
 	public JFrame frame;
 	private JTable table;
 	private MyCllickListener myCllickListener;
+	private Management management;
+	public DiscountGUI discountGUI;
+	private static JLabel lblNewLabel_7;
 
 	/**
 	 * Launch the application.
@@ -45,12 +50,14 @@ public class PaymentGUI {
 	 * Create the application.
 	 */
 	public PaymentGUI() {
+		management = new Management();
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
@@ -107,6 +114,8 @@ public class PaymentGUI {
 		JButton btnNewButton_1 = new JButton("\uD560\uC778");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				DiscountGUI discountGUI = new DiscountGUI();
+				discountGUI.main(null);
 			}
 		});
 		panel_1.add(btnNewButton_1);
@@ -155,7 +164,7 @@ public class PaymentGUI {
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_4, -10, SpringLayout.EAST, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.WEST, panel_3, 0, SpringLayout.WEST, panel_4);
 		panel_2.add(panel_4);
-		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_4.setLayout(new GridLayout(4, 2, 0, 0));
 
 		JLabel lblNewLabel = new JLabel("\uB0B4\uC5ED");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
@@ -172,15 +181,26 @@ public class PaymentGUI {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_4 = new JLabel("New label");
+		JLabel lblNewLabel_4 = new JLabel("New label"); // 결제금액
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_4);
+
+		JLabel lblNewLabel_6 = new JLabel("\uD560\uC778\uAE08\uC561");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblNewLabel_6);
+
+		lblNewLabel_7 = new JLabel(); // 할인금액
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		DiscountGUI discountGUI = new DiscountGUI();
+		//discountGUI.discount();
+
+		panel_4.add(lblNewLabel_7);
 
 		JLabel lblNewLabel_3 = new JLabel("\uCD5C\uC885 \uAE08\uC561");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_3);
 
-		JLabel lblNewLabel_5 = new JLabel("New label");
+		JLabel lblNewLabel_5 = new JLabel("New label"); // 최종금액
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_5);
 	}
@@ -188,6 +208,24 @@ public class PaymentGUI {
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
 		this.myCllickListener = myCllickListener;
 
+	}
+
+	public static void chaingeMsg(int input) {
+		Management management = new Management();
+		
+		lblNewLabel_7.setText(""+input);
+		// TODO Auto-generated method stub
+		if (input == 1) {
+			
+			
+			
+			ArrayList<Integer> moneylist = new ArrayList<>();
+			moneylist.add(10000);
+			System.out.println(moneylist.get(0));
+			int[] money = management.name(moneylist, 10);
+			lblNewLabel_7.setText(""+money[1]);
+			
+		}
 	}
 
 }
