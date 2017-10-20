@@ -147,15 +147,15 @@ public class BreadInfoDAO {
 		
 		try {
 			getConnection();
-			String sql = "select bread_name, bread_price from bread_info where =?";
+			String sql = "select bread_name, bread_price, bread_kind from bread_info";
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				String breadName = rs.getString(1);
 				int breadPrice = rs.getInt(2);
-				
-				list.add(new Bread(breadName, breadPrice));
+				String breadKind = rs.getString(3);
+				list.add(new Bread(breadName, breadPrice, breadKind));
 			}
 			
 			psmt.executeUpdate();
