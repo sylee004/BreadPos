@@ -364,35 +364,37 @@ public class MainGUI {
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 
-		whiteBread = mg.breadKind("white");
-		JButton btnNewButton;
-		
-		for (int i = 0; i < whiteBread.size(); i++) {
-			String name = whiteBread.get(i).getName();
-			btnNewButton = new JButton(name);
-			btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 15));
-			whitePanel.add(btnNewButton);
-		}
+//		whiteBread = mg.breadKind("white");
+//		JButton btnNewButton;
+//		
+//		for (int i = 0; i < whiteBread.size(); i++) {
+//			String name = whiteBread.get(i).getName();
+//			btnNewButton = new JButton(name);
+//			btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 15));
+//			whitePanel.add(btnNewButton);
+//		}
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("New tab", null, panel_1, null);
 
 		JTabbedPane whiteTab = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("¹Ð°¡·ç»§", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whiteTab, "\uBC00\uAC00\uB8E8\uBE75");
+		//tabbedPane.addTab("¹Ð°¡·ç»§", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whiteTab, "\uBC00\uAC00\uB8E8\uBE75");
+		tabbedPane.addTab("¹Ð°¡·ç»§", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), new Tab(whitePanel, "white"), "\uBC00\uAC00\uB8E8\uBE75");
 
 		JTabbedPane boriTab = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("º¸¸®»§", null, boriTab, null);
+		tabbedPane.addTab("º¸¸®»§", null, new Tab(whitePanel, "white"), null);
 
 		JTabbedPane cornTab = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("¿Á¼ö¼ö»§", null, cornTab, null);
+		tabbedPane.addTab("¿Á¼ö¼ö»§", null, new Tab(whitePanel, "white"), null);
 
 		JTabbedPane ryeTab = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("È£¹Ð»§", null, ryeTab, null);
+		tabbedPane.addTab("È£¹Ð»§", null, new Tab(whitePanel, "white"), null);
 
 		JTabbedPane mixtureTab = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("È¥ÇÕ»§", null, mixtureTab, null);
+		tabbedPane.addTab("È¥ÇÕ»§", null, new Tab(whitePanel, "white"), null);
 
 		JTabbedPane otherTab = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("±âÅ¸", null, otherTab, null);
+		tabbedPane.addTab("±âÅ¸", null, new Tab(whitePanel, "white"), null);
 	}
+	
 }
