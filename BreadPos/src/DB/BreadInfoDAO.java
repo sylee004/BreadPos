@@ -22,7 +22,7 @@ public class BreadInfoDAO {
 		try {
 			getConnection();
 			
-			String sql = "insert into bread_info(bread_name, bread_price, bread_kind values(?, ?, ?)";
+			String sql = "insert into bread_info(bread_name, bread_price, bread_kind) values(?, ?, ?)";
 			psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, bread.getName());

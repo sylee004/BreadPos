@@ -11,6 +11,15 @@ public class Daily {
 		this.money = money;
 		this.officeNum = officeNum;
 	}
+	
+	
+	
+	public Daily(int money) {
+		super();
+		this.money = money;
+	}
+
+
 
 	public int getDay() {
 		return day;
