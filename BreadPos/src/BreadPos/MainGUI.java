@@ -16,7 +16,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
@@ -50,6 +49,7 @@ public class MainGUI {
 	private JButton paymentBtn;
 	private Management mg;
 	private Bread breadSelectBtn;
+	private Tab tab;
 
 	/**
 	 * Launch the application.
@@ -72,12 +72,9 @@ public class MainGUI {
 	 */
 
 	public MainGUI() {
+		tab = new Tab();
 		mg = new Management();
 		initialize();
-	}
-	public MainGUI(Bread list) {
-		breadSelectBtn = list;
-		System.out.println(breadSelectBtn.getName());
 	}
 
 	/**
@@ -409,36 +406,36 @@ public class MainGUI {
 		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, "밀가루");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		new Tab(whitePanel, "white");
+		breadSelectBtn = tab.tabbed(whitePanel, "white");
 		
 		JPanel boriPanel = new JPanel();
 		tabbedPane.addTab("bori", null, boriPanel, "보리");
 		boriPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		new Tab(boriPanel, "bori");
+		tab.tabbed(boriPanel, "bori");
 		
 		JPanel cornPanel = new JPanel();
 		tabbedPane.addTab("corn", null, cornPanel, "옥수수");
 		cornPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		new Tab(cornPanel, "corn");
+		tab.tabbed(cornPanel, "corn");
 		
 		JPanel ryePanel = new JPanel();
 		tabbedPane.addTab("rye", null, ryePanel, "호밀");
 		ryePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		new Tab(ryePanel, "rye");
+		tab.tabbed(ryePanel, "rye");
 		
 		JPanel mixturePanel = new JPanel();
 		tabbedPane.addTab("mixture", null, mixturePanel, "혼합");
 		mixturePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		new Tab(mixturePanel, "mix");
+		tab.tabbed(mixturePanel, "mix");
 		
 		JPanel othherPanel = new JPanel();
 		tabbedPane.addTab("other", null, othherPanel, "기타");
 		othherPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		new Tab(othherPanel, "other");
+		tab.tabbed(othherPanel, "other");
 	}
 }
