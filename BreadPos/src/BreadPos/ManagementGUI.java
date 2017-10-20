@@ -57,7 +57,7 @@ public class ManagementGUI {
 	private JTextField phoneNumInput;
 	private JTextField nameInput;
 	private JTextField Input;
-	private JTextField textField_5;
+	private JTextField InputChange;
 	private JTextField textField_6;
 	Management mg = new Management();
 	String breadName;
@@ -258,6 +258,7 @@ public class ManagementGUI {
 		// changeMember.setOpaque(false);
 		ImportCard.add(changeMember, "name_8555461592377");
 		SpringLayout sl_changeMember = new SpringLayout();
+		changeMember.setOpaque(false);
 		changeMember.setLayout(sl_changeMember);
 
 		JLabel lblNewLabel_12 = new JLabel("- \uC218\uC815");
@@ -268,6 +269,7 @@ public class ManagementGUI {
 		changeMember.add(lblNewLabel_12);
 
 		String[] number = { "번호", "이름" };
+		JLabel OutputResult = new JLabel("\uCD9C\uB825");
 		// 번호 선택시 이름 출력
 		JComboBox chooseNumberName = new JComboBox(number);
 		chooseNumberName.addActionListener(new ActionListener() {
@@ -284,6 +286,32 @@ public class ManagementGUI {
 		changeMember.add(chooseNumberName);
 
 		Input = new JTextField();
+		Input.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (breadName.equals(number[0])) {// breadName = 번호
+					for (int i = 0; i < new MemberInfoDAO().selectName(Input.getText()).size(); i++) {
+						OuputList.add(new MemberInfoDAO().selectName(Input.getText()).get(i));
+					}
+					for (int j = 0; j < OuputList.size(); j++) {
+						System.out.println("이름 리스트"+OuputList.get(j).getMember_name());
+						Ouput = OuputList.get(j).getMember_name();
+						OutputResult.setText(OuputList.get(j).getMember_name());
+					}				
+				} else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
+					for (int i = 0; i < new MemberInfoDAO().selectPhone(Input.getText()).size(); i++) {
+						OuputList.add(new MemberInfoDAO().selectPhone(Input.getText()).get(i));
+					}
+					for (int j = 0; j < OuputList.size(); j++) {
+						System.out.println("번호 리스트"+OuputList.get(j).getMember_phone());
+						Ouput = OuputList.get(j).getMember_phone();
+						OutputResult.setText(OuputList.get(j).getMember_phone());
+					}
+				}
+			}
+		});
+		Input.setOpaque(false);
+		Input.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_changeMember.putConstraint(SpringLayout.WEST, Input, 6, SpringLayout.EAST, chooseNumberName);
 		sl_changeMember.putConstraint(SpringLayout.EAST, Input, -10, SpringLayout.EAST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 0, SpringLayout.SOUTH, Input);
@@ -292,7 +320,7 @@ public class ManagementGUI {
 		changeMember.add(Input);
 		Input.setColumns(10);
 
-		JLabel OutputResult = new JLabel("\uCD9C\uB825");
+		
 		// 번호 >> 이름 출력
 //		 for (int i = 0; i < OuputList.size(); i++) {
 //			 if(Input.getText().equals(OuputList.get(i).getMember_phone())) {// 번호 >> 이름
@@ -301,7 +329,7 @@ public class ManagementGUI {
 //			 OutputResult.setText(OuputList.get(i).getMember_phone());
 //			 }
 //			 }		
-		OutputResult.setBackground(new Color(255, 255, 255));
+		OutputResult.setBackground(Color.GRAY);
 		sl_changeMember.putConstraint(SpringLayout.NORTH, OutputResult, 6, SpringLayout.SOUTH, Input);
 		sl_changeMember.putConstraint(SpringLayout.WEST, OutputResult, 10, SpringLayout.WEST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, OutputResult, 47, SpringLayout.SOUTH, Input);
@@ -310,19 +338,33 @@ public class ManagementGUI {
 		OutputResult.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		changeMember.add(OutputResult);
 
-		textField_5 = new JTextField();
-		sl_changeMember.putConstraint(SpringLayout.NORTH, textField_5, 6, SpringLayout.SOUTH, OutputResult);
-		sl_changeMember.putConstraint(SpringLayout.WEST, textField_5, 0, SpringLayout.WEST, Input);
-		sl_changeMember.putConstraint(SpringLayout.SOUTH, textField_5, 53, SpringLayout.SOUTH, OutputResult);
-		sl_changeMember.putConstraint(SpringLayout.EAST, textField_5, -104, SpringLayout.EAST, changeMember);
-		changeMember.add(textField_5);
-		textField_5.setColumns(10);
+		InputChange = new JTextField();
+		InputChange.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				for (int j = 0; j < OuputList.size(); j++) {
+					if(InputChange.equals(OuputList.get(j))) {
+//						int count = mg.updateMember(newPhone, newName, phone, name);
+					}
+				}
+				
+			}
+		});
+		sl_changeMember.putConstraint(SpringLayout.NORTH, InputChange, 6, SpringLayout.SOUTH, OutputResult);
+		sl_changeMember.putConstraint(SpringLayout.WEST, InputChange, 0, SpringLayout.WEST, Input);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, InputChange, 53, SpringLayout.SOUTH, OutputResult);
+		sl_changeMember.putConstraint(SpringLayout.EAST, InputChange, -104, SpringLayout.EAST, changeMember);
+		changeMember.add(InputChange);
+		InputChange.setColumns(10);
+		
+
 
 		JLabel lblNewLabel_17 = new JLabel("\uC785\uB825 :");
 		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_17, 6, SpringLayout.SOUTH, OutputResult);
 		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_17, 0, SpringLayout.WEST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_17, -21, SpringLayout.SOUTH, changeMember);
-		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_17, -6, SpringLayout.WEST, textField_5);
+		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_17, -6, SpringLayout.WEST, InputChange);
 		lblNewLabel_17.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_17.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		changeMember.add(lblNewLabel_17);
@@ -332,34 +374,25 @@ public class ManagementGUI {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("이름 / 번호" + breadName);
 				System.out.println("출력값" + Input.getText());
-				if (breadName.equals(number[0])) {// breadName = 번호
-					for (int i = 0; i < new MemberInfoDAO().selectName(Input.getText()).size(); i++) {
-						OuputList.add(new MemberInfoDAO().selectName(Input.getText()).get(i));
-					}
-					for (int j = 0; j < new MemberInfoDAO().selectPhone(Input.getText()).size(); j++) {
-						System.out.println("이름 리스트"+OuputList.get(j).getMember_name());
-					}
-					
-					
-				} else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
-					for (int i = 0; i < new MemberInfoDAO().selectPhone(Input.getText()).size(); i++) {
-						OuputList.add(new MemberInfoDAO().selectPhone(Input.getText()).get(i));
-					}
-					for (int j = 0; j < new MemberInfoDAO().selectName(Input.getText()).size(); j++) {
-						System.out.println("번호 리스트"+OuputList.get(j).getMember_phone());
-					}
-				}
-
 			}
 		});
 		btnNewButton_5.setBackground(new Color(139, 0, 0));
 		btnNewButton_5.setForeground(new Color(255, 255, 255));
 		btnNewButton_5.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		sl_changeMember.putConstraint(SpringLayout.NORTH, btnNewButton_5, 6, SpringLayout.SOUTH, OutputResult);
-		sl_changeMember.putConstraint(SpringLayout.WEST, btnNewButton_5, 6, SpringLayout.EAST, textField_5);
-		sl_changeMember.putConstraint(SpringLayout.SOUTH, btnNewButton_5, 0, SpringLayout.SOUTH, textField_5);
+		sl_changeMember.putConstraint(SpringLayout.WEST, btnNewButton_5, 6, SpringLayout.EAST, InputChange);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, btnNewButton_5, 0, SpringLayout.SOUTH, InputChange);
 		sl_changeMember.putConstraint(SpringLayout.EAST, btnNewButton_5, 0, SpringLayout.EAST, Input);
 		changeMember.add(btnNewButton_5);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255, 150));
+		sl_changeMember.putConstraint(SpringLayout.WEST, panel_1, 6, SpringLayout.EAST, chooseNumberName);
+		sl_changeMember.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, changeMember);
+		//sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 0, SpringLayout.SOUTH, Input);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, panel_1, 36, SpringLayout.NORTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, panel_1, 83, SpringLayout.NORTH, changeMember);
+		changeMember.add(panel_1);
 		changeMember.setVisible(false);
 
 		// 멤버삭제
