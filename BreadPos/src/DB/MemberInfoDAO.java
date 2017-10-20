@@ -12,7 +12,7 @@ private int count;
 	int total_money=0;
 	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 	private String user = "system";
-	private String password = "skylha10";
+	private String password = "123";
 	private Connection con = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;

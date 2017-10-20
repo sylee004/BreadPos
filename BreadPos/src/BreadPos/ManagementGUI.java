@@ -58,6 +58,9 @@ public class ManagementGUI {
 	String[] breadType = { "밀가루", "보리", "옥수수", "호밀", "혼합", "기타" };
 	String breadTypeChoice;
 	int breadPrice;
+	String memberName;
+	String memberPhoneNumber;
+	int memberMoney;
 
 	/**
 	 * Launch the application.
@@ -167,7 +170,8 @@ public class ManagementGUI {
 		sl_MemebrManage.putConstraint(SpringLayout.EAST, ImportCard, 0, SpringLayout.EAST, buttonManage);
 		MemebrManage.add(ImportCard);
 		ImportCard.setLayout(new CardLayout(0, 0));
-
+		
+		
 		// 멤버추가
 		JPanel addMember = new JPanel();
 		addMember.setBackground(new Color(255, 255, 255, 100));
@@ -182,6 +186,7 @@ public class ManagementGUI {
 		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_13, 0, SpringLayout.NORTH, addMember);
 		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_13, 0, SpringLayout.WEST, addMember);
 		addMember.add(lblNewLabel_13);
+		
 
 		phoneNumInput = new JTextField();
 		sl_addMember.putConstraint(SpringLayout.NORTH, phoneNumInput, 37, SpringLayout.NORTH, addMember);
@@ -217,6 +222,11 @@ public class ManagementGUI {
 		addMember.add(lblNewLabel_15);
 
 		JButton btnNewButton_3 = new JButton("\uB4F1\uB85D");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int count = mg.addMember(phoneNumInput.getText(), nameInput.getText());
+			}
+		});
 		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -10, SpringLayout.NORTH, btnNewButton_3);
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
 		sl_addMember.putConstraint(SpringLayout.WEST, btnNewButton_3, -84, SpringLayout.EAST, addMember);
