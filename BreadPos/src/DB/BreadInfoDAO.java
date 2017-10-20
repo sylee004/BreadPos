@@ -112,7 +112,7 @@ public class BreadInfoDAO {
 		try {
 			getConnection();
 			
-			String sql = "select * from bread_info where kind = ?";
+			String sql = "select * from bread_info where bread_kind = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, bread_kind);
 			rs = psmt.executeQuery();
@@ -124,7 +124,7 @@ public class BreadInfoDAO {
 				list.add(new Bread(name, price, kind));
 			}
 			
-			psmt.executeUpdate();
+			//psmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
