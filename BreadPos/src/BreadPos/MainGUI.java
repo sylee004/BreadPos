@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
@@ -49,7 +50,7 @@ public class MainGUI {
 	private Management mg;
 	private Bread breadSelectBtn;
 	private Tab tab;
-	private static Vector vector;
+	private static ArrayList<Bread> breadList = new ArrayList<Bread>();
 
 	/**
 	 * Launch the application.
@@ -118,11 +119,10 @@ public class MainGUI {
 		leftPanel.setLayout(sl_leftPanel);
 
 		JPanel ShowPanel = new JPanel();
-		ShowPanel.setOpaque(false);
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, ShowPanel, 50, SpringLayout.NORTH, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.WEST, ShowPanel, 21, SpringLayout.WEST, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -127, SpringLayout.SOUTH, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.EAST, ShowPanel, -10, SpringLayout.EAST, leftPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, ShowPanel, 10, SpringLayout.WEST, leftPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, ShowPanel, -21, SpringLayout.EAST, leftPanel);
+		ShowPanel.setOpaque(false);
 		ShowPanel.setBackground(new Color(211, 211, 211));
 		ShowPanel.setForeground(new Color(0, 0, 0));
 		leftPanel.add(ShowPanel);
@@ -136,31 +136,117 @@ public class MainGUI {
 		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, columnsPanel, -375, SpringLayout.SOUTH, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.EAST, columnsPanel, -10, SpringLayout.EAST, ShowPanel);
 		ShowPanel.add(columnsPanel);
-		columnsPanel.setLayout(new GridLayout(1, 3, 0, 0));
+		SpringLayout sl_columnsPanel = new SpringLayout();
+		columnsPanel.setLayout(sl_columnsPanel);
+		
+		JLabel choiceLabel = new JLabel("\uC120\uD0DD");
+		sl_columnsPanel.putConstraint(SpringLayout.NORTH, choiceLabel, 0, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.WEST, choiceLabel, 0, SpringLayout.WEST, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.SOUTH, choiceLabel, 55, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.EAST, choiceLabel, 63, SpringLayout.WEST, columnsPanel);
+		choiceLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		choiceLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 30));
+		choiceLabel.setBackground(Color.WHITE);
+		columnsPanel.add(choiceLabel);
 
 		JLabel productLabel = new JLabel("\uC0C1\uD488 \uC774\uB984");
-		productLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
-		productLabel.setBackground(new Color(233, 150, 122));
+		sl_columnsPanel.putConstraint(SpringLayout.NORTH, productLabel, 0, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.WEST, productLabel, 0, SpringLayout.EAST, choiceLabel);
+		sl_columnsPanel.putConstraint(SpringLayout.SOUTH, productLabel, 55, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.EAST, productLabel, 248, SpringLayout.WEST, columnsPanel);
+		productLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 30));
+		productLabel.setBackground(Color.WHITE);
 		productLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		columnsPanel.add(productLabel);
 
 		JLabel amountLabel = new JLabel("\uC218\uB7C9");
-		amountLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
-		amountLabel.setBackground(new Color(233, 150, 122));
+		sl_columnsPanel.putConstraint(SpringLayout.NORTH, amountLabel, 0, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.WEST, amountLabel, 0, SpringLayout.EAST, productLabel);
+		sl_columnsPanel.putConstraint(SpringLayout.SOUTH, amountLabel, 55, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.EAST, amountLabel, 312, SpringLayout.WEST, columnsPanel);
+		amountLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 30));
+		amountLabel.setBackground(Color.WHITE);
 		amountLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		columnsPanel.add(amountLabel);
 
 		JLabel PriceLabel = new JLabel("\uAC00\uACA9");
-		PriceLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
-		PriceLabel.setBackground(new Color(233, 150, 122));
+		sl_columnsPanel.putConstraint(SpringLayout.NORTH, PriceLabel, 0, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.WEST, PriceLabel, 313, SpringLayout.WEST, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.SOUTH, PriceLabel, 55, SpringLayout.NORTH, columnsPanel);
+		sl_columnsPanel.putConstraint(SpringLayout.EAST, PriceLabel, 427, SpringLayout.WEST, columnsPanel);
+		PriceLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 30));
+		PriceLabel.setBackground(Color.WHITE);
 		PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		columnsPanel.add(PriceLabel);
 
 		JPanel totalMoneyPanel = new JPanel();
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 496, SpringLayout.NORTH, leftPanel);
+		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -6, SpringLayout.NORTH, totalMoneyPanel);
+		
+		JPanel ListPanel = new JPanel();
+		sl_ShowPanel.putConstraint(SpringLayout.NORTH, ListPanel, 0, SpringLayout.SOUTH, columnsPanel);
+		sl_ShowPanel.putConstraint(SpringLayout.WEST, ListPanel, 10, SpringLayout.WEST, ShowPanel);
+		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, ListPanel, 365, SpringLayout.SOUTH, columnsPanel);
+		sl_ShowPanel.putConstraint(SpringLayout.EAST, ListPanel, 0, SpringLayout.EAST, columnsPanel);
+		ShowPanel.add(ListPanel);
+		SpringLayout sl_ListPanel = new SpringLayout();
+		ListPanel.setLayout(sl_ListPanel);
+		
+		for (int i = 0; i < breadList.size(); i++) {
+			System.out.println(breadList.get(i).getName());
+		}
+		
+		JPanel choicePanel = new JPanel();
+		sl_ListPanel.putConstraint(SpringLayout.NORTH, choicePanel, 0, SpringLayout.NORTH, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.WEST, choicePanel, 0, SpringLayout.WEST, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.SOUTH, choicePanel, 0, SpringLayout.SOUTH, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.EAST, choicePanel, 63, SpringLayout.WEST, ListPanel);
+		ListPanel.add(choicePanel);
+		
+		JPanel productPanel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
+		flowLayout.setHgap(40);
+		flowLayout.setVgap(10);
+		sl_ListPanel.putConstraint(SpringLayout.NORTH, productPanel, 0, SpringLayout.NORTH, choicePanel);
+		sl_ListPanel.putConstraint(SpringLayout.WEST, productPanel, 0, SpringLayout.EAST, choicePanel);
+		sl_ListPanel.putConstraint(SpringLayout.SOUTH, productPanel, 0, SpringLayout.SOUTH, choicePanel);
+		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("");
+		choicePanel.add(chckbxNewCheckBox);
+		sl_ListPanel.putConstraint(SpringLayout.EAST, productPanel, 248, SpringLayout.WEST, ListPanel);
+		ListPanel.add(productPanel);
+		
+		JPanel amountPanel = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) amountPanel.getLayout();
+		flowLayout_1.setHgap(10);
+		flowLayout_1.setVgap(10);
+		sl_ListPanel.putConstraint(SpringLayout.NORTH, amountPanel, 0, SpringLayout.NORTH, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.WEST, amountPanel, 0, SpringLayout.EAST, productPanel);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		productPanel.add(lblNewLabel_3);
+		sl_ListPanel.putConstraint(SpringLayout.SOUTH, amountPanel, 0, SpringLayout.SOUTH, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.EAST, amountPanel, 312, SpringLayout.WEST, ListPanel);
+		ListPanel.add(amountPanel);
+		
+		JPanel pricePanel = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
+		flowLayout_2.setVgap(10);
+		flowLayout_2.setHgap(10);
+		sl_ListPanel.putConstraint(SpringLayout.NORTH, pricePanel, 0, SpringLayout.NORTH, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.WEST, pricePanel, 0, SpringLayout.EAST, amountPanel);
+		
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		amountPanel.add(lblNewLabel_5);
+		sl_ListPanel.putConstraint(SpringLayout.SOUTH, pricePanel, 0, SpringLayout.SOUTH, ListPanel);
+		sl_ListPanel.putConstraint(SpringLayout.EAST, pricePanel, 0, SpringLayout.EAST, ListPanel);
+		ListPanel.add(pricePanel);
+		
+		JLabel lblNewLabel_7 = new JLabel("New label");
+		pricePanel.add(lblNewLabel_7);
 		totalMoneyPanel.setOpaque(false);
-		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 6, SpringLayout.SOUTH, ShowPanel);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, totalMoneyPanel, 181, SpringLayout.WEST, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.SOUTH, totalMoneyPanel, -72, SpringLayout.SOUTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, totalMoneyPanel, -10, SpringLayout.EAST, leftPanel);
 		leftPanel.add(totalMoneyPanel);
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
@@ -168,7 +254,7 @@ public class MainGUI {
 
 		JLabel lblNewLabel_1 = new JLabel("\uCD1D \uACB0\uC81C \uAE08\uC561 :");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("±¼¸²", Font.BOLD, 16));
+		lblNewLabel_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, 49, SpringLayout.NORTH, totalMoneyPanel);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 0, SpringLayout.NORTH, totalMoneyPanel);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, totalMoneyPanel);
@@ -176,15 +262,27 @@ public class MainGUI {
 		totalMoneyPanel.add(lblNewLabel_1);
 
 		JLabel lblNewLabel = new JLabel("New label");
+		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel, -32, SpringLayout.EAST, totalMoneyPanel);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
 		sl_totalMoneyPanel.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, totalMoneyPanel);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel, 0, SpringLayout.SOUTH, totalMoneyPanel);
-		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel, 0, SpringLayout.EAST, totalMoneyPanel);
 		totalMoneyPanel.add(lblNewLabel);
 
 		JPanel paymentPanel = new JPanel();
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
+		sl_leftPanel.putConstraint(SpringLayout.SOUTH, totalMoneyPanel, -20, SpringLayout.NORTH, paymentPanel);
+		
+		JLabel lblNewLabel_2 = new JLabel("\uC6D0");
+		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		sl_totalMoneyPanel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 0, SpringLayout.NORTH, totalMoneyPanel);
+		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.EAST, lblNewLabel);
+		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, 0, SpringLayout.SOUTH, totalMoneyPanel);
+		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel_2, 0, SpringLayout.EAST, totalMoneyPanel);
+		totalMoneyPanel.add(lblNewLabel_2);
 		paymentPanel.setOpaque(false);
-		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 20, SpringLayout.SOUTH, totalMoneyPanel);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, paymentPanel, 166, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, paymentPanel, -10, SpringLayout.SOUTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, paymentPanel, -10, SpringLayout.EAST, leftPanel);
@@ -378,8 +476,9 @@ public class MainGUI {
 	}
 
 	public static void sendMessage(Bread list) {
-		vector.add(list);
+		breadList.add(list);
 		System.out.println(list.getName());
-	
+		//System.out.println(vector.size());
+		new MainGUI();
 	}
 }
