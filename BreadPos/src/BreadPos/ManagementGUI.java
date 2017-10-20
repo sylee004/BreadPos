@@ -28,6 +28,7 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
+import javax.swing.JComboBox;
 
 public class ManagementGUI {
 
@@ -45,6 +46,12 @@ public class ManagementGUI {
 	private JTextField InputChangeBreadPrice;
 	private JTextField textField_3;
 	private int memberChoice = 0; //È¸¿ø°ü¸® µî·Ï,¼öÁ¤, »èÁ¦ º¯¼ö
+	private JTextField phoneNumInput;
+	private JTextField nameInput;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -157,10 +164,139 @@ public class ManagementGUI {
 		MemebrManage.add(ImportCard);
 		ImportCard.setLayout(new CardLayout(0, 0));
 		
+		//¸â¹öÃß°¡
+		JPanel addMember = new JPanel();
+		addMember.setBackground(new Color(255, 255, 255,100));
+//		addMember.setOpaque(false);
+		ImportCard.add(addMember, "name_8523663693515");
+		SpringLayout sl_addMember = new SpringLayout();
+		addMember.setLayout(sl_addMember);
+		
+		JLabel lblNewLabel_13 = new JLabel("- \uB4F1\uB85D");
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_13, 0, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_13, 0, SpringLayout.WEST, addMember);
+		addMember.add(lblNewLabel_13);
+		
+		phoneNumInput = new JTextField();
+		sl_addMember.putConstraint(SpringLayout.NORTH, phoneNumInput, 37, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.WEST, phoneNumInput, -337, SpringLayout.EAST, addMember);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, phoneNumInput, 89, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.EAST, phoneNumInput, -10, SpringLayout.EAST, addMember);
+		addMember.add(phoneNumInput);
+		phoneNumInput.setColumns(10);
+		
+		nameInput = new JTextField();
+		sl_addMember.putConstraint(SpringLayout.NORTH, nameInput, 16, SpringLayout.SOUTH, phoneNumInput);
+		sl_addMember.putConstraint(SpringLayout.EAST, nameInput, -10, SpringLayout.EAST, addMember);
+		addMember.add(nameInput);
+		nameInput.setColumns(10);
+		
+		JLabel lblNewLabel_14 = new JLabel("\uBC88\uD638 :");
+		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_14, 6, SpringLayout.SOUTH, lblNewLabel_13);
+		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_14, 0, SpringLayout.WEST, addMember);
+		sl_addMember.putConstraint(SpringLayout.EAST, lblNewLabel_14, -6, SpringLayout.WEST, phoneNumInput);
+		lblNewLabel_14.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		lblNewLabel_14.setHorizontalAlignment(SwingConstants.CENTER);
+		addMember.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_15 = new JLabel("\uC774\uB984 :");
+		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_15, 105, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_15, -47, SpringLayout.SOUTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.EAST, lblNewLabel_15, -343, SpringLayout.EAST, addMember);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_14, -16, SpringLayout.NORTH, lblNewLabel_15);
+		sl_addMember.putConstraint(SpringLayout.WEST, nameInput, 6, SpringLayout.EAST, lblNewLabel_15);
+		lblNewLabel_15.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
+		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_15, 0, SpringLayout.WEST, addMember);
+		addMember.add(lblNewLabel_15);
+		
+		JButton btnNewButton_3 = new JButton("\uB4F1\uB85D");
+		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -10, SpringLayout.NORTH, btnNewButton_3);
+		btnNewButton_3.setForeground(new Color(255, 255, 255));
+		sl_addMember.putConstraint(SpringLayout.WEST, btnNewButton_3, -84, SpringLayout.EAST, addMember);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, btnNewButton_3, -4, SpringLayout.SOUTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.EAST, btnNewButton_3, 0, SpringLayout.EAST, addMember);
+		btnNewButton_3.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+		btnNewButton_3.setBackground(new Color(139, 0, 0));
+		addMember.add(btnNewButton_3);
+		addMember.setVisible(false);	
+		
+		//¸â¹ö¼öÁ¤
+		JPanel changeMember = new JPanel();
+		changeMember.setBackground(new Color(255, 255, 255,100));
+//		changeMember.setOpaque(false);
+		ImportCard.add(changeMember, "name_8555461592377");
+		SpringLayout sl_changeMember = new SpringLayout();
+		changeMember.setLayout(sl_changeMember);
+		
+		JLabel lblNewLabel_12 = new JLabel("- \uC218\uC815");
+		lblNewLabel_12.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_12, 0, SpringLayout.NORTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_12, 0, SpringLayout.WEST, changeMember);
+		changeMember.add(lblNewLabel_12);
+		
+		String[] number = {"¹øÈ£","ÀÌ¸§"};		
+		JComboBox chooseNumberName = new JComboBox(number);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, chooseNumberName, 6, SpringLayout.SOUTH, lblNewLabel_12);
+		sl_changeMember.putConstraint(SpringLayout.WEST, chooseNumberName, 10, SpringLayout.WEST, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 30, SpringLayout.SOUTH, lblNewLabel_12);
+		sl_changeMember.putConstraint(SpringLayout.EAST, chooseNumberName, 84, SpringLayout.WEST, changeMember);
+		changeMember.add(chooseNumberName);
+		
+		textField_4 = new JTextField();
+		sl_changeMember.putConstraint(SpringLayout.NORTH, textField_4, 36, SpringLayout.NORTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.WEST, textField_4, 6, SpringLayout.EAST, chooseNumberName);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, textField_4, 83, SpringLayout.NORTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.EAST, textField_4, 321, SpringLayout.EAST, chooseNumberName);
+		changeMember.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblNewLabel_16 = new JLabel("\uCD9C\uB825");
+		lblNewLabel_16.setBackground(new Color(255, 255, 255));
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_16, 6, SpringLayout.SOUTH, textField_4);
+		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_16, 10, SpringLayout.WEST, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_16, 47, SpringLayout.SOUTH, textField_4);
+		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_16, 405, SpringLayout.WEST, changeMember);
+		lblNewLabel_16.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_16.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		changeMember.add(lblNewLabel_16);
+		
+		textField_5 = new JTextField();
+		sl_changeMember.putConstraint(SpringLayout.NORTH, textField_5, 6, SpringLayout.SOUTH, lblNewLabel_16);
+		sl_changeMember.putConstraint(SpringLayout.WEST, textField_5, 0, SpringLayout.WEST, textField_4);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, textField_5, 53, SpringLayout.SOUTH, lblNewLabel_16);
+		sl_changeMember.putConstraint(SpringLayout.EAST, textField_5, -104, SpringLayout.EAST, changeMember);
+		changeMember.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblNewLabel_17 = new JLabel("\uC785\uB825 :");
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_17, 6, SpringLayout.SOUTH, lblNewLabel_16);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_17, -21, SpringLayout.SOUTH, changeMember);
+		lblNewLabel_17.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_17.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_17, 0, SpringLayout.WEST, lblNewLabel_12);
+		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_17, 0, SpringLayout.EAST, chooseNumberName);
+		changeMember.add(lblNewLabel_17);
+		
+		JButton btnNewButton_5 = new JButton("\uC218\uC815");
+		btnNewButton_5.setBackground(new Color(139, 0, 0));
+		btnNewButton_5.setForeground(new Color(255, 255, 255));
+		btnNewButton_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_changeMember.putConstraint(SpringLayout.NORTH, btnNewButton_5, 6, SpringLayout.SOUTH, lblNewLabel_16);
+		sl_changeMember.putConstraint(SpringLayout.WEST, btnNewButton_5, 6, SpringLayout.EAST, textField_5);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, btnNewButton_5, 0, SpringLayout.SOUTH, textField_5);
+		sl_changeMember.putConstraint(SpringLayout.EAST, btnNewButton_5, 0, SpringLayout.EAST, textField_4);
+		changeMember.add(btnNewButton_5);
+		changeMember.setVisible(false);	
+
+		
 		//¸â¹ö»èÁ¦
 		JPanel deleteMember = new JPanel();
 		deleteMember.setBackground(new Color(255, 255, 255,100));
-		deleteMember.setOpaque(false);
+//		deleteMember.setOpaque(false);
 		ImportCard.add(deleteMember, "name_8584683626980");
 		SpringLayout sl_deleteMember = new SpringLayout();
 		deleteMember.setLayout(sl_deleteMember);
@@ -174,40 +310,59 @@ public class ManagementGUI {
 		lblNewLabel_10.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
 		deleteMember.add(lblNewLabel_10);
+		
+		JComboBox comboBox = new JComboBox(number);
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, comboBox, 6, SpringLayout.SOUTH, lblNewLabel_10);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, comboBox, 10, SpringLayout.WEST, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, comboBox, 30, SpringLayout.SOUTH, lblNewLabel_10);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, comboBox, -333, SpringLayout.EAST, deleteMember);
+		deleteMember.add(comboBox);
+		
+		textField_6 = new JTextField();
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, textField_6, 0, SpringLayout.NORTH, comboBox);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, textField_6, 6, SpringLayout.EAST, comboBox);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, textField_6, 81, SpringLayout.NORTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, textField_6, -10, SpringLayout.EAST, deleteMember);
+		deleteMember.add(textField_6);
+		textField_6.setColumns(10);
+		
+		JLabel lblNewLabel_18 = new JLabel("\uCD9C\uB825");
+		lblNewLabel_18.setBackground(new Color(255, 255, 255));
+		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_18.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, lblNewLabel_18, 8, SpringLayout.SOUTH, textField_6);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, lblNewLabel_18, -395, SpringLayout.EAST, textField_6);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_18, 53, SpringLayout.SOUTH, textField_6);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, lblNewLabel_18, 0, SpringLayout.EAST, textField_6);
+		deleteMember.add(lblNewLabel_18);
+		
+		JLabel lblNewLabel_19 = new JLabel("\uC785\uB825 :");
+		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_19.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, lblNewLabel_19, 6, SpringLayout.SOUTH, lblNewLabel_18);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, lblNewLabel_19, 0, SpringLayout.WEST, comboBox);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_19, 60, SpringLayout.SOUTH, lblNewLabel_18);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, lblNewLabel_19, 0, SpringLayout.EAST, comboBox);
+		deleteMember.add(lblNewLabel_19);
+		
+		textField_7 = new JTextField();
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, textField_7, -62, SpringLayout.SOUTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, textField_7, 6, SpringLayout.EAST, lblNewLabel_19);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, textField_7, -17, SpringLayout.SOUTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, textField_7, 232, SpringLayout.EAST, lblNewLabel_19);
+		deleteMember.add(textField_7);
+		textField_7.setColumns(10);
+		
+		JButton btnNewButton_4 = new JButton("\uC0AD\uC81C");
+		btnNewButton_4.setBackground(new Color(139, 0, 0));
+		btnNewButton_4.setForeground(new Color(255, 255, 255));
+		btnNewButton_4.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, btnNewButton_4, 6, SpringLayout.SOUTH, lblNewLabel_18);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, btnNewButton_4, 13, SpringLayout.EAST, textField_7);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, btnNewButton_4, 0, SpringLayout.SOUTH, textField_7);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, btnNewButton_4, 0, SpringLayout.EAST, textField_6);
+		deleteMember.add(btnNewButton_4);
 		deleteMember.setVisible(false);
-		
-		
-		//¸â¹ö¼öÁ¤
-		JPanel changeMember = new JPanel();
-		changeMember.setBackground(new Color(255, 255, 255,100));
-		changeMember.setOpaque(false);
-		ImportCard.add(changeMember, "name_8555461592377");
-		SpringLayout sl_changeMember = new SpringLayout();
-		changeMember.setLayout(sl_changeMember);
-		
-		JLabel lblNewLabel_12 = new JLabel("- \uC218\uC815");
-		lblNewLabel_12.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_12, 0, SpringLayout.NORTH, changeMember);
-		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_12, 0, SpringLayout.WEST, changeMember);
-		changeMember.add(lblNewLabel_12);
-		changeMember.setVisible(false);
-		
-		//¸â¹öÃß°¡
-		JPanel addMember = new JPanel();
-		addMember.setBackground(new Color(255, 255, 255,100));
-		addMember.setOpaque(false);
-		ImportCard.add(addMember, "name_8523663693515");
-		SpringLayout sl_addMember = new SpringLayout();
-		addMember.setLayout(sl_addMember);
-		
-		JLabel lblNewLabel_13 = new JLabel("- \uB4F1\uB85D");
-		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_13.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_13, 0, SpringLayout.NORTH, addMember);
-		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_13, 0, SpringLayout.WEST, addMember);
-		addMember.add(lblNewLabel_13);
-		addMember.setVisible(false);
 		
 		//È¸¿ø°ü¸® ¹öÆ°
 		//¸¸¾à ¹öÆ°À» ´©¸£¸é ½ÇÇàµÉ ÆÇ³Ú ³ªÅ¸³»±â
