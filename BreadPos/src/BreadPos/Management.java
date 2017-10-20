@@ -47,10 +47,10 @@ public class Management {
 		
 		float per = percent / 100f;
 		
-		System.out.println(per);
+		
 		
 		int discountMoney = (int)(sumMoney * per);
-		System.out.println(discountMoney);
+		
 		
 		int totalMoney = sumMoney - discountMoney;
 		
