@@ -231,7 +231,7 @@ public class LoginGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				office_num = mg.officeNumIdPw(id, pw);
 				if(office_num != 0) {
-					MainGUI main = new MainGUI();
+					MainGUI main = new MainGUI(office_num);
 					main.main(office_num);
 					frame.dispose();
 				} else {
@@ -246,7 +246,7 @@ public class LoginGUI {
 		loginBtn.setBackground(new Color(255, 255, 255, 200));
 		loginBtn.setBorderPainted(false);
 		loginBtn.setFocusPainted(false);
-		loginBtn.setFont(new Font("서울남산체 M", Font.PLAIN, 16));
+		//loginBtn.setFont(new Font("서울남산체 M", Font.PLAIN, 16));
 		loginBtn.setOpaque(false);
 		sl_LoginPanel.putConstraint(SpringLayout.NORTH, loginBtn, -65, SpringLayout.SOUTH, LoginPanel);
 		sl_LoginPanel.putConstraint(SpringLayout.WEST, loginBtn, -150, SpringLayout.EAST, LoginPanel);

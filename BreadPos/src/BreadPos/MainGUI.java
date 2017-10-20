@@ -35,6 +35,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import DB.Bread;
+import javax.swing.border.EmptyBorder;
 
 public class MainGUI {
 
@@ -51,6 +52,7 @@ public class MainGUI {
 	private Bread breadSelectBtn;
 	private Tab tab;
 	private static ArrayList<Bread> breadList = new ArrayList<Bread>();
+	private static int office_num;
 
 	/**
 	 * Launch the application.
@@ -59,7 +61,7 @@ public class MainGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainGUI window = new MainGUI();
+					MainGUI window = new MainGUI(office_num);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,7 +74,8 @@ public class MainGUI {
 	 * @wbp.parser.constructor
 	 */
 
-	public MainGUI() {
+	public MainGUI(int office_num) {
+		this.office_num = office_num;
 		tab = new Tab();
 		mg = new Management();
 		initialize();
@@ -123,15 +126,15 @@ public class MainGUI {
 		sl_leftPanel.putConstraint(SpringLayout.WEST, ShowPanel, 10, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, ShowPanel, -21, SpringLayout.EAST, leftPanel);
 		ShowPanel.setOpaque(false);
-		ShowPanel.setBackground(new Color(211, 211, 211));
+		ShowPanel.setBackground(Color.WHITE);
 		ShowPanel.setForeground(new Color(0, 0, 0));
 		leftPanel.add(ShowPanel);
 		SpringLayout sl_ShowPanel = new SpringLayout();
 		ShowPanel.setLayout(sl_ShowPanel);
 
 		JPanel columnsPanel = new JPanel();
+		columnsPanel.setBackground(new Color(255, 255, 255, 150));
 		sl_ShowPanel.putConstraint(SpringLayout.WEST, columnsPanel, 10, SpringLayout.WEST, ShowPanel);
-		columnsPanel.setOpaque(false);
 		sl_ShowPanel.putConstraint(SpringLayout.NORTH, columnsPanel, 10, SpringLayout.NORTH, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, columnsPanel, -375, SpringLayout.SOUTH, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.EAST, columnsPanel, -10, SpringLayout.EAST, ShowPanel);
@@ -184,6 +187,8 @@ public class MainGUI {
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -6, SpringLayout.NORTH, totalMoneyPanel);
 		
 		JPanel ListPanel = new JPanel();
+		ListPanel.setBackground(new Color(255, 255, 255, 150));
+		ListPanel.setOpaque(false);
 		sl_ShowPanel.putConstraint(SpringLayout.NORTH, ListPanel, 0, SpringLayout.SOUTH, columnsPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.WEST, ListPanel, 10, SpringLayout.WEST, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, ListPanel, 365, SpringLayout.SOUTH, columnsPanel);
@@ -192,65 +197,69 @@ public class MainGUI {
 		SpringLayout sl_ListPanel = new SpringLayout();
 		ListPanel.setLayout(sl_ListPanel);
 		
-		for (int i = 0; i < breadList.size(); i++) {
-			System.out.println(breadList.get(i).getName());
-		}
-		
 		JPanel choicePanel = new JPanel();
+		choicePanel.setBackground(new Color(255, 255, 255, 150));
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, choicePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, choicePanel, 0, SpringLayout.WEST, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, choicePanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, choicePanel, 63, SpringLayout.WEST, ListPanel);
+		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 		ListPanel.add(choicePanel);
 		
 		JPanel productPanel = new JPanel();
+		productPanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
 		flowLayout.setHgap(40);
 		flowLayout.setVgap(10);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, productPanel, 0, SpringLayout.NORTH, choicePanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, productPanel, 0, SpringLayout.EAST, choicePanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, productPanel, 0, SpringLayout.SOUTH, choicePanel);
-		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		choicePanel.add(chckbxNewCheckBox);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, productPanel, 248, SpringLayout.WEST, ListPanel);
 		ListPanel.add(productPanel);
-		
+				
 		JPanel amountPanel = new JPanel();
+		amountPanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout_1 = (FlowLayout) amountPanel.getLayout();
 		flowLayout_1.setHgap(10);
 		flowLayout_1.setVgap(10);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, amountPanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, amountPanel, 0, SpringLayout.EAST, productPanel);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		productPanel.add(lblNewLabel_3);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, amountPanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, amountPanel, 312, SpringLayout.WEST, ListPanel);
 		ListPanel.add(amountPanel);
 		
 		JPanel pricePanel = new JPanel();
+		pricePanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
 		flowLayout_2.setVgap(10);
 		flowLayout_2.setHgap(10);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, pricePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, pricePanel, 0, SpringLayout.EAST, amountPanel);
-		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		amountPanel.add(lblNewLabel_5);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, pricePanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, pricePanel, 0, SpringLayout.EAST, ListPanel);
 		ListPanel.add(pricePanel);
-		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		pricePanel.add(lblNewLabel_7);
 		totalMoneyPanel.setOpaque(false);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, totalMoneyPanel, 181, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, totalMoneyPanel, -10, SpringLayout.EAST, leftPanel);
 		leftPanel.add(totalMoneyPanel);
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
+		
+		JCheckBox checkBox = new JCheckBox("선택");
+//		choicePanel.add(checkBox);
+		
+		System.out.println(breadList.size());
+		for (int i = 0; i < breadList.size(); i++) {
+			System.out.println(i + " : " + breadList.get(i).getName());
+//			JCheckBox checkBox = new JCheckBox("선택");
+			choicePanel.add(checkBox);
+			JLabel lblNewLabel_pro = new JLabel(breadList.get(i).getName());
+			productPanel.add(lblNewLabel_pro);
+			JLabel lblNewLabel_amon = new JLabel("수량");
+			amountPanel.add(lblNewLabel_amon);
+			JLabel lblNewLabel_pri = new JLabel("" + breadList.get(i).getPrice());
+			pricePanel.add(lblNewLabel_pri);
+		}
 
 		JLabel lblNewLabel_1 = new JLabel("\uCD1D \uACB0\uC81C \uAE08\uC561 :");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -411,8 +420,11 @@ public class MainGUI {
 		buttonPanel.add(closeBtn);
 
 		JPanel tabbedPanel = new JPanel();
+		tabbedPanel.setOpaque(false);
+		tabbedPanel.setBackground(Color.WHITE);
 		sl_rightPanel.putConstraint(SpringLayout.SOUTH, tabbedPanel, -21, SpringLayout.SOUTH, rightPanel);
 		tabbedPanel.setOpaque(false);
+		tabbedPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		icon = new ImageIcon("BreadPos/image/KakaoTalk_20171018_201408552.jpg");
 
 		sl_rightPanel.putConstraint(SpringLayout.NORTH, tabbedPanel, 6, SpringLayout.SOUTH, buttonPanel);
@@ -422,6 +434,9 @@ public class MainGUI {
 		tabbedPanel.setLayout(new GridLayout(1, 0, 10, 0));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
+		tabbedPane.setOpaque(false);
+		tabbedPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		tabbedPanel.add(tabbedPane);
 		
 		JPanel whitePanel = new JPanel() {
@@ -438,47 +453,124 @@ public class MainGUI {
 				}
 			}
 		};
+		whitePanel.setBackground(Color.WHITE);
 		whitePanel.setOpaque(false);
+		whitePanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, "밀가루");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(whitePanel, "white");
 		
-		JPanel boriPanel = new JPanel();
+		JPanel boriPanel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				try {
+					bimg = ImageIO.read(new File("./image/background.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(bimg, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		boriPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		boriPanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("bori", null, boriPanel, "보리");
 		boriPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(boriPanel, "bori");
 		
-		JPanel cornPanel = new JPanel();
+		JPanel cornPanel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				try {
+					bimg = ImageIO.read(new File("./image/background.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(bimg, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		cornPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		cornPanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("corn", null, cornPanel, "옥수수");
 		cornPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(cornPanel, "corn");
 		
-		JPanel ryePanel = new JPanel();
+		JPanel ryePanel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				try {
+					bimg = ImageIO.read(new File("./image/background.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(bimg, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		ryePanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		ryePanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("rye", null, ryePanel, "호밀");
 		ryePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(ryePanel, "rye");
 		
-		JPanel mixturePanel = new JPanel();
+		JPanel mixturePanel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				try {
+					bimg = ImageIO.read(new File("./image/background.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(bimg, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		mixturePanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		mixturePanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("mixture", null, mixturePanel, "혼합");
 		mixturePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(mixturePanel, "mix");
 		
-		JPanel othherPanel = new JPanel();
-		tabbedPane.addTab("other", null, othherPanel, "기타");
-		othherPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
+		JPanel otherPanel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				try {
+					bimg = ImageIO.read(new File("./image/background.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(bimg, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					setBackground(new Color(0, 0, 0, 0));
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		otherPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
+		otherPanel.setBackground(Color.WHITE);
+		tabbedPane.addTab("other", null, otherPanel, "기타");
+		otherPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		tab.tabbed(othherPanel, "other");
+		tab.tabbed(otherPanel, "other");
 	}
 
 	public static void sendMessage(Bread list) {
 		breadList.add(list);
-		System.out.println(list.getName());
+		//System.out.println(list.getName());
 		//System.out.println(vector.size());
-		new MainGUI();
+		new MainGUI(office_num);
 	}
 }
