@@ -72,7 +72,7 @@ public class ManagementGUI {
 	ArrayList<Member> OuputList = new ArrayList<>(); // 출력
 	String[] OutList;
 	String Ouput; // 출력
-	Vector<String> newBreadList;
+
 
 	/**
 	 * Launch the application.
@@ -660,10 +660,8 @@ public class ManagementGUI {
 		for (int i = 0; i < new BreadInfoDAO().select_bread().size(); i++) {
 			breadNameList.add(new BreadInfoDAO().select_bread().get(i).getName());
 		}
-		newBreadList = new Vector<>();
-		for (int i = 0; i < new BreadInfoDAO().select_bread().size(); i++) {
-			newBreadList.add(new BreadInfoDAO().select_bread().get(i).getName());
-		}
+		
+		
 
 		// 메뉴추가 패널
 		JPanel addMenuPanel = new JPanel();
@@ -791,9 +789,9 @@ public class ManagementGUI {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.plusBread(InputBreadName.getText(), breadTypeChoice, breadPrice);
 				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
-				for (int j = 0; j < newBreadList.size(); j++) {
-					if (breadName.equals(newBreadList.get(j))) {
-						newBreadList.addElement(breadName);
+				for (int j = 0; j < breadNameList.size(); j++) {
+					if (breadName.equals(breadNameList.get(j))) {
+						breadNameList.add(breadName);
 					}
 				}
 				
@@ -919,7 +917,7 @@ public class ManagementGUI {
 		SpringLayout sl_changeMenuComponents = new SpringLayout();
 		changeMenuComponents.setLayout(sl_changeMenuComponents);
 
-		JComboBox BreadNameCombo = new JComboBox(newBreadList.toArray());//breadNameList.toArray()
+		JComboBox BreadNameCombo = new JComboBox(breadNameList.toArray());//breadNameList.toArray()
 		BreadNameCombo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(BreadNameCombo)) {
