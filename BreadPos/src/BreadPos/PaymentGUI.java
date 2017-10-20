@@ -24,7 +24,7 @@ public class PaymentGUI {
 	public JFrame frame;
 	private JTable table;
 	private MyCllickListener myCllickListener;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +47,6 @@ public class PaymentGUI {
 	public PaymentGUI() {
 		initialize();
 	}
-
 
 	/**
 	 * Initialize the contents of the frame.
@@ -134,12 +133,14 @@ public class PaymentGUI {
 
 		JButton btnNewButton_5 = new JButton("º¸·ù");
 		btnNewButton_5.addMouseListener(new MouseAdapter() {
-			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				myCllickListener.onClick();
+				frame.dispose();
+			}
 		});
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				myCllickListener.onClick();
-				frame.dispose();
 			}
 		});
 		panel_3.add(btnNewButton_5);
@@ -186,7 +187,7 @@ public class PaymentGUI {
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
 		this.myCllickListener = myCllickListener;
-		
+
 	}
 
 }
