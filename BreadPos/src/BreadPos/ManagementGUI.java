@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Vector;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -44,7 +45,6 @@ public class ManagementGUI {
 
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
-	private int choice; // 밑에 메뉴 클릭시 발생하는 변수
 	private BufferedImage icon;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -58,7 +58,7 @@ public class ManagementGUI {
 	private JTextField nameInput;
 	private JTextField Input;
 	private JTextField InputChange;
-	private JTextField textField_6;
+	private JTextField InputValue;
 	Management mg = new Management();
 	String breadName;
 	String[] breadType = { "밀가루", "보리", "옥수수", "호밀", "혼합", "기타" };
@@ -70,7 +70,9 @@ public class ManagementGUI {
 	int check;
 	ArrayList<String> breadNameList;
 	ArrayList<Member> OuputList = new ArrayList<>(); // 출력
+	String[] OutList;
 	String Ouput; // 출력
+	Vector<String> newBreadList;
 
 	/**
 	 * Launch the application.
@@ -124,12 +126,6 @@ public class ManagementGUI {
 		frame.getContentPane().add(panel, "name_52178911182620");
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
-
-		// 빵이름 리스트 생성
-		breadNameList = new ArrayList<>();
-		for (int i = 0; i < new BreadInfoDAO().select_bread().size(); i++) {
-			breadNameList.add(new BreadInfoDAO().select_bread().get(i).getName());
-		}
 
 		JPanel importantPanel = new JPanel();
 		sl_panel.putConstraint(SpringLayout.SOUTH, importantPanel, 363, SpringLayout.NORTH, panel);
@@ -190,6 +186,7 @@ public class ManagementGUI {
 
 		// 멤버추가
 		JPanel addMember = new JPanel();
+		addMember.setOpaque(false);
 		addMember.setBackground(new Color(255, 255, 255, 100));
 		// addMember.setOpaque(false);
 		ImportCard.add(addMember, "name_8523663693515");
@@ -285,7 +282,8 @@ public class ManagementGUI {
 		sl_changeMember.putConstraint(SpringLayout.EAST, chooseNumberName, 84, SpringLayout.WEST, changeMember);
 		changeMember.add(chooseNumberName);
 
-		Input = new JTextField();
+		Input = new JTextField(); // 바꿀 것 조회 하려는 값 입력시
+		sl_changeMember.putConstraint(SpringLayout.WEST, OutputResult, 0, SpringLayout.WEST, Input);
 		Input.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -294,16 +292,16 @@ public class ManagementGUI {
 						OuputList.add(new MemberInfoDAO().selectName(Input.getText()).get(i));
 					}
 					for (int j = 0; j < OuputList.size(); j++) {
-						System.out.println("이름 리스트"+OuputList.get(j).getMember_name());
+						System.out.println("이름 리스트" + OuputList.get(j).getMember_name());
 						Ouput = OuputList.get(j).getMember_name();
 						OutputResult.setText(OuputList.get(j).getMember_name());
-					}				
+					}
 				} else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
 					for (int i = 0; i < new MemberInfoDAO().selectPhone(Input.getText()).size(); i++) {
 						OuputList.add(new MemberInfoDAO().selectPhone(Input.getText()).get(i));
 					}
 					for (int j = 0; j < OuputList.size(); j++) {
-						System.out.println("번호 리스트"+OuputList.get(j).getMember_phone());
+						System.out.println("번호 리스트" + OuputList.get(j).getMember_phone());
 						Ouput = OuputList.get(j).getMember_phone();
 						OutputResult.setText(OuputList.get(j).getMember_phone());
 					}
@@ -320,18 +318,8 @@ public class ManagementGUI {
 		changeMember.add(Input);
 		Input.setColumns(10);
 
-		
-		// 번호 >> 이름 출력
-//		 for (int i = 0; i < OuputList.size(); i++) {
-//			 if(Input.getText().equals(OuputList.get(i).getMember_phone())) {// 번호 >> 이름
-//			 OutputResult.setText(OuputList.get(i).getMember_name());
-//			 }else if (Input.getText().equals(OuputList.get(i).getMember_name())) {// 이름>> 번호
-//			 OutputResult.setText(OuputList.get(i).getMember_phone());
-//			 }
-//			 }		
 		OutputResult.setBackground(Color.GRAY);
 		sl_changeMember.putConstraint(SpringLayout.NORTH, OutputResult, 6, SpringLayout.SOUTH, Input);
-		sl_changeMember.putConstraint(SpringLayout.WEST, OutputResult, 10, SpringLayout.WEST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, OutputResult, 47, SpringLayout.SOUTH, Input);
 		sl_changeMember.putConstraint(SpringLayout.EAST, OutputResult, 405, SpringLayout.WEST, changeMember);
 		OutputResult.setHorizontalAlignment(SwingConstants.CENTER);
@@ -339,29 +327,15 @@ public class ManagementGUI {
 		changeMember.add(OutputResult);
 
 		InputChange = new JTextField();
-		InputChange.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				
-				for (int j = 0; j < OuputList.size(); j++) {
-					if(InputChange.equals(OuputList.get(j))) {
-//						int count = mg.updateMember(newPhone, newName, phone, name);
-					}
-				}
-				
-			}
-		});
 		sl_changeMember.putConstraint(SpringLayout.NORTH, InputChange, 6, SpringLayout.SOUTH, OutputResult);
 		sl_changeMember.putConstraint(SpringLayout.WEST, InputChange, 0, SpringLayout.WEST, Input);
-		sl_changeMember.putConstraint(SpringLayout.SOUTH, InputChange, 53, SpringLayout.SOUTH, OutputResult);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, InputChange, -21, SpringLayout.SOUTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.EAST, InputChange, -104, SpringLayout.EAST, changeMember);
 		changeMember.add(InputChange);
 		InputChange.setColumns(10);
-		
-
 
 		JLabel lblNewLabel_17 = new JLabel("\uC785\uB825 :");
-		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_17, 6, SpringLayout.SOUTH, OutputResult);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_17, 53, SpringLayout.SOUTH, chooseNumberName);
 		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_17, 0, SpringLayout.WEST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_17, -21, SpringLayout.SOUTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_17, -6, SpringLayout.WEST, InputChange);
@@ -369,27 +343,41 @@ public class ManagementGUI {
 		lblNewLabel_17.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		changeMember.add(lblNewLabel_17);
 
-		JButton btnNewButton_5 = new JButton("\uC218\uC815");
+		JButton btnNewButton_5 = new JButton("\uC218\uC815");// 수정버튼 클릭시
+		sl_changeMember.putConstraint(SpringLayout.NORTH, btnNewButton_5, 6, SpringLayout.SOUTH, OutputResult);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, btnNewButton_5, -21, SpringLayout.SOUTH, changeMember);
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("이름 / 번호" + breadName);
-				System.out.println("출력값" + Input.getText());
+				if (breadName.equals(number[0])) { // 번호 >> 이름
+					for (int j = 0; j < OuputList.size(); j++) {
+						if (Input.getText().equals(OuputList.get(j).getMember_phone())) {
+							int count = mg.updateMember(Input.getText(), InputChange.getText(), Input.getText(),
+									OuputList.get(j).getMember_name());
+						}
+					}
+				} else if (breadName.equals(number[1])) {// 이름 >> 번호
+					for (int j = 0; j < OuputList.size(); j++) {
+						if (Input.getText().equals(OuputList.get(j).getMember_name())) {
+							int count = mg.updateMember(InputChange.getText(), Input.getText(),
+									OuputList.get(j).getMember_phone(), Input.getText());
+						}
+					}
+				}
 			}
 		});
 		btnNewButton_5.setBackground(new Color(139, 0, 0));
 		btnNewButton_5.setForeground(new Color(255, 255, 255));
 		btnNewButton_5.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		sl_changeMember.putConstraint(SpringLayout.NORTH, btnNewButton_5, 6, SpringLayout.SOUTH, OutputResult);
 		sl_changeMember.putConstraint(SpringLayout.WEST, btnNewButton_5, 6, SpringLayout.EAST, InputChange);
-		sl_changeMember.putConstraint(SpringLayout.SOUTH, btnNewButton_5, 0, SpringLayout.SOUTH, InputChange);
 		sl_changeMember.putConstraint(SpringLayout.EAST, btnNewButton_5, 0, SpringLayout.EAST, Input);
 		changeMember.add(btnNewButton_5);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255, 150));
 		sl_changeMember.putConstraint(SpringLayout.WEST, panel_1, 6, SpringLayout.EAST, chooseNumberName);
 		sl_changeMember.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, changeMember);
-		//sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 0, SpringLayout.SOUTH, Input);
+		// sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 0,
+		// SpringLayout.SOUTH, Input);
 		sl_changeMember.putConstraint(SpringLayout.NORTH, panel_1, 36, SpringLayout.NORTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, panel_1, 83, SpringLayout.NORTH, changeMember);
 		changeMember.add(panel_1);
@@ -397,6 +385,7 @@ public class ManagementGUI {
 
 		// 멤버삭제
 		JPanel deleteMember = new JPanel();
+		deleteMember.setOpaque(false);
 		deleteMember.setBackground(new Color(255, 255, 255, 100));
 		// deleteMember.setOpaque(false);
 		ImportCard.add(deleteMember, "name_8584683626980");
@@ -413,41 +402,91 @@ public class ManagementGUI {
 		deleteMember.add(lblNewLabel_10);
 
 		JComboBox comboBox = new JComboBox(number);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uBC88\uD638", "\uC774\uB984" }));
+		comboBox.addActionListener(new ActionListener() { // 번호/이름 옵션선택
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource().equals(comboBox)) {
+					breadName = comboBox.getSelectedItem().toString();
+				}
+			}
+		});
+		// comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uBC88\uD638",
+		// "\uC774\uB984" }));
 		comboBox.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		sl_deleteMember.putConstraint(SpringLayout.NORTH, comboBox, 6, SpringLayout.SOUTH, lblNewLabel_10);
 		sl_deleteMember.putConstraint(SpringLayout.WEST, comboBox, 10, SpringLayout.WEST, deleteMember);
 		sl_deleteMember.putConstraint(SpringLayout.EAST, comboBox, -333, SpringLayout.EAST, deleteMember);
 		deleteMember.add(comboBox);
 
-		textField_6 = new JTextField();
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, textField_6, 36, SpringLayout.NORTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.WEST, textField_6, 6, SpringLayout.EAST, comboBox);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, textField_6, -123, SpringLayout.SOUTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, textField_6, -10, SpringLayout.EAST, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, comboBox, 0, SpringLayout.SOUTH, textField_6);
-		deleteMember.add(textField_6);
-		textField_6.setColumns(10);
+		JLabel OuputDelete = new JLabel("\uCD9C\uB825"); // 출력 라벨
 
-		JLabel lblNewLabel_18 = new JLabel("\uCD9C\uB825");
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, lblNewLabel_18, 89, SpringLayout.NORTH, deleteMember);
-		lblNewLabel_18.setBackground(new Color(255, 255, 255));
-		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_18.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		sl_deleteMember.putConstraint(SpringLayout.WEST, lblNewLabel_18, -395, SpringLayout.EAST, textField_6);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_18, 53, SpringLayout.SOUTH, textField_6);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, lblNewLabel_18, 0, SpringLayout.EAST, textField_6);
-		deleteMember.add(lblNewLabel_18);
+		InputValue = new JTextField(); // 삭제할 번호 / 이름 입력
+		InputValue.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (breadName.equals(number[0])) {// breadName = 번호
+					for (int i = 0; i < new MemberInfoDAO().selectName(InputValue.getText()).size(); i++) {
+						OuputList.add(new MemberInfoDAO().selectName(InputValue.getText()).get(i));
+					}
+					// OutList = new String[OuputList.size()];
+					for (int j = 0; j < OuputList.size(); j++) {
+						System.out.println("이름 리스트" + OuputList.get(j).getMember_name());
+						OuputDelete.setText(OuputList.get(j).getMember_name());
+					}
+				} else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
+					for (int i = 0; i < new MemberInfoDAO().selectPhone(InputValue.getText()).size(); i++) {
+						OuputList.add(new MemberInfoDAO().selectPhone(InputValue.getText()).get(i));
+					}
+					// OutList = new String[OuputList.size()];
+					for (int j = 0; j < OuputList.size(); j++) {
+						System.out.println("번호 리스트" + OuputList.get(j).getMember_phone());
+						OuputDelete.setText(OuputList.get(j).getMember_phone());
+					}
+				}
+			}
+		});
 
-		JButton btnNewButton_4 = new JButton("\uC0AD\uC81C");
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, btnNewButton_4, 6, SpringLayout.SOUTH, lblNewLabel_18);
-		sl_deleteMember.putConstraint(SpringLayout.WEST, btnNewButton_4, 327, SpringLayout.WEST, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, btnNewButton_4, -17, SpringLayout.SOUTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, btnNewButton_4, -10, SpringLayout.EAST, deleteMember);
-		btnNewButton_4.setBackground(new Color(139, 0, 0));
-		btnNewButton_4.setForeground(new Color(255, 255, 255));
-		btnNewButton_4.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		deleteMember.add(btnNewButton_4);
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, InputValue, 36, SpringLayout.NORTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, InputValue, 6, SpringLayout.EAST, comboBox);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, InputValue, -123, SpringLayout.SOUTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, InputValue, -10, SpringLayout.EAST, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, comboBox, 0, SpringLayout.SOUTH, InputValue);
+		deleteMember.add(InputValue);
+		InputValue.setColumns(10);
+
+		JButton deleteButton = new JButton("\uC0AD\uC81C");
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, deleteButton, 59, SpringLayout.SOUTH, InputValue);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, deleteButton, -17, SpringLayout.SOUTH, deleteMember);
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (breadName.equals(number[0])) {// 번호 >> 이름
+					for (int j = 0; j < OuputList.size(); j++) {
+						if (InputValue.getText().equals(OuputList.get(j).getMember_phone())) {
+							int count = mg.deleteMember(OuputList.get(j).getMember_name(), InputValue.getText());
+						}
+					}
+				} else if (breadName.equals(number[1])) {// 이름 >> 번호
+					for (int j = 0; j < OuputList.size(); j++) {
+						if (InputValue.getText().equals(OuputList.get(j).getMember_name())) {
+							int count = mg.deleteMember(InputValue.getText(), OuputList.get(j).getMember_phone());
+						}
+					}
+				}
+			}
+		});
+		sl_deleteMember.putConstraint(SpringLayout.WEST, deleteButton, 327, SpringLayout.WEST, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, deleteButton, -10, SpringLayout.EAST, deleteMember);
+		deleteButton.setBackground(new Color(139, 0, 0));
+		deleteButton.setForeground(new Color(255, 255, 255));
+		deleteButton.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		deleteMember.add(deleteButton);
+
+		OuputDelete.setHorizontalAlignment(SwingConstants.CENTER);
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, OuputDelete, 6, SpringLayout.SOUTH, InputValue);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, OuputDelete, 0, SpringLayout.WEST, InputValue);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, OuputDelete, 51, SpringLayout.SOUTH, InputValue);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, OuputDelete, 0, SpringLayout.EAST, InputValue);
+		OuputDelete.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		deleteMember.add(OuputDelete);
 		deleteMember.setVisible(false);
 
 		// 회원관리 버튼
@@ -455,7 +494,6 @@ public class ManagementGUI {
 		JButton addMemberButton = new JButton("\uB4F1\uB85D");
 		addMemberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {// 버튼클릭시 멤버 변수 값1 등록
-				memberChoice = 1;
 				deleteMember.setVisible(false);
 				changeMember.setVisible(false);
 				addMember.setVisible(true);
@@ -470,7 +508,6 @@ public class ManagementGUI {
 		JButton changeMemberButton = new JButton("\uC218\uC815");
 		changeMemberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {// 버튼클릭시 멤버 변수 값2 수정
-				memberChoice = 2;
 				deleteMember.setVisible(false);
 				changeMember.setVisible(true);
 				addMember.setVisible(false);
@@ -485,7 +522,6 @@ public class ManagementGUI {
 		JButton deleteMemberButton = new JButton("\uC0AD\uC81C");
 		deleteMemberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {// 버튼클릭시 멤버 변수 값3 삭제
-				memberChoice = 3;
 				deleteMember.setVisible(true);
 				changeMember.setVisible(false);
 				addMember.setVisible(false);
@@ -619,6 +655,157 @@ public class ManagementGUI {
 
 		changeInfoPanel.setVisible(false);
 
+		// 빵이름 리스트 생성
+		breadNameList = new ArrayList<>();
+		for (int i = 0; i < new BreadInfoDAO().select_bread().size(); i++) {
+			breadNameList.add(new BreadInfoDAO().select_bread().get(i).getName());
+		}
+		newBreadList = new Vector<>();
+		for (int i = 0; i < new BreadInfoDAO().select_bread().size(); i++) {
+			newBreadList.add(new BreadInfoDAO().select_bread().get(i).getName());
+		}
+
+		// 메뉴추가 패널
+		JPanel addMenuPanel = new JPanel();
+		// addMenuPanel.setOpaque(false);
+		addMenuPanel.setBackground(new Color(255, 255, 255, 100));
+		importantPanel.add(addMenuPanel, "name_399229462868927");
+		SpringLayout sl_addMenuPanel = new SpringLayout();
+		addMenuPanel.setLayout(sl_addMenuPanel);
+
+		JPanel addMenuComponents = new JPanel();
+		sl_addMenuPanel.putConstraint(SpringLayout.WEST, addMenuComponents, 25, SpringLayout.WEST, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, addMenuComponents, -81, SpringLayout.SOUTH, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.EAST, addMenuComponents, 414, SpringLayout.WEST, addMenuPanel);
+		addMenuComponents.setBackground(new Color(255, 255, 255, 0));
+		addMenuComponents.setOpaque(false);
+		addMenuPanel.add(addMenuComponents);
+		SpringLayout sl_addMenuComponents = new SpringLayout();
+		addMenuComponents.setLayout(sl_addMenuComponents);
+
+		InputBreadName = new JTextField();
+		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, InputBreadName, 0, SpringLayout.NORTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, InputBreadName, 47, SpringLayout.NORTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.EAST, InputBreadName, -10, SpringLayout.EAST,
+				addMenuComponents);
+		InputBreadName.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				breadName = InputBreadName.getText();
+				for (int i = 0; i < breadNameList.size(); i++) {
+					if (breadName != breadNameList.get(i)) {
+						breadNameList.add(breadName);
+					}
+				}
+			}
+		});
+		addMenuComponents.add(InputBreadName);
+		InputBreadName.setColumns(10);
+
+		InputBreadPrice = new JTextField();
+		InputBreadPrice.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				breadPrice = Integer.parseInt(InputBreadPrice.getText());
+			}
+		});
+		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, InputBreadPrice, -47, SpringLayout.SOUTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, InputBreadPrice, 0, SpringLayout.SOUTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.EAST, InputBreadPrice, -10, SpringLayout.EAST,
+				addMenuComponents);
+		addMenuComponents.add(InputBreadPrice);
+		InputBreadPrice.setColumns(10);
+
+		JLabel BreadNameLabel = new JLabel("\uBE75\uC774\uB984 :");
+		sl_addMenuComponents.putConstraint(SpringLayout.WEST, BreadNameLabel, 0, SpringLayout.WEST, addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.EAST, BreadNameLabel, -276, SpringLayout.EAST,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.WEST, InputBreadName, 6, SpringLayout.EAST, BreadNameLabel);
+		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, BreadNameLabel, 0, SpringLayout.NORTH,
+				addMenuComponents);
+		BreadNameLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		BreadNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addMenuComponents.add(BreadNameLabel);
+
+		JLabel BreadTypeLabel = new JLabel("\uBE75\uC885\uB958 :");
+		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, BreadTypeLabel, 81, SpringLayout.NORTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.EAST, BreadTypeLabel, -276, SpringLayout.EAST,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, BreadNameLabel, -31, SpringLayout.NORTH, BreadTypeLabel);
+		BreadTypeLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		BreadTypeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		sl_addMenuComponents.putConstraint(SpringLayout.WEST, BreadTypeLabel, 0, SpringLayout.WEST, BreadNameLabel);
+		addMenuComponents.add(BreadTypeLabel);
+
+		JLabel BreadPriceLabel = new JLabel("\uAC00\uACA9 :");
+		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, BreadPriceLabel, 161, SpringLayout.NORTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.WEST, BreadPriceLabel, 0, SpringLayout.WEST, addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, BreadPriceLabel, 0, SpringLayout.SOUTH,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.EAST, BreadPriceLabel, -276, SpringLayout.EAST,
+				addMenuComponents);
+		sl_addMenuComponents.putConstraint(SpringLayout.WEST, InputBreadPrice, 6, SpringLayout.EAST, BreadPriceLabel);
+		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, BreadTypeLabel, -30, SpringLayout.NORTH,
+				BreadPriceLabel);
+		BreadPriceLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		BreadPriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addMenuComponents.add(BreadPriceLabel);
+
+		JLabel lblNewLabel = new JLabel("<\uBA54\uB274 \uCD94\uAC00>");
+		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, lblNewLabel, 10, SpringLayout.NORTH, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -307, SpringLayout.SOUTH, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, addMenuComponents, 18, SpringLayout.SOUTH, lblNewLabel);
+		sl_addMenuPanel.putConstraint(SpringLayout.WEST, lblNewLabel, 104, SpringLayout.WEST, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.EAST, lblNewLabel, -102, SpringLayout.EAST, addMenuPanel);
+		lblNewLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 28));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addMenuPanel.add(lblNewLabel);
+
+		// 빵종류 선택
+		JComboBox comboBox_1 = new JComboBox(breadType);
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource().equals(comboBox_1)) {
+					breadTypeChoice = comboBox_1.getSelectedItem().toString();
+				}
+			}
+		});
+		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, comboBox_1, 34, SpringLayout.SOUTH, InputBreadName);
+		sl_addMenuComponents.putConstraint(SpringLayout.WEST, comboBox_1, 6, SpringLayout.EAST, BreadTypeLabel);
+		sl_addMenuComponents.putConstraint(SpringLayout.EAST, comboBox_1, -10, SpringLayout.EAST, addMenuComponents);
+		addMenuComponents.add(comboBox_1);
+
+		JButton btnNewButton = new JButton("\uCD94\uAC00");
+		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton, 20, SpringLayout.SOUTH, addMenuComponents);
+		sl_addMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton, -126, SpringLayout.EAST, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton, -25, SpringLayout.SOUTH, addMenuPanel);
+		sl_addMenuPanel.putConstraint(SpringLayout.EAST, btnNewButton, -27, SpringLayout.EAST, addMenuPanel);
+		addMenuPanel.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int count = mg.plusBread(InputBreadName.getText(), breadTypeChoice, breadPrice);
+				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
+				for (int j = 0; j < newBreadList.size(); j++) {
+					if (breadName.equals(newBreadList.get(j))) {
+						newBreadList.addElement(breadName);
+					}
+				}
+				
+			}
+		});
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(210, 105, 30));
+		btnNewButton.setFont(new Font("나눔손글씨 펜", Font.BOLD, 20));
+		addMenuPanel.setVisible(false); // 안보이게 함
+		
+		
+
 		// 메뉴삭제 판넬
 		JPanel deleteMenuPanel = new JPanel();
 		deleteMenuPanel.setBackground(new Color(255, 255, 255, 100));
@@ -732,7 +919,7 @@ public class ManagementGUI {
 		SpringLayout sl_changeMenuComponents = new SpringLayout();
 		changeMenuComponents.setLayout(sl_changeMenuComponents);
 
-		JComboBox BreadNameCombo = new JComboBox(breadNameList.toArray());
+		JComboBox BreadNameCombo = new JComboBox(newBreadList.toArray());//breadNameList.toArray()
 		BreadNameCombo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(BreadNameCombo)) {
@@ -843,134 +1030,6 @@ public class ManagementGUI {
 		changeMenuPanel.add(ChangeButton);
 		changeMenuPanel.setVisible(false);// 메뉴수정안보이게
 
-		// 메뉴추가 패널
-		JPanel addMenuPanel = new JPanel();
-		// addMenuPanel.setOpaque(false);
-		addMenuPanel.setBackground(new Color(255, 255, 255, 100));
-		importantPanel.add(addMenuPanel, "name_399229462868927");
-		SpringLayout sl_addMenuPanel = new SpringLayout();
-		addMenuPanel.setLayout(sl_addMenuPanel);
-
-		JPanel addMenuComponents = new JPanel();
-		sl_addMenuPanel.putConstraint(SpringLayout.WEST, addMenuComponents, 25, SpringLayout.WEST, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, addMenuComponents, -81, SpringLayout.SOUTH, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.EAST, addMenuComponents, 414, SpringLayout.WEST, addMenuPanel);
-		addMenuComponents.setBackground(new Color(255, 255, 255, 0));
-		addMenuComponents.setOpaque(false);
-		addMenuPanel.add(addMenuComponents);
-		SpringLayout sl_addMenuComponents = new SpringLayout();
-		addMenuComponents.setLayout(sl_addMenuComponents);
-
-		InputBreadName = new JTextField();
-		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, InputBreadName, 0, SpringLayout.NORTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, InputBreadName, 47, SpringLayout.NORTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.EAST, InputBreadName, -10, SpringLayout.EAST,
-				addMenuComponents);
-		InputBreadName.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				breadName = InputBreadName.getText();
-			}
-		});
-		addMenuComponents.add(InputBreadName);
-		InputBreadName.setColumns(10);
-
-		InputBreadPrice = new JTextField();
-		InputBreadPrice.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				breadPrice = Integer.parseInt(InputBreadPrice.getText());
-			}
-		});
-		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, InputBreadPrice, -47, SpringLayout.SOUTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, InputBreadPrice, 0, SpringLayout.SOUTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.EAST, InputBreadPrice, -10, SpringLayout.EAST,
-				addMenuComponents);
-		addMenuComponents.add(InputBreadPrice);
-		InputBreadPrice.setColumns(10);
-
-		JLabel BreadNameLabel = new JLabel("\uBE75\uC774\uB984 :");
-		sl_addMenuComponents.putConstraint(SpringLayout.WEST, BreadNameLabel, 0, SpringLayout.WEST, addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.EAST, BreadNameLabel, -276, SpringLayout.EAST,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.WEST, InputBreadName, 6, SpringLayout.EAST, BreadNameLabel);
-		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, BreadNameLabel, 0, SpringLayout.NORTH,
-				addMenuComponents);
-		BreadNameLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		BreadNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addMenuComponents.add(BreadNameLabel);
-
-		JLabel BreadTypeLabel = new JLabel("\uBE75\uC885\uB958 :");
-		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, BreadTypeLabel, 81, SpringLayout.NORTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.EAST, BreadTypeLabel, -276, SpringLayout.EAST,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, BreadNameLabel, -31, SpringLayout.NORTH, BreadTypeLabel);
-		BreadTypeLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		BreadTypeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_addMenuComponents.putConstraint(SpringLayout.WEST, BreadTypeLabel, 0, SpringLayout.WEST, BreadNameLabel);
-		addMenuComponents.add(BreadTypeLabel);
-
-		JLabel BreadPriceLabel = new JLabel("\uAC00\uACA9 :");
-		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, BreadPriceLabel, 161, SpringLayout.NORTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.WEST, BreadPriceLabel, 0, SpringLayout.WEST, addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, BreadPriceLabel, 0, SpringLayout.SOUTH,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.EAST, BreadPriceLabel, -276, SpringLayout.EAST,
-				addMenuComponents);
-		sl_addMenuComponents.putConstraint(SpringLayout.WEST, InputBreadPrice, 6, SpringLayout.EAST, BreadPriceLabel);
-		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, BreadTypeLabel, -30, SpringLayout.NORTH,
-				BreadPriceLabel);
-		BreadPriceLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		BreadPriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addMenuComponents.add(BreadPriceLabel);
-
-		JLabel lblNewLabel = new JLabel("<\uBA54\uB274 \uCD94\uAC00>");
-		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, lblNewLabel, 10, SpringLayout.NORTH, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -307, SpringLayout.SOUTH, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, addMenuComponents, 18, SpringLayout.SOUTH, lblNewLabel);
-		sl_addMenuPanel.putConstraint(SpringLayout.WEST, lblNewLabel, 104, SpringLayout.WEST, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.EAST, lblNewLabel, -102, SpringLayout.EAST, addMenuPanel);
-		lblNewLabel.setFont(new Font("나눔손글씨 펜", Font.BOLD, 28));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addMenuPanel.add(lblNewLabel);
-
-		// 빵종류 선택
-		JComboBox comboBox_1 = new JComboBox(breadType);
-		comboBox_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource().equals(comboBox_1)) {
-					breadTypeChoice = comboBox_1.getSelectedItem().toString();
-				}
-			}
-		});
-		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, comboBox_1, 34, SpringLayout.SOUTH, InputBreadName);
-		sl_addMenuComponents.putConstraint(SpringLayout.WEST, comboBox_1, 6, SpringLayout.EAST, BreadTypeLabel);
-		sl_addMenuComponents.putConstraint(SpringLayout.EAST, comboBox_1, -10, SpringLayout.EAST, addMenuComponents);
-		addMenuComponents.add(comboBox_1);
-
-		JButton btnNewButton = new JButton("\uCD94\uAC00");
-		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton, 20, SpringLayout.SOUTH, addMenuComponents);
-		sl_addMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton, -126, SpringLayout.EAST, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton, -25, SpringLayout.SOUTH, addMenuPanel);
-		sl_addMenuPanel.putConstraint(SpringLayout.EAST, btnNewButton, -27, SpringLayout.EAST, addMenuPanel);
-		addMenuPanel.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int count = mg.plusBread(InputBreadName.getText(), breadTypeChoice, breadPrice);
-				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
-			}
-		});
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(210, 105, 30));
-		btnNewButton.setFont(new Font("나눔손글씨 펜", Font.BOLD, 20));
-		addMenuPanel.setVisible(false); // 안보이게 함
-
 		panel.add(ButtonPanel);
 
 		ButtonPanel.setLayout(new GridLayout(2, 3, 10, 10));
@@ -978,11 +1037,7 @@ public class ManagementGUI {
 		// 메뉴추가
 		JButton addMenu = new JButton("\uBA54\uB274 \uCD94\uAC00");
 		addMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) { // 클릭시에 choice 1
-				choice = 1;
-
-				System.out.println(choice);
-
+			public void actionPerformed(ActionEvent e) {
 				addMenuPanel.setVisible(true);
 				changeMenuPanel.setVisible(false);
 				deleteMenuPanel.setVisible(false);
@@ -999,8 +1054,7 @@ public class ManagementGUI {
 		// 메뉴수정
 		JButton changeMenu = new JButton("\uBA54\uB274\uC218\uC815");
 		changeMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {// 클릭시에 choice 2
-				choice = 2;
+			public void actionPerformed(ActionEvent e) {
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(true);
 				deleteMenuPanel.setVisible(false);
@@ -1018,8 +1072,7 @@ public class ManagementGUI {
 		// 메뉴삭제
 		JButton deleMenu = new JButton("\uBA54\uB274\uC0AD\uC81C");
 		deleMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {// 클릭시에 choice 3
-				choice = 3;
+			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(true);
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(false);
@@ -1036,9 +1089,7 @@ public class ManagementGUI {
 		// 지점정보변경
 		JButton changeInfo = new JButton("\uC9C0\uC810\uC815\uBCF4\uC218\uC815");
 		changeInfo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {// 클릭시에 choice 4
-				choice = 4;
-
+			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(false);
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(false);
@@ -1055,8 +1106,7 @@ public class ManagementGUI {
 		// 회원관리
 		JButton controllMember = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
 		controllMember.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {// 클릭시에 choice 5
-
+			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(false);
 				addMenuPanel.setVisible(false);
 				changeMenuPanel.setVisible(false);
@@ -1074,7 +1124,7 @@ public class ManagementGUI {
 		// 종료
 		JButton close = new JButton("\uB2EB\uAE30");
 		close.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {// 클릭시에 choice 6
+			public void actionPerformed(ActionEvent e) {
 				// myCllickListener.onClick();
 				frame.dispose();
 			}
