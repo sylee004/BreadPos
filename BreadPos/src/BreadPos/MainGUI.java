@@ -49,7 +49,7 @@ public class MainGUI {
 	private JButton salesBtn;
 	private JButton paymentBtn;
 	private Management mg;
-	private ArrayList<Bread> whiteBread;
+	private Bread breadSelectBtn;
 
 	/**
 	 * Launch the application.
@@ -68,12 +68,16 @@ public class MainGUI {
 	}
 
 	/**
-	 * Create the application.
+	 * @wbp.parser.constructor
 	 */
+
 	public MainGUI() {
 		mg = new Management();
-		whiteBread = new ArrayList<Bread>();
 		initialize();
+	}
+	public MainGUI(Bread list) {
+		breadSelectBtn = list;
+		System.out.println(breadSelectBtn.getName());
 	}
 
 	/**
