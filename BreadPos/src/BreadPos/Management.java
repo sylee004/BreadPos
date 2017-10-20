@@ -45,12 +45,17 @@ public class Management {
 			sumMoney += payMoney.get(i);
 		}
 		
-		double discountMoney = sumMoney * (percent / 100);
+		float per = percent / 100f;
 		
-		int totalMoney = sumMoney - (int)discountMoney;
+		System.out.println(per);
+		
+		int discountMoney = (int)(sumMoney * per);
+		System.out.println(discountMoney);
+		
+		int totalMoney = sumMoney - discountMoney;
 		
 		money[0] = sumMoney; //결제금액
-		money[1] = (int)discountMoney; //할인금액
+		money[1] = discountMoney; //할인금액
 		money[2] = totalMoney; //최종금액
 
 		return money;
