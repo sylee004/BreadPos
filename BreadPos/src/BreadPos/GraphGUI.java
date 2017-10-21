@@ -21,6 +21,7 @@ import DB.saleDAO;
 import DB.sale;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -196,5 +197,9 @@ public class GraphGUI extends ApplicationFrame {
       System.out.println(input);
 
    }
+
+public void tabbed(JPanel panel_2) {
+	 
+			}
 
 }

@@ -7,6 +7,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
+import javax.swing.text.GapContent;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ public class salesGUI {
 
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
+	private GraphGUI graphGUI;
 
 	/**
 	 * Launch the application.
@@ -59,23 +61,41 @@ public class salesGUI {
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(211, 211, 211,100));
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_1, 10, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_1, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_1, 380, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_1, 674, SpringLayout.WEST, panel);
-		panel.add(panel_1);
+		JPanel Showgrap = new JPanel(); //카드 레이아웃
+		Showgrap.setBackground(new Color(211, 211, 211,100));
+		Showgrap.setOpaque(false);
+		sl_panel.putConstraint(SpringLayout.NORTH, Showgrap, 10, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, Showgrap, 10, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, Showgrap, 380, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, Showgrap, 674, SpringLayout.WEST, panel);
+		
+		panel.add(Showgrap);
 		
 		JPanel panel_2 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, panel_1);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, panel_1);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, 85, SpringLayout.SOUTH, panel_1);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, panel_1);
+		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, Showgrap);
+		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, Showgrap);
+		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, 85, SpringLayout.SOUTH, Showgrap);
+		sl_panel.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, Showgrap);
+		
+		Showgrap.setLayout(new CardLayout(0, 0));
+		
+		JPanel panel_3 = new JPanel();
+		Showgrap.add(panel_3, "name_87378178161920");
+		GraphGUI graphGUI = new GraphGUI("");
+		graphGUI.main(null);
+		
+		
+		JPanel panel_4 = new JPanel();
+		Showgrap.add(panel_4, "name_87401273531306");
 		panel.add(panel_2);
 		panel_2.setLayout(new GridLayout(0, 3, 10, 0));
 		
 		JButton btnNewButton = new JButton("\uADF8\uB798\uD504\uBCF4\uAE30");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) { // 그래프보기 
+				graphGUI.tabbed(panel_2);
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,6 +130,13 @@ public class salesGUI {
 		btnNewButton_2.setBackground(new Color(128, 0, 0));
 		btnNewButton_2.setFont(new Font("굴림", Font.BOLD, 20));
 		panel_2.add(btnNewButton_2);
+	}
+
+	private static void showgrap() {
+		// TODO Auto-generated method stub
+		GraphGUI graphGUI = new GraphGUI("");
+		
+		
 	}
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {

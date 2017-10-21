@@ -438,7 +438,7 @@ public class MainGUI {
 				}
 			}
 		};
-		whitePanel.setOpaque(false);
+		whitePanel.setOpaque(false); // 변화 일어나는곳
 		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, "밀가루");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
