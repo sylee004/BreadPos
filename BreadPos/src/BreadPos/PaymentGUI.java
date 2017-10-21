@@ -275,7 +275,7 @@ public class PaymentGUI {
 		panel_4.add(lblNewLabel_6);
 
 		lblNewLabel_7 = new JLabel();
-		lblNewLabel_7.setOpaque(false);
+
 		lblNewLabel_7.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -287,7 +287,7 @@ public class PaymentGUI {
 		panel_4.add(lblNewLabel_3);
 
 		lblNewLabel_5 = new JLabel();
-		lblNewLabel_5.setOpaque(false);
+
 		lblNewLabel_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_5);
