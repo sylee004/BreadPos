@@ -47,7 +47,6 @@ public class ManagementGUI {
 	private JTextField textField_3;
 	private int memberChoice = 0; // È¸¿ø°ü¸® µî·Ï,¼öÁ¤, »èÁ¦ º¯¼ö
 	private JTextField phoneNumInput;
-	private JTextField nameInput;
 	private JTextField Input;
 	private JTextField InputChange;
 	private JTextField InputValue;
@@ -65,7 +64,7 @@ public class ManagementGUI {
 	ArrayList<Member> OuputList = new ArrayList<>(); // Ãâ·Â
 	String[] OutList;
 	String Ouput; // Ãâ·Â
-
+	private JTextField nameInput;
 
 	/**
 	 * Launch the application.
@@ -131,21 +130,23 @@ public class ManagementGUI {
 
 		// ¹Ø¿¡ ¹öÆ°´ã´Â ÆÇ³Ú
 		JPanel ButtonPanel = new JPanel();
+		ButtonPanel.setOpaque(false);
 		sl_panel.putConstraint(SpringLayout.NORTH, ButtonPanel, 17, SpringLayout.SOUTH, importantPanel);
 		sl_panel.putConstraint(SpringLayout.WEST, ButtonPanel, 10, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, ButtonPanel, -10, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, ButtonPanel, -10, SpringLayout.EAST, panel);
 		ButtonPanel.setBackground(new Color(255, 255, 255, 0));
 		importantPanel.setLayout(new CardLayout(0, 0));
-		
+
 		JPanel StartPanel = new JPanel();
-		StartPanel.setBackground(new Color(255, 255, 255,150));
+		StartPanel.setBackground(new Color(255, 255, 255, 150));
 		importantPanel.add(StartPanel, "name_509594362957614");
 		SpringLayout sl_StartPanel = new SpringLayout();
 		StartPanel.setLayout(sl_StartPanel);
 		StartPanel.setVisible(true);
-		
-		JLabel label_1 = new JLabel("\uC6D0\uD558\uC2DC\uB294 \uBC84\uD2BC\uC744 \uD074\uB9AD\uD574\uC8FC\uC138\uC694!");
+
+		JLabel label_1 = new JLabel(
+				"\uC6D0\uD558\uC2DC\uB294 \uBC84\uD2BC\uC744 \uD074\uB9AD\uD574\uC8FC\uC138\uC694!");
 		sl_StartPanel.putConstraint(SpringLayout.NORTH, label_1, 106, SpringLayout.NORTH, StartPanel);
 		sl_StartPanel.putConstraint(SpringLayout.EAST, label_1, -86, SpringLayout.EAST, StartPanel);
 		label_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 30));
@@ -209,19 +210,14 @@ public class ManagementGUI {
 
 		phoneNumInput = new JTextField();
 		phoneNumInput.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		phoneNumInput.setOpaque(false);
+		phoneNumInput.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_addMember.putConstraint(SpringLayout.NORTH, phoneNumInput, 37, SpringLayout.NORTH, addMember);
 		sl_addMember.putConstraint(SpringLayout.WEST, phoneNumInput, -337, SpringLayout.EAST, addMember);
 		sl_addMember.putConstraint(SpringLayout.SOUTH, phoneNumInput, 89, SpringLayout.NORTH, addMember);
 		sl_addMember.putConstraint(SpringLayout.EAST, phoneNumInput, -10, SpringLayout.EAST, addMember);
 		addMember.add(phoneNumInput);
 		phoneNumInput.setColumns(10);
-
-		nameInput = new JTextField();
-		nameInput.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		sl_addMember.putConstraint(SpringLayout.NORTH, nameInput, 16, SpringLayout.SOUTH, phoneNumInput);
-		sl_addMember.putConstraint(SpringLayout.EAST, nameInput, -10, SpringLayout.EAST, addMember);
-		addMember.add(nameInput);
-		nameInput.setColumns(10);
 
 		JLabel lblNewLabel_14 = new JLabel("\uBC88\uD638 :");
 		sl_addMember.putConstraint(SpringLayout.NORTH, lblNewLabel_14, 6, SpringLayout.SOUTH, lblNewLabel_13);
@@ -236,30 +232,57 @@ public class ManagementGUI {
 		sl_addMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_15, -47, SpringLayout.SOUTH, addMember);
 		sl_addMember.putConstraint(SpringLayout.EAST, lblNewLabel_15, -343, SpringLayout.EAST, addMember);
 		sl_addMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_14, -16, SpringLayout.NORTH, lblNewLabel_15);
-		sl_addMember.putConstraint(SpringLayout.WEST, nameInput, 6, SpringLayout.EAST, lblNewLabel_15);
 		lblNewLabel_15.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
 		sl_addMember.putConstraint(SpringLayout.WEST, lblNewLabel_15, 0, SpringLayout.WEST, addMember);
 		addMember.add(lblNewLabel_15);
 
 		JButton btnNewButton_3 = new JButton("\uB4F1\uB85D");
+		sl_addMember.putConstraint(SpringLayout.WEST, btnNewButton_3, -95, SpringLayout.EAST, addMember);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, btnNewButton_3, -4, SpringLayout.SOUTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.EAST, btnNewButton_3, 0, SpringLayout.EAST, phoneNumInput);
+		btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.addMember(phoneNumInput.getText(), nameInput.getText());
-				//È¸¿øµî·ÏÆË¾÷!!
+				// È¸¿øµî·ÏÆË¾÷!!
 				zPopMemberInputGUI in = new zPopMemberInputGUI();
 				in.main(null);
 				frame.dispose();
 			}
 		});
-		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -10, SpringLayout.NORTH, btnNewButton_3);
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
-		sl_addMember.putConstraint(SpringLayout.WEST, btnNewButton_3, -84, SpringLayout.EAST, addMember);
-		sl_addMember.putConstraint(SpringLayout.SOUTH, btnNewButton_3, -4, SpringLayout.SOUTH, addMember);
-		sl_addMember.putConstraint(SpringLayout.EAST, btnNewButton_3, 0, SpringLayout.EAST, addMember);
 		btnNewButton_3.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		btnNewButton_3.setBackground(new Color(139, 0, 0));
 		addMember.add(btnNewButton_3);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255,255,255,150));
+		sl_addMember.putConstraint(SpringLayout.NORTH, panel_2, 37, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.WEST, panel_2, -337, SpringLayout.EAST, addMember);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, panel_2, 89, SpringLayout.NORTH, addMember);
+		sl_addMember.putConstraint(SpringLayout.EAST, panel_2, -10, SpringLayout.EAST, addMember);
+		
+		addMember.add(panel_2);
+		
+		nameInput = new JTextField();
+		sl_addMember.putConstraint(SpringLayout.NORTH, btnNewButton_3, 6, SpringLayout.SOUTH, nameInput);
+		sl_addMember.putConstraint(SpringLayout.NORTH, nameInput, 16, SpringLayout.SOUTH, phoneNumInput);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -39, SpringLayout.SOUTH, addMember);
+		nameInput.setOpaque(false);
+		nameInput.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		sl_addMember.putConstraint(SpringLayout.WEST, nameInput, 6, SpringLayout.EAST, lblNewLabel_15);
+		sl_addMember.putConstraint(SpringLayout.EAST, nameInput, 0, SpringLayout.EAST, phoneNumInput);
+		addMember.add(nameInput);
+		nameInput.setColumns(10);
+		
+		JPanel panel_3 = new JPanel();
+		sl_addMember.putConstraint(SpringLayout.NORTH, panel_3, 16, SpringLayout.SOUTH, phoneNumInput);
+		sl_addMember.putConstraint(SpringLayout.SOUTH, panel_3, -6, SpringLayout.NORTH, btnNewButton_3);
+		panel_3.setBackground(new Color(255,255,255,150));
+		sl_addMember.putConstraint(SpringLayout.WEST, panel_3, 6, SpringLayout.EAST, lblNewLabel_15);
+		sl_addMember.putConstraint(SpringLayout.EAST, panel_3, 0, SpringLayout.EAST, phoneNumInput);
+		addMember.add(panel_3);
 		addMember.setVisible(false);
 
 		// ¸â¹ö¼öÁ¤
@@ -341,6 +364,8 @@ public class ManagementGUI {
 		changeMember.add(OutputResult);
 
 		InputChange = new JTextField();
+		InputChange.setOpaque(false);
+		InputChange.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		InputChange.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		sl_changeMember.putConstraint(SpringLayout.NORTH, InputChange, 6, SpringLayout.SOUTH, OutputResult);
 		sl_changeMember.putConstraint(SpringLayout.WEST, InputChange, 0, SpringLayout.WEST, Input);
@@ -359,8 +384,10 @@ public class ManagementGUI {
 		changeMember.add(lblNewLabel_17);
 
 		JButton btnNewButton_5 = new JButton("\uC218\uC815");// ¼öÁ¤¹öÆ° Å¬¸¯½Ã
-		sl_changeMember.putConstraint(SpringLayout.NORTH, btnNewButton_5, 6, SpringLayout.SOUTH, OutputResult);
-		sl_changeMember.putConstraint(SpringLayout.SOUTH, btnNewButton_5, -21, SpringLayout.SOUTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, btnNewButton_5, 8, SpringLayout.NORTH, InputChange);
+		sl_changeMember.putConstraint(SpringLayout.WEST, btnNewButton_5, 10, SpringLayout.EAST, InputChange);
+		sl_changeMember.putConstraint(SpringLayout.EAST, btnNewButton_5, 0, SpringLayout.EAST, Input);
+		btnNewButton_5.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (breadName.equals(number[0])) { // ¹øÈ£ >> ÀÌ¸§
@@ -368,11 +395,9 @@ public class ManagementGUI {
 						if (Input.getText().equals(OuputList.get(j).getMember_phone())) {
 							int count = mg.updateMember(Input.getText(), InputChange.getText(), Input.getText(),
 									OuputList.get(j).getMember_name());
-							
-							
-							
+
 						}
-						
+
 					}
 				} else if (breadName.equals(number[1])) {// ÀÌ¸§ >> ¹øÈ£
 					for (int j = 0; j < OuputList.size(); j++) {
@@ -382,7 +407,7 @@ public class ManagementGUI {
 						}
 					}
 				}
-				//È¸¿ø¼öÁ¤ÆË¾÷!!
+				// È¸¿ø¼öÁ¤ÆË¾÷!!
 				zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
 				in.main(null);
 				frame.dispose();
@@ -391,8 +416,6 @@ public class ManagementGUI {
 		btnNewButton_5.setBackground(new Color(139, 0, 0));
 		btnNewButton_5.setForeground(new Color(255, 255, 255));
 		btnNewButton_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		sl_changeMember.putConstraint(SpringLayout.WEST, btnNewButton_5, 6, SpringLayout.EAST, InputChange);
-		sl_changeMember.putConstraint(SpringLayout.EAST, btnNewButton_5, 0, SpringLayout.EAST, Input);
 		changeMember.add(btnNewButton_5);
 
 		JPanel panel_1 = new JPanel();
@@ -404,6 +427,14 @@ public class ManagementGUI {
 		sl_changeMember.putConstraint(SpringLayout.NORTH, panel_1, 36, SpringLayout.NORTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, panel_1, 83, SpringLayout.NORTH, changeMember);
 		changeMember.add(panel_1);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(255,255,255,150));
+		sl_changeMember.putConstraint(SpringLayout.NORTH, panel_4, 6, SpringLayout.SOUTH, OutputResult);
+		sl_changeMember.putConstraint(SpringLayout.WEST, panel_4, 0, SpringLayout.WEST, Input);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, panel_4, -21, SpringLayout.SOUTH, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.EAST, panel_4, -104, SpringLayout.EAST, changeMember);
+		changeMember.add(panel_4);
 		changeMember.setVisible(false);
 
 		// ¸â¹ö»èÁ¦
@@ -443,6 +474,8 @@ public class ManagementGUI {
 		JLabel OuputDelete = new JLabel("\uCD9C\uB825"); // Ãâ·Â ¶óº§
 
 		InputValue = new JTextField(); // »èÁ¦ÇÒ ¹øÈ£ / ÀÌ¸§ ÀÔ·Â
+		InputValue.setOpaque(false);
+		InputValue.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		InputValue.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		InputValue.addKeyListener(new KeyAdapter() {
 			@Override
@@ -478,8 +511,9 @@ public class ManagementGUI {
 		InputValue.setColumns(10);
 
 		JButton deleteButton = new JButton("\uC0AD\uC81C");
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, deleteButton, -33, SpringLayout.SOUTH, deleteMember);
+		deleteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_deleteMember.putConstraint(SpringLayout.NORTH, deleteButton, 59, SpringLayout.SOUTH, InputValue);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, deleteButton, -17, SpringLayout.SOUTH, deleteMember);
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (breadName.equals(number[0])) {// ¹øÈ£ >> ÀÌ¸§
@@ -495,11 +529,11 @@ public class ManagementGUI {
 						}
 					}
 				}
-				//È¸¿ø»èÁ¦ÆË¾÷!!
+				// È¸¿ø»èÁ¦ÆË¾÷!!
 				zPopMemberDeleteGUI in = new zPopMemberDeleteGUI();
 				in.main(null);
 				frame.dispose();
-				
+
 			}
 		});
 		sl_deleteMember.putConstraint(SpringLayout.WEST, deleteButton, 327, SpringLayout.WEST, deleteMember);
@@ -516,11 +550,20 @@ public class ManagementGUI {
 		sl_deleteMember.putConstraint(SpringLayout.EAST, OuputDelete, 0, SpringLayout.EAST, InputValue);
 		OuputDelete.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		deleteMember.add(OuputDelete);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(255,255,255,150));
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, panel_5, 36, SpringLayout.NORTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, panel_5, 6, SpringLayout.EAST, comboBox);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, panel_5, -123, SpringLayout.SOUTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, panel_5, -10, SpringLayout.EAST, deleteMember);
+		deleteMember.add(panel_5);
 		deleteMember.setVisible(false);
 
 		// È¸¿ø°ü¸® ¹öÆ°
 		// ¸¸¾à ¹öÆ°À» ´©¸£¸é ½ÇÇàµÉ ÆÇ³Ú ³ªÅ¸³»±â
 		JButton addMemberButton = new JButton("\uB4F1\uB85D");
+		addMemberButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		addMemberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {// ¹öÆ°Å¬¸¯½Ã ¸â¹ö º¯¼ö °ª1 µî·Ï
 				deleteMember.setVisible(false);
@@ -530,11 +573,12 @@ public class ManagementGUI {
 			}
 		});
 		addMemberButton.setForeground(new Color(255, 255, 255));
-		addMemberButton.setBackground(new Color(139, 0, 0));
+		addMemberButton.setBackground(new Color(210, 105, 30));
 		addMemberButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		buttonManage.add(addMemberButton);
 
 		JButton changeMemberButton = new JButton("\uC218\uC815");
+		changeMemberButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		changeMemberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {// ¹öÆ°Å¬¸¯½Ã ¸â¹ö º¯¼ö °ª2 ¼öÁ¤
 				deleteMember.setVisible(false);
@@ -544,11 +588,12 @@ public class ManagementGUI {
 			}
 		});
 		changeMemberButton.setForeground(new Color(255, 255, 255));
-		changeMemberButton.setBackground(new Color(139, 0, 0));
+		changeMemberButton.setBackground(new Color(210, 105, 30));
 		changeMemberButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		buttonManage.add(changeMemberButton);
 
 		JButton deleteMemberButton = new JButton("\uC0AD\uC81C");
+		deleteMemberButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		deleteMemberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {// ¹öÆ°Å¬¸¯½Ã ¸â¹ö º¯¼ö °ª3 »èÁ¦
 				deleteMember.setVisible(true);
@@ -558,7 +603,7 @@ public class ManagementGUI {
 			}
 		});
 		deleteMemberButton.setForeground(new Color(255, 255, 255));
-		deleteMemberButton.setBackground(new Color(139, 0, 0));
+		deleteMemberButton.setBackground(new Color(210, 105, 30));
 		deleteMemberButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		buttonManage.add(deleteMemberButton);
 
@@ -568,8 +613,8 @@ public class ManagementGUI {
 		lblNewLabel_8.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
 		MemberInfo.add(lblNewLabel_8);
-		
-		JPanel logopanel = new JPanel(){
+
+		JPanel logopanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					icon = ImageIO.read(new File("./image/logo.png"));
@@ -643,6 +688,7 @@ public class ManagementGUI {
 		Inputpw.setLayout(sl_Inputpw);
 
 		textField_3 = new JTextField();
+		textField_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		textField_3.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		sl_Inputpw.putConstraint(SpringLayout.SOUTH, textField_3, 0, SpringLayout.SOUTH, Inputpw);
 		sl_Inputpw.putConstraint(SpringLayout.EAST, textField_3, 286, SpringLayout.WEST, Inputpw);
@@ -671,7 +717,8 @@ public class ManagementGUI {
 
 		JLabel lblNewLabel_9 = new JLabel("\uBE44\uBC00\uBC88\uD638 :");
 		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, lblNewLabel_9, 45, SpringLayout.SOUTH, lblNewLabel_7);
-		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, lblNewLabel_9, -103, SpringLayout.SOUTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, lblNewLabel_9, -103, SpringLayout.SOUTH,
+				changeInfoComponents);
 		lblNewLabel_9.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_9.setBackground(new Color(255, 255, 255));
@@ -680,17 +727,20 @@ public class ManagementGUI {
 		changeInfoComponents.add(lblNewLabel_9);
 
 		JButton btnNewButton_2 = new JButton("\uC218\uC815");
+		btnNewButton_2.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int count = mg.modifyOffice(textField_3.getText(), ID, new OfficeDAO().select_office().get(office_num).getOffice_num());				
-				//ÁöÁ¡Á¤º¸¼öÁ¤ÆË¾÷!!
+				int count = mg.modifyOffice(textField_3.getText(), ID,
+						new OfficeDAO().select_office().get(office_num).getOffice_num());
+				// ÁöÁ¡Á¤º¸¼öÁ¤ÆË¾÷!!
 				zPopOfficeUpdateGUI in = new zPopOfficeUpdateGUI();
 				in.main(null);
 				frame.dispose();
 			}
 		});
 		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, btnNewButton_2, 32, SpringLayout.SOUTH, Inputpw);
-		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -29, SpringLayout.SOUTH, changeInfoComponents);
+		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -29, SpringLayout.SOUTH,
+				changeInfoComponents);
 		btnNewButton_2.setBackground(new Color(210, 105, 30));
 		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, btnNewButton_2, -130, SpringLayout.EAST,
 				changeInfoComponents);
@@ -698,7 +748,7 @@ public class ManagementGUI {
 		btnNewButton_2.setForeground(Color.WHITE);
 		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, btnNewButton_2, -21, SpringLayout.EAST,
 				changeInfoComponents);
-		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		changeInfoComponents.add(btnNewButton_2);
 
 		JLabel lblNewLabel_11 = new JLabel("<\uC9C0\uC810 \uC815\uBCF4 \uC218\uC815>");
@@ -710,13 +760,30 @@ public class ManagementGUI {
 		changeInfoPanel.add(lblNewLabel_11);
 
 		changeInfoPanel.setVisible(false);
-
+		 
 		// »§ÀÌ¸§ ¸®½ºÆ® »ý¼º
 		breadNameList = new ArrayList<>();
 		for (int i = 0; i < new BreadInfoDAO().select_bread().size(); i++) {
 			breadNameList.add(new BreadInfoDAO().select_bread().get(i).getName());
 		}
 		
+		boolean check = false;
+		ArrayList<Integer> count = new ArrayList<>();
+		
+		for (int i = 0; i < breadNameList.size(); i++) {
+			for (int j = 0; j <breadNameList.size(); j++) {
+				if(i!=j && breadNameList.get(i).equals(breadNameList.get(j))){
+					check = true;
+					count.add(i);
+				}
+			}
+		}
+		if(check) {
+			for (int i = 0; i < count.size()/2; i++) {
+				breadNameList.remove(i);
+			}		
+		}
+		System.out.println("¸®½ºÆ®»çÀÌÁî"+breadNameList.size());
 		
 
 		// ¸Þ´ºÃß°¡ ÆÐ³Î
@@ -738,6 +805,7 @@ public class ManagementGUI {
 		addMenuComponents.setLayout(sl_addMenuComponents);
 
 		InputBreadName = new JTextField();
+		InputBreadName.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		InputBreadName.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, InputBreadName, 0, SpringLayout.NORTH,
 				addMenuComponents);
@@ -760,6 +828,7 @@ public class ManagementGUI {
 		InputBreadName.setColumns(10);
 
 		InputBreadPrice = new JTextField();
+		InputBreadPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		InputBreadPrice.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		InputBreadPrice.addKeyListener(new KeyAdapter() {
 			@Override
@@ -825,6 +894,7 @@ public class ManagementGUI {
 
 		// »§Á¾·ù ¼±ÅÃ
 		JComboBox comboBox_1 = new JComboBox(breadType);
+		comboBox_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_addMenuComponents.putConstraint(SpringLayout.SOUTH, comboBox_1, -3, SpringLayout.SOUTH, BreadTypeLabel);
 		comboBox_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		comboBox_1.addActionListener(new ActionListener() {
@@ -841,6 +911,7 @@ public class ManagementGUI {
 
 		JButton btnNewButton = new JButton("\uCD94\uAC00");
 		sl_addMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton, 20, SpringLayout.SOUTH, addMenuComponents);
+		btnNewButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_addMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton, -126, SpringLayout.EAST, addMenuPanel);
 		sl_addMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton, -25, SpringLayout.SOUTH, addMenuPanel);
 		sl_addMenuPanel.putConstraint(SpringLayout.EAST, btnNewButton, -27, SpringLayout.EAST, addMenuPanel);
@@ -848,25 +919,24 @@ public class ManagementGUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.plusBread(InputBreadName.getText(), breadTypeChoice, breadPrice);
-//				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
-//				for (int j = 0; j < breadNameList.size(); j++) {
-//					if (breadName.equals(breadNameList.get(j))) {
-//						breadNameList.add(breadName);
-//					}
-//				}
-				//¸Þ´ºÃß°¡ÆË¾÷!!
+				// System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice +
+				// count);
+				// for (int j = 0; j < breadNameList.size(); j++) {
+				// if (breadName.equals(breadNameList.get(j))) {
+				// breadNameList.add(breadName);
+				// }
+				// }
+				// ¸Þ´ºÃß°¡ÆË¾÷!!
 				zPopBreadInputGUI up = new zPopBreadInputGUI();
 				up.main(null);
 				frame.dispose();
-				
+
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(210, 105, 30));
 		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		addMenuPanel.setVisible(false); // ¾Èº¸ÀÌ°Ô ÇÔ
-		
-		
 
 		// ¸Þ´º»èÁ¦ ÆÇ³Ú
 		JPanel deleteMenuPanel = new JPanel();
@@ -908,6 +978,7 @@ public class ManagementGUI {
 				deletMenucomponents);
 
 		JComboBox breadNameComboBox = new JComboBox(breadNameList.toArray());
+		breadNameComboBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		breadNameComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(breadNameComboBox)) {
@@ -929,6 +1000,11 @@ public class ManagementGUI {
 		deletMenucomponents.add(lblNewLabel_6);
 
 		JButton btnNewButton_1 = new JButton("\uC0AD\uC81C");
+		sl_deleteMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 28, SpringLayout.SOUTH,
+				deletMenucomponents);
+		sl_deleteMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton_1, 71, SpringLayout.SOUTH,
+				deletMenucomponents);
+		btnNewButton_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < breadNameList.size(); i++) {
@@ -937,22 +1013,18 @@ public class ManagementGUI {
 						System.out.println(breadName + " " + count);
 					}
 				}
-			
-			//¸Þ´º»èÁ¦ÆË¾÷!!
-			zPopBreadDeleteGUI in = new zPopBreadDeleteGUI();
-			in.main(null);
-			frame.dispose();
+
+				// ¸Þ´º»èÁ¦ÆË¾÷!!
+				zPopBreadDeleteGUI in = new zPopBreadDeleteGUI();
+				in.main(null);
+				frame.dispose();
 			}
-			
+
 		});
 		sl_deleteMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton_1, -133, SpringLayout.EAST, deleteMenuPanel);
 		btnNewButton_1.setBackground(new Color(210, 105, 30));
 		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		btnNewButton_1.setForeground(Color.WHITE);
-		sl_deleteMenuPanel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 22, SpringLayout.SOUTH,
-				deletMenucomponents);
-		sl_deleteMenuPanel.putConstraint(SpringLayout.SOUTH, btnNewButton_1, 65, SpringLayout.SOUTH,
-				deletMenucomponents);
 
 		// »èÁ¦ÄÞº¸
 
@@ -987,7 +1059,8 @@ public class ManagementGUI {
 		SpringLayout sl_changeMenuComponents = new SpringLayout();
 		changeMenuComponents.setLayout(sl_changeMenuComponents);
 
-		JComboBox BreadNameCombo = new JComboBox(breadNameList.toArray());//breadNameList.toArray()
+		JComboBox BreadNameCombo = new JComboBox(breadNameList.toArray());// breadNameList.toArray()
+		BreadNameCombo.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		BreadNameCombo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(BreadNameCombo)) {
@@ -997,8 +1070,11 @@ public class ManagementGUI {
 		});
 
 		InputChangeBreadPrice = new JTextField();
-		sl_changeMenuComponents.putConstraint(SpringLayout.SOUTH, InputChangeBreadPrice, -21, SpringLayout.SOUTH, changeMenuComponents);
+		InputChangeBreadPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		sl_changeMenuComponents.putConstraint(SpringLayout.SOUTH, InputChangeBreadPrice, -21, SpringLayout.SOUTH,
+				changeMenuComponents);
 		InputChangeBreadPrice.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		InputChangeBreadPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_changeMenuComponents.putConstraint(SpringLayout.WEST, InputChangeBreadPrice, 107, SpringLayout.WEST,
 				changeMenuComponents);
 		sl_changeMenuComponents.putConstraint(SpringLayout.EAST, InputChangeBreadPrice, -10, SpringLayout.EAST,
@@ -1010,9 +1086,12 @@ public class ManagementGUI {
 		changeMenuPanel.add(lblNewLabel_1);
 
 		JComboBox BreadTypeCombo = new JComboBox(breadType);
-		sl_changeMenuComponents.putConstraint(SpringLayout.SOUTH, BreadTypeCombo, -98, SpringLayout.SOUTH, changeMenuComponents);
-		sl_changeMenuComponents.putConstraint(SpringLayout.NORTH, InputChangeBreadPrice, 32, SpringLayout.SOUTH, BreadTypeCombo);
-		sl_changeMenuComponents.putConstraint(SpringLayout.NORTH, BreadTypeCombo, 34, SpringLayout.SOUTH, BreadNameCombo);
+		sl_changeMenuComponents.putConstraint(SpringLayout.SOUTH, BreadTypeCombo, -98, SpringLayout.SOUTH,
+				changeMenuComponents);
+		sl_changeMenuComponents.putConstraint(SpringLayout.NORTH, InputChangeBreadPrice, 32, SpringLayout.SOUTH,
+				BreadTypeCombo);
+		sl_changeMenuComponents.putConstraint(SpringLayout.NORTH, BreadTypeCombo, 34, SpringLayout.SOUTH,
+				BreadNameCombo);
 		BreadTypeCombo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource().equals(BreadTypeCombo)) {
@@ -1029,6 +1108,7 @@ public class ManagementGUI {
 
 		// ¸Þ´º ¼öÁ¤ ¼ö½Ä
 		JButton ChangeButton = new JButton("\uC218\uC815");
+		ChangeButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		ChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < breadNameList.size(); i++) {
@@ -1039,12 +1119,12 @@ public class ManagementGUI {
 								+ Integer.parseInt(InputChangeBreadPrice.getText()) + " " + count);
 					}
 				}
-				//¸Þ´º¼öÁ¤ÆË¾÷!!!
+				// ¸Þ´º¼öÁ¤ÆË¾÷!!!
 				zPopBreadUpdateGUI in = new zPopBreadUpdateGUI();
 				in.main(null);
 				frame.dispose();
 			}
-			
+
 		});
 		sl_changeMenuPanel.putConstraint(SpringLayout.WEST, ChangeButton, -123, SpringLayout.EAST, changeMenuPanel);
 		ChangeButton.setBackground(new Color(210, 105, 30));
@@ -1056,10 +1136,12 @@ public class ManagementGUI {
 				changeMenuComponents);
 
 		JLabel lblNewLabel_4 = new JLabel("\uC218\uC815 \uAC00\uACA9 :");
-		sl_changeMenuComponents.putConstraint(SpringLayout.WEST, lblNewLabel_4, 0, SpringLayout.WEST, changeMenuComponents);
+		sl_changeMenuComponents.putConstraint(SpringLayout.WEST, lblNewLabel_4, 0, SpringLayout.WEST,
+				changeMenuComponents);
 		sl_changeMenuComponents.putConstraint(SpringLayout.SOUTH, lblNewLabel_4, -21, SpringLayout.SOUTH,
 				changeMenuComponents);
-		sl_changeMenuComponents.putConstraint(SpringLayout.EAST, lblNewLabel_4, -6, SpringLayout.WEST, InputChangeBreadPrice);
+		sl_changeMenuComponents.putConstraint(SpringLayout.EAST, lblNewLabel_4, -6, SpringLayout.WEST,
+				InputChangeBreadPrice);
 		sl_changeMenuComponents.putConstraint(SpringLayout.NORTH, lblNewLabel_4, 150, SpringLayout.NORTH,
 				changeMenuComponents);
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1085,7 +1167,8 @@ public class ManagementGUI {
 		changeMenuComponents.add(label);
 
 		JLabel lblNewLabel_2 = new JLabel("\uBE75\uC774\uB984 :");
-		sl_changeMenuComponents.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.WEST, changeMenuComponents);
+		sl_changeMenuComponents.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.WEST,
+				changeMenuComponents);
 		sl_changeMenuComponents.putConstraint(SpringLayout.EAST, lblNewLabel_2, -6, SpringLayout.WEST, BreadNameCombo);
 		sl_changeMenuComponents.putConstraint(SpringLayout.NORTH, label, 41, SpringLayout.SOUTH, lblNewLabel_2);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1102,12 +1185,13 @@ public class ManagementGUI {
 		ButtonPanel.setLayout(new GridLayout(2, 3, 10, 10));
 
 		// ¸Þ´ºÃß°¡
-		
-		JButton addMenu = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®¸Þ´ºÃß°¡.png"));
 
+		JButton addMenu = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®¸Þ´ºÃß°¡.png"));
+		addMenu.setOpaque(false);
+		addMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		addMenu.setBorderPainted(false);
 		addMenu.setFocusPainted(false);
-		
+
 		addMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addMenuPanel.setVisible(true);
@@ -1126,6 +1210,10 @@ public class ManagementGUI {
 
 		// ¸Þ´º¼öÁ¤
 		JButton changeMenu = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®¸Þ´º¼öÁ¤.png"));
+		changeMenu.setOpaque(false);
+		changeMenu.setBorderPainted(false);
+		changeMenu.setFocusPainted(false);
+		changeMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		changeMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addMenuPanel.setVisible(false);
@@ -1145,6 +1233,10 @@ public class ManagementGUI {
 
 		// ¸Þ´º»èÁ¦
 		JButton deleMenu = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®¸Þ´º»èÁ¦.png"));
+		deleMenu.setOpaque(false);
+		deleMenu.setBorderPainted(false);
+		deleMenu.setFocusPainted(false);
+		deleMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		deleMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(true);
@@ -1155,7 +1247,6 @@ public class ManagementGUI {
 				StartPanel.setVisible(false);
 			}
 		});
-
 		deleMenu.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 23));
 		deleMenu.setForeground(Color.WHITE);
 		deleMenu.setBackground(new Color(128, 0, 0));
@@ -1163,6 +1254,10 @@ public class ManagementGUI {
 
 		// ÁöÁ¡Á¤º¸º¯°æ
 		JButton changeInfo = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®ÁöÁ¡Á¤º¸¼öÁ¤.png"));
+		changeInfo.setOpaque(false);
+		changeInfo.setBorderPainted(false);
+		changeInfo.setFocusPainted(false);
+		changeInfo.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		changeInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(false);
@@ -1173,7 +1268,6 @@ public class ManagementGUI {
 				StartPanel.setVisible(false);
 			}
 		});
-
 		changeInfo.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 23));
 		changeInfo.setForeground(Color.WHITE);
 		changeInfo.setBackground(new Color(128, 0, 0));
@@ -1181,6 +1275,10 @@ public class ManagementGUI {
 
 		// È¸¿ø°ü¸®
 		JButton controllMember = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®È¸¿ø°ü¸®.png"));
+		controllMember.setOpaque(false);
+		controllMember.setBorderPainted(false);
+		controllMember.setFocusPainted(false);
+		controllMember.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		controllMember.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(false);
@@ -1200,6 +1298,10 @@ public class ManagementGUI {
 
 		// Á¾·á
 		JButton close = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®Á¾·á.png"));
+		close.setOpaque(false);
+		close.setBorderPainted(false);
+		close.setFocusPainted(false);
+		close.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// myCllickListener.onClick();
@@ -1210,7 +1312,9 @@ public class ManagementGUI {
 		close.setForeground(Color.WHITE);
 		close.setBackground(new Color(128, 0, 0));
 		ButtonPanel.add(close);
+
 	}
+	
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
 		// TODO Auto-generated method stub
