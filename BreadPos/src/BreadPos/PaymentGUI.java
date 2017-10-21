@@ -324,7 +324,7 @@ public class PaymentGUI {
 
 	public static void chaingeMsg(int input) {
 		Management management = new Management();
-
+		
 		lblNewLabel_7.setText("" + input);
 		// TODO Auto-generated method stub
 		if (input == 1) {

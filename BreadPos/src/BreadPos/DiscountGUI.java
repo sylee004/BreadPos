@@ -189,6 +189,7 @@ public class DiscountGUI {
 		sl_panel.putConstraint(SpringLayout.SOUTH, changePannel, 232, SpringLayout.NORTH, panel);
 		panel.add(changePannel);
 		changePannel.setLayout(new CardLayout(0, 0));
+		changePannel.setOpaque(false);
 
 		phonepanel = new JPanel();
 		sl_panel.putConstraint(SpringLayout.EAST, changePannel, 348, SpringLayout.WEST, phonepanel);
@@ -197,11 +198,13 @@ public class DiscountGUI {
 		sl_panel.putConstraint(SpringLayout.WEST, phonepanel, 0, SpringLayout.WEST, memebrship);
 		sl_panel.putConstraint(SpringLayout.SOUTH, phonepanel, -6, SpringLayout.NORTH, dispose);
 		sl_panel.putConstraint(SpringLayout.EAST, phonepanel, 0, SpringLayout.EAST, phone);
-		phonepanel.setBackground(new Color(255, 255, 255, 0));
+		phonepanel.setBackground(new Color(255, 255, 255, 100));
+		phonepanel.setOpaque(false);
 		SpringLayout sl_phonepanel = new SpringLayout();
 		phonepanel.setLayout(sl_phonepanel);
 		phonepanel.setVisible(false);
-		phonepanel.setOpaque(false);
+		
+		
 
 		JLabel lblNewLabel_1 = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9 :");
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 91, SpringLayout.NORTH, phonepanel);
@@ -218,13 +221,14 @@ public class DiscountGUI {
 		sl_phonepanel.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.SOUTH, ouput, -25, SpringLayout.SOUTH, phonepanel);
 
-		ouput.setBackground(Color.ORANGE);
+		ouput.setBackground(new Color(240, 248, 255));
+		ouput.setOpaque(false);
 		phonepanel.add(ouput);
 		ouput.setLayout(new CardLayout(0, 0));
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
+		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 30));
 		ouput.add(lblNewLabel_2, "name_61052184684373");
 
 		JPanel panel_3 = new JPanel();
@@ -237,45 +241,63 @@ public class DiscountGUI {
 		phonepanel.add(panel_3);
 		panel_3.setOpaque(false);
 		panel_3.setLayout(new GridLayout(0, 3, 10, 0));
-
-		JButton btnNewButton = new JButton("SKT");
-		btnNewButton.setBackground(new Color(178, 34, 34));
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				lblNewLabel_2.setText("10% ÇÒÀÎ");
-				input = 1;
-				choice = 1;
-			}
-		});
-		panel_3.add(btnNewButton);
-
-		JButton btnNewButton_2 = new JButton("KT");
-		btnNewButton_2.setBackground(new Color(178, 34, 34));
-		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_2.setText("7% ÇÒÀÎ");
-				input = 3;
-				choice = 1;
-			}
-		});
-		panel_3.add(btnNewButton_2);
-
-		JButton btnNewButton_1 = new JButton("LG U+");
-		btnNewButton_1.setBackground(new Color(178, 34, 34));
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_2.setText("5% ÇÒÀÎ");
-				input = 2;
-				choice = 1;
-			}
-		});
-		panel_3.add(btnNewButton_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
+		panel_3.add(panel_1);
+				panel_1.setLayout(new CardLayout(0, 0));
+		
+				JButton btnNewButton = new JButton("SKT");
+				panel_1.add(btnNewButton, "name_164205628504320");
+				btnNewButton.setBackground(new Color(178, 34, 34, 0));
+				btnNewButton.setForeground(new Color(0, 0, 0));
+				btnNewButton.setOpaque(false);
+				btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+				
+				JPanel panel_5 = new JPanel();
+				panel_5.setOpaque(false);
+				panel_3.add(panel_5);
+				panel_5.setLayout(new CardLayout(0, 0));
+				
+						JButton btnNewButton_2 = new JButton("KT");
+						panel_5.add(btnNewButton_2, "name_164212106918826");
+						btnNewButton_2.setBackground(new Color(178, 34, 34, 10));
+						btnNewButton_2.setForeground(new Color(0, 0, 0));
+						btnNewButton_2.setOpaque(false);
+						btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+						btnNewButton_2.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								lblNewLabel_2.setText("7% ÇÒÀÎ");
+								input = 3;
+								choice = 1;
+							}
+						});
+				
+				JPanel panel_2 = new JPanel();
+				panel_2.setOpaque(false);
+				panel_3.add(panel_2);
+						panel_2.setLayout(new CardLayout(0, 0));
+				
+						JButton btnNewButton_1 = new JButton("LG U+");
+						panel_2.add(btnNewButton_1, "name_164209284288426");
+						btnNewButton_1.setBackground(new Color(178, 34, 34, 0));
+						btnNewButton_1.setForeground(new Color(0, 0, 0));
+						btnNewButton_1.setOpaque(false);
+						btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+						btnNewButton_1.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								lblNewLabel_2.setText("5% ÇÒÀÎ");
+								input = 2;
+								choice = 1;
+							}
+						});
+				btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						lblNewLabel_2.setText("10% ÇÒÀÎ");
+						input = 1;
+						choice = 1;
+					}
+				});
 
 		memberpanel = new JPanel();
 		memberpanel.setBackground(Color.WHITE);
@@ -307,6 +329,7 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, inputMemberNumber, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, inputMemberNumber, -22, SpringLayout.EAST, memberpanel);
 		memberpanel.add(inputMemberNumber);
+		inputMemberNumber.setOpaque(false);
 		inputMemberNumber.setColumns(10);
 		MemberInfoDAO memberInfoDAO = new MemberInfoDAO();
 		
@@ -317,7 +340,8 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, panel_4, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, panel_4, -54, SpringLayout.SOUTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, inputMemberNumber);
-		panel_4.setBackground(Color.ORANGE);
+		panel_4.setBackground(new Color(240, 248, 255));
+		panel_4.setOpaque(false);
 		memberpanel.add(panel_4);
 		panel_4.setLayout(new CardLayout(0, 0));
 

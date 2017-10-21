@@ -24,8 +24,9 @@ public class salesGUI {
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
 	private GraphGUI graphGUI;
-	private static JPanel Grap;
+	public JPanel Grap;
 	private int input;
+	private static JButton showgrap;
 	private static JPanel Chart;
 
 	/**
@@ -95,12 +96,13 @@ public class salesGUI {
 		panel.add(panel_2);
 		panel_2.setLayout(new GridLayout(0, 3, 10, 0));
 		
-		JButton showgrap = new JButton("\uADF8\uB798\uD504\uBCF4\uAE30");
+		showgrap = new JButton("\uADF8\uB798\uD504\uBCF4\uAE30");
 		showgrap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { // 그래프보기 
 				/*graphGUI.tabbed(panel_2);*/
 				GraphGUI graphGUI = new GraphGUI("1234");
-				
+				graphGUI.main(null);
+				myCllickListener.onClick();
 				
 				
 			}
@@ -131,7 +133,7 @@ public class salesGUI {
 		JButton btnNewButton_2 = new JButton("\uC885\uB8CC");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				myCllickListener.onClick();
+				
 				frame.dispose();
 			}
 		});
@@ -141,12 +143,7 @@ public class salesGUI {
 		panel_2.add(btnNewButton_2);
 	}
 
-	private static void showgrap() {
-		// TODO Auto-generated method stub
-		GraphGUI graphGUI = new GraphGUI("");
-		
-		
-	}
+	
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
 		this.myCllickListener = myCllickListener;
