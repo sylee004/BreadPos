@@ -24,6 +24,7 @@ import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
 import DB.MemberInfoDAO;
+import oracle.net.aso.i;
 
 import java.awt.GridLayout;
 import java.awt.CardLayout;
@@ -91,7 +92,7 @@ public class DiscountGUI {
 				}
 			}
 		};
-		panel.setOpaque(false);
+//		panel.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, 305, SpringLayout.NORTH, frame.getContentPane());
@@ -144,6 +145,7 @@ public class DiscountGUI {
 
 	
 		JButton dispose = new JButton(new ImageIcon("./image/ButtonFolder/ÇÒÀÎÁ¾·á.png"));
+		dispose.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_panel.putConstraint(SpringLayout.NORTH, dispose, 250, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, dispose, 163, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, dispose, -10, SpringLayout.SOUTH, panel);
@@ -158,12 +160,14 @@ public class DiscountGUI {
 		dispose.setForeground(Color.WHITE);
 		panel.add(dispose);
 
-		JButton discount = new JButton("\uD560\uC778 \uC801\uC6A9");
+		JButton discount = new JButton(new ImageIcon("./image/ButtonFolder/ÇÒÀÎÀû¿ë.png"));
+		discount.setBackground(Color.WHITE);
+		discount.setBorderPainted(false);
+		discount.setOpaque(false);
 		sl_panel.putConstraint(SpringLayout.NORTH, discount, 186, SpringLayout.SOUTH, phone);
 		sl_panel.putConstraint(SpringLayout.SOUTH, discount, -10, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, discount, -46, SpringLayout.EAST, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, dispose, -6, SpringLayout.WEST, discount);
-		discount.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		discount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// ÇÒÀÎ·ü Àû¿ë ¼ö½ÄÇÊ¿ä
@@ -173,17 +177,13 @@ public class DiscountGUI {
 					PaymentGUI.memberMsg(input);
 					
 				}
-				
-
 				frame.dispose();
 			}
 		});
-		discount.setForeground(new Color(255, 255, 255));
-		discount.setBackground(new Color(128, 0, 0));
-
 		panel.add(discount);
 
 		JPanel changePannel = new JPanel();
+		changePannel.setOpaque(false);
 		sl_panel.putConstraint(SpringLayout.NORTH, changePannel, 6, SpringLayout.SOUTH, phone);
 		sl_panel.putConstraint(SpringLayout.WEST, changePannel, 38, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, changePannel, 232, SpringLayout.NORTH, panel);
@@ -199,6 +199,7 @@ public class DiscountGUI {
 		sl_panel.putConstraint(SpringLayout.EAST, phonepanel, 0, SpringLayout.EAST, phone);
 		phonepanel.setBackground(new Color(255, 255, 255, 0));
 		SpringLayout sl_phonepanel = new SpringLayout();
+		phonepanel.setOpaque(false);
 		phonepanel.setLayout(sl_phonepanel);
 		phonepanel.setVisible(false);
 		phonepanel.setOpaque(false);
@@ -207,16 +208,16 @@ public class DiscountGUI {
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 91, SpringLayout.NORTH, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 10, SpringLayout.WEST, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -22, SpringLayout.SOUTH, phonepanel);
-		lblNewLabel_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+		lblNewLabel_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 21));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		phonepanel.add(lblNewLabel_1);
 
 		JPanel ouput = new JPanel();
-		sl_phonepanel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -6, SpringLayout.WEST, ouput);
+		sl_phonepanel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -18, SpringLayout.WEST, ouput);
+		sl_phonepanel.putConstraint(SpringLayout.WEST, ouput, 112, SpringLayout.WEST, phonepanel);
+		sl_phonepanel.putConstraint(SpringLayout.SOUTH, ouput, -30, SpringLayout.SOUTH, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
-		sl_phonepanel.putConstraint(SpringLayout.WEST, ouput, 100, SpringLayout.WEST, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, phonepanel);
-		sl_phonepanel.putConstraint(SpringLayout.SOUTH, ouput, -25, SpringLayout.SOUTH, phonepanel);
 
 		ouput.setBackground(Color.ORANGE);
 		phonepanel.add(ouput);
@@ -224,11 +225,12 @@ public class DiscountGUI {
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
+		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 21));
 		ouput.add(lblNewLabel_2, "name_61052184684373");
 
 		JPanel panel_3 = new JPanel();
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, panel_3, 14, SpringLayout.NORTH, phonepanel);
+		sl_phonepanel.putConstraint(SpringLayout.WEST, panel_3, -314, SpringLayout.EAST, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.SOUTH, panel_3, -27, SpringLayout.NORTH, lblNewLabel_1);
 		sl_phonepanel.putConstraint(SpringLayout.EAST, panel_3, -25, SpringLayout.EAST, phonepanel);
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_3, 6, SpringLayout.SOUTH, phone);
@@ -239,6 +241,7 @@ public class DiscountGUI {
 		panel_3.setLayout(new GridLayout(0, 3, 10, 0));
 
 		JButton btnNewButton = new JButton("SKT");
+		btnNewButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton.setBackground(new Color(178, 34, 34));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
@@ -252,6 +255,7 @@ public class DiscountGUI {
 		panel_3.add(btnNewButton);
 
 		JButton btnNewButton_2 = new JButton("KT");
+		btnNewButton_2.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_2.setBackground(new Color(178, 34, 34));
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
@@ -265,6 +269,7 @@ public class DiscountGUI {
 		panel_3.add(btnNewButton_2);
 
 		JButton btnNewButton_1 = new JButton("LG U+");
+		btnNewButton_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_1.setBackground(new Color(178, 34, 34));
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
@@ -278,14 +283,14 @@ public class DiscountGUI {
 		panel_3.add(btnNewButton_1);
 
 		memberpanel = new JPanel();
-		memberpanel.setBackground(Color.WHITE);
+		memberpanel.setOpaque(false);
 		changePannel.add(memberpanel, "name_147043956309760");
 		SpringLayout sl_memberpanel = new SpringLayout();
 		memberpanel.setLayout(sl_memberpanel);
 		memberpanel.setVisible(false);
-		memberpanel.setOpaque(false);
 
-		JLabel lblNewLabel_3 = new JLabel("\uBC88\uD638 \uC785\uB825");
+
+		JLabel lblNewLabel_3 = new JLabel("\uBC88\uD638 \uC785\uB825 :");
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 10, SpringLayout.NORTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.WEST, lblNewLabel_3, 0, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, lblNewLabel_3, -112, SpringLayout.SOUTH, memberpanel);
@@ -294,7 +299,7 @@ public class DiscountGUI {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		memberpanel.add(lblNewLabel_3);
 
-		JLabel label = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9");
+		JLabel label = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9 :");
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, label, 18, SpringLayout.SOUTH, lblNewLabel_3);
 		sl_memberpanel.putConstraint(SpringLayout.WEST, label, 0, SpringLayout.WEST, lblNewLabel_3);
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, label, -54, SpringLayout.SOUTH, memberpanel);
@@ -303,6 +308,9 @@ public class DiscountGUI {
 		memberpanel.add(label);
 
 		inputMemberNumber = new JTextField();
+		inputMemberNumber.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		inputMemberNumber.setOpaque(false);
+		inputMemberNumber.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, inputMemberNumber, 15, SpringLayout.NORTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.WEST, inputMemberNumber, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, inputMemberNumber, -22, SpringLayout.EAST, memberpanel);
@@ -322,9 +330,11 @@ public class DiscountGUI {
 		panel_4.setLayout(new CardLayout(0, 0));
 
 		showdiscount = new JLabel("");
+		showdiscount.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		panel_4.add(showdiscount, "name_147293203139413");
 		
 		JButton btnNewButton_3 = new JButton("\uD655\uC778");
+		//btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				choice = 2;
@@ -333,7 +343,6 @@ public class DiscountGUI {
 				if (inputMemberNumber.getText().equals(nember)) {
 					showdiscount.setText("È¸¿ø ÀÌ½Ã³×¿ä?");
 					input = 1;
-					
 				}else {
 					showdiscount.setText("È¸¿øÀÌ ¾Æ´Ï½Ã³×¿ä ¤Ð¤Ð");
 					input = 2;
@@ -344,6 +353,15 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, btnNewButton_3, -10, SpringLayout.SOUTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, btnNewButton_3, -38, SpringLayout.EAST, memberpanel);
 		memberpanel.add(btnNewButton_3);
+		
+		JPanel panel_1 = new JPanel();
+		//¹øÈ£ÀÔ·Â µÚ
+		panel_1.setBackground(new Color(255,255,255,150));
+		sl_memberpanel.putConstraint(SpringLayout.NORTH, panel_1, 15, SpringLayout.NORTH, memberpanel);
+		sl_memberpanel.putConstraint(SpringLayout.WEST, panel_1, 97, SpringLayout.WEST, memberpanel);
+		sl_memberpanel.putConstraint(SpringLayout.EAST, panel_1, -22, SpringLayout.EAST, memberpanel);
+		sl_memberpanel.putConstraint(SpringLayout.SOUTH, panel_1, -13, SpringLayout.NORTH, panel_4);
+		memberpanel.add(panel_1);
 
 		basicpannel = new JPanel();
 		basicpannel.setBackground(new Color(0, 0, 0, 0));
