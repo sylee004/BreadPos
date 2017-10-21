@@ -231,14 +231,13 @@ public class LoginGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				office_num = mg.officeNumIdPw(id, pw);
 				if(office_num != 0) {
+					mg.deleteProduct();
 					MainGUI main = new MainGUI(office_num);
 					main.main(office_num);
 					frame.dispose();
 				} else {
 					zPopLoginFailGUI lfg = new zPopLoginFailGUI();
 					lfg.main(null);
-					
-					
 				}
 			}
 		});

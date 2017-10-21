@@ -37,6 +37,7 @@ public class Tab extends JPanel{
 				public void actionPerformed(ActionEvent arg0) {
 					list = bread;
 					MainGUI.sendMessage(list);
+					//new List();
 				}
 			});
 			whitePanel.add(menuBtn);

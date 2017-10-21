@@ -51,6 +51,7 @@ public class ManagementGUI {
 	private JTextField Input;
 	private JTextField InputChange;
 	private JTextField InputValue;
+	private static int office_num;
 	Management mg = new Management();
 	String breadName;
 	String[] breadType = { "밀가루", "보리", "옥수수", "호밀", "혼합", "기타" };
@@ -246,6 +247,9 @@ public class ManagementGUI {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.addMember(phoneNumInput.getText(), nameInput.getText());
 				//회원등록팝업!!
+				zPopMemberInputGUI in = new zPopMemberInputGUI();
+				in.main(null);
+				frame.dispose();
 			}
 		});
 		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -10, SpringLayout.NORTH, btnNewButton_3);
@@ -831,12 +835,15 @@ public class ManagementGUI {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.plusBread(InputBreadName.getText(), breadTypeChoice, breadPrice);
 //				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
-				for (int j = 0; j < breadNameList.size(); j++) {
-					if (breadName.equals(breadNameList.get(j))) {
-						breadNameList.add(breadName);
-					}
-				}
+//				for (int j = 0; j < breadNameList.size(); j++) {
+//					if (breadName.equals(breadNameList.get(j))) {
+//						breadNameList.add(breadName);
+//					}
+//				}
 				//메뉴추가팝업!!
+				zPopBreadInputGUI up = new zPopBreadInputGUI();
+				up.main(null);
+				frame.dispose();
 				
 			}
 		});
@@ -1182,5 +1189,9 @@ public class ManagementGUI {
 		// TODO Auto-generated method stub
 		this.myCllickListener = myCllickListener;
 
+	}
+
+	public void sendOfficeNum(int office_num) {
+		this.office_num = office_num;
 	}
 }

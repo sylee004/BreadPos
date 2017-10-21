@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -43,7 +44,7 @@ import javax.swing.JInternalFrame;
 
 public class MainGUI {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private ImageIcon icon;
 	private BufferedImage bimg;
 	private JTable userTable;
@@ -55,9 +56,13 @@ public class MainGUI {
 	private static Management mg;
 	private Bread breadSelectBtn;
 	private Tab tab;
-	private List listM;
-	private JPanel choicePanel;
-	private static ArrayList<Product> breadList = new ArrayList<Product>();
+	private static JLabel lblNewLabel;
+	private static JPanel productPanel;
+	private static JPanel amountPanel;
+	private static JPanel pricePanel;
+	private static List listM;
+	private static JPanel choicePanel;
+	private static ArrayList<Product> breadList;
 	private static int office_num;
 
 	/**
@@ -85,6 +90,7 @@ public class MainGUI {
 		tab = new Tab();
 		mg = new Management();
 		listM = new List();
+		breadList = mg.selectProduct();
 		initialize();
 	}
 
@@ -99,7 +105,7 @@ public class MainGUI {
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 
-		JPanel mainPanel = new JPanel(){
+		JPanel mainPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/»§¹è°æÈ­¸é¼öÁ¤.png"));
@@ -117,7 +123,7 @@ public class MainGUI {
 		springLayout.putConstraint(SpringLayout.WEST, mainPanel, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, mainPanel, 617, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, mainPanel, 959, SpringLayout.WEST, frame.getContentPane());
-		//mainPanel.setOpaque(false);
+		// mainPanel.setOpaque(false);
 		mainPanel.setBackground(new Color(220, 220, 220));
 		frame.getContentPane().add(mainPanel);
 		mainPanel.setLayout(new GridLayout(0, 2, 0, 0));
@@ -148,7 +154,7 @@ public class MainGUI {
 		ShowPanel.add(columnsPanel);
 		SpringLayout sl_columnsPanel = new SpringLayout();
 		columnsPanel.setLayout(sl_columnsPanel);
-		
+
 		JLabel choiceLabel = new JLabel("\uC120\uD0DD");
 		sl_columnsPanel.putConstraint(SpringLayout.NORTH, choiceLabel, 0, SpringLayout.NORTH, columnsPanel);
 		sl_columnsPanel.putConstraint(SpringLayout.WEST, choiceLabel, 0, SpringLayout.WEST, columnsPanel);
@@ -192,7 +198,7 @@ public class MainGUI {
 		JPanel totalMoneyPanel = new JPanel();
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 496, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -6, SpringLayout.NORTH, totalMoneyPanel);
-		
+
 		JPanel ListPanel = new JPanel();
 		ListPanel.setBackground(new Color(255, 255, 255, 150));
 		ListPanel.setOpaque(false);
@@ -203,18 +209,24 @@ public class MainGUI {
 		ShowPanel.add(ListPanel);
 		SpringLayout sl_ListPanel = new SpringLayout();
 		ListPanel.setLayout(sl_ListPanel);
-		
+
 		choicePanel = new JPanel();
 		choicePanel.setBackground(new Color(255, 255, 255, 150));
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, choicePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, choicePanel, 0, SpringLayout.WEST, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, choicePanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, choicePanel, 63, SpringLayout.WEST, ListPanel);
-		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 18));
 		ListPanel.add(choicePanel);
-		listM.choice(choicePanel, breadList);
-	
-		JPanel productPanel = new JPanel();
+
+		// for (int i = 0; i < breadList.size(); i++) {
+		// JCheckBox checkBox = new JCheckBox("¼±ÅÃ");
+		// checkBox.setBackground(new Color(255, 255, 255, 150));
+		// checkBox.setOpaque(false);
+		// choicePanel.add(checkBox);
+		// }
+
+		productPanel = new JPanel();
 		productPanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
 		flowLayout.setHgap(60);
@@ -224,23 +236,23 @@ public class MainGUI {
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, productPanel, 0, SpringLayout.SOUTH, choicePanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, productPanel, 248, SpringLayout.WEST, ListPanel);
 		ListPanel.add(productPanel);
-				
-		JPanel amountPanel = new JPanel();
+
+		amountPanel = new JPanel();
 		amountPanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout_1 = (FlowLayout) amountPanel.getLayout();
-		flowLayout_1.setHgap(10);
+		flowLayout_1.setHgap(30);
 		flowLayout_1.setVgap(10);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, amountPanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, amountPanel, 0, SpringLayout.EAST, productPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, amountPanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, amountPanel, 312, SpringLayout.WEST, ListPanel);
 		ListPanel.add(amountPanel);
-		
-		JPanel pricePanel = new JPanel();
+
+		pricePanel = new JPanel();
 		pricePanel.setBackground(new Color(255, 255, 255, 150));
 		FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
 		flowLayout_2.setVgap(10);
-		flowLayout_2.setHgap(30);
+		flowLayout_2.setHgap(40);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, pricePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, pricePanel, 0, SpringLayout.EAST, amountPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, pricePanel, 0, SpringLayout.SOUTH, ListPanel);
@@ -252,17 +264,19 @@ public class MainGUI {
 		leftPanel.add(totalMoneyPanel);
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
-		
-//		tab.tabbed(productPanel, "white");
-//		
-//		int num = breadList.size();
-//		for (int i = 0; i < num; i++) {
-//			if(num % 2 == 0) {
-//			tab.tabbed(productPanel, "white");
-//			} else {
-//				tab.tabbed(productPanel, "rye");
-//			}
-//		}
+
+		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+
+		// tab.tabbed(productPanel, "white");
+		//
+		// int num = breadList.size();
+		// for (int i = 0; i < num; i++) {
+		// if(num % 2 == 0) {
+		// tab.tabbed(productPanel, "white");
+		// } else {
+		// tab.tabbed(productPanel, "rye");
+		// }
+		// }
 
 		JLabel lblNewLabel_1 = new JLabel("\uCD1D \uACB0\uC81C \uAE08\uC561 :");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -273,10 +287,10 @@ public class MainGUI {
 		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel_1, 128, SpringLayout.WEST, totalMoneyPanel);
 		totalMoneyPanel.add(lblNewLabel_1);
 
-		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel = new JLabel();
 		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel, -32, SpringLayout.EAST, totalMoneyPanel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		sl_totalMoneyPanel.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, totalMoneyPanel);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel, 0, SpringLayout.SOUTH, totalMoneyPanel);
@@ -285,7 +299,7 @@ public class MainGUI {
 		JPanel paymentPanel = new JPanel();
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, totalMoneyPanel, -20, SpringLayout.NORTH, paymentPanel);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("\uC6D0");
 		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -339,8 +353,8 @@ public class MainGUI {
 			}
 		});
 		paymentBtn.setBackground(new Color(139, 0, 0));
-		
-		JPanel logopanel = new JPanel(){
+
+		JPanel logopanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/logo.png"));
@@ -392,8 +406,8 @@ public class MainGUI {
 		managementBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				managementBtn.setBackground(Color.orange);
-
 				ManagementGUI managementGUI = new ManagementGUI();
+				managementGUI.sendOfficeNum(office_num);
 				managementGUI.frame.setVisible(true);
 				managementGUI.setOnMyClickListener(new MyCllickListener() {
 					@Override
@@ -462,7 +476,7 @@ public class MainGUI {
 		tabbedPane.setOpaque(false);
 		tabbedPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		tabbedPanel.add(tabbedPane);
-		
+
 		JPanel whitePanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -484,7 +498,7 @@ public class MainGUI {
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(whitePanel, "white");
-		
+
 		JPanel boriPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -505,7 +519,7 @@ public class MainGUI {
 		boriPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(boriPanel, "bori");
-		
+
 		JPanel cornPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -526,7 +540,7 @@ public class MainGUI {
 		cornPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(cornPanel, "corn");
-		
+
 		JPanel ryePanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -547,7 +561,7 @@ public class MainGUI {
 		ryePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(ryePanel, "rye");
-		
+
 		JPanel mixturePanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -568,7 +582,7 @@ public class MainGUI {
 		mixturePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(mixturePanel, "mix");
-		
+
 		JPanel otherPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -593,13 +607,33 @@ public class MainGUI {
 
 	public static void sendMessage(Bread list) {
 		Product pro = new Product(list.getName(), 1, list.getPrice());
-		breadList = mg.addProduct(pro);
-		
-		
-		
-		//listM.choice(choicePanel, breadList);
-		//System.out.println(list.getName());
-		//System.out.println(vector.size());
+		mg.addProduct(pro);
+
+		int total = 0;
+
+		for (int i = 0; i < breadList.size(); i++) {
+			total += breadList.get(i).getPrice();
+		}
+
+		lblNewLabel.setText("" + total);
+
+		// listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+
+		// listM.choice(choicePanel, breadList);
+		// System.out.println(list.getName());
+		// System.out.println(vector.size());
+		//main(office_num);
+		//frame.dispose();
 		new MainGUI(office_num);
+	}
+
+	public static void sendlist() {
+		int total = 0;
+
+		for (int i = 0; i < breadList.size(); i++) {
+			total += breadList.get(i).getPrice();
+		}
+
+		lblNewLabel.setText("" + total);
 	}
 }
