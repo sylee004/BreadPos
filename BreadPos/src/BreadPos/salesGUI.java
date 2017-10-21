@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JInternalFrame;
 
 public class salesGUI {
 
@@ -52,7 +53,7 @@ public class salesGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 694, 510);
+		frame.setBounds(100, 100, 694, 514);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -81,6 +82,10 @@ public class salesGUI {
 		
 		JPanel panel_3 = new JPanel();
 		Showgrap.add(panel_3, "name_87378178161920");
+		
+		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
+		panel_3.add(internalFrame);
+		internalFrame.setVisible(true);
 		GraphGUI graphGUI = new GraphGUI("");
 		graphGUI.main(null);
 		
