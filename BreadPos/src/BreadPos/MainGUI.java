@@ -36,7 +36,10 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import DB.Bread;
+import DB.Product;
+
 import javax.swing.border.EmptyBorder;
+import javax.swing.JInternalFrame;
 
 public class MainGUI {
 
@@ -49,12 +52,12 @@ public class MainGUI {
 	private JButton managementBtn;
 	private JButton salesBtn;
 	private JButton paymentBtn;
-	private Management mg;
+	private static Management mg;
 	private Bread breadSelectBtn;
 	private Tab tab;
-	private static List listM;
-	private static JPanel choicePanel;
-	private static ArrayList<Bread> breadList = new ArrayList<Bread>();
+	private List listM;
+	private JPanel choicePanel;
+	private static ArrayList<Product> breadList = new ArrayList<Product>();
 	private static int office_num;
 
 	/**
@@ -209,6 +212,7 @@ public class MainGUI {
 		sl_ListPanel.putConstraint(SpringLayout.EAST, choicePanel, 63, SpringLayout.WEST, ListPanel);
 		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 		ListPanel.add(choicePanel);
+		listM.choice(choicePanel, breadList);
 	
 		JPanel productPanel = new JPanel();
 		productPanel.setBackground(new Color(255, 255, 255, 150));
@@ -588,9 +592,12 @@ public class MainGUI {
 	}
 
 	public static void sendMessage(Bread list) {
-		breadList.add(list);
+		Product pro = new Product(list.getName(), 1, list.getPrice());
+		breadList = mg.addProduct(pro);
 		
-		listM.choice(choicePanel, breadList);
+		
+		
+		//listM.choice(choicePanel, breadList);
 		//System.out.println(list.getName());
 		//System.out.println(vector.size());
 		new MainGUI(office_num);

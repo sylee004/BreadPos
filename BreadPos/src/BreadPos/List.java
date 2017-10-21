@@ -7,14 +7,18 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import DB.Bread;
+import DB.Product;
 
 public class List extends JPanel {
-	public void choice(JPanel choicePanel, ArrayList<Bread> breadList) {
+	public void choice(JPanel choicePanel, ArrayList<Product> breadList) {
 		System.out.println(breadList.size());
-		for (int i = 0; i < breadList.size(); i++) {
-			JCheckBox checkBox = new JCheckBox("선택");
-			checkBox.setBackground(new Color(255, 255, 255, 150));
-			choicePanel.add(checkBox);
+		if (breadList.size() != 0) {
+			for (int i = 0; i < breadList.size(); i++) {
+				JCheckBox checkBox = new JCheckBox("선택");
+				checkBox.setBackground(new Color(255, 255, 255, 150));
+				checkBox.setOpaque(false);
+				choicePanel.add(checkBox);
+			}
 		}
 	}
 }
