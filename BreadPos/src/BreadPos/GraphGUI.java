@@ -28,6 +28,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * A simple demonstration application showing how to create a line chart using
@@ -52,22 +54,18 @@ public class GraphGUI extends ApplicationFrame {
 		XYDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset);
 		chartPanel = new ChartPanel(chart);
+		chartPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+		});
 
 		chartPanel.setBackground(new Color(255, 255, 240));
 		chartPanel.setPreferredSize(new java.awt.Dimension(450, 350)); // Ç¥ Å©±â
 		setContentPane(chartPanel);
 		chartPanel.setLayout(null);
 		chartPanel.setToolTipText("¾Æ¾Æ¾Æ¾Æ");
-		JButton btnNewButton = new JButton("\uC885\uB8CC");
-		btnNewButton.setBackground(new Color(165, 42, 42));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-			}
-		});
-		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
-		btnNewButton.setBounds(350, 309, 97, 23);
-		chartPanel.add(btnNewButton);
 
 	}
 
