@@ -71,8 +71,7 @@ public class zPopCardCompleteGUI {
 		panel.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent arg0) {
-				ManagementGUI m = new ManagementGUI();
-				m.main(null);
+			
 				frame.dispose();
 
 			}
