@@ -13,8 +13,8 @@ public class CircleGUI extends JFrame {
 	int[] data = {0,0,0,0,0}; // 차트의 값 저장배열
 	int[] arcAngle = new int[5]; 
 
-	Color[] color = {Color.YELLOW, Color.red, // 색상 
-			  Color.WHITE, Color.GREEN, Color.orange};
+	Color[] color = {Color.MAGENTA, Color.red, // 색상 
+			  Color.CYAN, Color.GREEN, Color.orange};
 
 	String[] itemName = {"White", "Rye", // 비교대상 
 			                  "Corn", "Bori", "Mix"};
