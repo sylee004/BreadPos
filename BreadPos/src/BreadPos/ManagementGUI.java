@@ -369,12 +369,10 @@ public class ManagementGUI {
 							int count = mg.updateMember(Input.getText(), InputChange.getText(), Input.getText(),
 									OuputList.get(j).getMember_name());
 							
-							//회원수정팝업!!
-							zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
-							in.main(null);
-							frame.dispose();
+							
 							
 						}
+						
 					}
 				} else if (breadName.equals(number[1])) {// 이름 >> 번호
 					for (int j = 0; j < OuputList.size(); j++) {
@@ -384,6 +382,10 @@ public class ManagementGUI {
 						}
 					}
 				}
+				//회원수정팝업!!
+				zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
+				in.main(null);
+				frame.dispose();
 			}
 		});
 		btnNewButton_5.setBackground(new Color(139, 0, 0));
