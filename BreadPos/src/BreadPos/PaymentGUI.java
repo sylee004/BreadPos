@@ -140,7 +140,7 @@ public class PaymentGUI {
 		userColumn.add("수량");
 		userColumn.add("가격");
 
-		userRow.add("소보로빵");
+		data.add("소보로빵");
 		userRow.add("1");
 		userRow.add("1200");
 
