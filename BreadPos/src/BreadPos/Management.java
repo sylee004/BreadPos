@@ -8,11 +8,14 @@ import DB.Member;
 import DB.MemberInfoDAO;
 import DB.Office;
 import DB.OfficeDAO;
+import DB.Product;
+import DB.ProductDAO;
 
 public class Management {
 	private BreadInfoDAO bread = new BreadInfoDAO();
 	private OfficeDAO office = new OfficeDAO();
 	private MemberInfoDAO member = new MemberInfoDAO();
+	private ProductDAO product = new ProductDAO();
 
 	public int officeNumIdPw(String input_id, String input_pw) {
 		ArrayList<Office> list = office.select_office();
@@ -124,6 +127,37 @@ public class Management {
 		return dis;
 	}
 	
+	public ArrayList<Product> addProduct(Product pro) {
+		int count = 0;
+		ArrayList<Product> list = product.product_select();
+		boolean ok = true;
+		String Mname = "";
+		int oldAmount = 0;
+		int oldPrice = 0;
+		for (int i = 0; i < list.size(); i++) {
+			String pname = list.get(i).getPname();
+			if(pro.getPname().equals(pname)) {
+				ok = false;
+				Mname = pname;
+				oldAmount = list.get(i).getAmount();
+				oldPrice = list.get(i).getPrice();
+			}
+		}
+		if(ok) {
+			count = product.product_insert(pro);
+		} else {
+			int newAmount = oldAmount + pro.getAmount();
+			int newPrice = oldPrice + pro.getPrice();
+			Product newPro = new Product(Mname, newAmount, newPrice);
+			count = product.product_update(newPro);
+		}
+		
+		return list;
+	}
 	
+	public ArrayList<Product> selectProduct() {
+		ArrayList<Product> Sproduct = product.product_select();
+		return Sproduct;
+	}
 	
 }
