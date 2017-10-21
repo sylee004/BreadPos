@@ -217,7 +217,6 @@ public class DiscountGUI {
 		phonepanel.add(lblNewLabel_1);
 
 		JPanel ouput = new JPanel();
-
 		sl_phonepanel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -18, SpringLayout.WEST, ouput);
 		sl_phonepanel.putConstraint(SpringLayout.WEST, ouput, 112, SpringLayout.WEST, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.SOUTH, ouput, -30, SpringLayout.SOUTH, phonepanel);
@@ -225,12 +224,13 @@ public class DiscountGUI {
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
 		sl_phonepanel.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, phonepanel);
 
-		ouput.setBackground(new Color(240, 248, 255));
-		ouput.setOpaque(false);
+		ouput.setBackground(new Color(255, 215, 0));
+
 		phonepanel.add(ouput);
 		ouput.setLayout(new CardLayout(0, 0));
 
 		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBackground(new Color(255, 215, 0));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 
 		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 21));
@@ -315,7 +315,7 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, label, 0, SpringLayout.WEST, lblNewLabel_3);
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, label, -54, SpringLayout.SOUTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, label, -257, SpringLayout.EAST, memberpanel);
-		label.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
+		label.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 22));
 		memberpanel.add(label);
 
 		inputMemberNumber = new JTextField();
@@ -326,7 +326,7 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, inputMemberNumber, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, inputMemberNumber, -22, SpringLayout.EAST, memberpanel);
 		memberpanel.add(inputMemberNumber);
-		inputMemberNumber.setOpaque(false);
+//		inputMemberNumber.setOpaque(false);
 		inputMemberNumber.setColumns(10);
 		MemberInfoDAO memberInfoDAO = new MemberInfoDAO();
 		
@@ -337,8 +337,7 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, panel_4, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, panel_4, -54, SpringLayout.SOUTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, inputMemberNumber);
-		panel_4.setBackground(new Color(240, 248, 255));
-		panel_4.setOpaque(false);
+		panel_4.setBackground(new Color(255, 215, 0));
 		memberpanel.add(panel_4);
 		panel_4.setLayout(new CardLayout(0, 0));
 
@@ -347,6 +346,12 @@ public class DiscountGUI {
 		panel_4.add(showdiscount, "name_147293203139413");
 		
 		JButton btnNewButton_3 = new JButton("\uD655\uC778");
+		btnNewButton_3.setForeground(new Color(255, 255, 255));
+		sl_memberpanel.putConstraint(SpringLayout.NORTH, btnNewButton_3, 6, SpringLayout.SOUTH, panel_4);
+		sl_memberpanel.putConstraint(SpringLayout.WEST, btnNewButton_3, -82, SpringLayout.EAST, memberpanel);
+		sl_memberpanel.putConstraint(SpringLayout.EAST, btnNewButton_3, 0, SpringLayout.EAST, inputMemberNumber);
+		btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		btnNewButton_3.setBackground(new Color(210, 105, 30));
 		//btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -364,12 +369,11 @@ public class DiscountGUI {
 		});
 		btnNewButton_3.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, btnNewButton_3, -10, SpringLayout.SOUTH, memberpanel);
-		sl_memberpanel.putConstraint(SpringLayout.EAST, btnNewButton_3, -38, SpringLayout.EAST, memberpanel);
 		memberpanel.add(btnNewButton_3);
 		
 		JPanel panel_1 = new JPanel();
 		//¹øÈ£ÀÔ·Â µÚ
-		panel_1.setBackground(new Color(255,255,255,150));
+		panel_1.setBackground(new Color(255,255,255));
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, panel_1, 15, SpringLayout.NORTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.WEST, panel_1, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, panel_1, -22, SpringLayout.EAST, memberpanel);
