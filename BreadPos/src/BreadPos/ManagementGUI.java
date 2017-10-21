@@ -31,6 +31,7 @@ import javax.swing.border.EmptyBorder;
 import DB.BreadInfoDAO;
 import DB.Member;
 import DB.MemberInfoDAO;
+import DB.OfficeDAO;
 
 public class ManagementGUI {
 
@@ -368,12 +369,10 @@ public class ManagementGUI {
 							int count = mg.updateMember(Input.getText(), InputChange.getText(), Input.getText(),
 									OuputList.get(j).getMember_name());
 							
-							//회원수정팝업!!
-							zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
-							in.main(null);
-							frame.dispose();
+							
 							
 						}
+						
 					}
 				} else if (breadName.equals(number[1])) {// 이름 >> 번호
 					for (int j = 0; j < OuputList.size(); j++) {
@@ -383,6 +382,10 @@ public class ManagementGUI {
 						}
 					}
 				}
+				//회원수정팝업!!
+				zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
+				in.main(null);
+				frame.dispose();
 			}
 		});
 		btnNewButton_5.setBackground(new Color(139, 0, 0));
@@ -493,7 +496,7 @@ public class ManagementGUI {
 					}
 				}
 				//회원삭제팝업!!
-				zPopBreadDeleteGUI in = new zPopBreadDeleteGUI();
+				zPopMemberDeleteGUI in = new zPopMemberDeleteGUI();
 				in.main(null);
 				frame.dispose();
 				
@@ -652,7 +655,8 @@ public class ManagementGUI {
 		textField_3.setColumns(10);
 
 		JLabel OutputId = new JLabel("\uC544\uC774\uB514 \uCD9C\uB825");
-		OutputId.setText(""+office_num);
+		String ID = new OfficeDAO().select_office().get(office_num).getOffice_ID();
+		OutputId.setText(ID);
 		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, OutputId, 6, SpringLayout.EAST, lblNewLabel_7);
 		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, OutputId, 0, SpringLayout.EAST, changeInfoComponents);
 		OutputId.setBackground(new Color(0, 0, 0, 100));
@@ -678,6 +682,7 @@ public class ManagementGUI {
 		JButton btnNewButton_2 = new JButton("\uC218\uC815");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int count = mg.modifyOffice(textField_3.getText(), ID, new OfficeDAO().select_office().get(office_num).getOffice_num());				
 				//지점정보수정팝업!!
 				zPopOfficeUpdateGUI in = new zPopOfficeUpdateGUI();
 				in.main(null);
