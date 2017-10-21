@@ -19,6 +19,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+
+import DB.Product;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
@@ -37,6 +40,7 @@ public class PaymentGUI {
 	private static JLabel lblNewLabel_7;
 	public static ArrayList<Integer> moneylist = new ArrayList<>();
 	public static int[] money;
+	private static ArrayList<Product> productList;
 
 	/**
 	 * Launch the application.
@@ -45,7 +49,7 @@ public class PaymentGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PaymentGUI window = new PaymentGUI();
+					PaymentGUI window = new PaymentGUI(productList);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +61,8 @@ public class PaymentGUI {
 	/**
 	 * Create the application.
 	 */
-	public PaymentGUI() {
+	public PaymentGUI(ArrayList<Product> productList) {
+		this.productList = productList;
 		management = new Management();
 		initialize();
 	}
@@ -214,7 +219,7 @@ public class PaymentGUI {
 		btnNewButton_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				myCllickListener.onClick();
+				//myCllickListener.onClick();
 				frame.dispose();
 			}
 		});
@@ -263,12 +268,19 @@ public class PaymentGUI {
 		lblNewLabel_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_1);
+		
+		int total = 0;
+		
+		for (int i = 0; i < productList.size(); i++) {
+			total += productList.get(i).getPrice();
+		}
 
 		lblNewLabel_4 = new JLabel();
 		lblNewLabel_4.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_4);
-		moneylist.add(10000);
+		
+		moneylist.add(total);
 		lblNewLabel_4.setText(""+moneylist.get(0));
 
 		JLabel lblNewLabel_6 = new JLabel("\uD560\uC778\uAE08\uC561");

@@ -395,7 +395,8 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				paymentBtn.setBackground(Color.orange);
 
-				PaymentGUI paymentGUI = new PaymentGUI();
+				PaymentGUI paymentGUI = new PaymentGUI(breadList);
+				paymentGUI.main(null);
 				paymentGUI.frame.setVisible(true);
 				paymentGUI.setOnMyClickListener(new MyCllickListener() {
 
