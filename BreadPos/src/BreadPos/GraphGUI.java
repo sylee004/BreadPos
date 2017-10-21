@@ -23,6 +23,9 @@ import DB.sale;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * A simple demonstration application showing how to create a line chart using
@@ -40,16 +43,27 @@ public class GraphGUI extends ApplicationFrame {
     */
 
    public GraphGUI(final String title) {
-
+	   
       super(title);
 
       final XYDataset dataset = createDataset();
       final JFreeChart chart = createChart(dataset);
       final ChartPanel chartPanel = new ChartPanel(chart);
       chartPanel.setBackground(new Color(255, 255, 240));
-      chartPanel.setPreferredSize(new java.awt.Dimension(400, 300)); // Ç¥ Å©±â
+      chartPanel.setPreferredSize(new java.awt.Dimension(450, 350)); // Ç¥ Å©±â
       setContentPane(chartPanel);
       chartPanel.setLayout(null);
+      
+      JButton btnNewButton = new JButton("\uC885\uB8CC");
+      btnNewButton.setBackground(new Color(165, 42, 42));
+      btnNewButton.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent arg0) {
+      		dispose();
+      	}
+      });
+      btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+      btnNewButton.setBounds(350, 309, 97, 23);
+      chartPanel.add(btnNewButton);
 
    }
 

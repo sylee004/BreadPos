@@ -24,6 +24,9 @@ public class salesGUI {
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
 	private GraphGUI graphGUI;
+	private static JPanel Grap;
+	private int input;
+	private static JPanel Chart;
 
 	/**
 	 * Launch the application.
@@ -80,37 +83,38 @@ public class salesGUI {
 		
 		Showgrap.setLayout(new CardLayout(0, 0));
 		
-		JPanel panel_3 = new JPanel();
-		Showgrap.add(panel_3, "name_87378178161920");
-		
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		panel_3.add(internalFrame);
-		internalFrame.setVisible(true);
-		GraphGUI graphGUI = new GraphGUI("");
-		graphGUI.main(null);
+		Grap = new JPanel();
+		Showgrap.add(Grap, "name_87378178161920");
 		
 		
-		JPanel panel_4 = new JPanel();
-		Showgrap.add(panel_4, "name_87401273531306");
+		
+		
+		
+		Chart = new JPanel();
+		Showgrap.add(Chart, "name_87401273531306");
 		panel.add(panel_2);
 		panel_2.setLayout(new GridLayout(0, 3, 10, 0));
 		
-		JButton btnNewButton = new JButton("\uADF8\uB798\uD504\uBCF4\uAE30");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton showgrap = new JButton("\uADF8\uB798\uD504\uBCF4\uAE30");
+		showgrap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { // ±×·¡ÇÁº¸±â 
-				graphGUI.tabbed(panel_2);
+				/*graphGUI.tabbed(panel_2);*/
+				GraphGUI graphGUI = new GraphGUI("1234");
+				
+				
+				
 			}
 		});
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		showgrap.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				btnNewButton.setBackground(Color.orange);
+				showgrap.setBackground(Color.orange);
 			}
 		});
-		btnNewButton.setForeground(new Color(240, 248, 255));
-		btnNewButton.setBackground(new Color(128, 0, 0));
-		btnNewButton.setFont(new Font("±¼¸²", Font.BOLD, 20));
-		panel_2.add(btnNewButton);
+		showgrap.setForeground(new Color(240, 248, 255));
+		showgrap.setBackground(new Color(128, 0, 0));
+		showgrap.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		panel_2.add(showgrap);
 		
 		JButton btnNewButton_1 = new JButton("\uC778\uAE30\uBE75\uC21C\uC704");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
