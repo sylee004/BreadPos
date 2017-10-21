@@ -41,6 +41,7 @@ import DB.Product;
 
 import javax.swing.border.EmptyBorder;
 import javax.swing.JInternalFrame;
+import javax.swing.JRadioButton;
 
 public class MainGUI {
 
@@ -64,6 +65,7 @@ public class MainGUI {
 	private static JPanel choicePanel;
 	private static ArrayList<Product> breadList;
 	private static int office_num;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -216,7 +218,6 @@ public class MainGUI {
 		sl_ListPanel.putConstraint(SpringLayout.WEST, choicePanel, 0, SpringLayout.WEST, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, choicePanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, choicePanel, 63, SpringLayout.WEST, ListPanel);
-		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 18));
 		ListPanel.add(choicePanel);
 
 		// for (int i = 0; i < breadList.size(); i++) {
@@ -247,25 +248,30 @@ public class MainGUI {
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, amountPanel, 0, SpringLayout.SOUTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.EAST, amountPanel, 312, SpringLayout.WEST, ListPanel);
 		ListPanel.add(amountPanel);
-
-		pricePanel = new JPanel();
-		pricePanel.setBackground(new Color(255, 255, 255, 150));
-		FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
-		flowLayout_2.setVgap(10);
-		flowLayout_2.setHgap(40);
-		sl_ListPanel.putConstraint(SpringLayout.NORTH, pricePanel, 0, SpringLayout.NORTH, ListPanel);
-		sl_ListPanel.putConstraint(SpringLayout.WEST, pricePanel, 0, SpringLayout.EAST, amountPanel);
-		sl_ListPanel.putConstraint(SpringLayout.SOUTH, pricePanel, 0, SpringLayout.SOUTH, ListPanel);
-		sl_ListPanel.putConstraint(SpringLayout.EAST, pricePanel, 0, SpringLayout.EAST, ListPanel);
-		ListPanel.add(pricePanel);
 		totalMoneyPanel.setOpaque(false);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, totalMoneyPanel, 181, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, totalMoneyPanel, -10, SpringLayout.EAST, leftPanel);
 		leftPanel.add(totalMoneyPanel);
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
-
-		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+		choicePanel.setLayout(null);
+		
+		table = new JTable();
+		table.setBounds(14, 364, 35, -360);
+		choicePanel.add(table);
+		
+				pricePanel = new JPanel();
+				sl_ListPanel.putConstraint(SpringLayout.NORTH, pricePanel, 0, SpringLayout.NORTH, ListPanel);
+				sl_ListPanel.putConstraint(SpringLayout.WEST, pricePanel, 0, SpringLayout.EAST, amountPanel);
+				sl_ListPanel.putConstraint(SpringLayout.SOUTH, pricePanel, 0, SpringLayout.SOUTH, ListPanel);
+				sl_ListPanel.putConstraint(SpringLayout.EAST, pricePanel, 0, SpringLayout.EAST, ListPanel);
+				pricePanel.setBackground(new Color(255, 255, 255, 150));
+				FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
+				flowLayout_2.setVgap(10);
+				flowLayout_2.setHgap(40);
+				ListPanel.add(pricePanel);
+				
+						listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 
 		// tab.tabbed(productPanel, "white");
 		//
