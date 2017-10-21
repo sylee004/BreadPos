@@ -124,6 +124,7 @@ public class PaymentGUI {
 		sl_panel.putConstraint(SpringLayout.EAST, panel_8, 100, SpringLayout.EAST, panel_7);
 		panel.add(panel_8);
 		panel_8.setLayout(new GridLayout(8, 0, 0, 0));
+		
 		Vector userColumn = new Vector<>();
 		Vector userRow = new Vector<>();
 		Vector data = new Vector<>();
@@ -138,6 +139,7 @@ public class PaymentGUI {
 
 		data.add(userRow);
 		// panel.add(table);
+		
 		springLayout.putConstraint(SpringLayout.EAST, panel_2, 240, SpringLayout.EAST, panel_1);
 		panel_1.setLayout(new GridLayout(4, 0, 0, 10));
 
