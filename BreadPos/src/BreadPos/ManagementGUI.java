@@ -22,7 +22,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -370,6 +369,9 @@ public class ManagementGUI {
 									OuputList.get(j).getMember_name());
 							
 							//회원수정팝업!!
+							zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
+							in.main(null);
+							frame.dispose();
 							
 						}
 					}
@@ -491,6 +493,9 @@ public class ManagementGUI {
 					}
 				}
 				//회원삭제팝업!!
+				zPopBreadDeleteGUI in = new zPopBreadDeleteGUI();
+				in.main(null);
+				frame.dispose();
 				
 			}
 		});
@@ -647,6 +652,7 @@ public class ManagementGUI {
 		textField_3.setColumns(10);
 
 		JLabel OutputId = new JLabel("\uC544\uC774\uB514 \uCD9C\uB825");
+		OutputId.setText(""+office_num);
 		sl_changeInfoComponents.putConstraint(SpringLayout.WEST, OutputId, 6, SpringLayout.EAST, lblNewLabel_7);
 		sl_changeInfoComponents.putConstraint(SpringLayout.EAST, OutputId, 0, SpringLayout.EAST, changeInfoComponents);
 		OutputId.setBackground(new Color(0, 0, 0, 100));
@@ -673,6 +679,9 @@ public class ManagementGUI {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//지점정보수정팝업!!
+				zPopOfficeUpdateGUI in = new zPopOfficeUpdateGUI();
+				in.main(null);
+				frame.dispose();
 			}
 		});
 		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, btnNewButton_2, 32, SpringLayout.SOUTH, Inputpw);
@@ -923,8 +932,12 @@ public class ManagementGUI {
 						System.out.println(breadName + " " + count);
 					}
 				}
-			}
+			
 			//메뉴삭제팝업!!
+			zPopBreadDeleteGUI in = new zPopBreadDeleteGUI();
+			in.main(null);
+			frame.dispose();
+			}
 			
 		});
 		sl_deleteMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton_1, -133, SpringLayout.EAST, deleteMenuPanel);
@@ -1021,8 +1034,12 @@ public class ManagementGUI {
 								+ Integer.parseInt(InputChangeBreadPrice.getText()) + " " + count);
 					}
 				}
+				//메뉴수정팝업!!!
+				zPopBreadUpdateGUI in = new zPopBreadUpdateGUI();
+				in.main(null);
+				frame.dispose();
 			}
-			//메뉴수정팝업!!!
+			
 		});
 		sl_changeMenuPanel.putConstraint(SpringLayout.WEST, ChangeButton, -123, SpringLayout.EAST, changeMenuPanel);
 		ChangeButton.setBackground(new Color(210, 105, 30));
