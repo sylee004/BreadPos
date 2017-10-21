@@ -33,6 +33,7 @@ public class Tab extends JPanel{
 			menuBtn.setBackground(new Color(255, 255, 255, 200));
 			menuBtn.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 30));
 			menuBtn.setPreferredSize(new Dimension(129, 100));
+			
 			menuBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					list = bread;

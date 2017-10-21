@@ -173,6 +173,7 @@ public class DiscountGUI {
 				// ÇÒÀÎ·ü Àû¿ë ¼ö½ÄÇÊ¿ä
 				if (choice == 1) {
 					PaymentGUI.chaingeMsg(input);
+					PaymentGUI.finalMoney(input);
 				}else if (choice == 2) {
 					PaymentGUI.memberMsg(input);
 					
@@ -189,6 +190,7 @@ public class DiscountGUI {
 		sl_panel.putConstraint(SpringLayout.SOUTH, changePannel, 232, SpringLayout.NORTH, panel);
 		panel.add(changePannel);
 		changePannel.setLayout(new CardLayout(0, 0));
+		changePannel.setOpaque(false);
 
 		phonepanel = new JPanel();
 		sl_panel.putConstraint(SpringLayout.EAST, changePannel, 348, SpringLayout.WEST, phonepanel);
@@ -197,12 +199,14 @@ public class DiscountGUI {
 		sl_panel.putConstraint(SpringLayout.WEST, phonepanel, 0, SpringLayout.WEST, memebrship);
 		sl_panel.putConstraint(SpringLayout.SOUTH, phonepanel, -6, SpringLayout.NORTH, dispose);
 		sl_panel.putConstraint(SpringLayout.EAST, phonepanel, 0, SpringLayout.EAST, phone);
-		phonepanel.setBackground(new Color(255, 255, 255, 0));
+		phonepanel.setBackground(new Color(255, 255, 255, 100));
+		phonepanel.setOpaque(false);
 		SpringLayout sl_phonepanel = new SpringLayout();
 		phonepanel.setOpaque(false);
 		phonepanel.setLayout(sl_phonepanel);
 		phonepanel.setVisible(false);
-		phonepanel.setOpaque(false);
+		
+		
 
 		JLabel lblNewLabel_1 = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9 :");
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 91, SpringLayout.NORTH, phonepanel);
@@ -213,19 +217,24 @@ public class DiscountGUI {
 		phonepanel.add(lblNewLabel_1);
 
 		JPanel ouput = new JPanel();
+
 		sl_phonepanel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -18, SpringLayout.WEST, ouput);
 		sl_phonepanel.putConstraint(SpringLayout.WEST, ouput, 112, SpringLayout.WEST, phonepanel);
 		sl_phonepanel.putConstraint(SpringLayout.SOUTH, ouput, -30, SpringLayout.SOUTH, phonepanel);
+
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
 		sl_phonepanel.putConstraint(SpringLayout.EAST, ouput, -10, SpringLayout.EAST, phonepanel);
 
-		ouput.setBackground(Color.ORANGE);
+		ouput.setBackground(new Color(240, 248, 255));
+		ouput.setOpaque(false);
 		phonepanel.add(ouput);
 		ouput.setLayout(new CardLayout(0, 0));
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+
 		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 21));
+
 		ouput.add(lblNewLabel_2, "name_61052184684373");
 
 		JPanel panel_3 = new JPanel();
@@ -239,6 +248,7 @@ public class DiscountGUI {
 		phonepanel.add(panel_3);
 		panel_3.setOpaque(false);
 		panel_3.setLayout(new GridLayout(0, 3, 10, 0));
+
 
 		JButton btnNewButton = new JButton("SKT");
 		btnNewButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -282,6 +292,7 @@ public class DiscountGUI {
 		});
 		panel_3.add(btnNewButton_1);
 
+
 		memberpanel = new JPanel();
 		memberpanel.setOpaque(false);
 		changePannel.add(memberpanel, "name_147043956309760");
@@ -315,6 +326,7 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, inputMemberNumber, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, inputMemberNumber, -22, SpringLayout.EAST, memberpanel);
 		memberpanel.add(inputMemberNumber);
+		inputMemberNumber.setOpaque(false);
 		inputMemberNumber.setColumns(10);
 		MemberInfoDAO memberInfoDAO = new MemberInfoDAO();
 		
@@ -325,7 +337,8 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, panel_4, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, panel_4, -54, SpringLayout.SOUTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, inputMemberNumber);
-		panel_4.setBackground(Color.ORANGE);
+		panel_4.setBackground(new Color(240, 248, 255));
+		panel_4.setOpaque(false);
 		memberpanel.add(panel_4);
 		panel_4.setLayout(new CardLayout(0, 0));
 
