@@ -63,7 +63,7 @@ public class PaymentGUI {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setBackground(new Color(222, 184, 135,100));
 		frame.setBounds(100, 100, 438, 586);
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	      SpringLayout springLayout = new SpringLayout();
@@ -81,7 +81,7 @@ public class PaymentGUI {
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 276, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -16, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, -6, SpringLayout.NORTH, panel_1);
-		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, 170, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
@@ -89,7 +89,7 @@ public class PaymentGUI {
 		JPanel panel_2 = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, panel);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -16, SpringLayout.SOUTH, frame.getContentPane());
-		panel_2.setBackground(new Color(255, 255, 255));
+		panel_2.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.WEST, panel_2, 6, SpringLayout.EAST, panel_1);
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
@@ -139,6 +139,9 @@ public class PaymentGUI {
 		panel_1.setLayout(new GridLayout(4, 0, 0, 10));
 
 		JButton btnNewButton_1 = new JButton("\uD560\uC778");
+		btnNewButton_1.setBackground(new Color(128, 0, 0));
+		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DiscountGUI discountGUI = new DiscountGUI();
@@ -148,12 +151,21 @@ public class PaymentGUI {
 		panel_1.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("\uD604\uAE08");
+		btnNewButton_2.setBackground(new Color(128, 0, 0));
+		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		btnNewButton_2.setForeground(Color.WHITE);
 		panel_1.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("\uCE74\uB4DC");
+		btnNewButton_3.setBackground(new Color(128, 0, 0));
+		btnNewButton_3.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		btnNewButton_3.setForeground(Color.WHITE);
 		panel_1.add(btnNewButton_3);
 
 		JButton btnNewButton = new JButton("\uAE30\uD504\uD2F0\uCF58");
+		btnNewButton.setBackground(new Color(128, 0, 0));
+		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
+		btnNewButton.setForeground(Color.WHITE);
 		panel_1.add(btnNewButton);
 		frame.getContentPane().add(panel_2);
 		SpringLayout sl_panel_2 = new SpringLayout();
@@ -163,11 +175,14 @@ public class PaymentGUI {
 		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_3, -54, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, 224, SpringLayout.WEST, panel_2);
-		panel_3.setBackground(new Color(255, 255, 255));
+		panel_3.setOpaque(false);
 		panel_2.add(panel_3);
 		panel_3.setLayout(new GridLayout(1, 2, 10, 0));
 
 		JButton btnNewButton_5 = new JButton("\uC774\uC804");
+		btnNewButton_5.setBackground(new Color(139, 69, 19));
+		btnNewButton_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		btnNewButton_5.setForeground(new Color(255, 255, 255));
 		btnNewButton_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -182,6 +197,9 @@ public class PaymentGUI {
 		panel_3.add(btnNewButton_5);
 
 		JButton btnNewButton_4 = new JButton("°áÁ¦");
+		btnNewButton_4.setBackground(new Color(139, 69, 19));
+		btnNewButton_4.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
+		btnNewButton_4.setForeground(new Color(255, 255, 255));
 		panel_3.add(btnNewButton_4);
 
 		JPanel panel_4 = new JPanel();
@@ -273,10 +291,6 @@ public class PaymentGUI {
 		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_10.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		panel_11.add(lblNewLabel_10);
-		
-		JPanel panel_5 = new JPanel();
-		springLayout.putConstraint(SpringLayout.SOUTH, panel_5, -6, SpringLayout.NORTH, panel);
-		frame.getContentPane().add(panel_5);
 	}
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
