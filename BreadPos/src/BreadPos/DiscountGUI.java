@@ -169,6 +169,7 @@ public class DiscountGUI {
 				// 할인률 적용 수식필요
 				if (choice == 1) {
 					PaymentGUI.chaingeMsg(input);
+					PaymentGUI.finalMoney(input);
 				}else if (choice == 2) {
 					PaymentGUI.memberMsg(input);
 					
@@ -215,6 +216,7 @@ public class DiscountGUI {
 		phonepanel.add(lblNewLabel_1);
 
 		JPanel ouput = new JPanel();
+		ouput.setOpaque(false);
 		sl_phonepanel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -6, SpringLayout.WEST, ouput);
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, ouput, 0, SpringLayout.NORTH, lblNewLabel_1);
 		sl_phonepanel.putConstraint(SpringLayout.WEST, ouput, 100, SpringLayout.WEST, phonepanel);
