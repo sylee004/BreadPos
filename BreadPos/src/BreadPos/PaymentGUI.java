@@ -153,7 +153,7 @@ public class PaymentGUI {
 		panel_1.setLayout(new GridLayout(4, 0, 0, 10));
 
 		JButton btnNewButton_1 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦ÇÒÀÎ.png"));
-		btnNewButton_1.setBackground(new Color(222, 184, 135));
+		btnNewButton_1.setBackground(new Color(128, 0, 0));
 		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.addActionListener(new ActionListener() {
