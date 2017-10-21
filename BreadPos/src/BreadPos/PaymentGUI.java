@@ -94,9 +94,9 @@ public class PaymentGUI {
 		frame.getContentPane().add(panel_1);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, panel);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -16, SpringLayout.SOUTH, frame.getContentPane());
-		panel_2.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.WEST, panel_2, 6, SpringLayout.EAST, panel_1);
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
@@ -156,6 +156,8 @@ public class PaymentGUI {
 		btnNewButton_1.setBackground(new Color(128, 0, 0));
 		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DiscountGUI discountGUI = new DiscountGUI();
@@ -201,7 +203,7 @@ public class PaymentGUI {
 		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_3, -54, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, 224, SpringLayout.WEST, panel_2);
-		panel_3.setOpaque(false);
+
 		panel_2.add(panel_3);
 		panel_3.setLayout(new GridLayout(1, 2, 10, 0));
 
@@ -234,7 +236,7 @@ public class PaymentGUI {
 		panel_3.add(btnNewButton_4);
 
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(222, 184, 135 , 100));
+		panel_4.setBackground(new Color(222, 184, 135));
 		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_4, 10, SpringLayout.NORTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.WEST, panel_4, 10, SpringLayout.WEST, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_4, -24, SpringLayout.NORTH, panel_3);
@@ -275,7 +277,7 @@ public class PaymentGUI {
 		panel_4.add(lblNewLabel_6);
 
 		lblNewLabel_7 = new JLabel();
-
+		lblNewLabel_7.setBackground(new Color(222, 184, 135));
 		lblNewLabel_7.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -287,7 +289,7 @@ public class PaymentGUI {
 		panel_4.add(lblNewLabel_3);
 
 		lblNewLabel_5 = new JLabel();
-
+		
 		lblNewLabel_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_5);
