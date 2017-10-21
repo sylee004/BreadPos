@@ -194,7 +194,7 @@ public class PaymentGUI {
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_3, 0, SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_3, 224, SpringLayout.WEST, panel_2);
 		panel_3.setOpaque(false);
-		panel_2.add(panel_3);
+		panel_2.add(panel_3); //!
 		panel_3.setLayout(new GridLayout(1, 2, 10, 0));
 
 		JButton btnNewButton_5 = new JButton(new ImageIcon("./image/ButtonFolder/결제이전.png"));
