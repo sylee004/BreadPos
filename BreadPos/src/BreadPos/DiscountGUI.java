@@ -142,11 +142,13 @@ public class DiscountGUI {
 		});
 		panel.add(memebrship);
 
-		JButton dispose = new JButton("\uC885\uB8CC");
+	
+		JButton dispose = new JButton(new ImageIcon("./image/ButtonFolder/ÇÒÀÎÁ¾·á.png"));
 		sl_panel.putConstraint(SpringLayout.NORTH, dispose, 250, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, dispose, 163, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, dispose, -10, SpringLayout.SOUTH, panel);
 		dispose.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+		dispose.setOpaque(false);
 		dispose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {// Á¾·á
 				frame.dispose();

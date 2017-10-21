@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,6 +65,7 @@ public class PaymentGUI {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(222, 184, 135,100));
+		
 		frame.setBounds(100, 100, 438, 586);
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	      SpringLayout springLayout = new SpringLayout();
@@ -78,6 +80,7 @@ public class PaymentGUI {
 		frame.getContentPane().add(panel);
 
 		JPanel panel_1 = new JPanel();
+	
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 276, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -16, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, -6, SpringLayout.NORTH, panel_1);
@@ -138,8 +141,11 @@ public class PaymentGUI {
 		springLayout.putConstraint(SpringLayout.EAST, panel_2, 240, SpringLayout.EAST, panel_1);
 		panel_1.setLayout(new GridLayout(4, 0, 0, 10));
 
-		JButton btnNewButton_1 = new JButton("\uD560\uC778");
-		btnNewButton_1.setBackground(new Color(128, 0, 0));
+		JButton btnNewButton_1 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦ÇÒÀÎ.png"));
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setFocusPainted(false);
+		btnNewButton_1.setBackground(new Color(255, 255, 255, 0));
+		btnNewButton_1.setOpaque(false);
 		btnNewButton_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -150,19 +156,31 @@ public class PaymentGUI {
 		});
 		panel_1.add(btnNewButton_1);
 
-		JButton btnNewButton_2 = new JButton("\uD604\uAE08");
+		JButton btnNewButton_2 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦Çö±Ý.png"));
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2.setBackground(new Color(128, 0, 0));
 		btnNewButton_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		btnNewButton_2.setForeground(Color.WHITE);
 		panel_1.add(btnNewButton_2);
 
-		JButton btnNewButton_3 = new JButton("\uCE74\uB4DC");
+		JButton btnNewButton_3 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦Ä«µå.png"));
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_3.setBackground(new Color(128, 0, 0));
 		btnNewButton_3.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		btnNewButton_3.setForeground(Color.WHITE);
 		panel_1.add(btnNewButton_3);
 
-		JButton btnNewButton = new JButton("\uAE30\uD504\uD2F0\uCF58");
+		JButton btnNewButton = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦±âÇÁÆ¼ÄÜ.png"));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setBackground(new Color(128, 0, 0));
 		btnNewButton.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 28));
 		btnNewButton.setForeground(Color.WHITE);
@@ -179,7 +197,7 @@ public class PaymentGUI {
 		panel_2.add(panel_3);
 		panel_3.setLayout(new GridLayout(1, 2, 10, 0));
 
-		JButton btnNewButton_5 = new JButton("\uC774\uC804");
+		JButton btnNewButton_5 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦ÀÌÀü.png"));
 		btnNewButton_5.setBackground(new Color(139, 69, 19));
 		btnNewButton_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		btnNewButton_5.setForeground(new Color(255, 255, 255));
@@ -190,13 +208,19 @@ public class PaymentGUI {
 				frame.dispose();
 			}
 		});
+		
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		panel_3.add(btnNewButton_5);
 
-		JButton btnNewButton_4 = new JButton("°áÁ¦");
+		
+		JButton btnNewButton_4 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦°áÁ¦.png"));
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_4.setBackground(new Color(139, 69, 19));
 		btnNewButton_4.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		btnNewButton_4.setForeground(new Color(255, 255, 255));
