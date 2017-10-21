@@ -64,6 +64,10 @@ public class MainGUI {
 	private static JPanel choicePanel;
 	private static ArrayList<Product> breadList;
 	private static int office_num;
+	private JTable choiceTable;
+	private JTable productTable;
+	private JTable amountTable;
+	private JTable priceTable;
 
 	/**
 	 * Launch the application.
@@ -266,6 +270,46 @@ public class MainGUI {
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
 
 		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+		
+		priceTable = new JTable();
+		priceTable.setBackground(Color.WHITE);
+		priceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+		priceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+		pricePanel.add(priceTable);
+		
+		amountTable = new JTable();
+		amountTable.setBackground(Color.WHITE);
+		amountTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+		amountTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+		amountPanel.add(amountTable);
+		
+		DefaultTableModel model = new DefaultTableModel();
+		
+		Vector column = new Vector<>();
+		column.add("");
+		
+		Vector row = new Vector<>();
+		Vector data = new Vector<>();
+		
+		for (int i = 0; i < breadList.size(); i++) {
+			row.add(breadList.get(i).getPname());
+			data.add(row);
+		}
+		
+		model.setDataVector(data, column);
+		
+		productTable = new JTable(model);
+		productTable.setBackground(Color.WHITE);
+		productTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+		productTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+		productPanel.add(productTable);
+		
+		choiceTable = new JTable();
+		choiceTable.setBackground(Color.WHITE);
+		choiceTable.setOpaque(false);
+		choiceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+		choiceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+		choicePanel.add(choiceTable);
 
 		// tab.tabbed(productPanel, "white");
 		//
@@ -374,16 +418,6 @@ public class MainGUI {
 		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -6, SpringLayout.WEST, paymentPanel);
 		leftPanel.add(logopanel);
 		logopanel.setLayout(new SpringLayout());
-		Vector<String> userColumn = new Vector<>();
-		DefaultTableModel model;
-		Vector<String> userRow;
-
-		userColumn.add("½Ä»§");
-		userColumn.add("10");
-		userColumn.add("100000");
-
-		model = new DefaultTableModel(userColumn, 0);
-		userTable = new JTable();
 
 		JPanel rightPanel = new JPanel();
 		rightPanel.setOpaque(false);
@@ -609,14 +643,6 @@ public class MainGUI {
 		Product pro = new Product(list.getName(), 1, list.getPrice());
 		mg.addProduct(pro);
 
-		int total = 0;
-
-		for (int i = 0; i < breadList.size(); i++) {
-			total += breadList.get(i).getPrice();
-		}
-
-		lblNewLabel.setText("" + total);
-
 		// listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 
 		// listM.choice(choicePanel, breadList);
@@ -627,13 +653,7 @@ public class MainGUI {
 		new MainGUI(office_num);
 	}
 
-	public static void sendlist() {
-		int total = 0;
-
-		for (int i = 0; i < breadList.size(); i++) {
-			total += breadList.get(i).getPrice();
-		}
-
+	public static void sendlist(int total) {
 		lblNewLabel.setText("" + total);
 	}
 }
