@@ -127,7 +127,7 @@ public class Management {
 		return dis;
 	}
 	
-	public ArrayList<Product> addProduct(Product pro) {
+	public void addProduct(Product pro) {
 		int count = 0;
 		ArrayList<Product> list = product.product_select();
 		boolean ok = true;
@@ -151,8 +151,6 @@ public class Management {
 			Product newPro = new Product(Mname, newAmount, newPrice);
 			count = product.product_update(newPro);
 		}
-		
-		return list;
 	}
 	
 	public ArrayList<Product> selectProduct() {
@@ -160,4 +158,7 @@ public class Management {
 		return Sproduct;
 	}
 	
+	public void deleteProduct() {
+		product.product_delete();
+	}
 }
