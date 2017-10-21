@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.ListModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -51,7 +52,8 @@ public class MainGUI {
 	private Management mg;
 	private Bread breadSelectBtn;
 	private Tab tab;
-	private List list;
+	private static List listM;
+	private static JPanel choicePanel;
 	private static ArrayList<Bread> breadList = new ArrayList<Bread>();
 	private static int office_num;
 
@@ -79,6 +81,7 @@ public class MainGUI {
 		this.office_num = office_num;
 		tab = new Tab();
 		mg = new Management();
+		listM = new List();
 		initialize();
 	}
 
@@ -198,7 +201,7 @@ public class MainGUI {
 		SpringLayout sl_ListPanel = new SpringLayout();
 		ListPanel.setLayout(sl_ListPanel);
 		
-		JPanel choicePanel = new JPanel();
+		choicePanel = new JPanel();
 		choicePanel.setBackground(new Color(255, 255, 255, 150));
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, choicePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, choicePanel, 0, SpringLayout.WEST, ListPanel);
@@ -206,10 +209,6 @@ public class MainGUI {
 		sl_ListPanel.putConstraint(SpringLayout.EAST, choicePanel, 63, SpringLayout.WEST, ListPanel);
 		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 		ListPanel.add(choicePanel);
-		
-		if (breadList.size() != 0) {
-			list.choice(choicePanel, breadList);
-		}
 	
 		JPanel productPanel = new JPanel();
 		productPanel.setBackground(new Color(255, 255, 255, 150));
@@ -569,6 +568,8 @@ public class MainGUI {
 
 	public static void sendMessage(Bread list) {
 		breadList.add(list);
+		
+		listM.choice(choicePanel, breadList);
 		//System.out.println(list.getName());
 		//System.out.println(vector.size());
 		new MainGUI(office_num);
