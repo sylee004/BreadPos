@@ -366,8 +366,10 @@ public class MainGUI {
 		leftPanel.add(paymentPanel);
 		paymentPanel.setLayout(new GridLayout(1, 2, 20, 0));
 
-		JButton cancelBtn = new JButton("\uCDE8\uC18C");
+		JButton cancelBtn = new JButton(new ImageIcon("./image/ButtonFolder/√Îº“.png"));
 		paymentPanel.add(cancelBtn);
+		cancelBtn.setOpaque(false);
+		cancelBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		cancelBtn.setFont(new Font("±º∏≤", Font.BOLD, 15));
 		cancelBtn.setForeground(new Color(240, 248, 255));
 		cancelBtn.addMouseListener(new MouseAdapter() {
@@ -382,7 +384,9 @@ public class MainGUI {
 		});
 		cancelBtn.setBackground(new Color(139, 0, 0));
 
-		paymentBtn = new JButton("\uACB0\uC81C");
+		paymentBtn = new JButton(new ImageIcon("./image/ButtonFolder/∞·¡¶∞·¡¶.png"));
+		paymentBtn.setOpaque(false);
+		paymentBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		paymentPanel.add(paymentBtn);
 		paymentBtn.setFont(new Font("±º∏≤", Font.BOLD, 15));
 		paymentBtn.setForeground(new Color(240, 248, 255));
@@ -449,7 +453,9 @@ public class MainGUI {
 		rightPanel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(1, 3, 20, 0));
 
-		managementBtn = new JButton("\uAD00\uB9AC");
+		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/∞¸∏Æ.png"));
+		managementBtn.setOpaque(false);
+		managementBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		managementBtn.setForeground(new Color(240, 248, 255));
 		managementBtn.setFont(new Font("±º∏≤", Font.BOLD, 15));
 		managementBtn.addActionListener(new ActionListener() {
@@ -472,7 +478,9 @@ public class MainGUI {
 		managementBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(managementBtn);
 
-		salesBtn = new JButton("\uB9E4\uCD9C");
+		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/∏≈√‚.png"));
+		salesBtn.setOpaque(false);
+		salesBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		salesBtn.setFont(new Font("±º∏≤", Font.BOLD, 15));
 		salesBtn.setForeground(new Color(240, 248, 255));
 		salesBtn.addActionListener(new ActionListener() {
@@ -494,7 +502,9 @@ public class MainGUI {
 		salesBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(salesBtn);
 
-		JButton closeBtn = new JButton("\uC885\uB8CC");
+		JButton closeBtn = new JButton(new ImageIcon("./image/ButtonFolder/∞¸∏Æ¡æ∑·.png"));
+		closeBtn.setOpaque(false);
+		closeBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		closeBtn.setForeground(new Color(240, 248, 255));
 		closeBtn.setFont(new Font("±º∏≤", Font.BOLD, 15));
 		closeBtn.addMouseListener(new MouseAdapter() {
