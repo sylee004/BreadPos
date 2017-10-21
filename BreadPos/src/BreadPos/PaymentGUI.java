@@ -29,7 +29,7 @@ public class PaymentGUI {
 
 	public JFrame frame;
 	private MyCllickListener myCllickListener;
-	private Management management;
+	private static Management management;
 	public DiscountGUI discountGUI;
 	private static JLabel lblNewLabel_7;
 
@@ -320,5 +320,20 @@ public class PaymentGUI {
 			lblNewLabel_7.setText(""+money[1]);
 		}
 	
-}	
+}
+
+	public static void memberMsg(int input) {
+		if (input == 1) {
+			ArrayList<Integer> moneylist = new ArrayList<>();
+			moneylist.add(10000);
+			int[] money = management.name(moneylist, 10);
+			lblNewLabel_7.setText("" + money[1]);
+		}else if (input == 2) {
+			ArrayList<Integer> moneylist = new ArrayList<>();
+			moneylist.add(10000);
+			int[] money = management.name(moneylist, 5);
+			lblNewLabel_7.setText(""+money[1]);
+		}
+		
+	}	
 }
