@@ -235,11 +235,10 @@ public class LoginGUI {
 					main.main(office_num);
 					frame.dispose();
 				} else {
-					//custom title, warning icon
-					JOptionPane.showMessageDialog(frame,
-					    "아이디와 비밀번호가 맞지 않습니다.",
-					    "로그인 오류",
-					    JOptionPane.WARNING_MESSAGE);
+					zPopLoginFailGUI lfg = new zPopLoginFailGUI();
+					lfg.main(null);
+					
+					
 				}
 			}
 		});
