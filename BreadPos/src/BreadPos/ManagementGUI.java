@@ -245,11 +245,7 @@ public class ManagementGUI {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.addMember(phoneNumInput.getText(), nameInput.getText());
-				//팝업!!(test)
-				JOptionPane.showMessageDialog(panel,
-					    new ImageIcon("./image/background.png"),
-					    "회원정보등록성공",
-					    JOptionPane.CLOSED_OPTION);
+				//회원등록팝업!!
 			}
 		});
 		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -10, SpringLayout.NORTH, btnNewButton_3);
@@ -368,6 +364,9 @@ public class ManagementGUI {
 						if (Input.getText().equals(OuputList.get(j).getMember_phone())) {
 							int count = mg.updateMember(Input.getText(), InputChange.getText(), Input.getText(),
 									OuputList.get(j).getMember_name());
+							
+							//회원수정팝업!!
+							
 						}
 					}
 				} else if (breadName.equals(number[1])) {// 이름 >> 번호
@@ -487,6 +486,8 @@ public class ManagementGUI {
 						}
 					}
 				}
+				//회원삭제팝업!!
+				
 			}
 		});
 		sl_deleteMember.putConstraint(SpringLayout.WEST, deleteButton, 327, SpringLayout.WEST, deleteMember);
@@ -665,6 +666,11 @@ public class ManagementGUI {
 		changeInfoComponents.add(lblNewLabel_9);
 
 		JButton btnNewButton_2 = new JButton("\uC218\uC815");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//지점정보수정팝업!!
+			}
+		});
 		sl_changeInfoComponents.putConstraint(SpringLayout.NORTH, btnNewButton_2, 32, SpringLayout.SOUTH, Inputpw);
 		sl_changeInfoComponents.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -29, SpringLayout.SOUTH, changeInfoComponents);
 		btnNewButton_2.setBackground(new Color(210, 105, 30));
@@ -824,12 +830,13 @@ public class ManagementGUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int count = mg.plusBread(InputBreadName.getText(), breadTypeChoice, breadPrice);
-				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
+//				System.out.println(breadName + " " + breadTypeChoice + " " + breadPrice + count);
 				for (int j = 0; j < breadNameList.size(); j++) {
 					if (breadName.equals(breadNameList.get(j))) {
 						breadNameList.add(breadName);
 					}
 				}
+				//메뉴추가팝업!!
 				
 			}
 		});
@@ -910,6 +917,8 @@ public class ManagementGUI {
 					}
 				}
 			}
+			//메뉴삭제팝업!!
+			
 		});
 		sl_deleteMenuPanel.putConstraint(SpringLayout.WEST, btnNewButton_1, -133, SpringLayout.EAST, deleteMenuPanel);
 		btnNewButton_1.setBackground(new Color(210, 105, 30));
@@ -1006,6 +1015,7 @@ public class ManagementGUI {
 					}
 				}
 			}
+			//메뉴수정팝업!!!
 		});
 		sl_changeMenuPanel.putConstraint(SpringLayout.WEST, ChangeButton, -123, SpringLayout.EAST, changeMenuPanel);
 		ChangeButton.setBackground(new Color(210, 105, 30));
