@@ -1,4 +1,5 @@
 package BreadPos;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +12,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,6 +20,7 @@ public class zPopBreadInputGUI {
 
 	private JFrame frame;
 	private BufferedImage icon;
+
 	// private BufferedImage icon;
 	/**
 	 * Launch the application.
@@ -52,8 +53,8 @@ public class zPopBreadInputGUI {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
-		
-		JPanel panel = new JPanel(){
+
+		JPanel panel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					icon = ImageIO.read(new File("./image/메뉴추가.png"));
@@ -68,30 +69,23 @@ public class zPopBreadInputGUI {
 			}
 		};
 		panel.addMouseListener(new MouseAdapter() {
-			
+
 			public void mouseClicked(MouseEvent arg0) {
-			frame.dispose();
-			
+				ManagementGUI m = new ManagementGUI();
+				m.main(null);
+				frame.dispose();
+
 			}
 		});
-		
-		/*{
-			public void paintComponent(Graphics g) {
-				try {
-					icon = ImageIO.read(new File("./image/pw.png"));
-					Dimension d = getSize();// 전체화면
-					g.drawImage(icon, 0, 0, d.width, d.height, null);
-					setOpaque(false);
-					setBackground(new Color(0, 0, 0, 0));
-					super.paintComponent(g);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		};*/
-		
-		
+
+		/*
+		 * { public void paintComponent(Graphics g) { try { icon = ImageIO.read(new
+		 * File("./image/pw.png")); Dimension d = getSize();// 전체화면 g.drawImage(icon, 0,
+		 * 0, d.width, d.height, null); setOpaque(false); setBackground(new Color(0, 0,
+		 * 0, 0)); super.paintComponent(g); } catch (IOException e) {
+		 * e.printStackTrace(); } } };
+		 */
+
 		frame.getContentPane().add(panel, "name_742862708218580");
 	}
 }
-

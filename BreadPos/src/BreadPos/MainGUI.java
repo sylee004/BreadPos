@@ -406,8 +406,8 @@ public class MainGUI {
 		managementBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				managementBtn.setBackground(Color.orange);
-
-				ManagementGUI managementGUI = new ManagementGUI(office_num);
+				ManagementGUI managementGUI = new ManagementGUI();
+				managementGUI.sendOfficeNum(office_num);
 				managementGUI.frame.setVisible(true);
 				managementGUI.setOnMyClickListener(new MyCllickListener() {
 					@Override
