@@ -151,6 +151,7 @@ public class MainGUI {
 
 		JPanel columnsPanel = new JPanel();
 		columnsPanel.setBackground(new Color(255, 255, 255, 150));
+		columnsPanel.setOpaque(false);
 		sl_ShowPanel.putConstraint(SpringLayout.WEST, columnsPanel, 10, SpringLayout.WEST, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.NORTH, columnsPanel, 10, SpringLayout.NORTH, ShowPanel);
 		sl_ShowPanel.putConstraint(SpringLayout.SOUTH, columnsPanel, -375, SpringLayout.SOUTH, ShowPanel);
@@ -216,6 +217,7 @@ public class MainGUI {
 
 		choicePanel = new JPanel();
 		choicePanel.setBackground(new Color(255, 255, 255, 150));
+		choicePanel.setOpaque(false);
 		sl_ListPanel.putConstraint(SpringLayout.NORTH, choicePanel, 0, SpringLayout.NORTH, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.WEST, choicePanel, 0, SpringLayout.WEST, ListPanel);
 		sl_ListPanel.putConstraint(SpringLayout.SOUTH, choicePanel, 0, SpringLayout.SOUTH, ListPanel);
@@ -232,6 +234,7 @@ public class MainGUI {
 
 		productPanel = new JPanel();
 		productPanel.setBackground(new Color(255, 255, 255, 150));
+		productPanel.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
 		flowLayout.setHgap(60);
 		flowLayout.setVgap(10);
@@ -243,6 +246,7 @@ public class MainGUI {
 
 		amountPanel = new JPanel();
 		amountPanel.setBackground(new Color(255, 255, 255, 150));
+		amountPanel.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) amountPanel.getLayout();
 		flowLayout_1.setHgap(30);
 		flowLayout_1.setVgap(10);
@@ -254,6 +258,7 @@ public class MainGUI {
 
 		pricePanel = new JPanel();
 		pricePanel.setBackground(new Color(255, 255, 255, 150));
+		pricePanel.setOpaque(false);
 		FlowLayout flowLayout_2 = (FlowLayout) pricePanel.getLayout();
 		flowLayout_2.setVgap(10);
 		flowLayout_2.setHgap(40);
@@ -269,47 +274,47 @@ public class MainGUI {
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
 
-		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+//		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 		
-		priceTable = new JTable();
-		priceTable.setBackground(Color.WHITE);
-		priceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
-		priceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
-		pricePanel.add(priceTable);
-		
-		amountTable = new JTable();
-		amountTable.setBackground(Color.WHITE);
-		amountTable.setBorder(new EmptyBorder(0, 0, 0, 0));
-		amountTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
-		amountPanel.add(amountTable);
-		
-		DefaultTableModel model = new DefaultTableModel();
-		
-		Vector column = new Vector<>();
-		column.add("");
-		
-		Vector row = new Vector<>();
-		Vector data = new Vector<>();
-		
-		for (int i = 0; i < breadList.size(); i++) {
-			row.add(breadList.get(i).getPname());
-			data.add(row);
-		}
-		
-		model.setDataVector(data, column);
-		
-		productTable = new JTable(model);
-		productTable.setBackground(Color.WHITE);
-		productTable.setBorder(new EmptyBorder(0, 0, 0, 0));
-		productTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
-		productPanel.add(productTable);
-		
-		choiceTable = new JTable();
-		choiceTable.setBackground(Color.WHITE);
-		choiceTable.setOpaque(false);
-		choiceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
-		choiceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
-		choicePanel.add(choiceTable);
+//		priceTable = new JTable();
+//		priceTable.setBackground(Color.WHITE);
+//		priceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+//		priceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+//		pricePanel.add(priceTable);
+//		
+//		amountTable = new JTable();
+//		amountTable.setBackground(Color.WHITE);
+//		amountTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+//		amountTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+//		amountPanel.add(amountTable);
+//		
+//		DefaultTableModel model = new DefaultTableModel();
+//		
+//		Vector column = new Vector<>();
+//		column.add("");
+//		
+//		Vector row = new Vector<>();
+//		Vector data = new Vector<>();
+//		
+//		for (int i = 0; i < breadList.size(); i++) {
+//			row.add(breadList.get(i).getPname());
+//			data.add(row);
+//		}
+//		
+//		model.setDataVector(data, column);
+//		
+//		productTable = new JTable(model);
+//		productTable.setBackground(Color.WHITE);
+//		productTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+//		productTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+//		productPanel.add(productTable);
+//		
+//		choiceTable = new JTable();
+//		choiceTable.setBackground(Color.WHITE);
+//		choiceTable.setOpaque(false);
+//		choiceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
+//		choiceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
+//		choicePanel.add(choiceTable);
 
 		// tab.tabbed(productPanel, "white");
 		//
@@ -339,6 +344,8 @@ public class MainGUI {
 		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel, 0, SpringLayout.SOUTH, totalMoneyPanel);
 		totalMoneyPanel.add(lblNewLabel);
+		
+		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 
 		JPanel paymentPanel = new JPanel();
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
@@ -418,6 +425,14 @@ public class MainGUI {
 		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -6, SpringLayout.WEST, paymentPanel);
 		leftPanel.add(logopanel);
 		logopanel.setLayout(new SpringLayout());
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255, 150));
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.SOUTH, panel, 0, SpringLayout.SOUTH, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, panel, 0, SpringLayout.EAST, ShowPanel);
+		leftPanel.add(panel);
 
 		JPanel rightPanel = new JPanel();
 		rightPanel.setOpaque(false);
@@ -643,17 +658,17 @@ public class MainGUI {
 		Product pro = new Product(list.getName(), 1, list.getPrice());
 		mg.addProduct(pro);
 
-		// listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+		//listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 
-		// listM.choice(choicePanel, breadList);
 		// System.out.println(list.getName());
 		// System.out.println(vector.size());
-		//main(office_num);
+		main(office_num);
 		//frame.dispose();
 		new MainGUI(office_num);
 	}
 
 	public static void sendlist(int total) {
+		System.out.println(total);
 		lblNewLabel.setText("" + total);
 	}
 }

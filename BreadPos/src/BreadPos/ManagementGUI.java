@@ -1080,7 +1080,12 @@ public class ManagementGUI {
 		ButtonPanel.setLayout(new GridLayout(2, 3, 10, 10));
 
 		// 메뉴추가
-		JButton addMenu = new JButton("\uBA54\uB274 \uCD94\uAC00");
+		
+		JButton addMenu = new JButton(new ImageIcon("./image/ButtonFolder/관리메뉴추가.png"));
+
+		addMenu.setBorderPainted(false);
+		addMenu.setFocusPainted(false);
+		
 		addMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addMenuPanel.setVisible(true);
@@ -1098,7 +1103,7 @@ public class ManagementGUI {
 		ButtonPanel.add(addMenu);
 
 		// 메뉴수정
-		JButton changeMenu = new JButton("\uBA54\uB274\uC218\uC815");
+		JButton changeMenu = new JButton(new ImageIcon("./image/ButtonFolder/관리메뉴수정.png"));
 		changeMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addMenuPanel.setVisible(false);
@@ -1117,7 +1122,7 @@ public class ManagementGUI {
 		ButtonPanel.add(changeMenu);
 
 		// 메뉴삭제
-		JButton deleMenu = new JButton("\uBA54\uB274\uC0AD\uC81C");
+		JButton deleMenu = new JButton(new ImageIcon("./image/ButtonFolder/관리메뉴삭제.png"));
 		deleMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(true);
@@ -1135,7 +1140,7 @@ public class ManagementGUI {
 		ButtonPanel.add(deleMenu);
 
 		// 지점정보변경
-		JButton changeInfo = new JButton("\uC9C0\uC810\uC815\uBCF4\uC218\uC815");
+		JButton changeInfo = new JButton(new ImageIcon("./image/ButtonFolder/관리지점정보수정.png"));
 		changeInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(false);
@@ -1153,7 +1158,7 @@ public class ManagementGUI {
 		ButtonPanel.add(changeInfo);
 
 		// 회원관리
-		JButton controllMember = new JButton("\uD68C\uC6D0\uAD00\uB9AC");
+		JButton controllMember = new JButton(new ImageIcon("./image/ButtonFolder/관리회원관리.png"));
 		controllMember.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteMenuPanel.setVisible(false);
@@ -1172,7 +1177,7 @@ public class ManagementGUI {
 		ButtonPanel.add(controllMember);
 
 		// 종료
-		JButton close = new JButton("\uB2EB\uAE30");
+		JButton close = new JButton(new ImageIcon("./image/ButtonFolder/관리종료.png"));
 		close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// myCllickListener.onClick();
