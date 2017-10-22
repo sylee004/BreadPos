@@ -222,7 +222,11 @@ public class MainGUI {
 		productPanel.setBackground(new Color(255, 255, 255, 150));
 		productPanel.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
+
 		flowLayout.setHgap(150);
+
+		flowLayout.setHgap(90);
+
 		flowLayout.setVgap(10);
 		ListPanel.add(productPanel);
 

@@ -199,7 +199,11 @@ public class PaymentGUI {
 		listM.choice(panel_6, panel_7, panel_8, productList);
 		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
 		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 10));
+
 		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 150, 10));
+
+		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 80, 10));
+
 
 		JPanel panel_10 = new JPanel();
 		sl_panel_5.putConstraint(SpringLayout.NORTH, panel_10, 0, SpringLayout.NORTH, panel_9);
