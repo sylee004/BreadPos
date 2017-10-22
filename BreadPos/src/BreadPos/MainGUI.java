@@ -353,8 +353,6 @@ public class MainGUI {
 		cancelBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		cancelBtn.setFont(new Font("굴림", Font.BOLD, 15));
 		cancelBtn.setForeground(new Color(240, 248, 255));
-		cancelBtn.setBorderPainted(false);
-		cancelBtn.setFocusPainted(false);
 		cancelBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -437,7 +435,7 @@ public class MainGUI {
 		rightPanel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(1, 3, 20, 0));
 
-		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/관리진짜.png"));
+		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/관리.png"));
 		managementBtn.setOpaque(false);
 		managementBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		managementBtn.setForeground(new Color(240, 248, 255));
@@ -462,7 +460,7 @@ public class MainGUI {
 		managementBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(managementBtn);
 
-		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/매출진짜.png"));
+		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/매출.png"));
 		salesBtn.setOpaque(false);
 		salesBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		salesBtn.setFont(new Font("굴림", Font.BOLD, 15));
@@ -470,21 +468,16 @@ public class MainGUI {
 		salesBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				salesBtn.setBackground(Color.orange);
-				GraphGUI gg = new GraphGUI("dd");
-				gg.main(null);
-				
-				
-/*//				salesGUI salesGUI = new salesGUI();
-//				salesGUI.frame.setVisible(true);
+
+				salesGUI salesGUI = new salesGUI();
+				salesGUI.frame.setVisible(true);
 				salesGUI.setOnMyClickListener(new MyCllickListener() {
 					@Override
 					public void onClick() {
 						// TODO Auto-generated method stub
 						salesBtn.setBackground(new Color(139, 69, 19));
-						
-						
 					}
-				});*/
+				});
 
 			}
 		});
