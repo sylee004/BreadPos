@@ -293,7 +293,7 @@ public class MainGUI {
 //		choiceTable.setOpaque(false);
 //		choiceTable.setBorder(new EmptyBorder(0, 0, 0, 0));
 //		choiceTable.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
-//		choicePanel.add(choiceTable);
+//		choicePanel.add(choiceTable);!!
 
 		// tab.tabbed(productPanel, "white");
 		//
