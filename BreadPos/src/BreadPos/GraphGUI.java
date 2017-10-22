@@ -188,7 +188,7 @@ public class GraphGUI extends ApplicationFrame {
 	 * @param dataset
 	 *            the data for the chart.
 	 * 
-	 * @return a chart.
+	 * @return a chart..!
 	 */
 	private JFreeChart createChart(XYDataset dataset) {
 
