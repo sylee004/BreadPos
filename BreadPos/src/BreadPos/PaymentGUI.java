@@ -45,7 +45,7 @@ public class PaymentGUI {
 	private static JLabel lblNewLabel_4;
 	private static JLabel lblNewLabel_5;
 	private static JLabel lblNewLabel_7;
-	public static ArrayList<Integer> moneylist = new ArrayList<>();
+	public static ArrayList<Integer> moneylist;
 	public static int[] money;
 	private static ArrayList<Product> productList;
 	private List listM;
@@ -72,6 +72,7 @@ public class PaymentGUI {
 	public PaymentGUI(ArrayList<Product> productList) {
 		this.productList = productList;
 		management = new Management();
+		moneylist = new ArrayList<>();
 		listM = new List();
 		initialize();
 	}
@@ -427,10 +428,6 @@ public class PaymentGUI {
 		userRow.add("1200");
 
 		data.add(userRow);
-
-		
-
-		
 	}
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
