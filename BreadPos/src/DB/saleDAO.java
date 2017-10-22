@@ -85,7 +85,7 @@ public class saleDAO {
          // 이후에 또 try/catch 실행
          try {
             con = DriverManager.getConnection(url, user, password);
-            String sql = "select sales from monthlysale where name = ?";
+            String sql = "select sales from monthlysalec where name = ?";
 
             psmt = con.prepareStatement(sql);
 
@@ -144,7 +144,7 @@ public class saleDAO {
          // 이후에 또 try/catch 실행
          try {
             con = DriverManager.getConnection(url, user, password);
-            String sql = "select month from monthlysale where name = ?";
+            String sql = "select month from monthlysalec where name = ?";
 
             psmt = con.prepareStatement(sql);
 
