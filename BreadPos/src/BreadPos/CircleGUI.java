@@ -80,28 +80,28 @@ public class CircleGUI extends JFrame {
 			
 			tf[0] = new JTextField(total_rye_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[0].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[0]));
-			add(tf[0]);
+			//add(new JLabel(itemName[0]));
+			//add(tf[0]);
 			
 			tf[1] = new JTextField(total_white_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[1].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[1]));
-			add(tf[1]);
+			//add(new JLabel(itemName[1]));
+			//add(tf[1]);
 
 			tf[2] = new JTextField(total_corn_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[2].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[2]));
-			add(tf[2]);
+			//add(new JLabel(itemName[2]));
+			//add(tf[2]);
 			
 			tf[3] = new JTextField(total_bori_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[3].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[3]));
-			add(tf[3]);
+			//add(new JLabel(itemName[3]));
+			//add(tf[3]);
 			
 			tf[4] = new JTextField(total_mix_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[4].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[4]));
-			add(tf[4]);
+			//add(new JLabel(itemName[4]));
+			//add(tf[4]);
 			
 		}
 	}

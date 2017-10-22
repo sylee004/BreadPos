@@ -66,6 +66,17 @@ public class GraphGUI extends ApplicationFrame {
 		setContentPane(chartPanel);
 		chartPanel.setLayout(null);
 		chartPanel.setToolTipText("아아아아");
+		
+		//
+		
+		JButton btnNewButton = new JButton("./image/ButtonFolder/관리종료.png");
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton.setBounds(329, 12, 60, 20);
+		chartPanel.add(btnNewButton);
 
 	}
 
@@ -206,5 +217,4 @@ public class GraphGUI extends ApplicationFrame {
 		salesGUI salesGUI = new salesGUI();
 
 	}
-
 }
