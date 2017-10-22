@@ -22,9 +22,12 @@ import org.jfree.ui.RefineryUtilities;
 import DB.saleDAO;
 import DB.sale;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -54,6 +57,7 @@ public class GraphGUI extends ApplicationFrame {
 		XYDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset);
 		chartPanel = new ChartPanel(chart);
+		chartPanel.setBackground(Color.WHITE);
 		chartPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -61,11 +65,31 @@ public class GraphGUI extends ApplicationFrame {
 			}
 		});
 
-		chartPanel.setBackground(new Color(255, 255, 240));
-		chartPanel.setPreferredSize(new java.awt.Dimension(450, 350)); // 표 크기
+		//chartPanel.setBackground(new Color(255, 255, 240));
+		chartPanel.setPreferredSize(new java.awt.Dimension(600, 350)); // 표 크기
 		setContentPane(chartPanel);
 		chartPanel.setLayout(null);
 		chartPanel.setToolTipText("아아아아");
+		
+		//
+		
+		JButton btnNewButton = new JButton();
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setText("\uC778\uAE30\uD488\uBAA9");
+		btnNewButton.setOpaque(false);
+		btnNewButton.setBorder(new EmptyBorder(0, 0, 0, 0));
+		
+		btnNewButton.addActionListener(new ActionListener() {
+		
+			// dddddddddddddd
+			public void actionPerformed(ActionEvent arg0) {
+				btnNewButton.setBackground(Color.orange);
+				CircleGUI gg = new CircleGUI();
+				gg.main(null);
+			}
+		});
+		btnNewButton.setBounds(527, 12, 60, 20);
+		chartPanel.add(btnNewButton);
 
 	}
 
@@ -85,6 +109,11 @@ public class GraphGUI extends ApplicationFrame {
 		series1.add(5.0, sd.selectOneByName("rye").get(4).getSales());
 		series1.add(6.0, sd.selectOneByName("rye").get(5).getSales());
 		series1.add(7.0, sd.selectOneByName("rye").get(6).getSales());
+		series1.add(8.0, sd.selectOneByName("rye").get(7).getSales());
+		series1.add(9.0, sd.selectOneByName("rye").get(8).getSales());
+		series1.add(10.0, sd.selectOneByName("rye").get(9).getSales());
+		series1.add(11.0, sd.selectOneByName("rye").get(10).getSales());
+		series1.add(12.0, sd.selectOneByName("rye").get(11).getSales());
 
 		XYSeries series2 = new XYSeries("white");
 		series2.add(1.0, sd.selectOneByName("white").get(0).getSales());
@@ -94,6 +123,11 @@ public class GraphGUI extends ApplicationFrame {
 		series2.add(5.0, sd.selectOneByName("white").get(4).getSales());
 		series2.add(6.0, sd.selectOneByName("white").get(5).getSales());
 		series2.add(7.0, sd.selectOneByName("white").get(6).getSales());
+		series2.add(8.0, sd.selectOneByName("white").get(7).getSales());
+		series2.add(9.0, sd.selectOneByName("white").get(8).getSales());
+		series2.add(10.0, sd.selectOneByName("white").get(9).getSales());
+		series2.add(11.0, sd.selectOneByName("white").get(10).getSales());
+		series2.add(12.0, sd.selectOneByName("white").get(11).getSales());
 
 		XYSeries series3 = new XYSeries("corn");
 		series3.add(1.0, sd.selectOneByName("corn").get(0).getSales());
@@ -103,6 +137,11 @@ public class GraphGUI extends ApplicationFrame {
 		series3.add(5.0, sd.selectOneByName("corn").get(4).getSales());
 		series3.add(6.0, sd.selectOneByName("corn").get(5).getSales());
 		series3.add(7.0, sd.selectOneByName("corn").get(6).getSales());
+		series3.add(8.0, sd.selectOneByName("corn").get(7).getSales());
+		series3.add(9.0, sd.selectOneByName("corn").get(8).getSales());
+		series3.add(10.0, sd.selectOneByName("corn").get(9).getSales());
+		series3.add(11.0, sd.selectOneByName("corn").get(10).getSales());
+		series3.add(12.0, sd.selectOneByName("corn").get(11).getSales());
 
 		XYSeries series4 = new XYSeries("bori");
 		series4.add(1.0, sd.selectOneByName("bori").get(0).getSales());
@@ -112,6 +151,11 @@ public class GraphGUI extends ApplicationFrame {
 		series4.add(5.0, sd.selectOneByName("bori").get(4).getSales());
 		series4.add(6.0, sd.selectOneByName("bori").get(5).getSales());
 		series4.add(7.0, sd.selectOneByName("bori").get(6).getSales());
+		series4.add(8.0, sd.selectOneByName("bori").get(7).getSales());
+		series4.add(9.0, sd.selectOneByName("bori").get(8).getSales());
+		series4.add(10.0, sd.selectOneByName("bori").get(9).getSales());
+		series4.add(11.0, sd.selectOneByName("bori").get(10).getSales());
+		series4.add(12.0, sd.selectOneByName("bori").get(11).getSales());
 
 		XYSeries series5 = new XYSeries("mix");
 		series5.add(1.0, sd.selectOneByName("mix").get(0).getSales());
@@ -121,6 +165,11 @@ public class GraphGUI extends ApplicationFrame {
 		series5.add(5.0, sd.selectOneByName("mix").get(4).getSales());
 		series5.add(6.0, sd.selectOneByName("mix").get(5).getSales());
 		series5.add(7.0, sd.selectOneByName("mix").get(6).getSales());
+		series5.add(8.0, sd.selectOneByName("mix").get(7).getSales());
+		series5.add(9.0, sd.selectOneByName("mix").get(8).getSales());
+		series5.add(10.0, sd.selectOneByName("mix").get(9).getSales());
+		series5.add(11.0, sd.selectOneByName("mix").get(10).getSales());
+		series5.add(12.0, sd.selectOneByName("mix").get(11).getSales());
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series1);
@@ -144,8 +193,8 @@ public class GraphGUI extends ApplicationFrame {
 	private JFreeChart createChart(XYDataset dataset) {
 
 		// create the chart...
-		JFreeChart chart = ChartFactory.createXYLineChart("This week's sales", // chart title
-				"Date", // x axis label
+		JFreeChart chart = ChartFactory.createXYLineChart("Month's sales", // chart title
+				"Month", // x axis label
 				"Sell", // y axis label
 				dataset, // data
 				PlotOrientation.VERTICAL, true, // include legend
@@ -154,14 +203,14 @@ public class GraphGUI extends ApplicationFrame {
 		);
 
 		// NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
-		chart.setBackgroundPaint(Color.WHITE); // 창 배경 색
-
+		//chart.setBackgroundPaint(Color.getHSBColor(0, 0, 100)); // 창 배경 색
+		//!
 		// final StandardLegend legend = (StandardLegend) chart.getLegend();
 		// legend.setDisplaySeriesShapes(true);
 
 		// get a reference to the plot for further customisation...
 		XYPlot plot = chart.getXYPlot();
-		plot.setBackgroundPaint(Color.WHITE); // 그래프 배경 색
+		//plot.setBackgroundPaint(Color.getHSBColor(0,0,100)); // 그래프 배경 색
 		// plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
 		plot.setDomainGridlinePaint(Color.BLACK); // 세로 선
 		plot.setRangeGridlinePaint(Color.BLACK); // 가로선
@@ -199,12 +248,11 @@ public class GraphGUI extends ApplicationFrame {
 	 */
 	public static void main(String[] args) {
 
-		GraphGUI demo = new GraphGUI("이번 주 판매량");
+		GraphGUI demo = new GraphGUI("월별 판매량");
 		demo.pack();
 		RefineryUtilities.centerFrameOnScreen(demo);
 		demo.setVisible(true);
 		salesGUI salesGUI = new salesGUI();
 
 	}
-
 }

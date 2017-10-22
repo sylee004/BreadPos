@@ -13,8 +13,8 @@ public class CircleGUI extends JFrame {
 	int[] data = {0,0,0,0,0}; // 차트의 값 저장배열
 	int[] arcAngle = new int[5]; 
 
-	Color[] color = {Color.MAGENTA, Color.red, // 색상 
-			  Color.CYAN, Color.GREEN, Color.orange};
+	Color[] color = {Color.getHSBColor(737, 40, 1277), Color.getHSBColor(882, 530, 188), // 색상 
+			  Color.getHSBColor(1210, 510, 1111), Color.getHSBColor(1420, 111, 643), Color.getHSBColor(1299, 359, 99)};
 
 	String[] itemName = {"White", "Rye", // 비교대상 
 			                  "Corn", "Bori", "Mix"};
@@ -22,7 +22,13 @@ public class CircleGUI extends JFrame {
 	JTextField[] tf  = new JTextField[5]; // 텍스트필드
 	ChartPanel chartPanel = new ChartPanel(); // 차트패널
 
-	public CircleGUI(){ // 생성자
+	public CircleGUI(){
+		getContentPane().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+		}); // 생성자
 		setTitle("Bread Percentage");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = getContentPane(); // 컨테이너 갯
@@ -58,7 +64,7 @@ public class CircleGUI extends JFrame {
 		
 		public InputPanel(){
 			this.setBackground(Color.WHITE); //배경
-			for (int i = 0; i <=7; i++) {
+			for (int i = 0; i <=12; i++) {
 				int k1 =(int)sd.selectOneByName("rye").get(0).getSales();
 				total_rye+=k1;
 				int k2 =(int)sd.selectOneByName("white").get(0).getSales();
@@ -80,28 +86,28 @@ public class CircleGUI extends JFrame {
 			
 			tf[0] = new JTextField(total_rye_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[0].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[0]));
-			add(tf[0]);
+			//add(new JLabel(itemName[0]));
+			//add(tf[0]);
 			
 			tf[1] = new JTextField(total_white_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[1].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[1]));
-			add(tf[1]);
+			//add(new JLabel(itemName[1]));
+			//add(tf[1]);
 
 			tf[2] = new JTextField(total_corn_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[2].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[2]));
-			add(tf[2]);
+			//add(new JLabel(itemName[2]));
+			//add(tf[2]);
 			
 			tf[3] = new JTextField(total_bori_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[3].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[3]));
-			add(tf[3]);
+			//add(new JLabel(itemName[3]));
+			//add(tf[3]);
 			
 			tf[4] = new JTextField(total_mix_st, 6);  // 입력 값 , 입력 칸의 크기
 			tf[4].addActionListener(new MyActionListener()); //리스너
-			add(new JLabel(itemName[4]));
-			add(tf[4]);
+			//add(new JLabel(itemName[4]));
+			//add(tf[4]);
 			
 		}
 	}
