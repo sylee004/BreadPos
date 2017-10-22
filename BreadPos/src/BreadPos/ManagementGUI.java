@@ -1320,6 +1320,8 @@ public class ManagementGUI {
 		close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// myCllickListener.onClick();
+				MainGUI m = new MainGUI(100);
+				m.main(100);
 				frame.dispose();
 			}
 		});
