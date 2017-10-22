@@ -57,14 +57,15 @@ public class GraphGUI extends ApplicationFrame {
 		XYDataset dataset = createDataset();
 		JFreeChart chart = createChart(dataset);
 		chartPanel = new ChartPanel(chart);
+		chartPanel.setBackground(Color.WHITE);
 		chartPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				dispose();
+			
 			}
 		});
 
-		chartPanel.setBackground(new Color(255, 255, 240));
+		//chartPanel.setBackground(new Color(255, 255, 240));
 		chartPanel.setPreferredSize(new java.awt.Dimension(600, 350)); // 표 크기
 		setContentPane(chartPanel);
 		chartPanel.setLayout(null);
@@ -202,14 +203,14 @@ public class GraphGUI extends ApplicationFrame {
 		);
 
 		// NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
-		chart.setBackgroundPaint(Color.getHSBColor(38,320,1200)); // 창 배경 색
+		//chart.setBackgroundPaint(Color.getHSBColor(0, 0, 100)); // 창 배경 색
 		//!
 		// final StandardLegend legend = (StandardLegend) chart.getLegend();
 		// legend.setDisplaySeriesShapes(true);
 
 		// get a reference to the plot for further customisation...
 		XYPlot plot = chart.getXYPlot();
-		plot.setBackgroundPaint(Color.getHSBColor(2,33,2)); // 그래프 배경 색
+		//plot.setBackgroundPaint(Color.getHSBColor(0,0,100)); // 그래프 배경 색
 		// plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
 		plot.setDomainGridlinePaint(Color.BLACK); // 세로 선
 		plot.setRangeGridlinePaint(Color.BLACK); // 가로선

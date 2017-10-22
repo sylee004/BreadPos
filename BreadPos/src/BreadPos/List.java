@@ -16,22 +16,18 @@ import DB.Product;
 
 public class List extends JPanel {
 	
-	public void choice(JPanel choicePanel, JPanel productPanel, JPanel amountPanel, JPanel pricePanel, ArrayList<Product> breadList) {
-		System.out.println(breadList.size());
+	public void choice(JPanel productPanel, JPanel amountPanel, JPanel pricePanel, ArrayList<Product> breadList) {
+		System.out.println(breadList.size()); //MainÀÇ ShowPanel¿¡ µé¾î°¥ ¸®½ºÆ®
 		int total = 0;
 		if (breadList.size() != 0) {
 			for (int i = 0; i < breadList.size(); i++) {
-				JCheckBox checkBox = new JCheckBox();
-				checkBox.setBackground(new Color(255, 255, 255, 150));
-				checkBox.setOpaque(false);
-				choicePanel.add(checkBox);
-				JLabel product = new JLabel(breadList.get(i).getPname());
+				JLabel product = new JLabel(breadList.get(i).getPname()); //»§¸ñ·Ï
 				product.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
 				productPanel.add(product);
-				JLabel amount = new JLabel("" + breadList.get(i).getAmount());
+				JLabel amount = new JLabel("" + breadList.get(i).getAmount()); //»§¼ö·®
 				amount.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
 				amountPanel.add(amount);
-				JLabel price = new JLabel("" + breadList.get(i).getPrice());
+				JLabel price = new JLabel("" + breadList.get(i).getPrice()); //»§°¡°Ý
 				price.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 25));
 				pricePanel.add(price);
 				total += breadList.get(i).getPrice();

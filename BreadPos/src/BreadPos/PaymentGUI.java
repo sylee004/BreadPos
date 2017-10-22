@@ -48,6 +48,7 @@ public class PaymentGUI {
 	public static ArrayList<Integer> moneylist;
 	public static int[] money;
 	private static ArrayList<Product> productList;
+	private List listM;
 
 	/**
 	 * Launch the application.
@@ -72,6 +73,7 @@ public class PaymentGUI {
 		this.productList = productList;
 		management = new Management();
 		moneylist = new ArrayList<>();
+		listM = new List();
 		initialize();
 	}
 
@@ -197,6 +199,8 @@ public class PaymentGUI {
 		panel.add(panel_8);
 		panel_8.setLayout(new GridLayout(8, 0, 0, 0));
 		
+		listM.choice(panel_6, panel_7, panel_8, productList);
+		
 		JPanel panel_10 = new JPanel();
 		sl_panel_5.putConstraint(SpringLayout.NORTH, panel_10, 0, SpringLayout.NORTH, panel_9);
 		sl_panel_5.putConstraint(SpringLayout.WEST, panel_10, 0, SpringLayout.WEST, panel_9);
@@ -319,6 +323,14 @@ public class PaymentGUI {
 		JButton btnNewButton_4 = new JButton(new ImageIcon("./image/ButtonFolder/°áÁ¦°áÁ¦.png"));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				management.deleteProduct();
+				MainGUI mainGUI = new MainGUI(1);
+				mainGUI.main(1);
+				zPopCardCompleteGUI cardCompleteGUI = new zPopCardCompleteGUI();
+				cardCompleteGUI.main(null);
+				frame.dispose();
+				
+				
 			}
 		});
 		btnNewButton_4.setBackground(Color.WHITE);
@@ -365,7 +377,7 @@ public class PaymentGUI {
 			total += productList.get(i).getPrice();
 		}
 
-		lblNewLabel_4 = new JLabel();
+		lblNewLabel_4 = new JLabel(); // °áÁ¦ ±Ý¾×
 		lblNewLabel_4.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_4);

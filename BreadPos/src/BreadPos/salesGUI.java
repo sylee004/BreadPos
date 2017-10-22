@@ -98,6 +98,7 @@ public class salesGUI {
 		panel.add(Showgrap);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 6, SpringLayout.SOUTH, Showgrap);
 		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, Showgrap);
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, 85, SpringLayout.SOUTH, Showgrap);
@@ -106,11 +107,7 @@ public class salesGUI {
 		Showgrap.setLayout(new CardLayout(0, 0));
 		
 		Grap = new JPanel();
-		Showgrap.add(Grap, "name_87378178161920");
-		
-		
-		
-		
+		Showgrap.add(Grap, "name_87378178161920");	
 		
 		Chart = new JPanel();
 		Showgrap.add(Chart, "name_87401273531306");
