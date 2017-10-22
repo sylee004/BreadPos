@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -78,6 +79,7 @@ public class MainGUI {
 				try {
 					MainGUI window = new MainGUI(office_num);
 					window.frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -220,7 +222,7 @@ public class MainGUI {
 		productPanel.setBackground(new Color(255, 255, 255, 150));
 		productPanel.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
-		flowLayout.setHgap(70);
+		flowLayout.setHgap(150);
 		flowLayout.setVgap(10);
 		ListPanel.add(productPanel);
 
@@ -481,6 +483,7 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				salesBtn.setBackground(Color.orange);
 				GraphGUI graphGUI = new GraphGUI("");
+				graphGUI.setLocation(100, 100);
 				graphGUI.main(null);
 				/*salesGUI salesGUI = new salesGUI();
 				salesGUI.frame.setVisible(true);

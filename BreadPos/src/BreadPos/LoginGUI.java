@@ -177,7 +177,7 @@ public class LoginGUI {
 					g.drawImage(icon, 0, 0, d.width, d.height, null);
 					setOpaque(false);
 					setBackground(new Color(0, 0, 0, 0));
-					super.paintComponent(g);
+					super.paintComponent(g); 
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

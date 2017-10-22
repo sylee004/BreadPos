@@ -268,6 +268,7 @@ public class ManagementGUI {
 		addMember.add(panel_2);
 		
 		nameInput = new JTextField();
+		nameInput.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 26));
 		sl_addMember.putConstraint(SpringLayout.NORTH, btnNewButton_3, 6, SpringLayout.SOUTH, nameInput);
 		sl_addMember.putConstraint(SpringLayout.NORTH, nameInput, 16, SpringLayout.SOUTH, phoneNumInput);
 		sl_addMember.putConstraint(SpringLayout.SOUTH, nameInput, -39, SpringLayout.SOUTH, addMember);

@@ -85,6 +85,7 @@ public class GraphGUI extends ApplicationFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				btnNewButton.setBackground(Color.orange);
 				CircleGUI gg = new CircleGUI();
+				gg.setLocation(270, 250);
 				gg.main(null);
 			}
 		});
@@ -249,8 +250,10 @@ public class GraphGUI extends ApplicationFrame {
 	public static void main(String[] args) {
 
 		GraphGUI demo = new GraphGUI("월별 판매량");
+		
 		demo.pack();
 		RefineryUtilities.centerFrameOnScreen(demo);
+		demo.setLocation(270, 250);
 		demo.setVisible(true);
 		salesGUI salesGUI = new salesGUI();
 

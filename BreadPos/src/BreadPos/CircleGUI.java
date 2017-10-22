@@ -1,5 +1,7 @@
 package BreadPos;import javax.swing.*;
 
+import org.jfree.ui.RefineryUtilities;
+
 import DB.saleDAO;
 
 import java.awt.*;
@@ -151,7 +153,11 @@ public class CircleGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new CircleGUI();
+		CircleGUI c = new CircleGUI();
+		//c.pack();
+		RefineryUtilities.centerFrameOnScreen(c);
+		c.setLocation(270, 250);
+		c.setVisible(true);
 	}
 }
 
