@@ -146,6 +146,7 @@ private int count;
 	}
 	
 	public ArrayList<Member> selectName(String member_phone) {
+		System.out.println("gg : " + member_phone);
 		ArrayList<Member> list = new ArrayList<Member>();
 		
 		try {
