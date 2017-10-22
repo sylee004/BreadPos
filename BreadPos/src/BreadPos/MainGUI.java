@@ -31,7 +31,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
-import javax.swing.RepaintManager;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -68,8 +67,6 @@ public class MainGUI {
 	private JTable productTable;
 	private JTable amountTable;
 	private JTable priceTable;
-	static JPanel ShowPanel ;
-	static JPanel ListPanel;
 
 	/**
 	 * Launch the application.
@@ -110,7 +107,7 @@ public class MainGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
-
+ 
 		JPanel mainPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
@@ -140,7 +137,7 @@ public class MainGUI {
 		SpringLayout sl_leftPanel = new SpringLayout();
 		leftPanel.setLayout(sl_leftPanel);
 
-		ShowPanel = new JPanel();	//ÀüÃ¼ ¸®½ºÆ®
+		JPanel ShowPanel = new JPanel();
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, ShowPanel, 50, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, ShowPanel, 10, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, ShowPanel, -21, SpringLayout.EAST, leftPanel);
@@ -192,12 +189,12 @@ public class MainGUI {
 		PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		columnsPanel.add(PriceLabel);
 
-		JPanel totalMoneyPanel = new JPanel(); //ÃÖÁ¾°áÁ¦ ±Ý¾×
-		totalMoneyPanel.setBackground(new Color(255, 165, 0));
+		JPanel totalMoneyPanel = new JPanel();
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 496, SpringLayout.NORTH, leftPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, totalMoneyPanel, 0, SpringLayout.EAST, ShowPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -6, SpringLayout.NORTH, totalMoneyPanel);
 
-		ListPanel = new JPanel();
+		JPanel ListPanel = new JPanel();
 		ListPanel.setBackground(new Color(255, 255, 255, 150));
 		ListPanel.setOpaque(false);
 		sl_ShowPanel.putConstraint(SpringLayout.NORTH, ListPanel, 0, SpringLayout.SOUTH, columnsPanel);
@@ -252,12 +249,11 @@ public class MainGUI {
 		ListPanel.add(pricePanel);
 		totalMoneyPanel.setOpaque(false);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, totalMoneyPanel, 181, SpringLayout.WEST, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.EAST, totalMoneyPanel, -10, SpringLayout.EAST, leftPanel);
 		leftPanel.add(totalMoneyPanel);
 		SpringLayout sl_totalMoneyPanel = new SpringLayout();
 		totalMoneyPanel.setLayout(sl_totalMoneyPanel);
 
-		listM.choice( productPanel, amountPanel, pricePanel, breadList);
+//		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 		
 //		priceTable = new JTable();
 //		priceTable.setBackground(Color.WHITE);
@@ -320,30 +316,32 @@ public class MainGUI {
 		totalMoneyPanel.add(lblNewLabel_1);
 
 		lblNewLabel = new JLabel();
-		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel, -32, SpringLayout.EAST, totalMoneyPanel);
+		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel, -40, SpringLayout.EAST, totalMoneyPanel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		sl_totalMoneyPanel.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, totalMoneyPanel);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel, 0, SpringLayout.SOUTH, totalMoneyPanel);
 		totalMoneyPanel.add(lblNewLabel);
+		
+		listM.choice(productPanel, amountPanel, pricePanel, breadList);
 
 		JPanel paymentPanel = new JPanel();
-		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, totalMoneyPanel, -20, SpringLayout.NORTH, paymentPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, paymentPanel, 0, SpringLayout.EAST, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, paymentPanel, 0, SpringLayout.WEST, totalMoneyPanel);
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
 
 		JLabel lblNewLabel_2 = new JLabel("\uC6D0");
+		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.EAST, lblNewLabel);
+		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel_2, 0, SpringLayout.EAST, totalMoneyPanel);
 		lblNewLabel_2.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 0, SpringLayout.NORTH, totalMoneyPanel);
-		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.EAST, lblNewLabel);
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, 0, SpringLayout.SOUTH, totalMoneyPanel);
-		sl_totalMoneyPanel.putConstraint(SpringLayout.EAST, lblNewLabel_2, 0, SpringLayout.EAST, totalMoneyPanel);
 		totalMoneyPanel.add(lblNewLabel_2);
 		paymentPanel.setOpaque(false);
-		sl_leftPanel.putConstraint(SpringLayout.WEST, paymentPanel, 166, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, paymentPanel, -10, SpringLayout.SOUTH, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.EAST, paymentPanel, -10, SpringLayout.EAST, leftPanel);
 		leftPanel.add(paymentPanel);
 		paymentPanel.setLayout(new GridLayout(1, 2, 20, 0));
 
@@ -361,6 +359,9 @@ public class MainGUI {
 		});
 		cancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				mg.deleteProduct();
+				main(office_num);
+				new MainGUI(office_num);
 			}
 		});
 		cancelBtn.setBackground(new Color(139, 0, 0));
@@ -375,23 +376,23 @@ public class MainGUI {
 		paymentBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paymentBtn.setBackground(Color.orange);
-
+				PaymentGUI.main(null);
 				PaymentGUI paymentGUI = new PaymentGUI(breadList);
-				paymentGUI.main(null);
-				paymentGUI.frame.setVisible(true);
-				paymentGUI.setOnMyClickListener(new MyCllickListener() {
 
-					@Override
-					public void onClick() {
-						paymentBtn.setBackground(new Color(139, 0, 0));
-
-					}
-				});
+//				paymentGUI.frame.setVisible(true);
+//				paymentGUI.setOnMyClickListener(new MyCllickListener() {
+//
+//					@Override
+//					public void onClick() {
+//						paymentBtn.setBackground(new Color(139, 0, 0));
+//
+//					}
+//				});
 			}
 		});
 		paymentBtn.setBackground(new Color(139, 0, 0));
 
-		JPanel logopanel = new JPanel() { //·Î°í°¡ »ðÀÔµÈ ÆÐ³Î
+		JPanel logopanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/logo.png"));
@@ -406,9 +407,9 @@ public class MainGUI {
 			}
 		};
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, logopanel, 29, SpringLayout.SOUTH, ShowPanel);
-		sl_leftPanel.putConstraint(SpringLayout.WEST, logopanel, 0, SpringLayout.WEST, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, logopanel, 10, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, logopanel, -34, SpringLayout.SOUTH, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -6, SpringLayout.WEST, paymentPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -21, SpringLayout.WEST, totalMoneyPanel);
 		leftPanel.add(logopanel);
 		logopanel.setLayout(new SpringLayout());
 		
@@ -419,6 +420,14 @@ public class MainGUI {
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, panel, 0, SpringLayout.SOUTH, ShowPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, panel, 0, SpringLayout.EAST, ShowPanel);
 		leftPanel.add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, panel_1, 21, SpringLayout.EAST, logopanel);
+		sl_leftPanel.putConstraint(SpringLayout.SOUTH, panel_1, -20, SpringLayout.NORTH, paymentPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, panel_1, 0, SpringLayout.EAST, ShowPanel);
+		panel_1.setBackground(new Color(255, 255, 255, 150));
+		leftPanel.add(panel_1);
 
 		JPanel rightPanel = new JPanel();
 		rightPanel.setOpaque(false);
@@ -435,7 +444,7 @@ public class MainGUI {
 		rightPanel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(1, 3, 20, 0));
 
-		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®.png"));
+		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®ÁøÂ¥.png"));
 		managementBtn.setOpaque(false);
 		managementBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		managementBtn.setForeground(new Color(240, 248, 255));
@@ -460,7 +469,7 @@ public class MainGUI {
 		managementBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(managementBtn);
 
-		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/¸ÅÃâ.png"));
+		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/¸ÅÃâÁøÂ¥.png"));
 		salesBtn.setOpaque(false);
 		salesBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		salesBtn.setFont(new Font("±¼¸²", Font.BOLD, 15));
@@ -485,6 +494,10 @@ public class MainGUI {
 		buttonPanel.add(salesBtn);
 
 		JButton closeBtn = new JButton(new ImageIcon("./image/ButtonFolder/°ü¸®Á¾·á.png"));
+		closeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		closeBtn.setOpaque(false);
 		closeBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		closeBtn.setForeground(new Color(240, 248, 255));
@@ -513,12 +526,13 @@ public class MainGUI {
 		tabbedPanel.setLayout(new GridLayout(1, 0, 10, 0));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
 		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setOpaque(false);
 		tabbedPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		tabbedPanel.add(tabbedPane);
 
-		JPanel whitePanel = new JPanel() { //¹Ð°¡·ç ÅÇ
+		JPanel whitePanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/background.png"));
@@ -535,12 +549,12 @@ public class MainGUI {
 
 		whitePanel.setOpaque(false); // º¯È­ ÀÏ¾î³ª´Â°÷
 
-		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, "¹Ð°¡·ç");
+		tabbedPane.addTab("white", null, whitePanel, "¹Ð°¡·ç");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(whitePanel, "white");
 
-		JPanel boriPanel = new JPanel() { //º¸¸® ÅÇ
+		JPanel boriPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/background.png"));
@@ -561,7 +575,7 @@ public class MainGUI {
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(boriPanel, "bori");
 
-		JPanel cornPanel = new JPanel() {//¿Á¼ö¼ö ÅÇ
+		JPanel cornPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/background.png"));
@@ -582,7 +596,7 @@ public class MainGUI {
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(cornPanel, "corn");
 
-		JPanel ryePanel = new JPanel() {//È£¹Ð ÅÇ
+		JPanel ryePanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/background.png"));
@@ -603,7 +617,7 @@ public class MainGUI {
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(ryePanel, "rye");
 
-		JPanel mixturePanel = new JPanel() {//È¥ÇÕ ÅÇ
+		JPanel mixturePanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/background.png"));
@@ -624,7 +638,7 @@ public class MainGUI {
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(mixturePanel, "mix");
 
-		JPanel otherPanel = new JPanel() { //±âÅ¸ ÅÇ
+		JPanel otherPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/background.png"));
@@ -633,7 +647,6 @@ public class MainGUI {
 					setOpaque(false);
 					setBackground(new Color(0, 0, 0, 0));
 					super.paintComponent(g);
-					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -651,17 +664,13 @@ public class MainGUI {
 		Product pro = new Product(list.getName(), 1, list.getPrice());
 		mg.addProduct(pro);
 
-//		listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
+		//listM.choice(choicePanel, productPanel, amountPanel, pricePanel, breadList);
 
 		// System.out.println(list.getName());
 		// System.out.println(vector.size());
-		
 		main(office_num);
-		
 		frame.dispose();
 		new MainGUI(office_num);
-
-	
 	}
 
 	public static void sendlist(int total) {
