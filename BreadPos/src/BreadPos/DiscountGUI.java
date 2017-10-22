@@ -82,7 +82,7 @@ public class DiscountGUI {
 		JPanel panel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
-					icon = ImageIO.read(new File("image/background.png"));
+					icon = ImageIO.read(new File("image/새로운 빵배경.png"));
 					Dimension d = getSize();// 전체화면
 					g.drawImage(icon, 0, 0, d.width, d.height, null);
 					setOpaque(false);

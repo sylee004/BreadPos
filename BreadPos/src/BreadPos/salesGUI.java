@@ -10,13 +10,21 @@ import javax.swing.UIManager;
 import javax.swing.text.GapContent;
 
 import java.awt.GridLayout;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JInternalFrame;
 
 public class salesGUI {
@@ -28,6 +36,7 @@ public class salesGUI {
 	private int input;
 	private static JButton showgrap;
 	private static JPanel Chart;
+	private BufferedImage icon;
 
 	/**
 	 * Launch the application.
@@ -61,7 +70,19 @@ public class salesGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(){
+			public void paintComponent(Graphics g) {
+				try {
+					icon = ImageIO.read(new File("image/새로운 빵배경.png"));
+					Dimension d = getSize();// 전체화면
+					g.drawImage(icon, 0, 0, d.width, d.height, null);
+					setOpaque(false);
+					super.paintComponent(g);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
 		frame.getContentPane().add(panel, "name_52956806134008");
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
