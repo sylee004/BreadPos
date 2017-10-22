@@ -190,9 +190,9 @@ public class MainGUI {
 		columnsPanel.add(PriceLabel);
 
 		JPanel totalMoneyPanel = new JPanel();
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 496, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, totalMoneyPanel, 0, SpringLayout.EAST, ShowPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -6, SpringLayout.NORTH, totalMoneyPanel);
-		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 496, SpringLayout.NORTH, leftPanel);
 
 		JPanel ListPanel = new JPanel();
 		ListPanel.setBackground(new Color(255, 255, 255, 150));
@@ -327,8 +327,10 @@ public class MainGUI {
 		listM.choice(productPanel, amountPanel, pricePanel, breadList);
 
 		JPanel paymentPanel = new JPanel();
-		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, totalMoneyPanel, -20, SpringLayout.NORTH, paymentPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, paymentPanel, 0, SpringLayout.EAST, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, paymentPanel, 0, SpringLayout.WEST, totalMoneyPanel);
+		sl_leftPanel.putConstraint(SpringLayout.NORTH, paymentPanel, 565, SpringLayout.NORTH, leftPanel);
 
 		JLabel lblNewLabel_2 = new JLabel("\uC6D0");
 		sl_totalMoneyPanel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.EAST, lblNewLabel);
@@ -339,9 +341,7 @@ public class MainGUI {
 		sl_totalMoneyPanel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, 0, SpringLayout.SOUTH, totalMoneyPanel);
 		totalMoneyPanel.add(lblNewLabel_2);
 		paymentPanel.setOpaque(false);
-		sl_leftPanel.putConstraint(SpringLayout.WEST, paymentPanel, 166, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, paymentPanel, -10, SpringLayout.SOUTH, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.EAST, paymentPanel, -10, SpringLayout.EAST, leftPanel);
 		leftPanel.add(paymentPanel);
 		paymentPanel.setLayout(new GridLayout(1, 2, 20, 0));
 
@@ -407,9 +407,9 @@ public class MainGUI {
 			}
 		};
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, logopanel, 29, SpringLayout.SOUTH, ShowPanel);
-		sl_leftPanel.putConstraint(SpringLayout.WEST, logopanel, 0, SpringLayout.WEST, ShowPanel);
+		sl_leftPanel.putConstraint(SpringLayout.WEST, logopanel, 10, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, logopanel, -34, SpringLayout.SOUTH, leftPanel);
-		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -6, SpringLayout.WEST, paymentPanel);
+		sl_leftPanel.putConstraint(SpringLayout.EAST, logopanel, -21, SpringLayout.WEST, totalMoneyPanel);
 		leftPanel.add(logopanel);
 		logopanel.setLayout(new SpringLayout());
 		
@@ -444,7 +444,7 @@ public class MainGUI {
 		rightPanel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(1, 3, 20, 0));
 
-		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/관리.png"));
+		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/관리진짜.png"));
 		managementBtn.setOpaque(false);
 		managementBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		managementBtn.setForeground(new Color(240, 248, 255));
@@ -469,7 +469,7 @@ public class MainGUI {
 		managementBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(managementBtn);
 
-		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/매출.png"));
+		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/매출진짜.png"));
 		salesBtn.setOpaque(false);
 		salesBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		salesBtn.setFont(new Font("굴림", Font.BOLD, 15));
@@ -526,6 +526,7 @@ public class MainGUI {
 		tabbedPanel.setLayout(new GridLayout(1, 0, 10, 0));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFont(new Font("나눔손글씨 펜", Font.BOLD, 20));
 		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setOpaque(false);
 		tabbedPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -548,7 +549,7 @@ public class MainGUI {
 
 		whitePanel.setOpaque(false); // 변화 일어나는곳
 
-		tabbedPane.addTab("white", new ImageIcon("C:\\Users\\togla\\Desktop\\loginBtn01.png"), whitePanel, "밀가루");
+		tabbedPane.addTab("white", null, whitePanel, "밀가루");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(whitePanel, "white");
