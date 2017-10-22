@@ -31,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
+import javax.swing.RepaintManager;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -68,6 +69,7 @@ public class MainGUI {
 	private JTable productTable;
 	private JTable amountTable;
 	private JTable priceTable;
+	static JPanel ShowPanel ;
 
 	/**
 	 * Launch the application.
@@ -138,7 +140,7 @@ public class MainGUI {
 		SpringLayout sl_leftPanel = new SpringLayout();
 		leftPanel.setLayout(sl_leftPanel);
 
-		JPanel ShowPanel = new JPanel();
+		ShowPanel = new JPanel();	//전체 리스트
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, ShowPanel, 50, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.WEST, ShowPanel, 10, SpringLayout.WEST, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.EAST, ShowPanel, -21, SpringLayout.EAST, leftPanel);
@@ -200,7 +202,7 @@ public class MainGUI {
 		PriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		columnsPanel.add(PriceLabel);
 
-		JPanel totalMoneyPanel = new JPanel();
+		JPanel totalMoneyPanel = new JPanel(); //최종결제 금액
 		sl_leftPanel.putConstraint(SpringLayout.NORTH, totalMoneyPanel, 496, SpringLayout.NORTH, leftPanel);
 		sl_leftPanel.putConstraint(SpringLayout.SOUTH, ShowPanel, -6, SpringLayout.NORTH, totalMoneyPanel);
 
@@ -412,7 +414,7 @@ public class MainGUI {
 		});
 		paymentBtn.setBackground(new Color(139, 0, 0));
 
-		JPanel logopanel = new JPanel() {
+		JPanel logopanel = new JPanel() { //로고가 삽입된 패널
 			public void paintComponent(Graphics g) {
 				try {
 					bimg = ImageIO.read(new File("./image/logo.png"));
@@ -654,6 +656,7 @@ public class MainGUI {
 					setOpaque(false);
 					setBackground(new Color(0, 0, 0, 0));
 					super.paintComponent(g);
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -675,7 +678,9 @@ public class MainGUI {
 
 		// System.out.println(list.getName());
 		// System.out.println(vector.size());
-		main(office_num);
+//		main(office_num);
+		ShowPanel.revalidate();
+		ShowPanel.repaint();
 		//frame.dispose();
 		new MainGUI(office_num);
 	}
