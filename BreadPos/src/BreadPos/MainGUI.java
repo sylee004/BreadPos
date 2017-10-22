@@ -372,6 +372,8 @@ public class MainGUI {
 		cancelBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		cancelBtn.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		cancelBtn.setForeground(new Color(240, 248, 255));
+		cancelBtn.setBorderPainted(false);
+		cancelBtn.setFocusPainted(false);
 		cancelBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
