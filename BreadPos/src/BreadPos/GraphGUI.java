@@ -203,7 +203,7 @@ public class GraphGUI extends ApplicationFrame {
 
 		// NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
 		chart.setBackgroundPaint(Color.getHSBColor(38,320,1200)); // 창 배경 색
-
+		//!
 		// final StandardLegend legend = (StandardLegend) chart.getLegend();
 		// legend.setDisplaySeriesShapes(true);
 
