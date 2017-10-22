@@ -40,6 +40,7 @@ public class LoginGUI {
 	private int office_num;
 	private Management mg;
 
+
 	/**
 	 * Launch the application.
 	 */

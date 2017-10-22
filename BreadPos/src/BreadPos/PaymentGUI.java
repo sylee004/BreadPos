@@ -49,6 +49,7 @@ public class PaymentGUI {
 	public static int[] money;
 	private static ArrayList<Product> productList;
 	private List listM;
+	private static int choice;
 
 	/**
 	 * Launch the application.
@@ -194,12 +195,12 @@ public class PaymentGUI {
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_8, 0, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_8, 0, SpringLayout.SOUTH, panel);
 		panel.add(panel_8);
-		
+
 		listM.choice(panel_6, panel_7, panel_8, productList);
 		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
 		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 10));
 		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
-		
+
 		JPanel panel_10 = new JPanel();
 		sl_panel_5.putConstraint(SpringLayout.NORTH, panel_10, 0, SpringLayout.NORTH, panel_9);
 		sl_panel_5.putConstraint(SpringLayout.WEST, panel_10, 0, SpringLayout.WEST, panel_9);
@@ -367,7 +368,7 @@ public class PaymentGUI {
 		lblNewLabel_1.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_1);
-		
+
 		int total = 0;
 
 		for (int i = 0; i < productList.size(); i++) {
@@ -390,7 +391,7 @@ public class PaymentGUI {
 		lblNewLabel_7.setBackground(new Color(222, 184, 135));
 		lblNewLabel_7.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-
+		lblNewLabel_7.setText("0");
 		panel_4.add(lblNewLabel_7);
 
 		JLabel lblNewLabel_3 = new JLabel("\uCD5C\uC885 \uAE08\uC561");
@@ -398,12 +399,13 @@ public class PaymentGUI {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblNewLabel_3);
 
-		lblNewLabel_5 = new JLabel();
+		lblNewLabel_5 = new JLabel(); // µé¾î°¥°ª
 
 		lblNewLabel_5.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 25));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setText("" + moneylist.get(0));
 		panel_4.add(lblNewLabel_5);
-		
+
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(255, 255, 255, 150));
 		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_11, 0, SpringLayout.NORTH, panel_4);
@@ -412,19 +414,6 @@ public class PaymentGUI {
 		sl_panel_2.putConstraint(SpringLayout.EAST, panel_11, 0, SpringLayout.EAST, panel_4);
 		panel_2.add(panel_11);
 
-		Vector userColumn = new Vector<>();
-		Vector userRow = new Vector<>();
-		Vector data = new Vector<>();
-
-		userColumn.add("»óÇ°ÀÌ¸§");
-		userColumn.add("¼ö·®");
-		userColumn.add("°¡°Ý");
-
-		data.add("¼Òº¸·Î»§");
-		userRow.add("1");
-		userRow.add("1200");
-
-		data.add(userRow);
 	}
 
 	public void setOnMyClickListener(MyCllickListener myCllickListener) {
@@ -470,11 +459,6 @@ public class PaymentGUI {
 			lblNewLabel_7.setText("" + money[1]);
 			lblNewLabel_5.setText("" + money[2]);
 		}
-
-	}
-
-	public static void finalMoney(int input) {
-		// TODO Auto-generated method stub
 
 	}
 }

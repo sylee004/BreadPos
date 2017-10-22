@@ -67,6 +67,7 @@ public class MainGUI {
 	private JTable productTable;
 	private JTable amountTable;
 	private JTable priceTable;
+	private static int input;
 
 	/**
 	 * Launch the application.
@@ -376,8 +377,10 @@ public class MainGUI {
 		paymentBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paymentBtn.setBackground(Color.orange);
-				PaymentGUI.main(null);
 				PaymentGUI paymentGUI = new PaymentGUI(breadList);
+				PaymentGUI.main(null);
+				
+				
 
 //				paymentGUI.frame.setVisible(true);
 //				paymentGUI.setOnMyClickListener(new MyCllickListener() {

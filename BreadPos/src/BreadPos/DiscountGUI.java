@@ -49,7 +49,7 @@ public class DiscountGUI {
 	private static JPanel basicpannel;
 	private static JPanel memberpanel;
 	private static JPanel phonepanel;
-	private int choice;
+	public static int choice;
 	private Member member;
 	private MemberInfoDAO memberdao;
 	public ArrayList<Member> OuputList;
@@ -183,7 +183,7 @@ public class DiscountGUI {
 				// 할인률 적용 수식필요
 				if (choice == 1) {
 					PaymentGUI.chaingeMsg(input);
-					PaymentGUI.finalMoney(input);
+					
 				} else if (choice == 2) {
 					PaymentGUI.memberMsg(input);
 
@@ -358,14 +358,14 @@ public class DiscountGUI {
 		btnNewButton_3.setBackground(new Color(210, 105, 30));
 		// btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_3.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent arg0) {
 				choice = 2;
 				System.out.println(inputMemberNumber.getText());
 				OuputList = memberdao.selectName(inputMemberNumber.getText());
 				if (OuputList.size() != 0) {
 					int discountMember = manage.discount(1, inputMemberNumber.getText());
-					showdiscount.setText(""+discountMember+"% 할인");
+					showdiscount.setText("" + discountMember + "% 할인");
 					input = 1;
 				} else {
 					showdiscount.setText("회원이 아니시네요 ㅠㅠ");
