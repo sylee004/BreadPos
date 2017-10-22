@@ -62,7 +62,7 @@ public class GraphGUI extends ApplicationFrame {
 		});
 
 		chartPanel.setBackground(new Color(255, 255, 240));
-		chartPanel.setPreferredSize(new java.awt.Dimension(450, 350)); // 표 크기
+		chartPanel.setPreferredSize(new java.awt.Dimension(400, 350)); // 표 크기
 		setContentPane(chartPanel);
 		chartPanel.setLayout(null);
 		chartPanel.setToolTipText("아아아아");
