@@ -107,7 +107,7 @@ public class MainGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
-
+ 
 		JPanel mainPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
 				try {
