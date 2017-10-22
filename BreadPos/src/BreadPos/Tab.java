@@ -23,7 +23,7 @@ public class Tab extends JPanel{
 		Management mg = new Management();
 		ArrayList<Bread> breadList = mg.breadKind(kind);
 
-		for (int i = 0; i < breadList.size(); i++) { //¹öÆ° 
+		for (int i = 0; i < breadList.size(); i++) { //»§¹öÆ° »ı¼º
 			Bread bread = breadList.get(i);
 			String name = breadList.get(i).getName();
 			JButton menuBtn = new JButton(name);//, new ImageIcon("./image/´ŞÆØÀÌ»§.png"));
@@ -36,7 +36,9 @@ public class Tab extends JPanel{
 			menuBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					list = bread;
+					
 					MainGUI.sendMessage(list);
+				
 					//new List();
 				}
 			});

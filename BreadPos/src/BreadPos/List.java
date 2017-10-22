@@ -16,15 +16,11 @@ import DB.Product;
 
 public class List extends JPanel {
 	
-	public void choice(JPanel choicePanel, JPanel productPanel, JPanel amountPanel, JPanel pricePanel, ArrayList<Product> breadList) {
+	public void choice(JPanel productPanel, JPanel amountPanel, JPanel pricePanel, ArrayList<Product> breadList) {
 		System.out.println(breadList.size()); //Main의 ShowPanel에 들어갈 리스트
 		int total = 0;
 		if (breadList.size() != 0) {
 			for (int i = 0; i < breadList.size(); i++) {
-				JCheckBox checkBox = new JCheckBox(); //선택히는 박스
-				checkBox.setBackground(new Color(255, 255, 255, 150));
-				checkBox.setOpaque(false);
-				choicePanel.add(checkBox);
 				JLabel product = new JLabel(breadList.get(i).getPname()); //빵목록
 				product.setFont(new Font("나눔손글씨 펜", Font.PLAIN, 25));
 				productPanel.add(product);
