@@ -477,8 +477,9 @@ public class MainGUI {
 		salesBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				salesBtn.setBackground(Color.orange);
-
-				salesGUI salesGUI = new salesGUI();
+				GraphGUI graphGUI = new GraphGUI("");
+				graphGUI.main(null);
+				/*salesGUI salesGUI = new salesGUI();
 				salesGUI.frame.setVisible(true);
 				salesGUI.setOnMyClickListener(new MyCllickListener() {
 					@Override
@@ -486,7 +487,7 @@ public class MainGUI {
 						// TODO Auto-generated method stub
 						salesBtn.setBackground(new Color(139, 69, 19));
 					}
-				});
+				});*/
 
 			}
 		});
