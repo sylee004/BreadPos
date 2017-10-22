@@ -197,7 +197,7 @@ public class PaymentGUI {
 		
 		listM.choice(panel_6, panel_7, panel_8, productList);
 		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
-		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 10));
 		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
 		
 		JPanel panel_10 = new JPanel();
