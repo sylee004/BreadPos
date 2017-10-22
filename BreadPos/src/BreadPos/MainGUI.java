@@ -456,7 +456,7 @@ public class MainGUI {
 		rightPanel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(1, 3, 20, 0));
 
-		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/관리.png"));
+		managementBtn = new JButton(new ImageIcon("./image/ButtonFolder/관리진짜.png"));
 		managementBtn.setOpaque(false);
 		managementBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		managementBtn.setForeground(new Color(240, 248, 255));
@@ -481,7 +481,7 @@ public class MainGUI {
 		managementBtn.setBackground(new Color(139, 69, 19));
 		buttonPanel.add(managementBtn);
 
-		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/매출.png"));
+		salesBtn = new JButton(new ImageIcon("./image/ButtonFolder/매출진짜.png"));
 		salesBtn.setOpaque(false);
 		salesBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
 		salesBtn.setFont(new Font("굴림", Font.BOLD, 15));
