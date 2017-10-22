@@ -732,7 +732,7 @@ public class ManagementGUI {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int count = mg.modifyOffice(textField_3.getText(), ID,
-						new OfficeDAO().select_office().get(1).getOffice_num());
+						new OfficeDAO().select_office().get(0).getOffice_num());
 				// 지점정보수정팝업!!
 				zPopOfficeUpdateGUI in = new zPopOfficeUpdateGUI();
 				in.main(null);
