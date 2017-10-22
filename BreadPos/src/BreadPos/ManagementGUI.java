@@ -49,11 +49,11 @@ public class ManagementGUI {
 	private JTextField phoneNumInput;
 	private JTextField Input;
 	private JTextField InputChange;
-	private JTextField InputValue;
 	private static int office_num;
 	Management mg = new Management();
 	String breadName;
 	String[] breadType = { "밀가루", "보리", "옥수수", "호밀", "혼합", "기타" };
+	String[] EnglishBreadType = {"white","bori","corn","rye","mixture","other"};
 	String breadTypeChoice;
 	int breadPrice;
 	String memberName;
@@ -65,6 +65,8 @@ public class ManagementGUI {
 	String[] OutList;
 	String Ouput; // 출력
 	private JTextField nameInput;
+	private JTextField InputValue;
+	private JTextField Inputvalue;
 
 	/**
 	 * Launch the application.
@@ -303,28 +305,16 @@ public class ManagementGUI {
 
 		String[] number = { "번호", "이름" };
 		JLabel OutputResult = new JLabel("\uCD9C\uB825");
-		// 번호 선택시 이름 출력
-		JComboBox chooseNumberName = new JComboBox(number);
-		chooseNumberName.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource().equals(chooseNumberName)) {
-					breadName = chooseNumberName.getSelectedItem().toString();
-				}
-			}
-		});
-		chooseNumberName.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		sl_changeMember.putConstraint(SpringLayout.NORTH, chooseNumberName, 6, SpringLayout.SOUTH, lblNewLabel_12);
-		sl_changeMember.putConstraint(SpringLayout.WEST, chooseNumberName, 10, SpringLayout.WEST, changeMember);
-		sl_changeMember.putConstraint(SpringLayout.EAST, chooseNumberName, 84, SpringLayout.WEST, changeMember);
-		changeMember.add(chooseNumberName);
 
 		Input = new JTextField(); // 바꿀 것 조회 하려는 값 입력시
+		sl_changeMember.putConstraint(SpringLayout.WEST, Input, 90, SpringLayout.WEST, changeMember);
+		sl_changeMember.putConstraint(SpringLayout.EAST, Input, -10, SpringLayout.EAST, changeMember);
 		Input.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		sl_changeMember.putConstraint(SpringLayout.WEST, OutputResult, 0, SpringLayout.WEST, Input);
 		Input.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (breadName.equals(number[0])) {// breadName = 번호
+				// breadName = 번호
 					for (int i = 0; i < new MemberInfoDAO().selectName(Input.getText()).size(); i++) {
 						OuputList.add(new MemberInfoDAO().selectName(Input.getText()).get(i));
 					}
@@ -333,23 +323,21 @@ public class ManagementGUI {
 						Ouput = OuputList.get(j).getMember_name();
 						OutputResult.setText(OuputList.get(j).getMember_name());
 					}
-				} else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
-					for (int i = 0; i < new MemberInfoDAO().selectPhone(Input.getText()).size(); i++) {
-						OuputList.add(new MemberInfoDAO().selectPhone(Input.getText()).get(i));
-					}
-					for (int j = 0; j < OuputList.size(); j++) {
-						System.out.println("번호 리스트" + OuputList.get(j).getMember_phone());
-						Ouput = OuputList.get(j).getMember_phone();
-						OutputResult.setText(OuputList.get(j).getMember_phone());
-					}
-				}
+				 
+//					else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
+//					for (int i = 0; i < new MemberInfoDAO().selectPhone(Input.getText()).size(); i++) {
+//						OuputList.add(new MemberInfoDAO().selectPhone(Input.getText()).get(i));
+//					}
+//					for (int j = 0; j < OuputList.size(); j++) {
+//						System.out.println("번호 리스트" + OuputList.get(j).getMember_phone());
+//						Ouput = OuputList.get(j).getMember_phone();
+//						OutputResult.setText(OuputList.get(j).getMember_phone());
+//					}
+//				}
 			}
 		});
 		Input.setOpaque(false);
 		Input.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		sl_changeMember.putConstraint(SpringLayout.WEST, Input, 6, SpringLayout.EAST, chooseNumberName);
-		sl_changeMember.putConstraint(SpringLayout.EAST, Input, -10, SpringLayout.EAST, changeMember);
-		sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 0, SpringLayout.SOUTH, Input);
 		sl_changeMember.putConstraint(SpringLayout.NORTH, Input, 36, SpringLayout.NORTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, Input, 83, SpringLayout.NORTH, changeMember);
 		changeMember.add(Input);
@@ -375,7 +363,7 @@ public class ManagementGUI {
 		InputChange.setColumns(10);
 
 		JLabel lblNewLabel_17 = new JLabel("\uC785\uB825 :");
-		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_17, 53, SpringLayout.SOUTH, chooseNumberName);
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_17, 106, SpringLayout.SOUTH, lblNewLabel_12);
 		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_17, 0, SpringLayout.WEST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_17, -21, SpringLayout.SOUTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_17, -6, SpringLayout.WEST, InputChange);
@@ -390,7 +378,7 @@ public class ManagementGUI {
 		btnNewButton_5.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (breadName.equals(number[0])) { // 번호 >> 이름
+				 // 번호 >> 이름
 					for (int j = 0; j < OuputList.size(); j++) {
 						if (Input.getText().equals(OuputList.get(j).getMember_phone())) {
 							int count = mg.updateMember(Input.getText(), InputChange.getText(), Input.getText(),
@@ -399,14 +387,15 @@ public class ManagementGUI {
 						}
 
 					}
-				} else if (breadName.equals(number[1])) {// 이름 >> 번호
-					for (int j = 0; j < OuputList.size(); j++) {
-						if (Input.getText().equals(OuputList.get(j).getMember_name())) {
-							int count = mg.updateMember(InputChange.getText(), Input.getText(),
-									OuputList.get(j).getMember_phone(), Input.getText());
-						}
-					}
-				}
+				
+//				else if (breadName.equals(number[1])) {// 이름 >> 번호
+//					for (int j = 0; j < OuputList.size(); j++) {
+//						if (Input.getText().equals(OuputList.get(j).getMember_name())) {
+//							int count = mg.updateMember(InputChange.getText(), Input.getText(),
+//									OuputList.get(j).getMember_phone(), Input.getText());
+//						}
+//					}
+//				}
 				// 회원수정팝업!!
 				zPopMemberUpdateGUI in = new zPopMemberUpdateGUI();
 				in.main(null);
@@ -419,9 +408,9 @@ public class ManagementGUI {
 		changeMember.add(btnNewButton_5);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255, 150));
-		sl_changeMember.putConstraint(SpringLayout.WEST, panel_1, 6, SpringLayout.EAST, chooseNumberName);
+		sl_changeMember.putConstraint(SpringLayout.WEST, panel_1, 90, SpringLayout.WEST, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, changeMember);
+		panel_1.setBackground(new Color(255, 255, 255, 150));
 		// sl_changeMember.putConstraint(SpringLayout.SOUTH, chooseNumberName, 0,
 		// SpringLayout.SOUTH, Input);
 		sl_changeMember.putConstraint(SpringLayout.NORTH, panel_1, 36, SpringLayout.NORTH, changeMember);
@@ -435,6 +424,15 @@ public class ManagementGUI {
 		sl_changeMember.putConstraint(SpringLayout.SOUTH, panel_4, -21, SpringLayout.SOUTH, changeMember);
 		sl_changeMember.putConstraint(SpringLayout.EAST, panel_4, -104, SpringLayout.EAST, changeMember);
 		changeMember.add(panel_4);
+		
+		JLabel lblNewLabel_3 = new JLabel("\uBC88\uD638 :");
+		sl_changeMember.putConstraint(SpringLayout.WEST, lblNewLabel_3, 10, SpringLayout.WEST, lblNewLabel_12);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		sl_changeMember.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 6, SpringLayout.SOUTH, lblNewLabel_12);
+		sl_changeMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_3, 53, SpringLayout.SOUTH, lblNewLabel_12);
+		sl_changeMember.putConstraint(SpringLayout.EAST, lblNewLabel_3, -6, SpringLayout.WEST, Input);
+		changeMember.add(lblNewLabel_3);
 		changeMember.setVisible(false);
 
 		// 멤버삭제
@@ -445,6 +443,24 @@ public class ManagementGUI {
 		ImportCard.add(deleteMember, "name_8584683626980");
 		SpringLayout sl_deleteMember = new SpringLayout();
 		deleteMember.setLayout(sl_deleteMember);
+		
+		JLabel OuputDelete = new JLabel("\uCD9C\uB825");
+		Inputvalue = new JTextField();
+		Inputvalue.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		Inputvalue.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		Inputvalue.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				for (int i = 0; i < new MemberInfoDAO().selectName(Inputvalue.getText()).size(); i++) {
+					OuputList.add(new MemberInfoDAO().selectName(Inputvalue.getText()).get(i));
+				}
+				for (int j = 0; j < OuputList.size(); j++) {
+					System.out.println("이름 리스트" + OuputList.get(j).getMember_name());
+					Ouput = OuputList.get(j).getMember_name();
+					OuputDelete.setText(OuputList.get(j).getMember_name());
+				}
+			}
+		});
 
 		JLabel lblNewLabel_10 = new JLabel("- \uC0AD\uC81C");
 		sl_deleteMember.putConstraint(SpringLayout.NORTH, lblNewLabel_10, 0, SpringLayout.NORTH, deleteMember);
@@ -454,81 +470,47 @@ public class ManagementGUI {
 		lblNewLabel_10.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
 		deleteMember.add(lblNewLabel_10);
-
-		JComboBox comboBox = new JComboBox(number);
-		comboBox.addActionListener(new ActionListener() { // 번호/이름 옵션선택
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource().equals(comboBox)) {
-					breadName = comboBox.getSelectedItem().toString();
-				}
-			}
-		});
+//
+//		JComboBox comboBox = new JComboBox(number);
+//		comboBox.addActionListener(new ActionListener() { // 번호/이름 옵션선택
+//			public void actionPerformed(ActionEvent e) {
+//				if (e.getSource().equals(comboBox)) {
+//					breadName = comboBox.getSelectedItem().toString();
+//				}
+//			}
+//		});
 		// comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uBC88\uD638",
 		// "\uC774\uB984" }));
-		comboBox.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, comboBox, 6, SpringLayout.SOUTH, lblNewLabel_10);
-		sl_deleteMember.putConstraint(SpringLayout.WEST, comboBox, 10, SpringLayout.WEST, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, comboBox, -333, SpringLayout.EAST, deleteMember);
-		deleteMember.add(comboBox);
+//		comboBox.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+//		sl_deleteMember.putConstraint(SpringLayout.NORTH, comboBox, 6, SpringLayout.SOUTH, lblNewLabel_10);
+//		sl_deleteMember.putConstraint(SpringLayout.WEST, comboBox, 10, SpringLayout.WEST, deleteMember);
+//		sl_deleteMember.putConstraint(SpringLayout.EAST, comboBox, -333, SpringLayout.EAST, deleteMember);
+//		deleteMember.add(comboBox);
 
-		JLabel OuputDelete = new JLabel("\uCD9C\uB825"); // 출력 라벨
-
-		InputValue = new JTextField(); // 삭제할 번호 / 이름 입력
-		InputValue.setOpaque(false);
-		InputValue.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		InputValue.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
-		InputValue.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (breadName.equals(number[0])) {// breadName = 번호
-					for (int i = 0; i < new MemberInfoDAO().selectName(InputValue.getText()).size(); i++) {
-						OuputList.add(new MemberInfoDAO().selectName(InputValue.getText()).get(i));
-					}
-					// OutList = new String[OuputList.size()];
-					for (int j = 0; j < OuputList.size(); j++) {
-						System.out.println("이름 리스트" + OuputList.get(j).getMember_name());
-						OuputDelete.setText(OuputList.get(j).getMember_name());
-					}
-				} else if (breadName.equals(number[1])) { // 이름 >> 번호출력 //breadName = 이름
-					for (int i = 0; i < new MemberInfoDAO().selectPhone(InputValue.getText()).size(); i++) {
-						OuputList.add(new MemberInfoDAO().selectPhone(InputValue.getText()).get(i));
-					}
-					// OutList = new String[OuputList.size()];
-					for (int j = 0; j < OuputList.size(); j++) {
-						System.out.println("번호 리스트" + OuputList.get(j).getMember_phone());
-						OuputDelete.setText(OuputList.get(j).getMember_phone());
-					}
-				}
-			}
-		});
-
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, InputValue, 36, SpringLayout.NORTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.WEST, InputValue, 6, SpringLayout.EAST, comboBox);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, InputValue, -123, SpringLayout.SOUTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, InputValue, -10, SpringLayout.EAST, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, comboBox, 0, SpringLayout.SOUTH, InputValue);
-		deleteMember.add(InputValue);
-		InputValue.setColumns(10);
+	
+		sl_deleteMember.putConstraint(SpringLayout.WEST, OuputDelete, 84, SpringLayout.WEST, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, OuputDelete, -34, SpringLayout.EAST, deleteMember);
 
 		JButton deleteButton = new JButton("\uC0AD\uC81C");
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, OuputDelete, -6, SpringLayout.NORTH, deleteButton);
 		sl_deleteMember.putConstraint(SpringLayout.SOUTH, deleteButton, -33, SpringLayout.SOUTH, deleteMember);
 		deleteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, deleteButton, 59, SpringLayout.SOUTH, InputValue);
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (breadName.equals(number[0])) {// 번호 >> 이름
+				
 					for (int j = 0; j < OuputList.size(); j++) {
-						if (InputValue.getText().equals(OuputList.get(j).getMember_phone())) {
-							int count = mg.deleteMember(OuputList.get(j).getMember_name(), InputValue.getText());
+						if (Inputvalue.getText().equals(OuputList.get(j).getMember_phone())) {
+							int count = mg.deleteMember(OuputList.get(j).getMember_name(), Inputvalue.getText());
 						}
 					}
-				} else if (breadName.equals(number[1])) {// 이름 >> 번호
-					for (int j = 0; j < OuputList.size(); j++) {
-						if (InputValue.getText().equals(OuputList.get(j).getMember_name())) {
-							int count = mg.deleteMember(InputValue.getText(), OuputList.get(j).getMember_phone());
-						}
-					}
-				}
+				
+//				else if (breadName.equals(number[1])) {// 이름 >> 번호
+//					for (int j = 0; j < OuputList.size(); j++) {
+//						if (InputValue.getText().equals(OuputList.get(j).getMember_name())) {
+//							int count = mg.deleteMember(InputValue.getText(), OuputList.get(j).getMember_phone());
+//						}
+//					}
+//				}
 				// 회원삭제팝업!!
 				zPopMemberDeleteGUI in = new zPopMemberDeleteGUI();
 				in.main(null);
@@ -544,20 +526,39 @@ public class ManagementGUI {
 		deleteMember.add(deleteButton);
 
 		OuputDelete.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, OuputDelete, 6, SpringLayout.SOUTH, InputValue);
-		sl_deleteMember.putConstraint(SpringLayout.WEST, OuputDelete, 0, SpringLayout.WEST, InputValue);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, OuputDelete, 51, SpringLayout.SOUTH, InputValue);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, OuputDelete, 0, SpringLayout.EAST, InputValue);
 		OuputDelete.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
 		deleteMember.add(OuputDelete);
 		
+
+		
+		JLabel lblNewLabel_16 = new JLabel("\uBC88\uD638 :");
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, lblNewLabel_16, 6, SpringLayout.SOUTH, lblNewLabel_10);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, lblNewLabel_16, 6, SpringLayout.WEST, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, lblNewLabel_16, -120, SpringLayout.SOUTH, deleteMember);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, lblNewLabel_16, -346, SpringLayout.EAST, deleteMember);
+		lblNewLabel_16.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_16.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
+		deleteMember.add(lblNewLabel_16);
+		
+		Inputvalue.setOpaque(false);
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, OuputDelete, 6, SpringLayout.SOUTH, Inputvalue);
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, Inputvalue, 0, SpringLayout.NORTH, lblNewLabel_16);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, Inputvalue, 5, SpringLayout.EAST, lblNewLabel_16);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, Inputvalue, 0, SpringLayout.SOUTH, lblNewLabel_16);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, Inputvalue, -24, SpringLayout.EAST, deleteMember);
+		deleteMember.add(Inputvalue);
+		Inputvalue.setColumns(10);
+		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(255,255,255,150));
-		sl_deleteMember.putConstraint(SpringLayout.NORTH, panel_5, 36, SpringLayout.NORTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.WEST, panel_5, 6, SpringLayout.EAST, comboBox);
-		sl_deleteMember.putConstraint(SpringLayout.SOUTH, panel_5, -123, SpringLayout.SOUTH, deleteMember);
-		sl_deleteMember.putConstraint(SpringLayout.EAST, panel_5, -10, SpringLayout.EAST, deleteMember);
+		panel_5.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, OuputDelete, 6, SpringLayout.SOUTH, panel_5);
+		sl_deleteMember.putConstraint(SpringLayout.NORTH, panel_5, 0, SpringLayout.NORTH, lblNewLabel_16);
+		sl_deleteMember.putConstraint(SpringLayout.WEST, panel_5, 5, SpringLayout.EAST, lblNewLabel_16);
+		sl_deleteMember.putConstraint(SpringLayout.SOUTH, panel_5, 0, SpringLayout.SOUTH, lblNewLabel_16);
+		sl_deleteMember.putConstraint(SpringLayout.EAST, panel_5, -24, SpringLayout.EAST, deleteMember);
 		deleteMember.add(panel_5);
+		
 		deleteMember.setVisible(false);
 
 		// 회원관리 버튼
@@ -902,6 +903,13 @@ public class ManagementGUI {
 				if (e.getSource().equals(comboBox_1)) {
 					breadTypeChoice = comboBox_1.getSelectedItem().toString();
 				}
+				int index = 0;
+				for (int i = 0; i < EnglishBreadType.length; i++) {
+					if(breadTypeChoice.equals(breadType[i])) {
+						index = i;
+					}
+				}
+				breadTypeChoice = EnglishBreadType[index];
 			}
 		});
 		sl_addMenuComponents.putConstraint(SpringLayout.NORTH, comboBox_1, 34, SpringLayout.SOUTH, InputBreadName);
@@ -984,6 +992,7 @@ public class ManagementGUI {
 				if (e.getSource().equals(breadNameComboBox)) {
 					breadName = breadNameComboBox.getSelectedItem().toString();
 				}
+				
 			}
 		});
 		breadNameComboBox.setFont(new Font("나눔손글씨 펜", Font.BOLD, 26));
@@ -1010,7 +1019,6 @@ public class ManagementGUI {
 				for (int i = 0; i < breadNameList.size(); i++) {
 					if (breadName.equals(breadNameList.get(i))) {
 						int count = mg.deleteBread(breadName);
-						System.out.println(breadName + " " + count);
 					}
 				}
 
@@ -1097,6 +1105,13 @@ public class ManagementGUI {
 				if (e.getSource().equals(BreadTypeCombo)) {
 					breadTypeChoice = BreadTypeCombo.getSelectedItem().toString();
 				}
+				int index = 0;
+				for (int i = 0; i < EnglishBreadType.length; i++) {
+					if(breadTypeChoice.equals(breadType[i])) {
+						index = i;
+					}
+				}
+				breadTypeChoice = EnglishBreadType[index];
 			}
 		});
 		sl_changeMenuComponents.putConstraint(SpringLayout.WEST, BreadTypeCombo, 107, SpringLayout.WEST,
