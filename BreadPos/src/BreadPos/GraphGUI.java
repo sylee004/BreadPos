@@ -61,7 +61,7 @@ public class GraphGUI extends ApplicationFrame {
 		chartPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-			
+			dispose();
 			}
 		});
 
