@@ -176,8 +176,6 @@ public class PaymentGUI {
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_6, 0, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, panel_6, 200, SpringLayout.WEST, panel);
 		panel.add(panel_6);
-		SpringLayout sl_panel_6 = new SpringLayout();
-		panel_6.setLayout(sl_panel_6);
 
 		JPanel panel_7 = new JPanel();
 		panel_7.setOpaque(false);
@@ -187,7 +185,6 @@ public class PaymentGUI {
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_7, 0, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, panel_7, 300, SpringLayout.WEST, panel);
 		panel.add(panel_7);
-		panel_7.setLayout(new GridLayout(8, 0, 0, 0));
 
 		JPanel panel_8 = new JPanel();
 		sl_panel.putConstraint(SpringLayout.WEST, panel_8, 100, SpringLayout.EAST, panel_6);
@@ -197,9 +194,11 @@ public class PaymentGUI {
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_8, 0, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_8, 0, SpringLayout.SOUTH, panel);
 		panel.add(panel_8);
-		panel_8.setLayout(new GridLayout(8, 0, 0, 0));
 		
 		listM.choice(panel_6, panel_7, panel_8, productList);
+		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+		panel_6.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
 		
 		JPanel panel_10 = new JPanel();
 		sl_panel_5.putConstraint(SpringLayout.NORTH, panel_10, 0, SpringLayout.NORTH, panel_9);
@@ -324,13 +323,11 @@ public class PaymentGUI {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				management.deleteProduct();
-				MainGUI mainGUI = new MainGUI(1);
-				mainGUI.main(1);
+				MainGUI mainGUI = new MainGUI(100);
+				mainGUI.main(100);
 				zPopCardCompleteGUI cardCompleteGUI = new zPopCardCompleteGUI();
 				cardCompleteGUI.main(null);
 				frame.dispose();
-				
-				
 			}
 		});
 		btnNewButton_4.setBackground(Color.WHITE);

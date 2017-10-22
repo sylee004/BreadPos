@@ -27,11 +27,11 @@ public class Tab extends JPanel{
 			Bread bread = breadList.get(i);
 			String name = breadList.get(i).getName();
 			JButton menuBtn = new JButton(name);//, new ImageIcon("./image/´ÞÆØÀÌ»§.png"));
-			menuBtn.setBorder(new LineBorder(new Color(255,255,255,100), 2));
+			menuBtn.setBorder(null);
 			menuBtn.setFocusPainted(false);
 //			menuBtn.setOpaque(false);
 			menuBtn.setBackground(new Color(255, 255, 255));
-			menuBtn.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 30));
+			menuBtn.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.PLAIN, 35));
 			menuBtn.setPreferredSize(new Dimension(129, 100));
 			menuBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
