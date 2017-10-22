@@ -1,6 +1,7 @@
 package BreadPos;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -12,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -23,6 +25,9 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
+import org.jfree.chart.renderer.OutlierList;
+
+import DB.Member;
 import DB.MemberInfoDAO;
 import oracle.net.aso.i;
 
@@ -45,6 +50,9 @@ public class DiscountGUI {
 	private static JPanel memberpanel;
 	private static JPanel phonepanel;
 	private int choice;
+	private Member member;
+	private MemberInfoDAO memberdao;
+	public ArrayList<Member> OuputList;
 
 	/**
 	 * Launch the application.
@@ -66,6 +74,9 @@ public class DiscountGUI {
 	 * Create the application.
 	 */
 	public DiscountGUI() {
+		OuputList = new ArrayList<Member>();
+		memberdao = new MemberInfoDAO();
+		manage = new Management();
 		initialize();
 	}
 
@@ -92,7 +103,7 @@ public class DiscountGUI {
 				}
 			}
 		};
-//		panel.setOpaque(false);
+		// panel.setOpaque(false);
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, 305, SpringLayout.NORTH, frame.getContentPane());
@@ -143,7 +154,6 @@ public class DiscountGUI {
 		});
 		panel.add(memebrship);
 
-	
 		JButton dispose = new JButton(new ImageIcon("./image/ButtonFolder/할인종료.png"));
 		dispose.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		sl_panel.putConstraint(SpringLayout.NORTH, dispose, 250, SpringLayout.NORTH, panel);
@@ -174,9 +184,9 @@ public class DiscountGUI {
 				if (choice == 1) {
 					PaymentGUI.chaingeMsg(input);
 					PaymentGUI.finalMoney(input);
-				}else if (choice == 2) {
+				} else if (choice == 2) {
 					PaymentGUI.memberMsg(input);
-					
+
 				}
 				frame.dispose();
 			}
@@ -205,8 +215,6 @@ public class DiscountGUI {
 		phonepanel.setOpaque(false);
 		phonepanel.setLayout(sl_phonepanel);
 		phonepanel.setVisible(false);
-		
-		
 
 		JLabel lblNewLabel_1 = new JLabel("\uD560\uC778\uB960 \uC801\uC6A9 :");
 		sl_phonepanel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 91, SpringLayout.NORTH, phonepanel);
@@ -248,7 +256,6 @@ public class DiscountGUI {
 		phonepanel.add(panel_3);
 		panel_3.setOpaque(false);
 		panel_3.setLayout(new GridLayout(0, 3, 10, 0));
-
 
 		JButton btnNewButton = new JButton("SKT");
 		btnNewButton.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -292,14 +299,12 @@ public class DiscountGUI {
 		});
 		panel_3.add(btnNewButton_1);
 
-
 		memberpanel = new JPanel();
 		memberpanel.setOpaque(false);
 		changePannel.add(memberpanel, "name_147043956309760");
 		SpringLayout sl_memberpanel = new SpringLayout();
 		memberpanel.setLayout(sl_memberpanel);
 		memberpanel.setVisible(false);
-
 
 		JLabel lblNewLabel_3 = new JLabel("\uBC88\uD638 \uC785\uB825 :");
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 10, SpringLayout.NORTH, memberpanel);
@@ -326,10 +331,9 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.WEST, inputMemberNumber, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, inputMemberNumber, -22, SpringLayout.EAST, memberpanel);
 		memberpanel.add(inputMemberNumber);
-//		inputMemberNumber.setOpaque(false);
+		// inputMemberNumber.setOpaque(false);
 		inputMemberNumber.setColumns(10);
 		MemberInfoDAO memberInfoDAO = new MemberInfoDAO();
-		
 
 		JPanel panel_4 = new JPanel();
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, inputMemberNumber, -13, SpringLayout.NORTH, panel_4);
@@ -344,7 +348,7 @@ public class DiscountGUI {
 		showdiscount = new JLabel("");
 		showdiscount.setFont(new Font("나눔손글씨 펜", Font.BOLD, 25));
 		panel_4.add(showdiscount, "name_147293203139413");
-		
+
 		JButton btnNewButton_3 = new JButton("\uD655\uC778");
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, btnNewButton_3, 6, SpringLayout.SOUTH, panel_4);
@@ -352,16 +356,18 @@ public class DiscountGUI {
 		sl_memberpanel.putConstraint(SpringLayout.EAST, btnNewButton_3, 0, SpringLayout.EAST, inputMemberNumber);
 		btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_3.setBackground(new Color(210, 105, 30));
-		//btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		// btnNewButton_3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		btnNewButton_3.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 				choice = 2;
-				String nember = "1234";
-				//memberInfoDAO.selectMoney(member_phone);
-				if (inputMemberNumber.getText().equals(nember)) {
-					showdiscount.setText("회원 이시네요?");
+				System.out.println(inputMemberNumber.getText());
+				OuputList = memberdao.selectName(inputMemberNumber.getText());
+				if (OuputList.size() != 0) {
+					int discountMember = manage.discount(1, inputMemberNumber.getText());
+					showdiscount.setText(""+discountMember+"% 할인");
 					input = 1;
-				}else {
+				} else {
 					showdiscount.setText("회원이 아니시네요 ㅠㅠ");
 					input = 2;
 				}
@@ -370,10 +376,10 @@ public class DiscountGUI {
 		btnNewButton_3.setFont(new Font("나눔손글씨 펜", Font.BOLD, 20));
 		sl_memberpanel.putConstraint(SpringLayout.SOUTH, btnNewButton_3, -10, SpringLayout.SOUTH, memberpanel);
 		memberpanel.add(btnNewButton_3);
-		
+
 		JPanel panel_1 = new JPanel();
-		//번호입력 뒤
-		panel_1.setBackground(new Color(255,255,255));
+		// 번호입력 뒤
+		panel_1.setBackground(new Color(255, 255, 255));
 		sl_memberpanel.putConstraint(SpringLayout.NORTH, panel_1, 15, SpringLayout.NORTH, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.WEST, panel_1, 97, SpringLayout.WEST, memberpanel);
 		sl_memberpanel.putConstraint(SpringLayout.EAST, panel_1, -22, SpringLayout.EAST, memberpanel);

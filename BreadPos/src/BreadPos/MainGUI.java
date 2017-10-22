@@ -219,7 +219,7 @@ public class MainGUI {
 		productPanel.setBackground(new Color(255, 255, 255, 150));
 		productPanel.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) productPanel.getLayout();
-		flowLayout.setHgap(60);
+		flowLayout.setHgap(70);
 		flowLayout.setVgap(10);
 		ListPanel.add(productPanel);
 
@@ -526,7 +526,7 @@ public class MainGUI {
 		tabbedPanel.setLayout(new GridLayout(1, 0, 10, 0));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 20));
+		tabbedPane.setFont(new Font("³ª´®¼Õ±Û¾¾ Ææ", Font.BOLD, 24));
 		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setOpaque(false);
 		tabbedPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -549,7 +549,7 @@ public class MainGUI {
 
 		whitePanel.setOpaque(false); // º¯È­ ÀÏ¾î³ª´Â°÷
 
-		tabbedPane.addTab("white", null, whitePanel, "¹Ð°¡·ç");
+		tabbedPane.addTab("¹Ð°¡·ç»§", null, whitePanel, "¹Ð°¡·ç");
 		whitePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(whitePanel, "white");
@@ -570,7 +570,7 @@ public class MainGUI {
 		};
 		boriPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		boriPanel.setBackground(Color.WHITE);
-		tabbedPane.addTab("bori", null, boriPanel, "º¸¸®");
+		tabbedPane.addTab("º¸¸®»§", null, boriPanel, "º¸¸®");
 		boriPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(boriPanel, "bori");
@@ -591,7 +591,7 @@ public class MainGUI {
 		};
 		cornPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		cornPanel.setBackground(Color.WHITE);
-		tabbedPane.addTab("corn", null, cornPanel, "¿Á¼ö¼ö");
+		tabbedPane.addTab("¿Á¼ö¼ö»§", null, cornPanel, "¿Á¼ö¼ö");
 		cornPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(cornPanel, "corn");
@@ -612,7 +612,7 @@ public class MainGUI {
 		};
 		ryePanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		ryePanel.setBackground(Color.WHITE);
-		tabbedPane.addTab("rye", null, ryePanel, "È£¹Ð");
+		tabbedPane.addTab("È£¹Ð»§", null, ryePanel, "È£¹Ð");
 		ryePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(ryePanel, "rye");
@@ -633,7 +633,7 @@ public class MainGUI {
 		};
 		mixturePanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		mixturePanel.setBackground(Color.WHITE);
-		tabbedPane.addTab("mixture", null, mixturePanel, "È¥ÇÕ");
+		tabbedPane.addTab("È¥ÇÕ»§", null, mixturePanel, "È¥ÇÕ");
 		mixturePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(mixturePanel, "mix");
@@ -654,7 +654,7 @@ public class MainGUI {
 		};
 		otherPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		otherPanel.setBackground(Color.WHITE);
-		tabbedPane.addTab("other", null, otherPanel, "±âÅ¸");
+		tabbedPane.addTab("±âÅ¸", null, otherPanel, "±âÅ¸");
 		otherPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 15, 15));
 		tabbedPane.setBackgroundAt(0, Color.WHITE);
 		tab.tabbed(otherPanel, "other");
