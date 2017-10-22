@@ -368,6 +368,7 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				mg.deleteProduct();
 				main(office_num);
+				frame.dispose();
 				new MainGUI(office_num);
 			}
 		});
